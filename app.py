@@ -37,6 +37,7 @@ html_code = """
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
     
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f3f4f6; margin: 0; padding: 0; user-select: none; -webkit-user-select: none; }
@@ -62,18 +63,11 @@ html_code = """
         const { useState, useEffect, useRef } = React;
 
         // ==========================================
-        // ▼▼▼ 圖片路徑 (已設定為您的 GitHub 網址) ▼▼▼
+        // ▼▼▼ 圖片路徑 (Github Raw) ▼▼▼
         // ==========================================
-        
-        // 1. 全覽地圖
         const URL_TRIP = "https://raw.githubusercontent.com/cloudmeowmog/tokyo2026/main/trip.jpg";
-        
-        // 2. 路線手稿
         const URL_NOTE = "https://raw.githubusercontent.com/cloudmeowmog/tokyo2026/main/note.jpg";
-        
-        // 3. 完整地鐵圖
         const URL_MAP = "https://raw.githubusercontent.com/cloudmeowmog/tokyo2026/main/map.jpg";
-        
         // ==========================================
 
         const HOTEL_ADDRESS = "Stayme THE HOTEL Ueno, Higashiueno, Taito City, Tokyo";
@@ -254,16 +248,25 @@ html_code = """
             const [mode, setMode] = useState('attraction');
             const [surrArea, setSurrArea] = useState('ueno');
             const mapContainerRef = useRef(null);
+            const imgRef = useRef(null); // 用於縮放的圖片 Ref
 
+            // 初始化縮放功能 (只在 Full 模式下啟用)
             useEffect(() => {
-                if (mode === 'full' && mapContainerRef.current) {
-                    setTimeout(() => {
-                        const el = mapContainerRef.current;
-                        if (el) {
-                            el.scrollTop = (el.scrollHeight - el.clientHeight) / 2;
-                            el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2;
-                        }
-                    }, 50);
+                if (mode === 'full' && imgRef.current) {
+                    // 啟用 Panzoom
+                    const pz = Panzoom(imgRef.current, {
+                        maxScale: 5,     // 最大縮放倍率
+                        minScale: 1,     // 最小縮放倍率
+                        contain: 'outside', // 限制圖片不跑出邊界
+                        startScale: 1
+                    });
+                    
+                    // 啟用滑鼠滾輪縮放
+                    if(imgRef.current.parentElement) {
+                        imgRef.current.parentElement.addEventListener('wheel', pz.zoomWithWheel);
+                    }
+                    
+                    // 回到正常模式時不需要特別清除，React 重新渲染會處理
                 }
             }, [mode]);
 
@@ -287,14 +290,12 @@ html_code = """
                     
                     <div className="flex-1 flex flex-col items-center w-full">
                         
-                        {/* 1. 全覽地圖 */}
                         {mode === 'attraction' && (
                             <div className="w-full max-w-sm bg-blue-50 rounded-xl overflow-hidden shadow-inner border-2 border-blue-100 p-0">
                                 <img src={URL_TRIP} alt="行程全覽地圖" className="w-full h-auto" />
                             </div>
                         )}
                         
-                        {/* 2. 景點周邊 (SVG) */}
                         {mode === 'surrounding' && (
                             <div className="w-full flex flex-col items-center">
                                 <div className="flex gap-2 mb-4 overflow-x-auto w-full justify-center flex-shrink-0">
@@ -311,22 +312,21 @@ html_code = """
                             </div>
                         )}
 
-                        {/* 3. 路線手稿 */}
                         {mode === 'metro' && (
                             <div className="w-full max-w-sm bg-white rounded-xl overflow-hidden shadow-inner border-2 border-gray-200 p-0">
                                 <img src={URL_NOTE} alt="路線手稿" className="w-full h-auto" />
                             </div>
                         )}
 
-                        {/* 4. 完整地鐵圖 */}
+                        {/* 修改：支援 Panzoom 縮放 */}
                         {mode === 'full' && (
-                            <div className="w-full max-w-sm">
-                                <div className="bg-white rounded-xl overflow-hidden shadow border p-1 mb-4">
-                                     <div ref={mapContainerRef} className="overflow-auto h-[60vh]">
-                                        <img src={URL_MAP} alt="完整地鐵圖" className="w-auto h-full min-w-[200%] object-contain" />
-                                     </div>
-                                     <p className="text-[10px] text-gray-400 text-center p-2">來源：bubu-jp.com</p>
-                                </div>
+                            <div className="w-full h-[65vh] bg-gray-100 rounded-xl overflow-hidden border border-gray-300 relative">
+                                 <div className="w-full h-full flex items-center justify-center overflow-hidden">
+                                    <img ref={imgRef} src={URL_MAP} alt="完整地鐵圖" className="w-full h-auto object-contain cursor-grab" />
+                                 </div>
+                                 <div className="absolute bottom-2 left-0 right-0 text-center pointer-events-none">
+                                    <span className="bg-black/50 text-white text-[10px] px-2 py-1 rounded-full">雙指或滾輪可縮放</span>
+                                 </div>
                             </div>
                         )}
                     </div>
