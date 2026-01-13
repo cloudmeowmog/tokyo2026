@@ -248,25 +248,20 @@ html_code = """
             const [mode, setMode] = useState('attraction');
             const [surrArea, setSurrArea] = useState('ueno');
             const mapContainerRef = useRef(null);
-            const imgRef = useRef(null); // 用於縮放的圖片 Ref
+            const imgRef = useRef(null);
 
-            // 初始化縮放功能 (只在 Full 模式下啟用)
             useEffect(() => {
                 if (mode === 'full' && imgRef.current) {
-                    // 啟用 Panzoom
                     const pz = Panzoom(imgRef.current, {
-                        maxScale: 5,     // 最大縮放倍率
-                        minScale: 1,     // 最小縮放倍率
-                        contain: 'outside', // 限制圖片不跑出邊界
+                        maxScale: 8,     // 修正：放大倍率增加
+                        minScale: 1,     
+                        contain: null,   // 修正：移除邊界限制，解決卡住問題
                         startScale: 1
                     });
                     
-                    // 啟用滑鼠滾輪縮放
                     if(imgRef.current.parentElement) {
                         imgRef.current.parentElement.addEventListener('wheel', pz.zoomWithWheel);
                     }
-                    
-                    // 回到正常模式時不需要特別清除，React 重新渲染會處理
                 }
             }, [mode]);
 
@@ -318,7 +313,6 @@ html_code = """
                             </div>
                         )}
 
-                        {/* 修改：支援 Panzoom 縮放 */}
                         {mode === 'full' && (
                             <div className="w-full h-[65vh] bg-gray-100 rounded-xl overflow-hidden border border-gray-300 relative">
                                  <div className="w-full h-full flex items-center justify-center overflow-hidden">
