@@ -9,36 +9,22 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# --- 2. CSS 樣式修正 (讓手機版像 Native App) ---
-# 這段 CSS 會隱藏 Streamlit 的選單、頁尾，並把邊距設為 0
+# --- 2. CSS 樣式修正 (全螢幕手機體驗) ---
 st.markdown("""
     <style>
-        /* 移除頂部 header */
         header {visibility: hidden;}
-        /* 移除 footer */
         footer {visibility: hidden;}
-        /* 移除主要區塊的 padding，讓 iframe 滿版 */
         .block-container {
-            padding-top: 0rem !important;
-            padding-bottom: 0rem !important;
-            padding-left: 0rem !important;
-            padding-right: 0rem !important;
+            padding: 0 !important;
             max-width: 100% !important;
         }
-        /* 隱藏右下角浮水印 (如果有) */
-        #MainMenu {visibility: hidden;}
-        
-        /* 確保 iframe 容器也是滿高 */
         iframe {
             height: 100vh !important;
         }
     </style>
 """, unsafe_allow_html=True)
 
-# --- 3. 嵌入你的 HTML 程式碼 ---
-# 為了方便管理，我們把原本的 HTML 放進這個變數中
-# 注意：原本 HTML 中的圖片路徑 (如 ./map.jpg) 在 Streamlit Cloud 上可能讀不到
-# 建議之後將圖片上傳到 GitHub，並將 HTML 內的圖片連結改成 GitHub Raw 連結
+# --- 3. React 應用程式 (HTML) ---
 html_code = """
 <!DOCTYPE html>
 <html lang="zh-TW">
@@ -58,7 +44,6 @@ html_code = """
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .safe-bottom { padding-bottom: env(safe-area-inset-bottom); padding-bottom: 20px; }
         
-        /* Loading */
         #loading { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #f3f4f6; z-index: 9999; transition: opacity 0.5s ease; flex-direction: column;}
         .spinner { border: 4px solid rgba(0, 0, 0, 0.1); width: 36px; height: 36px; border-radius: 50%; border-left-color: #4f46e5; animation: spin 1s linear infinite; margin-bottom: 10px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -76,7 +61,21 @@ html_code = """
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        // --- 1. 資料區 (Data) ---
+        // ==========================================
+        // ▼▼▼ 圖片路徑 (已設定為您的 GitHub 網址) ▼▼▼
+        // ==========================================
+        
+        // 1. 全覽地圖
+        const URL_TRIP = "https://raw.githubusercontent.com/cloudmeowmog/tokyo2026/main/trip.jpg";
+        
+        // 2. 路線手稿
+        const URL_NOTE = "https://raw.githubusercontent.com/cloudmeowmog/tokyo2026/main/note.jpg";
+        
+        // 3. 完整地鐵圖
+        const URL_MAP = "https://raw.githubusercontent.com/cloudmeowmog/tokyo2026/main/map.jpg";
+        
+        // ==========================================
+
         const HOTEL_ADDRESS = "Stayme THE HOTEL Ueno, Higashiueno, Taito City, Tokyo";
 
         // SVG Icons
@@ -105,7 +104,6 @@ html_code = """
              { day: 6, date: "4/22 (三)", title: "返台", events: [ { time: "10:00", title: "Check-out", desc: "阿美橫丁", icon: "🛍️", location: "Ameyoko Shopping Street", transport: { route: "飯店 → 阿美橫丁", line: "步行", time: "10分" } }, { time: "11:20", title: "往機場", desc: "搭 Skyliner", icon: "🚅", location: "Keisei Ueno Station", transport: { route: "京成上野 → 成田T1", line: "Skyliner", time: "41分" } }, { time: "12:25", title: "抵達機場", desc: "成田 T1 (南翼)", icon: "✈️", location: "Narita Airport Terminal 1" }, { time: "14:25", title: "起飛返台", desc: "長榮 BR197", icon: "✈️", location: "", transport: "" } ] }
         ];
 
-        // Station Guides with Detailed Routes
         const stationGuides = [
             { 
                 id: "narita", name: "成田機場 T1", desc: "Skyliner 起點站", 
@@ -176,7 +174,6 @@ html_code = """
             }
         ];
 
-        // Modified: Fixed Shibuya SKY link and kept Skytree link
         const reservations = [
             { cat: "交通", items: [{ name: "京成 Skyliner", url: "https://www.keisei.co.jp/keisei/tetudou/skyliner/e-ticket/zht/", tips: "線上買便宜" }, { name: "JR 新幹線", url: "https://www.eki-net.com/zh-CHT/jreast-train-reservation/Top/Index", tips: "1個月前預訂" }] },
             { cat: "景點", items: [{ name: "SHIBUYA SKY", url: "https://www.shibuya-scramble-square.com/sky/ticket/", tips: "4週前必搶" }, { name: "東京晴空塔", url: "https://www.tokyo-skytree.jp/cn_t/ticket/", tips: "30天前開放預約" }, { name: "teamLab", url: "https://planets.teamlab.art/tokyo/zh-hant/", tips: "建議提前1個月" }] },
@@ -195,9 +192,7 @@ html_code = """
             { id: "shinjuku", name: "新宿 3D 貓", icon: "🐈", tag: "科技看板", desc: "新宿東口廣場對面大樓的 4K 彎曲螢幕。巨大的三花貓會探頭打招呼，非常逼真可愛。", tips: "每 15 分鐘會有一次特殊演出。" }
         ];
 
-        // --- 2. 獨立組件 (Components) ---
-
-        // A. 行程頁面
+        // --- View Components ---
         const ItineraryView = () => {
             const [activeDay, setActiveDay] = useState(0);
             return (
@@ -255,13 +250,11 @@ html_code = """
             );
         };
 
-        // B. 地圖頁面
         const MapView = () => {
             const [mode, setMode] = useState('attraction');
             const [surrArea, setSurrArea] = useState('ueno');
             const mapContainerRef = useRef(null);
 
-            // 當切換到完整地鐵圖模式時，自動置中
             useEffect(() => {
                 if (mode === 'full' && mapContainerRef.current) {
                     setTimeout(() => {
@@ -274,11 +267,7 @@ html_code = """
                 }
             }, [mode]);
 
-            // 景點周邊地圖 SVG
             const renderSurrounding = () => {
-                const areaNames = { ueno: '上野', karuizawa: '輕井澤', odaiba: '台場', asakusa: '淺草' };
-                const currentName = areaNames[surrArea] || surrArea;
-                
                 switch(surrArea) {
                     case 'ueno': return <div dangerouslySetInnerHTML={{__html: SvgData.ueno}} />;
                     case 'karuizawa': return <div dangerouslySetInnerHTML={{__html: SvgData.karuizawa}} />;
@@ -289,7 +278,6 @@ html_code = """
 
             return (
                 <div className="h-full flex flex-col p-4 pb-24 overflow-y-auto">
-                    {/* 地圖按鈕列 */}
                     <div className="sticky top-0 z-10 bg-white/95 backdrop-blur shadow-sm p-2 rounded-xl mb-4 overflow-x-auto flex gap-2 flex-shrink-0">
                          <button onClick={() => setMode('attraction')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${mode === 'attraction' ? 'bg-indigo-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🗺️ 全覽</button>
                         <button onClick={() => setMode('surrounding')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${mode === 'surrounding' ? 'bg-teal-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🏙️ 景點周邊</button>
@@ -298,14 +286,15 @@ html_code = """
                     </div>
                     
                     <div className="flex-1 flex flex-col items-center w-full">
-                        {/* 1. 全覽地圖 - 改用 trip.jpg */}
+                        
+                        {/* 1. 全覽地圖 */}
                         {mode === 'attraction' && (
                             <div className="w-full max-w-sm bg-blue-50 rounded-xl overflow-hidden shadow-inner border-2 border-blue-100 p-0">
-                                <img src="./trip.jpg" alt="行程全覽地圖" className="w-full h-auto" />
+                                <img src={URL_TRIP} alt="行程全覽地圖" className="w-full h-auto" />
                             </div>
                         )}
                         
-                        {/* 2. 景點周邊 */}
+                        {/* 2. 景點周邊 (SVG) */}
                         {mode === 'surrounding' && (
                             <div className="w-full flex flex-col items-center">
                                 <div className="flex gap-2 mb-4 overflow-x-auto w-full justify-center flex-shrink-0">
@@ -322,19 +311,19 @@ html_code = """
                             </div>
                         )}
 
-                        {/* 3. 路線指引 - 改用 note.jpg */}
+                        {/* 3. 路線手稿 */}
                         {mode === 'metro' && (
                             <div className="w-full max-w-sm bg-white rounded-xl overflow-hidden shadow-inner border-2 border-gray-200 p-0">
-                                <img src="./note.jpg" alt="路線手稿" className="w-full h-auto" />
+                                <img src={URL_NOTE} alt="路線手稿" className="w-full h-auto" />
                             </div>
                         )}
 
-                        {/* 4. 完整地鐵 - 改用 map.jpg */}
+                        {/* 4. 完整地鐵圖 */}
                         {mode === 'full' && (
                             <div className="w-full max-w-sm">
                                 <div className="bg-white rounded-xl overflow-hidden shadow border p-1 mb-4">
                                      <div ref={mapContainerRef} className="overflow-auto h-[60vh]">
-                                        <img src="./map.jpg" alt="完整地鐵圖" className="w-auto h-full min-w-[200%] object-contain" />
+                                        <img src={URL_MAP} alt="完整地鐵圖" className="w-auto h-full min-w-[200%] object-contain" />
                                      </div>
                                      <p className="text-[10px] text-gray-400 text-center p-2">來源：bubu-jp.com</p>
                                 </div>
@@ -345,7 +334,6 @@ html_code = """
             );
         };
 
-        // C. 車站指引 View - 修改：加入 Routes 顯示
         const StationView = () => (
             <div className="h-full overflow-y-auto p-4 pb-24 space-y-4">
                 <div className="text-center mb-6"><h2 className="text-xl font-bold text-gray-800">車站攻略</h2><p className="text-indigo-600 text-sm">迷路救星</p></div>
@@ -353,8 +341,6 @@ html_code = """
                     <div key={s.id} className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
                         <h3 className="font-bold text-lg text-gray-800 flex items-center gap-2"><span className="w-2 h-6 bg-indigo-500 rounded-full"></span>{s.name}</h3>
                         <p className="text-sm text-gray-500 mb-4 ml-4">{s.desc}</p>
-                        
-                        {/* Tips 區塊 */}
                         <div className="space-y-2 mb-4">
                             {s.tips.map((t, idx) => (
                                 <div key={idx} className="flex gap-2 bg-gray-50 p-2 rounded-lg text-sm items-center">
@@ -363,8 +349,6 @@ html_code = """
                                 </div>
                             ))}
                         </div>
-
-                        {/* Routes 詳細路徑區塊 */}
                         {s.routes && (
                             <div className="mb-4 bg-indigo-50/50 rounded-xl p-3 border border-indigo-100">
                                 <h4 className="text-xs font-bold text-indigo-800 mb-2 flex items-center gap-1">🚏 導航路徑</h4>
@@ -379,14 +363,12 @@ html_code = """
                                 </ul>
                             </div>
                         )}
-
                         <div className="flex flex-wrap gap-2">{s.links.map((l, idx) => <a key={idx} href={l.url} target="_blank" className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-600 px-3 py-1 rounded-full font-bold no-underline transition-colors">🔗 {l.title}</a>)}</div>
                     </div>
                 ))}
             </div>
         );
         
-        // D. 景點百科 View
         const AttractionView = () => (
              <div className="h-full overflow-y-auto p-4 pb-24 space-y-4">
                 <div className="text-center mb-6"><h2 className="text-xl font-bold text-gray-800">景點百科</h2><p className="text-indigo-600 text-sm">親子必遊</p></div>
@@ -406,7 +388,6 @@ html_code = """
              </div>
         );
 
-        // E. 預約 View
         const BookingView = () => (
             <div className="h-full overflow-y-auto p-4 pb-24 space-y-6">
                 <div className="text-center mb-4"><h2 className="text-xl font-bold text-gray-800">預約管家</h2><p className="text-indigo-600 text-sm">必備連結</p></div>
@@ -427,11 +408,9 @@ html_code = """
             </div>
         );
 
-        // Main App
         const App = () => {
             const [view, setView] = useState('list');
             
-            // 移除 Loading
             useEffect(() => {
                 const el = document.getElementById('loading');
                 if(el) el.style.display = 'none';
@@ -473,7 +452,6 @@ html_code = """
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
         
-        // 3秒後強制移除Loading
         setTimeout(() => {
             const loadingEl = document.getElementById('loading');
             if (loadingEl && loadingEl.style.display !== 'none') {
