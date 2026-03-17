@@ -108,6 +108,21 @@ html_code = """
 
         const stationGuides = [
             { 
+                id: "child_ic", name: "兒童版交通卡購買", desc: "機場實體卡申辦攻略", 
+                tips: ["限 6-12 歲兒童購買 (半價)", "無法綁定手機，需持實體卡", "必須出示小孩本人護照"], 
+                routes: [
+                    "抵達成田 T1 B1 鐵道樓層後，尋找「JR 東日本旅行服務中心」或藍色的「京成電鐵」櫃檯",
+                    "向櫃檯人員表示要購買兒童版 IC 卡 (Child Suica 或 Child PASMO)",
+                    "出示小孩的護照供人員核對年齡",
+                    "初次購買通常需付 2000 日圓 (含 500 日圓押金，可用額度 1500 日圓)",
+                    "進出車站閘門時，嗶卡會發出「小鳥叫聲(嗶嗶兩聲)」，即代表成功使用兒童票價"
+                ],
+                links: [
+                    { title: "Suica 官網說明", url: "https://www.jreast.co.jp/multi/zh-CHT/pass/suica.html" },
+                    { title: "PASMO 兒童卡說明", url: "https://www.pasmo.co.jp/visitors/tc/buy/" }
+                ] 
+            },
+            { 
                 id: "narita", name: "成田機場 T1", desc: "Skyliner 起點站", 
                 tips: ["長榮位於南翼 (South Wing)", "Skyliner 全車對號座"], 
                 routes: [
@@ -184,7 +199,7 @@ html_code = """
 
         const attractionInfos = [
             { id: "hijiri", name: "御茶之水 聖橋", icon: "🌉", tag: "聖地巡禮", desc: "電影《鈴芽之旅》經典場景。站在橋上可以同時看到紅、黃、橘三色電車交錯而過，是鐵道迷與影迷必拍聖地。", tips: "下午前往順光，拍攝效果最好。" },
-            { id: "akiba", name: "秋葉原 Electric Town", icon: "⚡", tag: "動漫/電器", desc: "日本次文化中心。滿街的動漫周邊、模型店、女遇到咖啡廳與大型電器行。Yodobashi Akiba 是必逛地標。", tips: "無線電會館 (Radio Kaikan) 模型最齊全。" },
+            { id: "akiba", name: "秋葉原 Electric Town", icon: "⚡", tag: "動漫/電器", desc: "日本次文化中心。滿街的動漫周邊、模型店、女僕咖啡廳與大型電器行。Yodobashi Akiba 是必逛地標。", tips: "無線電會館 (Radio Kaikan) 模型最齊全。" },
             { id: "sensoji", name: "淺草寺 & 雷門", icon: "🏮", tag: "傳統文化", desc: "東京最古老的寺廟。巨大的紅燈籠「雷門」是東京象徵。仲見世通有許多人形燒、仙貝等傳統小吃。", tips: "遊客非常多，建議早上9點前抵達拍照。" },
             { id: "skytree", name: "東京晴空塔", icon: "🗼", tag: "地標/寶可夢", desc: "世界最高電波塔。樓下 Solamachi 商場有寶可夢中心(烈空坐鎮店)與 Kirby Cafe。", tips: "4F 戶外露台是拍攝晴空塔全貌的好位置。" },
             { id: "odaiba", name: "台場 獨角獸鋼彈", icon: "🤖", tag: "鋼彈", desc: "位於 DiverCity 廣場前。白天有 4 場變身秀(獨角獸模式->毀滅模式)，晚上有燈光秀。", tips: "變身時間：11:00, 13:00, 15:00, 17:00。" },
