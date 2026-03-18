@@ -89,6 +89,14 @@ html_code = """
 
         // 親子周邊景點推薦資料 (含 Google Maps 搜尋關鍵字)
         const surroundingGuides = {
+            ueno: {
+                name: '上野 / 秋葉原',
+                spots: [
+                    { name: 'Yodobashi Akiba 8F/6F', desc: '8F有和幸豬排、Meat Rush漢堡排；吃飽到6F有整層玩具與寶可夢機台。', tag: '機台美食', icon: '🕹️', mapQuery: 'Yodobashi Akiba' },
+                    { name: 'Yamashiroya 玩具店', desc: 'JR 上野站對面。整整 6 層樓的玩具專賣店，寶可夢周邊極度齊全。', tag: '玩具百貨', icon: '🧸', mapQuery: 'Yamashiroya Ueno' },
+                    { name: '壽司郎 上野店', desc: '自動化無壓力點餐，小孩愛吃扭蛋好玩，上野晚餐優質備案。', tag: '和食', icon: '🍣', mapQuery: 'Sushiro Ueno' }
+                ]
+            },
             toyosu: {
                 name: '豐洲周邊',
                 spots: [
@@ -122,14 +130,6 @@ html_code = """
                     { name: 'Tabe-Terrace (3F)', desc: '選擇豐富的美食街，有章魚燒、拉麵等，不需排隊。', tag: '美食街', icon: '🍜', mapQuery: 'Tokyo Skytree Town Solamachi Tabe-Terrace' }
                 ]
             },
-            ueno: {
-                name: '上野 / 秋葉原',
-                spots: [
-                    { name: 'Yodobashi Akiba 8F/6F', desc: '8F有和幸豬排、Meat Rush漢堡排；吃飽到6F有整層玩具與寶可夢機台。', tag: '機台美食', icon: '🕹️', mapQuery: 'Yodobashi Akiba' },
-                    { name: 'Yamashiroya 玩具店', desc: 'JR 上野站對面。整整 6 層樓的玩具專賣店，寶可夢周邊極度齊全。', tag: '玩具百貨', icon: '🧸', mapQuery: 'Yamashiroya Ueno' },
-                    { name: '壽司郎 上野店', desc: '自動化無壓力點餐，小孩愛吃扭蛋好玩，上野晚餐優質備案。', tag: '和食', icon: '🍣', mapQuery: 'Sushiro Ueno' }
-                ]
-            },
             karuizawa: {
                 name: '輕井澤周邊',
                 spots: [
@@ -157,7 +157,7 @@ html_code = """
             }
         };
 
-        // 行程資料 (內嵌 tips 飲食建議)
+        // 行程資料 (內嵌 tips 飲食建議，確認 Day 2 teamLab, Day 3 晴空塔)
         const itinerary = [
              { day: 1, date: "4/17 (五)", title: "抵達與鈴芽的起點", events: [ 
                  { time: "13:25", title: "抵達成田機場", desc: "T1 (長榮)", icon: "✈️", location: "Narita International Airport Terminal 1", hideRoute: true }, 
@@ -300,7 +300,7 @@ html_code = """
                 cat: "景點", 
                 items: [
                     { name: "teamLab Planets", url: "https://planets.teamlab.art/tokyo/zh-hant/", tips: "Day 2 (17:30)，建議提前1個月" },
-                    { name: "東京晴空塔", url: "https://www.tokyo-skytree.jp/cn_t/ticket/", tips: "Day 3，30天前開放預約" }, 
+                    { name: "東京晴空塔", url: "https://www.tokyo-skytree.jp/cn_t/ticket/", tips: "Day 3 下午，30天前開放預約" }, 
                     { name: "SHIBUYA SKY", url: "https://www.shibuya-scramble-square.com/sky/ticket/", tips: "Day 5 (15:00)，4週前必搶" }
                 ] 
             },
@@ -313,7 +313,7 @@ html_code = """
             }
         ];
 
-        // 依時序 Day 1 -> Day 5 排序
+        // 依時序 Day 1 -> Day 5 嚴格排序
         const attractionInfos = [
             // --- Day 1 ---
             { id: "hijiri", name: "御茶之水 聖橋", icon: "🌉", tag: "聖地巡禮", desc: "電影《鈴芽之旅》經典場景。站在橋上可以同時看到紅、黃、橘三色電車交錯而過，是鐵道迷與影迷必拍聖地。", tips: "下午前往順光，拍攝效果最好。" },
@@ -327,13 +327,13 @@ html_code = """
             
             // --- Day 3 ---
             { id: "sensoji", name: "淺草寺 & 雷門", icon: "🏮", tag: "傳統文化", desc: "東京最古老的寺廟。巨大的紅燈籠「雷門」是東京象徵。仲見世通有許多人形燒、仙貝等傳統小吃。", tips: "遊客非常多，建議早上9點前抵達拍照。" },
-            { id: "skytree", name: "東京晴空塔", icon: "🗼", tag: "地標/寶可夢", desc: "世界最高電波塔。樓下 Solamachi 商場有寶可夢中心(烈空坐鎮店)與 Kirby Cafe。", tips: "4F 戶外露台是拍攝晴空塔全貌的好位置。" },
             { id: "skytree_food", name: "晴空塔親子午餐", icon: "🍽️", tag: "美食", desc: "推薦：【3F Tabe-Terrace 美食街】選擇多免排隊，有章魚燒與各式麵食；【6F 利久牛舌】厚切牛舌名店，有提供兒童咖哩飯；【4F 星之卡比咖啡廳】餐點極度可愛，就在寶可夢中心旁。", tips: "晴空塔餐廳每到用餐時間人潮眾多，若想吃名店建議 11:30 前先去抽號碼牌，或善用 3F 美食街。" },
+            { id: "skytree", name: "東京晴空塔", icon: "🗼", tag: "地標/寶可夢", desc: "世界最高電波塔。樓下 Solamachi 商場有寶可夢中心(烈空坐鎮店)與 Kirby Cafe。", tips: "4F 戶外露台是拍攝晴空塔全貌的好位置。" },
             { id: "asakusa_food", name: "淺草親子晚餐", icon: "🍣", tag: "美食", desc: "推薦：【藏壽司 淺草ROX館】全球最大的藏壽司旗艦店之一！除了經典的吃壽司抽扭蛋，店內特別打造了日本祭典空間，有「射擊」、「套圈圈」等小遊戲攤位。好吃又好玩，是最完美的結尾。", tips: "建議提前下載藏壽司 App 預約訂位，或避開尖峰時段。" },
             
             // --- Day 4 ---
-            { id: "karuizawa", name: "輕井澤", icon: "🚲", tag: "度假勝地", desc: "避暑勝地，充滿歐風建築與森林。車站旁就是超大 Outlet，舊輕井澤銀座通適合騎車漫遊。", tips: "一定要吃 Sawaya 果醬與 Mikado 摩卡霜淇淋。" },
             { id: "karuizawa_food", name: "輕井澤親子午餐", icon: "🍱", tag: "美食", desc: "推薦：【明治亭】位於 Outlet 內，主打長野名物「醬汁豬排丼」，份量足且小孩接受度高；或直接到【太陽與綠的美食街】(Food Court)，座位多且選擇豐富（拉麵、烏龍麵等和食都有）。", tips: "Outlet 餐廳假日容易客滿，建議 11:30 前就先入座用餐！" },
+            { id: "karuizawa", name: "輕井澤", icon: "🚲", tag: "度假勝地", desc: "避暑勝地，充滿歐風建築與森林。車站旁就是超大 Outlet，舊輕井澤銀座通適合騎車漫遊。", tips: "一定要吃 Sawaya 果醬與 Mikado 摩卡霜淇淋。" },
             
             // --- Day 5 ---
             { id: "shibuya_food", name: "澀谷親子午餐", icon: "🍽️", tag: "美食", desc: "推薦：【魚米 Uobei】平價且用新幹線軌道送餐，小孩超愛；【Scramble Square 12/13F】在 SHIBUYA SKY 樓下，吃飽直接上樓最順路，有鶴橋風月大阪燒、Katsukura豬排。", tips: "澀谷平日上班族也多，建議在 11:30 前或 13:30 後用餐避開人潮。" },
@@ -380,7 +380,7 @@ html_code = """
                                             <h3 className="font-bold text-gray-800 text-lg">{evt.title}</h3>
                                             <p className="text-sm text-gray-500 mb-2">{evt.desc}</p>
                                             
-                                            {/* 新增：在行程表直接顯示飲食 Tips */}
+                                            {/* 行程表內嵌飲食 Tips */}
                                             {evt.tips && (
                                                 <div className="mb-3 bg-yellow-50 text-yellow-800 text-[13px] p-2.5 rounded-lg border border-yellow-100 leading-relaxed">
                                                     <span className="font-bold">💡 美食推薦：</span>{evt.tips}
@@ -410,7 +410,8 @@ html_code = """
 
         const MapView = () => {
             const [mode, setMode] = useState('attraction');
-            const [surrArea, setSurrArea] = useState('toyosu');
+            // 將預設選擇改回上野(Day 1起點)
+            const [surrArea, setSurrArea] = useState('ueno');
             const imgRef = useRef(null);
 
             useEffect(() => {
@@ -481,12 +482,13 @@ html_code = """
                         {mode === 'surrounding' && (
                             <div className="w-full flex flex-col items-center">
                                 <div className="flex gap-2 mb-3 overflow-x-auto w-full justify-start flex-shrink-0 hide-scrollbar px-1 py-1">
+                                    {/* 嚴格依 Day 1 到 Day 5 時序排列按鈕 */}
                                     {[
+                                        {id: 'ueno', name: '上野/秋葉原'},
                                         {id: 'toyosu', name: '豐洲'}, 
                                         {id: 'odaiba', name: '台場'}, 
                                         {id: 'asakusa', name: '淺草'},
                                         {id: 'skytree', name: '晴空塔'},
-                                        {id: 'ueno', name: '上野/秋葉原'},
                                         {id: 'karuizawa', name: '輕井澤'},
                                         {id: 'shibuya', name: '渋谷'},
                                         {id: 'shinjuku', name: '新宿'}
