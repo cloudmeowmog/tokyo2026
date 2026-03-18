@@ -115,10 +115,37 @@ html_code = """
                  { time: "19:30", title: "豐洲 LaLaport", desc: "晚餐", icon: "🍽️", location: "Urban Dock LaLaport Toyosu", transport: { route: "新豐洲 → 豐洲", line: "海鷗號/步行", time: "10分" } }, 
                  { time: "21:30", title: "返回飯店", desc: "休息", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "豐洲 → 稻荷町", line: "有樂町線+銀座線", time: "30分" } } 
              ] },
-             { day: 3, date: "4/19 (日)", title: "淺草與晴空塔", events: [ { time: "08:45", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "Inaricho Station", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, { time: "09:00", title: "淺草寺", desc: "雷門", icon: "🏮", location: "Senso-ji", transport: { route: "稻荷町 → 淺草", line: "銀座線", time: "3分" } }, { time: "11:00", title: "隅田川步道", desc: "散步", icon: "🚶", location: "Sumida River Walk", transport: { route: "淺草 → 晴空塔", line: "步行", time: "20分" } }, { time: "12:30", title: "晴空塔寶可夢", desc: "4F", icon: "🛍️", location: "Pokemon Center Skytree Town" }, { time: "17:00", title: "利久牛舌", desc: "晚餐", icon: "🍱", location: "Rikyu Skytree" }, { time: "19:00", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "押上 → 稻荷町", line: "淺草線+銀座線", time: "20分" } } ] },
-             { day: 4, date: "4/20 (一)", title: "輕井澤一日遊", events: [ { time: "09:00", title: "往上野站", desc: "搭新幹線", icon: "🚶", location: "Ueno Station", transport: { route: "飯店 → 上野", line: "步行", time: "10分" } }, { time: "10:10", title: "抵達輕井澤", desc: "Outlet", icon: "🛍️", location: "Karuizawa Prince Shopping Plaza", transport: { route: "上野 → 輕井澤", line: "新幹線", time: "60分" } }, { time: "14:00", title: "舊輕井澤", desc: "騎車", icon: "🚲", location: "Kyu-Karuizawa Ginza Street", transport: { route: "車站 → 舊輕井澤", line: "巴士/單車", time: "15分" } }, { time: "17:30", title: "返回上野", desc: "回程", icon: "🚅", location: "Ueno Station", transport: { route: "輕井澤 → 上野", line: "新幹線", time: "60分" } }, { time: "19:00", title: "鴨 to 蔥", desc: "晚餐", icon: "🍜", location: "Kamo to Negi Ueno" }, { time: "20:00", title: "返回飯店", desc: "步行", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "上野 → 飯店", line: "步行", time: "10分" } } ] },
-             { day: 5, date: "4/21 (二)", title: "築地・渋谷・新宿", events: [ { time: "08:40", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "Inaricho Station", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, { time: "09:00", title: "築地場外市場", desc: "早餐", icon: "🐟", location: "Tsukiji Outer Market", transport: { route: "稻荷町 → 築地", line: "銀座線+日比谷線", time: "20分" } }, { time: "12:00", title: "渋谷 PARCO", desc: "寶可夢", icon: "🎮", location: "Shibuya PARCO", transport: { route: "築地 → 渋谷", line: "日比谷線+銀座線", time: "25分" } }, { time: "15:00", title: "SHIBUYA SKY", desc: "需預約", icon: "🏙️", location: "SHIBUYA SKY" }, { time: "17:30", title: "新宿 3D貓", desc: "東口", icon: "🐈", location: "Cross Shinjuku Vision", transport: { route: "渋谷 → 新宿", line: "山手線", time: "7分" } }, { time: "18:30", title: "哥吉拉", desc: "晚餐", icon: "🦖", location: "Godzilla Head Shinjuku", transport: { route: "新宿 → 歌舞伎町", line: "步行", time: "10分" } }, { time: "20:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "新宿 → 稻荷町", line: "中央線+銀座線", time: "30分" } } ] },
-             { day: 6, date: "4/22 (三)", title: "返台", events: [ { time: "10:00", title: "Check-out", desc: "阿美橫丁", icon: "🛍️", location: "Ameyoko Shopping Street", transport: { route: "飯店 → 阿美橫丁", line: "步行", time: "10分" } }, { time: "11:20", title: "往機場", desc: "搭 Skyliner", icon: "🚅", location: "Keisei Ueno Station", transport: { route: "京成上野 → 成田T1", line: "Skyliner", time: "41分" } }, { time: "12:25", title: "抵達機場", desc: "成田 T1 (南翼)", icon: "✈️", location: "Narita Airport Terminal 1" }, { time: "14:25", title: "起飛返台", desc: "長榮 BR197", icon: "✈️", location: "", transport: "" } ] }
+             { day: 3, date: "4/19 (日)", title: "淺草與晴空塔", events: [ 
+                 { time: "08:45", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "Inaricho Station", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
+                 { time: "09:00", title: "淺草寺", desc: "雷門", icon: "🏮", location: "Senso-ji", transport: { route: "稻荷町 → 淺草", line: "銀座線", time: "3分" } }, 
+                 { time: "11:00", title: "隅田川步道", desc: "散步", icon: "🚶", location: "Sumida River Walk", transport: { route: "淺草 → 晴空塔", line: "步行", time: "20分" } }, 
+                 { time: "12:30", title: "晴空塔寶可夢", desc: "4F", icon: "🛍️", location: "Pokemon Center Skytree Town" }, 
+                 { time: "17:00", title: "利久牛舌", desc: "晚餐", icon: "🍱", location: "Rikyu Skytree" }, 
+                 { time: "19:00", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "押上 → 稻荷町", line: "淺草線+銀座線", time: "20分" } } 
+             ] },
+             { day: 4, date: "4/20 (一)", title: "輕井澤一日遊", events: [ 
+                 { time: "09:00", title: "往上野站", desc: "搭新幹線", icon: "🚶", location: "Ueno Station", transport: { route: "飯店 → 上野", line: "步行", time: "10分" } }, 
+                 { time: "10:10", title: "抵達輕井澤", desc: "Outlet", icon: "🛍️", location: "Karuizawa Prince Shopping Plaza", transport: { route: "上野 → 輕井澤", line: "新幹線", time: "60分" } }, 
+                 { time: "14:00", title: "舊輕井澤", desc: "騎車", icon: "🚲", location: "Kyu-Karuizawa Ginza Street", transport: { route: "車站 → 舊輕井澤", line: "巴士/單車", time: "15分" } }, 
+                 { time: "17:30", title: "返回上野", desc: "回程", icon: "🚅", location: "Ueno Station", transport: { route: "輕井澤 → 上野", line: "新幹線", time: "60分" } }, 
+                 { time: "18:45", title: "壽司郎", desc: "上野分店", icon: "🍣", location: "Sushiro Ueno", transport: { route: "上野站 → 壽司郎", line: "步行", time: "5分" } }, 
+                 { time: "20:30", title: "返回飯店", desc: "步行", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "上野 → 飯店", line: "步行", time: "10分" } } 
+             ] },
+             { day: 5, date: "4/21 (二)", title: "築地・渋谷・新宿", events: [ 
+                 { time: "08:40", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "Inaricho Station", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
+                 { time: "09:00", title: "築地場外市場", desc: "早餐", icon: "🐟", location: "Tsukiji Outer Market", transport: { route: "稻荷町 → 築地", line: "銀座線+日比谷線", time: "20分" } }, 
+                 { time: "12:00", title: "渋谷 PARCO", desc: "寶可夢", icon: "🎮", location: "Shibuya PARCO", transport: { route: "築地 → 渋谷", line: "日比谷線+銀座線", time: "25分" } }, 
+                 { time: "15:00", title: "SHIBUYA SKY", desc: "需預約", icon: "🏙️", location: "SHIBUYA SKY" }, 
+                 { time: "17:30", title: "新宿 3D貓", desc: "東口", icon: "🐈", location: "Cross Shinjuku Vision", transport: { route: "渋谷 → 新宿", line: "山手線", time: "7分" } }, 
+                 { time: "18:30", title: "哥吉拉", desc: "晚餐", icon: "🦖", location: "Godzilla Head Shinjuku", transport: { route: "新宿 → 歌舞伎町", line: "步行", time: "10分" } }, 
+                 { time: "20:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "新宿 → 稻荷町", line: "中央線+銀座線", time: "30分" } } 
+             ] },
+             { day: 6, date: "4/22 (三)", title: "返台", events: [ 
+                 { time: "10:00", title: "Check-out", desc: "阿美橫丁", icon: "🛍️", location: "Ameyoko Shopping Street", transport: { route: "飯店 → 阿美橫丁", line: "步行", time: "10分" } }, 
+                 { time: "11:20", title: "往機場", desc: "搭 Skyliner", icon: "🚅", location: "Keisei Ueno Station", transport: { route: "京成上野 → 成田T1", line: "Skyliner", time: "41分" } }, 
+                 { time: "12:25", title: "抵達機場", desc: "成田 T1 (南翼)", icon: "✈️", location: "Narita Airport Terminal 1" }, 
+                 { time: "14:25", title: "起飛返台", desc: "長榮 BR197", icon: "✈️", location: "", transport: "" } 
+             ] }
         ];
 
         const stationGuides = [
@@ -199,7 +226,7 @@ html_code = """
                 routes: [
                     "出改札口後，往右轉是「南口」(Prince Outlet)",
                     "往左轉是「北口」(往市區/雲場池)",
-                    "主要置物櫃位於 1F (樓梯下方)",
+                    "主要置物櫃位于 1F (樓梯下方)",
                     "若租腳踏車，北口出來右手邊有 APA Hotel 旁有店家"
                 ],
                 links: [{ title: "構內圖", url: "https://www.jreast.co.jp/estation/stations/518.html" }] 
@@ -470,7 +497,6 @@ html_code = """
                         {view === 'booking' && <BookingView />}
                     </div>
 
-                    {/* 修改重點：這裡的 py-2 pb-6 改為 pt-2 pb-8，讓選單長高一點點，避開底部預設圖示與 iPhone 橫條 */}
                     <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-1 pt-2 pb-8 safe-bottom flex justify-around items-center z-30 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
                         <button onClick={() => setView('list')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[55px] transition-all ${view === 'list' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.list}<span className="text-[10px] font-bold">行程</span></button>
                         <button onClick={() => setView('map')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[55px] transition-all ${view === 'map' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.map}<span className="text-[10px] font-bold">地圖</span></button>
