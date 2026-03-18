@@ -269,15 +269,35 @@ html_code = """
             }
         ];
 
+        // 依照最新行程更新預約清單
         const reservations = [
-            { cat: "交通", items: [{ name: "京成 Skyliner", url: "https://www.keisei.co.jp/keisei/tetudou/skyliner/e-ticket/zht/", tips: "線上買便宜" }, { name: "JR 新幹線", url: "https://www.eki-net.com/zh-CHT/jreast-train-reservation/Top/Index", tips: "1個月前預訂" }] },
-            { cat: "景點", items: [{ name: "SHIBUYA SKY", url: "https://www.shibuya-scramble-square.com/sky/ticket/", tips: "4週前必搶" }, { name: "東京晴空塔", url: "https://www.tokyo-skytree.jp/cn_t/ticket/", tips: "30天前開放預約" }, { name: "teamLab", url: "https://planets.teamlab.art/tokyo/zh-hant/", tips: "建議提前1個月" }] },
-            { cat: "美食", items: [{ name: "Pokemon Cafe", url: "https://www.pokemon-cafe.jp/reservation.html", tips: "31天前搶" }, { name: "挽肉與米", url: "https://www.tablecheck.com/shops/hikinikutocome-shibuya/reserve", tips: "週五早9點搶" }] }
+            { 
+                cat: "交通", 
+                items: [
+                    { name: "京成 Skyliner", url: "https://www.keisei.co.jp/keisei/tetudou/skyliner/e-ticket/zht/", tips: "Day 1 & Day 6 機場來回，線上買便宜" }, 
+                    { name: "JR 新幹線 (e5489)", url: "https://www.eki-net.com/zh-CHT/jreast-train-reservation/Top/Index", tips: "Day 4 輕井澤來回，1個月前預訂" }
+                ] 
+            },
+            { 
+                cat: "景點", 
+                items: [
+                    { name: "teamLab Planets", url: "https://planets.teamlab.art/tokyo/zh-hant/", tips: "Day 2 (17:30)，建議提前1個月" },
+                    { name: "東京晴空塔", url: "https://www.tokyo-skytree.jp/cn_t/ticket/", tips: "Day 3 (12:30)，30天前開放預約" }, 
+                    { name: "SHIBUYA SKY", url: "https://www.shibuya-scramble-square.com/sky/ticket/", tips: "Day 5 (15:00)，4週前必搶" }
+                ] 
+            },
+            { 
+                cat: "實用工具", 
+                items: [
+                    { name: "壽司郎 (Sushiro) 官方 App", url: "https://www.akindo-sushiro.co.jp/app/", tips: "Day 4 晚餐，先下載 App 抽號碼牌免排隊" }
+                ] 
+            }
         ];
 
         const attractionInfos = [
             { id: "hijiri", name: "御茶之水 聖橋", icon: "🌉", tag: "聖地巡禮", desc: "電影《鈴芽之旅》經典場景。站在橋上可以同時看到紅、黃、橘三色電車交錯而過，是鐵道迷與影迷必拍聖地。", tips: "下午前往順光，拍攝效果最好。" },
             { id: "akiba", name: "秋葉原 Electric Town", icon: "⚡", tag: "動漫/電器", desc: "日本次文化中心。滿街的動漫周邊、模型店、女僕咖啡廳與大型電器行。Yodobashi Akiba 是必逛地標。", tips: "Yodobashi 8 樓是用餐好去處，吃飽還能到 6 樓讓小朋友打幾道最新的寶可夢 Frienda 機台！" },
+            { id: "toyosu", name: "豐洲市場 (和食推薦)", icon: "🍣", tag: "海鮮/和食", desc: "東京最新海鮮廚房。推薦和食：【茂助玉子燒】甜甜的日式煎蛋捲小孩最愛；【八千代】炸海鮮與豬排定食，適合不吃生食的孩子；【大江戶】超豐盛海鮮丼，滿足爸媽的胃。", tips: "餐廳多集中在「水產仲卸賣場棟 3F」，建議避開排隊名店（如壽司大），選擇有提供熟食定食的店家。" },
             { id: "sensoji", name: "淺草寺 & 雷門", icon: "🏮", tag: "傳統文化", desc: "東京最古老的寺廟。巨大的紅燈籠「雷門」是東京象徵。仲見世通有許多人形燒、仙貝等傳統小吃。", tips: "遊客非常多，建議早上9點前抵達拍照。" },
             { id: "skytree", name: "東京晴空塔", icon: "🗼", tag: "地標/寶可夢", desc: "世界最高電波塔。樓下 Solamachi 商場有寶可夢中心(烈空坐鎮店)與 Kirby Cafe。", tips: "4F 戶外露台是拍攝晴空塔全貌的好位置。" },
             { id: "odaiba", name: "台場 獨角獸鋼彈", icon: "🤖", tag: "鋼彈", desc: "位於 DiverCity 廣場前。白天有 4 場變身秀(獨角獸模式->毀滅模式)，晚上有燈光秀。", tips: "變身時間：11:00, 13:00, 15:00, 17:00。" },
