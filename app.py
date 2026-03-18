@@ -87,12 +87,40 @@ html_code = """
             booking: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
         };
 
-        // SVG Maps Data
-        const SvgData = {
-            ueno: `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="300" fill="#f0fdf4"/><rect x="20" y="20" width="150" height="180" fill="#bbf7d0" rx="10"/><text x="95" y="110" text-anchor="middle" font-size="14" fill="#166534">上野公園</text><rect x="180" y="100" width="80" height="150" fill="#e5e7eb" stroke="#374151"/><text x="220" y="180" text-anchor="middle" font-size="14">JR 上野站</text><path d="M 190 260 L 190 290" stroke="#f59e0b" stroke-width="8" stroke-linecap="round"/><text x="210" y="280" font-size="10">阿美橫丁</text><circle cx="280" cy="150" r="8" fill="#ef4444"/><text x="280" y="170" text-anchor="middle" font-size="10" fill="#ef4444">稻荷町(飯店)</text><path d="M 270 150 L 260 150" stroke="#ef4444" stroke-width="2" stroke-dasharray="4"/></svg>`,
-            karuizawa: `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="300" fill="#eff6ff"/><rect x="50" y="130" width="200" height="40" fill="#e5e7eb" stroke="#374151"/><text x="150" y="155" text-anchor="middle" font-size="14">輕井澤站</text><rect x="50" y="180" width="200" height="100" fill="#fef08a" rx="10"/><text x="150" y="230" text-anchor="middle" font-size="16" fill="#854d0e">王子 Outlet</text><path d="M 150 130 L 150 50" stroke="#9ca3af" stroke-width="4"/><text x="150" y="40" text-anchor="middle" font-size="12">往 舊輕井澤</text></svg>`,
-            odaiba: `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="300" fill="#e0f2fe"/><path d="M 0 100 Q 150 120 300 100 L 300 300 L 0 300 Z" fill="#f3f4f6"/><path d="M 0 150 Q 150 170 300 150" fill="none" stroke="#3b82f6" stroke-width="6" stroke-dasharray="5"/><circle cx="150" cy="160" r="6" fill="white" stroke="#3b82f6" stroke-width="2"/><text x="150" y="180" text-anchor="middle" font-size="10">台場站</text><text x="200" y="220" font-size="30">🤖</text><text x="200" y="250" text-anchor="middle" font-size="12">鋼彈</text><rect x="80" y="190" width="60" height="40" fill="#bae6fd"/><text x="110" y="215" text-anchor="middle" font-size="10">Aqua City</text></svg>`,
-            asakusa: `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="300" fill="#fff7ed"/><rect x="130" y="220" width="40" height="30" fill="#ef4444"/><text x="150" y="265" text-anchor="middle" font-size="12">雷門</text><path d="M 150 220 L 150 120" stroke="#fdba74" stroke-width="10"/><text x="170" y="170" font-size="10" writing-mode="tb">仲見世通</text><rect x="110" y="50" width="80" height="60" fill="#ef4444"/><text x="150" y="85" text-anchor="middle" font-size="14" fill="white">淺草寺</text><path d="M 250 0 L 250 300" stroke="#3b82f6" stroke-width="20" opacity="0.5"/><text x="280" y="50" font-size="20">🗼</text><text x="280" y="70" text-anchor="middle" font-size="8">往晴空塔</text></svg>`
+        // 親子周邊景點推薦資料 (取代原本的 SVG 地圖)
+        const surroundingGuides = {
+            toyosu: {
+                name: '豐洲周邊',
+                spots: [
+                    { name: '豐洲 LaLaport', desc: '超大型商場！內有 KidZania (兒童職業體驗)，3樓有許多玩具店、扭蛋機，非常適合放電。', tag: '購物遊樂', icon: '🛍️' },
+                    { name: 'teamLab Planets', desc: '超夢幻沉浸式光影展，裡面有一整區可以踩水互動，小孩玩得超開心。', tag: '光影藝術', icon: '✨' },
+                    { name: '千客萬來 (豐洲市場旁)', desc: '新開幕的江戶風情美食街，足湯區可以邊泡腳邊吃點心。', tag: '美食溫泉', icon: '♨️' }
+                ]
+            },
+            odaiba: {
+                name: '台場周邊',
+                spots: [
+                    { name: '鋼彈基地 (Gundam Base)', desc: '位於 DiverCity 7F。滿滿的鋼彈模型與限定商品，父子一起買瘋的聖地！', tag: '模型', icon: '🤖' },
+                    { name: 'LEGOLAND 探索中心', desc: '位於 Decks 商場內。室內樂高樂園，超多互動設施與積木池，完全為小孩打造。', tag: '樂高樂園', icon: '🧱' },
+                    { name: '台場一丁目商店街', desc: '位於 Decks 4F。充滿復古童玩、零食，還有「一整排的扭蛋機」，便宜又好逛。', tag: '扭蛋童玩', icon: '🍬' }
+                ]
+            },
+            shibuya: {
+                name: '渋谷周邊',
+                spots: [
+                    { name: 'Pokémon Center Shibuya', desc: 'PARCO 6F。最潮的寶可夢中心，門口有一隻 1:1 的沉睡超夢，店內超多限定玩偶！', tag: '寶可夢', icon: '🐾' },
+                    { name: 'Nintendo TOKYO', desc: 'PARCO 6F (寶可夢隔壁)。任天堂旗艦店，滿滿瑪利歐、薩爾達周邊，出口旁有扭蛋機。', tag: '任天堂', icon: '🍄' },
+                    { name: 'MEGA 唐吉訶德 渋谷本店', desc: '超大間！玩具、模型、日本零食伴手禮一次買齊，有專屬退稅櫃台。', tag: '驚安殿堂', icon: '🐧' }
+                ]
+            },
+            ueno: {
+                name: '上野 / 秋葉原周邊',
+                spots: [
+                    { name: 'Yodobashi Akiba 6F', desc: '秋葉原站旁。整層的玩具專區！有超多寶可夢 Frienda 機台可以打，還有扭蛋海。', tag: '機台扭蛋', icon: '🕹️' },
+                    { name: 'Yamashiroya 玩具店', desc: 'JR 上野站廣小路口對面。整整 6 層樓的玩具專賣店，寶可夢周邊極度齊全。', tag: '玩具百貨', icon: '🧸' },
+                    { name: '上野動物園', desc: '就在上野公園內。門票超便宜，適合早起帶小孩去看熊貓散步放電。', tag: '動物園', icon: '🐼' }
+                ]
+            }
         };
 
         const itinerary = [
@@ -311,8 +339,7 @@ html_code = """
 
         const MapView = () => {
             const [mode, setMode] = useState('attraction');
-            const [surrArea, setSurrArea] = useState('ueno');
-            const mapContainerRef = useRef(null);
+            const [surrArea, setSurrArea] = useState('toyosu');
             const imgRef = useRef(null);
 
             useEffect(() => {
@@ -330,20 +357,34 @@ html_code = """
                 }
             }, [mode]);
 
+            // 渲染取代原本 SVG 的景點卡片
             const renderSurrounding = () => {
-                switch(surrArea) {
-                    case 'ueno': return <div dangerouslySetInnerHTML={{__html: SvgData.ueno}} />;
-                    case 'karuizawa': return <div dangerouslySetInnerHTML={{__html: SvgData.karuizawa}} />;
-                    case 'odaiba': return <div dangerouslySetInnerHTML={{__html: SvgData.odaiba}} />;
-                    case 'asakusa': return <div dangerouslySetInnerHTML={{__html: SvgData.asakusa}} />;
-                }
+                const guide = surroundingGuides[surrArea];
+                if (!guide) return null;
+
+                return (
+                    <div className="w-full flex flex-col gap-3 p-2">
+                        {guide.spots.map((spot, idx) => (
+                            <div key={idx} className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm flex items-start gap-3 w-full">
+                                <div className="text-3xl mt-1">{spot.icon}</div>
+                                <div className="flex-1">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <h4 className="font-bold text-gray-800 text-[15px] m-0">{spot.name}</h4>
+                                        <span className="bg-indigo-50 text-indigo-600 text-[10px] px-2 py-0.5 rounded font-bold whitespace-nowrap">{spot.tag}</span>
+                                    </div>
+                                    <p className="text-[13px] text-gray-600 leading-relaxed m-0">{spot.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                );
             };
 
             return (
                 <div className="h-full flex flex-col p-4 pb-24 overflow-y-auto">
                     <div className="sticky top-0 z-10 bg-white/95 backdrop-blur shadow-sm p-2 rounded-xl mb-4 overflow-x-auto flex gap-2 flex-shrink-0">
                          <button onClick={() => setMode('attraction')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${mode === 'attraction' ? 'bg-indigo-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🗺️ 全覽</button>
-                        <button onClick={() => setMode('surrounding')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${mode === 'surrounding' ? 'bg-teal-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🏙️ 景點周邊</button>
+                        <button onClick={() => setMode('surrounding')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${mode === 'surrounding' ? 'bg-teal-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🏙️ 景點建議</button>
                         <button onClick={() => setMode('metro')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${mode === 'metro' ? 'bg-gray-800 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🚇 路線</button>
                         <button onClick={() => setMode('full')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${mode === 'full' ? 'bg-orange-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>📑 完整地鐵</button>
                     </div>
@@ -358,17 +399,17 @@ html_code = """
                         
                         {mode === 'surrounding' && (
                             <div className="w-full flex flex-col items-center">
-                                <div className="flex gap-2 mb-4 overflow-x-auto w-full justify-center flex-shrink-0">
+                                <div className="flex gap-2 mb-3 overflow-x-auto w-full justify-start flex-shrink-0 hide-scrollbar px-1 py-1">
                                     {[
-                                        {id: 'ueno', name: '上野'}, 
-                                        {id: 'karuizawa', name: '輕井澤'}, 
+                                        {id: 'toyosu', name: '豐洲'}, 
                                         {id: 'odaiba', name: '台場'}, 
-                                        {id: 'asakusa', name: '淺草'}
+                                        {id: 'shibuya', name: '渋谷'},
+                                        {id: 'ueno', name: '上野/秋葉原'}
                                     ].map(area => (
-                                        <button key={area.id} onClick={() => setSurrArea(area.id)} className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${surrArea === area.id ? 'bg-teal-600 text-white' : 'bg-white text-gray-600 border'}`}>{area.name}</button>
+                                        <button key={area.id} onClick={() => setSurrArea(area.id)} className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${surrArea === area.id ? 'bg-teal-600 text-white shadow-md' : 'bg-white text-gray-600 border border-gray-200'}`}>{area.name}</button>
                                     ))}
                                 </div>
-                                <div className="w-full max-w-sm bg-white rounded-xl border border-gray-200 overflow-hidden">{renderSurrounding()}</div>
+                                <div className="w-full max-w-sm">{renderSurrounding()}</div>
                             </div>
                         )}
 
