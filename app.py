@@ -9,11 +9,17 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# --- 2. CSS 樣式修正 (全螢幕手機體驗) ---
+# --- 2. CSS 樣式修正 (全螢幕手機體驗與隱藏官方圖示) ---
 st.markdown("""
     <style>
-        header {visibility: hidden;}
-        footer {visibility: hidden;}
+        /* 隱藏所有 Streamlit 預設的 UI 元素 (包含右下角圖示、選單與標頭) */
+        header {visibility: hidden !important;}
+        footer {visibility: hidden !important;}
+        #MainMenu {visibility: hidden !important;}
+        .stDeployButton {display: none !important;}
+        [data-testid="stToolbar"] {visibility: hidden !important;}
+        [data-testid="stDecoration"] {display: none !important;}
+        
         .block-container {
             padding: 0 !important;
             max-width: 100% !important;
@@ -455,7 +461,8 @@ html_code = """
                         {view === 'booking' && <BookingView />}
                     </div>
 
-                    <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-1 py-2 pb-6 safe-bottom flex justify-around items-center z-30 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+                    {/* 修改重點：這裡的 py-2 pb-6 改為 pt-2 pb-8，讓選單長高一點點，避開底部預設圖示與 iPhone 橫條 */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-1 pt-2 pb-8 safe-bottom flex justify-around items-center z-30 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
                         <button onClick={() => setView('list')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[55px] transition-all ${view === 'list' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.list}<span className="text-[10px] font-bold">行程</span></button>
                         <button onClick={() => setView('map')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[55px] transition-all ${view === 'map' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.map}<span className="text-[10px] font-bold">地圖</span></button>
                         <button onClick={() => setView('attraction')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[55px] transition-all ${view === 'attraction' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.attraction}<span className="text-[10px] font-bold">百科</span></button>
