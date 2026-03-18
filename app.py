@@ -128,6 +128,14 @@ html_code = """
                     { name: '舊輕井澤 Snoopy Village', desc: '超可愛的史努比茶屋與伴手禮店，旁邊還有米飛兔森林廚房可以一起逛！', tag: '卡通主題', icon: '🐶', mapQuery: 'Snoopy Village Karuizawa' },
                     { name: '雲場池', desc: '騎腳踏車即可抵達。遠離喧囂親近大自然，非常適合帶小朋友一起觀察豐富的水岸植物生態。', tag: '自然生態', icon: '🦆', mapQuery: 'Kumoba Pond' }
                 ]
+            },
+            skytree: {
+                name: '晴空塔周邊',
+                spots: [
+                    { name: '寶可夢中心 (Solamachi 4F)', desc: '以烈空坐為主題的超大店面，商品極度齊全，旁邊通常會有寶可夢機台可以玩。', tag: '寶可夢', icon: '🐾', mapQuery: 'Pokemon Center Skytree Town' },
+                    { name: 'KIRBY CAFÉ 星之卡比 (4F)', desc: '就在寶可夢中心旁邊！超可愛的主題咖啡廳，雖然很難訂位，但門口的專賣店免預約就能買伴手禮。', tag: '主題餐廳', icon: '⭐', mapQuery: 'Kirby Cafe Tokyo' },
+                    { name: '墨田水族館 (5F-6F)', desc: '位於商場內的精緻水族館，有超近距離的企鵝池與海狗，室內行程非常適合帶小孩。', tag: '水族館', icon: '🐧', mapQuery: 'Sumida Aquarium' }
+                ]
             }
         };
 
@@ -155,8 +163,8 @@ html_code = """
                  { time: "08:45", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "Inaricho Station", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
                  { time: "09:00", title: "淺草寺", desc: "雷門", icon: "🏮", location: "Senso-ji", transport: { route: "稻荷町 → 淺草", line: "銀座線", time: "3分" } }, 
                  { time: "11:00", title: "隅田川步道", desc: "散步", icon: "🚶", location: "Sumida River Walk", transport: { route: "淺草 → 晴空塔", line: "步行", time: "20分" } }, 
-                 { time: "12:30", title: "晴空塔寶可夢", desc: "4F", icon: "🛍️", location: "Pokemon Center Skytree Town" }, 
-                 { time: "17:00", title: "利久牛舌", desc: "晚餐", icon: "🍱", location: "Rikyu Skytree" }, 
+                 { time: "12:30", title: "晴空塔寶可夢", desc: "Solamachi 4F", icon: "🛍️", location: "Pokemon Center Skytree Town" }, 
+                 { time: "17:00", title: "利久牛舌", desc: "晚餐(Solamachi 6F)", icon: "🍱", location: "Rikyu Skytree" }, 
                  { time: "19:00", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "押上 → 稻荷町", line: "淺草線+銀座線", time: "20分" } } 
              ] },
              { day: 4, date: "4/20 (一)", title: "輕井澤一日遊", events: [ 
@@ -277,9 +285,10 @@ html_code = """
                 ] 
             },
             { 
-                cat: "實用工具", 
+                cat: "實用/餐廳", 
                 items: [
-                    { name: "壽司郎 (Sushiro) 官方 App", url: "https://www.akindo-sushiro.co.jp/app/", tips: "Day 4 晚餐，先下載 App 抽號碼牌免排隊" }
+                    { name: "壽司郎 (Sushiro) 官方 App", url: "https://www.akindo-sushiro.co.jp/app/", tips: "Day 4 晚餐，先下載 App 抽號碼牌免排隊" },
+                    { name: "KIRBY CAFÉ (星之卡比)", url: "https://kirbycafe.jp/tokyo/", tips: "晴空塔 4F，每月 10 號開放搶下個月的位子" }
                 ] 
             }
         ];
@@ -290,6 +299,7 @@ html_code = """
             { id: "akiba_food", name: "秋葉原親子晚餐", icon: "🍛", tag: "美食", desc: "Day 1 晚餐首選：【Yodobashi Akiba 8F 美食街】。名店包含：【和幸豬排】白飯高麗菜可免費續加；【Meat Rush】鐵板漢堡排與牛排。商場環境寬敞，對推車與小孩非常友善！", tips: "吃飽後別忘了直接下樓到 6 樓玩具專區，有滿滿的寶可夢 Frienda 機台與扭蛋海可以讓小朋友玩樂！" },
             { id: "toyosu", name: "豐洲市場 (和食推薦)", icon: "🍣", tag: "海鮮/和食", desc: "東京最新海鮮廚房。推薦和食：【茂助玉子燒】甜甜的日式煎蛋捲小孩最愛；【八千代】炸海鮮與豬排定食，適合不吃生食的孩子；【大江戶】超豐盛海鮮丼，滿足爸媽的胃。", tips: "餐廳多集中在「水產仲卸賣場棟 3F」，建議避開排隊名店（如壽司大），選擇有提供熟食定食的店家。" },
             { id: "shibuya_food", name: "Scramble Square 美食街", icon: "🍽️", tag: "美食", desc: "Day 5 午餐推薦，位在 SHIBUYA SKY 樓下 (12F/13F)，吃飽直接上樓最順路！名店包含：【鶴橋風月】超人氣大阪燒，師傅桌邊現煎小孩最愛；【名代かつくら(Katsukura)】京都知名炸豬排，白飯高麗菜可續；【Moheji】月島明太子文字燒名店。", tips: "澀谷平日上班族也多，建議在 11:30 前或 13:30 後用餐避開人潮。" },
+            { id: "skytree_food", name: "晴空塔親子餐飲", icon: "🍽️", tag: "美食", desc: "Day 3 推薦：【3F Tabe-Terrace 美食街】選擇多免排隊，有章魚燒與各式麵食；【6F 迴轉壽司 根室花丸】來自北海道的超人氣壽司，記得先抽號碼牌；【6F 利久牛舌】厚切牛舌名店，有提供兒童咖哩飯；【4F 星之卡比咖啡廳】餐點極度可愛，就在寶可夢中心旁。", tips: "晴空塔餐廳每到用餐時間人潮眾多，若想吃名店建議 11:30 前先去抽號碼牌，或善用 3F 美食街。" },
             { id: "sensoji", name: "淺草寺 & 雷門", icon: "🏮", tag: "傳統文化", desc: "東京最古老的寺廟。巨大的紅燈籠「雷門」是東京象徵。仲見世通有許多人形燒、仙貝等傳統小吃。", tips: "遊客非常多，建議早上9點前抵達拍照。" },
             { id: "skytree", name: "東京晴空塔", icon: "🗼", tag: "地標/寶可夢", desc: "世界最高電波塔。樓下 Solamachi 商場有寶可夢中心(烈空坐鎮店)與 Kirby Cafe。", tips: "4F 戶外露台是拍攝晴空塔全貌的好位置。" },
             { id: "odaiba", name: "台場 獨角獸鋼彈", icon: "🤖", tag: "鋼彈", desc: "位於 DiverCity 廣場前。白天有 4 場變身秀(獨角獸模式->毀滅模式)，晚上有燈光秀。", tips: "變身時間：11:00, 13:00, 15:00, 17:00。" },
@@ -433,6 +443,7 @@ html_code = """
                                     {[
                                         {id: 'toyosu', name: '豐洲'}, 
                                         {id: 'odaiba', name: '台場'}, 
+                                        {id: 'skytree', name: '晴空塔'},
                                         {id: 'shibuya', name: '渋谷'},
                                         {id: 'ueno', name: '上野/秋葉原'},
                                         {id: 'karuizawa', name: '輕井澤'}
