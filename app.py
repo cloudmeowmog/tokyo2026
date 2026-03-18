@@ -120,6 +120,14 @@ html_code = """
                     { name: 'Yamashiroya 玩具店', desc: 'JR 上野站廣小路口對面。整整 6 層樓的玩具專賣店，寶可夢周邊極度齊全。', tag: '玩具百貨', icon: '🧸', mapQuery: 'Yamashiroya Ueno' },
                     { name: '上野動物園', desc: '就在上野公園內。門票超便宜，適合早起帶小孩去看熊貓散步放電。', tag: '動物園', icon: '🐼', mapQuery: 'Ueno Zoo' }
                 ]
+            },
+            karuizawa: {
+                name: '輕井澤周邊',
+                spots: [
+                    { name: '王子 Outlet 兒童玩具區', desc: '除了爸媽血拚，商場內也有 LEGO 樂高授權專賣店與扭蛋機台，廣大的草地很適合小孩奔跑。', tag: '購物遊樂', icon: '🛍️', mapQuery: 'Karuizawa Prince Shopping Plaza' },
+                    { name: '舊輕井澤 Snoopy Village', desc: '超可愛的史努比茶屋與伴手禮店，旁邊還有米飛兔森林廚房 (Miffy Kitchen) 可以一起逛！', tag: '卡通主題', icon: '🐶', mapQuery: 'Snoopy Village Karuizawa' },
+                    { name: '雲場池', desc: '騎腳踏車即可抵達。遠離喧囂親近大自然，沿著環湖步道散步，非常適合帶小朋友一起觀察豐富的水岸植物與鳥類生態。', tag: '自然生態', icon: '🦆', mapQuery: 'Kumoba Pond' }
+                ]
             }
         };
 
@@ -414,7 +422,8 @@ html_code = """
                                         {id: 'toyosu', name: '豐洲'}, 
                                         {id: 'odaiba', name: '台場'}, 
                                         {id: 'shibuya', name: '渋谷'},
-                                        {id: 'ueno', name: '上野/秋葉原'}
+                                        {id: 'ueno', name: '上野/秋葉原'},
+                                        {id: 'karuizawa', name: '輕井澤'}
                                     ].map(area => (
                                         <button key={area.id} onClick={() => setSurrArea(area.id)} className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${surrArea === area.id ? 'bg-teal-600 text-white shadow-md' : 'bg-white text-gray-600 border border-gray-200'}`}>{area.name}</button>
                                     ))}
