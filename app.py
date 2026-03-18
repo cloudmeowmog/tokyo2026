@@ -106,13 +106,20 @@ html_code = """
                     { name: '台場一丁目商店街', desc: '位於 Decks 4F。充滿復古童玩、零食，還有「一整排的扭蛋機」，便宜又好逛。', tag: '扭蛋童玩', icon: '🍬', mapQuery: 'DECKS Tokyo Beach Odaiba 1-chome Shotengai' }
                 ]
             },
+            asakusa: {
+                name: '淺草周邊',
+                spots: [
+                    { name: '藏壽司 淺草ROX旗艦店', desc: '全球最大的藏壽司之一！有獨家祭典裝潢、射擊遊戲與巨大扭蛋機。', tag: '和食遊樂', icon: '🍣', mapQuery: 'Kura Sushi Asakusa ROX' },
+                    { name: '淺草寺 仲見世通', desc: '買人形燒、吃仙貝，感受濃濃的江戶傳統風情。', tag: '傳統文化', icon: '🏮', mapQuery: 'Nakamise Shopping Street' }
+                ]
+            },
             skytree: {
                 name: '晴空塔周邊',
                 spots: [
                     { name: '寶可夢中心 (Solamachi 4F)', desc: '以烈空坐為主題的超大店面，商品極度齊全，旁邊通常會有寶可夢機台可以玩。', tag: '寶可夢', icon: '🐾', mapQuery: 'Pokemon Center Skytree Town' },
                     { name: 'KIRBY CAFÉ 星之卡比 (4F)', desc: '超可愛主題咖啡廳，門口的專賣店免預約就能買伴手禮。', tag: '主題餐廳', icon: '⭐', mapQuery: 'Kirby Cafe Tokyo' },
-                    { name: '迴轉壽司 根室花丸 (6F)', desc: '來自北海道的超人氣排隊名店，食材極度新鮮。', tag: '和食', icon: '🍣', mapQuery: 'Kaitensushi Nemuro Hanamaru Tokyo Skytree Town Solamachi' },
-                    { name: '利久牛舌 (6F)', desc: '厚切牛舌名店，有提供兒童咖哩飯套餐。', tag: '和食', icon: '🍱', mapQuery: 'Gyutan Rikyu Tokyo Skytree Town Solamachi' }
+                    { name: '利久牛舌 (6F)', desc: '厚切牛舌名店，有提供兒童咖哩飯套餐。', tag: '和食', icon: '🍱', mapQuery: 'Gyutan Rikyu Tokyo Skytree Town Solamachi' },
+                    { name: 'Tabe-Terrace (3F)', desc: '選擇豐富的美食街，有章魚燒、拉麵等，不需排隊。', tag: '美食街', icon: '🍜', mapQuery: 'Tokyo Skytree Town Solamachi Tabe-Terrace' }
                 ]
             },
             ueno: {
@@ -129,7 +136,7 @@ html_code = """
                     { name: '明治亭 (Outlet 內)', desc: '主打長野名物「醬汁豬排丼」，甜鹹醬汁很受小朋友歡迎。', tag: '和食', icon: '🍱', mapQuery: 'Meijitei Karuizawa Prince Shopping Plaza' },
                     { name: '太陽與綠的美食街', desc: 'Outlet 內座位多，提供拉麵、烏龍麵等多種快速餐飲選擇。', tag: '美食街', icon: '🍜', mapQuery: 'Karuizawa Prince Shopping Plaza Food Court' },
                     { name: '舊輕井澤 Snoopy Village', desc: '超可愛的史努比茶屋與伴手禮店，旁邊還有米飛兔森林廚房！', tag: '卡通主題', icon: '🐶', mapQuery: 'Snoopy Village Karuizawa' },
-                    { name: '雲場池', desc: '騎腳踏車抵達，適合帶小朋友一起觀察豐富的水岸植物與鴨群生態。', tag: '自然生態', icon: '🦆', mapQuery: 'Kumoba Pond' }
+                    { name: '雲場池', desc: '騎腳踏車抵達，適合帶小朋友一起觀察豐富的水岸植物生態。', tag: '自然生態', icon: '🦆', mapQuery: 'Kumoba Pond' }
                 ]
             },
             shibuya: {
@@ -137,7 +144,6 @@ html_code = """
                 spots: [
                     { name: 'Pokémon Center Shibuya', desc: 'PARCO 6F。最潮的寶可夢中心，門口有一隻 1:1 的沉睡超夢。', tag: '寶可夢', icon: '🐾', mapQuery: 'Pokemon Center Shibuya' },
                     { name: '魚米 (Uobei) 道玄坂店', desc: '無迴轉輸送帶，全由「高速新幹線軌道」直送座位，平價且極具娛樂性。', tag: '和食', icon: '🍣', mapQuery: 'Uobei Shibuya Dogenzaka' },
-                    { name: '藏壽司 全球旗艦店', desc: '店內有專屬的日本祭典裝潢與超大型扭蛋機，好吃又好拍。', tag: '和食', icon: '🍣', mapQuery: 'Kura Sushi Global Flagship Store Shibuya' },
                     { name: '鶴橋風月 (Scramble Square)', desc: '12F 人氣大阪燒，師傅桌邊現煎，吃飽直接去展望台最順路。', tag: '和食', icon: '🍳', mapQuery: 'Tsuruhashi Fugetsu Shibuya Scramble Square' }
                 ]
             },
@@ -176,9 +182,10 @@ html_code = """
                  { time: "08:45", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "Inaricho Station", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
                  { time: "09:00", title: "淺草寺", desc: "雷門", icon: "🏮", location: "Senso-ji", transport: { route: "稻荷町 → 淺草", line: "銀座線", time: "3分" } }, 
                  { time: "11:00", title: "隅田川步道", desc: "散步", icon: "🚶", location: "Sumida River Walk", transport: { route: "淺草 → 晴空塔", line: "步行", time: "20分" } }, 
-                 { time: "12:30", title: "晴空塔寶可夢", desc: "Solamachi 4F", icon: "🛍️", location: "Pokemon Center Skytree Town" }, 
-                 { time: "17:00", title: "晴空塔晚餐", desc: "Solamachi 6F/3F", icon: "🍱", location: "Tokyo Skytree Town Solamachi", tips: "推薦【利久牛舌】有兒童咖哩；【根室花丸】超人氣壽司(需提早抽號碼牌)；【3F美食街】選擇多免排隊。" }, 
-                 { time: "19:00", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "押上 → 稻荷町", line: "淺草線+銀座線", time: "20分" } } 
+                 { time: "12:00", title: "晴空塔午餐", desc: "Solamachi 6F/3F", icon: "🍱", location: "Tokyo Skytree Town Solamachi", tips: "推薦【利久牛舌】有兒童咖哩；【3F美食街】選擇多免排隊。" }, 
+                 { time: "13:30", title: "晴空塔寶可夢", desc: "Solamachi 4F", icon: "🛍️", location: "Pokemon Center Skytree Town" }, 
+                 { time: "17:30", title: "淺草晚餐", desc: "藏壽司 ROX館", icon: "🍣", location: "Kura Sushi Asakusa ROX", transport: { route: "押上 → 淺草", line: "淺草線", time: "3分" }, tips: "推薦【藏壽司 淺草ROX旗艦店】，有專屬祭典遊戲區與巨大扭蛋，小孩超愛！" }, 
+                 { time: "19:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "淺草 → 稻荷町", line: "銀座線", time: "3分" } } 
              ] },
              { day: 4, date: "4/20 (一)", title: "輕井澤一日遊", events: [ 
                  { time: "09:00", title: "往上野站", desc: "搭新幹線", icon: "🚶", location: "Ueno Station", transport: { route: "飯店 → 上野", line: "步行", time: "10分" } }, 
@@ -193,7 +200,7 @@ html_code = """
                  { time: "08:40", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "Inaricho Station", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
                  { time: "09:00", title: "築地場外市場", desc: "早餐", icon: "🐟", location: "Tsukiji Outer Market", transport: { route: "稻荷町 → 築地", line: "銀座線+日比谷線", time: "20分" } }, 
                  { time: "12:00", title: "渋谷 PARCO", desc: "寶可夢", icon: "🎮", location: "Shibuya PARCO", transport: { route: "築地 → 渋谷", line: "日比谷線+銀座線", time: "25分" } }, 
-                 { time: "13:30", title: "澀谷午餐", desc: "魚米/藏壽司/美食街", icon: "🍽️", location: "Shibuya Scramble Square", transport: { route: "PARCO → 餐廳", line: "步行", time: "10分" }, tips: "推薦【魚米】新幹線送餐小孩超愛；【藏壽司】大型扭蛋；或直接到展望台樓下的【Scramble Square】吃大阪燒。" }, 
+                 { time: "13:30", title: "澀谷午餐", desc: "魚米/美食街", icon: "🍽️", location: "Shibuya Scramble Square", transport: { route: "PARCO → 餐廳", line: "步行", time: "10分" }, tips: "推薦【魚米】新幹線送餐小孩超愛；或直接到展望台樓下的【Scramble Square】吃大阪燒。" }, 
                  { time: "15:00", title: "SHIBUYA SKY", desc: "需預約", icon: "🏙️", location: "SHIBUYA SKY", transport: { route: "餐廳 → 展望台", line: "步行/電梯", time: "5-10分" } }, 
                  { time: "17:30", title: "新宿 3D貓", desc: "東口", icon: "🐈", location: "Cross Shinjuku Vision", transport: { route: "渋谷 → 新宿", line: "山手線", time: "7分" } }, 
                  { time: "18:30", title: "哥吉拉 & 晚餐", desc: "串家物語 等", icon: "🦖", location: "Shinjuku Toho Building", transport: { route: "東口 → 歌舞伎町", line: "步行", time: "10分" }, tips: "推薦【串家物語】(哥吉拉大樓內) 體驗自己炸串+巧克力噴泉；或【高島屋美食街】舒適吃和食。" }, 
@@ -293,7 +300,7 @@ html_code = """
                 cat: "景點", 
                 items: [
                     { name: "teamLab Planets", url: "https://planets.teamlab.art/tokyo/zh-hant/", tips: "Day 2 (17:30)，建議提前1個月" },
-                    { name: "東京晴空塔", url: "https://www.tokyo-skytree.jp/cn_t/ticket/", tips: "Day 3 (12:30)，30天前開放預約" }, 
+                    { name: "東京晴空塔", url: "https://www.tokyo-skytree.jp/cn_t/ticket/", tips: "Day 3，30天前開放預約" }, 
                     { name: "SHIBUYA SKY", url: "https://www.shibuya-scramble-square.com/sky/ticket/", tips: "Day 5 (15:00)，4週前必搶" }
                 ] 
             },
@@ -321,14 +328,15 @@ html_code = """
             // --- Day 3 ---
             { id: "sensoji", name: "淺草寺 & 雷門", icon: "🏮", tag: "傳統文化", desc: "東京最古老的寺廟。巨大的紅燈籠「雷門」是東京象徵。仲見世通有許多人形燒、仙貝等傳統小吃。", tips: "遊客非常多，建議早上9點前抵達拍照。" },
             { id: "skytree", name: "東京晴空塔", icon: "🗼", tag: "地標/寶可夢", desc: "世界最高電波塔。樓下 Solamachi 商場有寶可夢中心(烈空坐鎮店)與 Kirby Cafe。", tips: "4F 戶外露台是拍攝晴空塔全貌的好位置。" },
-            { id: "skytree_food", name: "晴空塔親子餐飲", icon: "🍽️", tag: "美食", desc: "推薦：【3F Tabe-Terrace 美食街】選擇多免排隊，有章魚燒與各式麵食；【6F 迴轉壽司 根室花丸】來自北海道的超人氣壽司，記得先抽號碼牌；【6F 利久牛舌】厚切牛舌名店，有提供兒童咖哩飯；【4F 星之卡比咖啡廳】餐點極度可愛，就在寶可夢中心旁。", tips: "晴空塔餐廳每到用餐時間人潮眾多，若想吃名店建議 11:30 前先去抽號碼牌，或善用 3F 美食街。" },
+            { id: "skytree_food", name: "晴空塔親子午餐", icon: "🍽️", tag: "美食", desc: "推薦：【3F Tabe-Terrace 美食街】選擇多免排隊，有章魚燒與各式麵食；【6F 利久牛舌】厚切牛舌名店，有提供兒童咖哩飯；【4F 星之卡比咖啡廳】餐點極度可愛，就在寶可夢中心旁。", tips: "晴空塔餐廳每到用餐時間人潮眾多，若想吃名店建議 11:30 前先去抽號碼牌，或善用 3F 美食街。" },
+            { id: "asakusa_food", name: "淺草親子晚餐", icon: "🍣", tag: "美食", desc: "推薦：【藏壽司 淺草ROX館】全球最大的藏壽司旗艦店之一！除了經典的吃壽司抽扭蛋，店內特別打造了日本祭典空間，有「射擊」、「套圈圈」等小遊戲攤位。好吃又好玩，是最完美的結尾。", tips: "建議提前下載藏壽司 App 預約訂位，或避開尖峰時段。" },
             
             // --- Day 4 ---
             { id: "karuizawa", name: "輕井澤", icon: "🚲", tag: "度假勝地", desc: "避暑勝地，充滿歐風建築與森林。車站旁就是超大 Outlet，舊輕井澤銀座通適合騎車漫遊。", tips: "一定要吃 Sawaya 果醬與 Mikado 摩卡霜淇淋。" },
             { id: "karuizawa_food", name: "輕井澤親子午餐", icon: "🍱", tag: "美食", desc: "推薦：【明治亭】位於 Outlet 內，主打長野名物「醬汁豬排丼」，份量足且小孩接受度高；或直接到【太陽與綠的美食街】(Food Court)，座位多且選擇豐富（拉麵、烏龍麵等和食都有）。", tips: "Outlet 餐廳假日容易客滿，建議 11:30 前就先入座用餐！" },
             
             // --- Day 5 ---
-            { id: "shibuya_food", name: "澀谷親子午餐", icon: "🍽️", tag: "美食", desc: "推薦：【魚米 Uobei】平價且用新幹線軌道送餐，小孩超愛；【藏壽司 澀谷全球旗艦店】有獨家扭蛋與祭典裝潢；【Scramble Square 12/13F】在 SHIBUYA SKY 樓下，吃飽直接上樓最順路，有鶴橋風月大阪燒、Katsukura豬排。", tips: "澀谷平日上班族也多，建議在 11:30 前或 13:30 後用餐避開人潮。" },
+            { id: "shibuya_food", name: "澀谷親子午餐", icon: "🍽️", tag: "美食", desc: "推薦：【魚米 Uobei】平價且用新幹線軌道送餐，小孩超愛；【Scramble Square 12/13F】在 SHIBUYA SKY 樓下，吃飽直接上樓最順路，有鶴橋風月大阪燒、Katsukura豬排。", tips: "澀谷平日上班族也多，建議在 11:30 前或 13:30 後用餐避開人潮。" },
             { id: "shibuya", name: "SHIBUYA SKY", icon: "🏙️", tag: "高空夜景", desc: "目前東京最熱門的露天展望台，360度無死角美景。角落的玻璃扶手是網美必拍點。", tips: "日落時段最美，但需提早一個月搶票。" },
             { id: "shinjuku", name: "新宿 3D 貓", icon: "🐈", tag: "科技看板", desc: "新宿東口廣場對面大樓的 4K 彎曲螢幕。巨大的三花貓會探頭打招呼，非常逼真可愛。", tips: "每 15 分鐘會有一次特殊演出。" },
             { id: "shinjuku_food", name: "新宿親子晚餐", icon: "🍤", tag: "美食", desc: "推薦：【串家物語 新宿東寶大樓店】就在哥吉拉頭像那棟！主打「自己動手炸串吃到飽」，還有巧克力噴泉，充滿DIY樂趣，小孩絕對瘋狂；若想吃安靜的和食，推薦【高島屋 Times Square 12-14F 美食街】（名代宇奈とと鰻魚飯、天婦羅等）。", tips: "哥吉拉頭像每整點會咆哮發光，帶小朋友吃串家物語剛好可以就近觀賞！" }
@@ -476,6 +484,7 @@ html_code = """
                                     {[
                                         {id: 'toyosu', name: '豐洲'}, 
                                         {id: 'odaiba', name: '台場'}, 
+                                        {id: 'asakusa', name: '淺草'},
                                         {id: 'skytree', name: '晴空塔'},
                                         {id: 'ueno', name: '上野/秋葉原'},
                                         {id: 'karuizawa', name: '輕井澤'},
