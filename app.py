@@ -87,38 +87,38 @@ html_code = """
             booking: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
         };
 
-        // 親子周邊景點推薦資料 (取代原本的 SVG 地圖)
+        // 親子周邊景點推薦資料 (含 Google Maps 搜尋關鍵字)
         const surroundingGuides = {
             toyosu: {
                 name: '豐洲周邊',
                 spots: [
-                    { name: '豐洲 LaLaport', desc: '超大型商場！內有 KidZania (兒童職業體驗)，3樓有許多玩具店、扭蛋機，非常適合放電。', tag: '購物遊樂', icon: '🛍️' },
-                    { name: 'teamLab Planets', desc: '超夢幻沉浸式光影展，裡面有一整區可以踩水互動，小孩玩得超開心。', tag: '光影藝術', icon: '✨' },
-                    { name: '千客萬來 (豐洲市場旁)', desc: '新開幕的江戶風情美食街，足湯區可以邊泡腳邊吃點心。', tag: '美食溫泉', icon: '♨️' }
+                    { name: '豐洲 LaLaport', desc: '超大型商場！內有 KidZania (兒童職業體驗)，3樓有許多玩具店、扭蛋機，非常適合放電。', tag: '購物遊樂', icon: '🛍️', mapQuery: 'Urban Dock LaLaport Toyosu' },
+                    { name: 'teamLab Planets', desc: '超夢幻沉浸式光影展，裡面有一整區可以踩水互動，小孩玩得超開心。', tag: '光影藝術', icon: '✨', mapQuery: 'teamLab Planets TOKYO' },
+                    { name: '千客萬來 (豐洲市場旁)', desc: '新開幕的江戶風情美食街，足湯區可以邊泡腳邊吃點心。', tag: '美食溫泉', icon: '♨️', mapQuery: 'Toyosu Senkyaku Banrai' }
                 ]
             },
             odaiba: {
                 name: '台場周邊',
                 spots: [
-                    { name: '鋼彈基地 (Gundam Base)', desc: '位於 DiverCity 7F。滿滿的鋼彈模型與限定商品，父子一起買瘋的聖地！', tag: '模型', icon: '🤖' },
-                    { name: 'LEGOLAND 探索中心', desc: '位於 Decks 商場內。室內樂高樂園，超多互動設施與積木池，完全為小孩打造。', tag: '樂高樂園', icon: '🧱' },
-                    { name: '台場一丁目商店街', desc: '位於 Decks 4F。充滿復古童玩、零食，還有「一整排的扭蛋機」，便宜又好逛。', tag: '扭蛋童玩', icon: '🍬' }
+                    { name: '鋼彈基地 (Gundam Base)', desc: '位於 DiverCity 7F。滿滿的鋼彈模型與限定商品，父子一起買瘋的聖地！', tag: '模型', icon: '🤖', mapQuery: 'THE GUNDAM BASE TOKYO' },
+                    { name: 'LEGOLAND 探索中心', desc: '位於 Decks 商場內。室內樂高樂園，超多互動設施與積木池，完全為小孩打造。', tag: '樂高樂園', icon: '🧱', mapQuery: 'LEGOLAND Discovery Center Tokyo' },
+                    { name: '台場一丁目商店街', desc: '位於 Decks 4F。充滿復古童玩、零食，還有「一整排的扭蛋機」，便宜又好逛。', tag: '扭蛋童玩', icon: '🍬', mapQuery: 'DECKS Tokyo Beach Odaiba 1-chome Shotengai' }
                 ]
             },
             shibuya: {
                 name: '渋谷周邊',
                 spots: [
-                    { name: 'Pokémon Center Shibuya', desc: 'PARCO 6F。最潮的寶可夢中心，門口有一隻 1:1 的沉睡超夢，店內超多限定玩偶！', tag: '寶可夢', icon: '🐾' },
-                    { name: 'Nintendo TOKYO', desc: 'PARCO 6F (寶可夢隔壁)。任天堂旗艦店，滿滿瑪利歐、薩爾達周邊，出口旁有扭蛋機。', tag: '任天堂', icon: '🍄' },
-                    { name: 'MEGA 唐吉訶德 渋谷本店', desc: '超大間！玩具、模型、日本零食伴手禮一次買齊，有專屬退稅櫃台。', tag: '驚安殿堂', icon: '🐧' }
+                    { name: 'Pokémon Center Shibuya', desc: 'PARCO 6F。最潮的寶可夢中心，門口有一隻 1:1 的沉睡超夢，店內超多限定玩偶！', tag: '寶可夢', icon: '🐾', mapQuery: 'Pokemon Center Shibuya' },
+                    { name: 'Nintendo TOKYO', desc: 'PARCO 6F (寶可夢隔壁)。任天堂旗艦店，滿滿瑪利歐、薩爾達周邊，出口旁有扭蛋機。', tag: '任天堂', icon: '🍄', mapQuery: 'Nintendo TOKYO' },
+                    { name: 'MEGA 唐吉訶德 渋谷本店', desc: '超大間！玩具、模型、日本零食伴手禮一次買齊，有專屬退稅櫃台。', tag: '驚安殿堂', icon: '🐧', mapQuery: 'MEGA Don Quijote Shibuya' }
                 ]
             },
             ueno: {
                 name: '上野 / 秋葉原周邊',
                 spots: [
-                    { name: 'Yodobashi Akiba 6F', desc: '秋葉原站旁。整層的玩具專區！有超多寶可夢 Frienda 機台可以打，還有扭蛋海。', tag: '機台扭蛋', icon: '🕹️' },
-                    { name: 'Yamashiroya 玩具店', desc: 'JR 上野站廣小路口對面。整整 6 層樓的玩具專賣店，寶可夢周邊極度齊全。', tag: '玩具百貨', icon: '🧸' },
-                    { name: '上野動物園', desc: '就在上野公園內。門票超便宜，適合早起帶小孩去看熊貓散步放電。', tag: '動物園', icon: '🐼' }
+                    { name: 'Yodobashi Akiba 6F', desc: '秋葉原站旁。整層的玩具專區！有超多寶可夢 Frienda 機台可以打，還有扭蛋海。', tag: '機台扭蛋', icon: '🕹️', mapQuery: 'Yodobashi Akiba' },
+                    { name: 'Yamashiroya 玩具店', desc: 'JR 上野站廣小路口對面。整整 6 層樓的玩具專賣店，寶可夢周邊極度齊全。', tag: '玩具百貨', icon: '🧸', mapQuery: 'Yamashiroya Ueno' },
+                    { name: '上野動物園', desc: '就在上野公園內。門票超便宜，適合早起帶小孩去看熊貓散步放電。', tag: '動物園', icon: '🐼', mapQuery: 'Ueno Zoo' }
                 ]
             }
         };
@@ -357,25 +357,35 @@ html_code = """
                 }
             }, [mode]);
 
-            // 渲染取代原本 SVG 的景點卡片
+            // 渲染取代原本 SVG 的親子景點卡片，並加入 Google Maps 動態連結
             const renderSurrounding = () => {
                 const guide = surroundingGuides[surrArea];
                 if (!guide) return null;
 
                 return (
                     <div className="w-full flex flex-col gap-3 p-2">
-                        {guide.spots.map((spot, idx) => (
-                            <div key={idx} className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm flex items-start gap-3 w-full">
-                                <div className="text-3xl mt-1">{spot.icon}</div>
-                                <div className="flex-1">
-                                    <div className="flex items-center gap-2 mb-1">
-                                        <h4 className="font-bold text-gray-800 text-[15px] m-0">{spot.name}</h4>
-                                        <span className="bg-indigo-50 text-indigo-600 text-[10px] px-2 py-0.5 rounded font-bold whitespace-nowrap">{spot.tag}</span>
+                        {guide.spots.map((spot, idx) => {
+                            const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.mapQuery)}`;
+                            return (
+                                <div key={idx} className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm flex flex-col gap-2 w-full">
+                                    <div className="flex items-start gap-3">
+                                        <div className="text-3xl mt-1">{spot.icon}</div>
+                                        <div className="flex-1">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <h4 className="font-bold text-gray-800 text-[15px] m-0">{spot.name}</h4>
+                                                <span className="bg-indigo-50 text-indigo-600 text-[10px] px-2 py-0.5 rounded font-bold whitespace-nowrap">{spot.tag}</span>
+                                            </div>
+                                            <p className="text-[13px] text-gray-600 leading-relaxed m-0">{spot.desc}</p>
+                                        </div>
                                     </div>
-                                    <p className="text-[13px] text-gray-600 leading-relaxed m-0">{spot.desc}</p>
+                                    <div className="flex justify-end border-t border-gray-50 pt-2 mt-1">
+                                         <a href={mapUrl} target="_blank" className="bg-blue-50 hover:bg-blue-100 text-blue-600 border border-blue-100 text-xs font-bold py-1.5 px-3 rounded-lg flex items-center gap-1 no-underline transition-colors">
+                                            📍 開啟地圖
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 );
             };
