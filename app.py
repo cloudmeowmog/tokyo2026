@@ -133,8 +133,7 @@ html_code = """
             karuizawa: {
                 name: '輕井澤周邊',
                 spots: [
-                    { name: '明治亭 (Outlet 內)', desc: '主打長野名物「醬汁豬排丼」，甜鹹醬汁很受小朋友歡迎。', tag: '和食', icon: '🍱', mapQuery: 'Meijitei Karuizawa Prince Shopping Plaza' },
-                    { name: '太陽與綠的美食街', desc: 'Outlet 內座位多，提供拉麵、烏龍麵等多種快速餐飲選擇。', tag: '美食街', icon: '🍜', mapQuery: 'Karuizawa Prince Shopping Plaza Food Court' },
+                    { name: '王子 Outlet 兒童玩具區', desc: '除了爸媽血拚，商場內也有 LEGO 樂高授權專賣店與扭蛋機台，廣大的草地很適合小孩奔跑。', tag: '購物遊樂', icon: '🛍️', mapQuery: 'Karuizawa Prince Shopping Plaza' },
                     { name: '舊輕井澤 Snoopy Village', desc: '超可愛的史努比茶屋與伴手禮店，旁邊還有米飛兔森林廚房！', tag: '卡通主題', icon: '🐶', mapQuery: 'Snoopy Village Karuizawa' },
                     { name: '雲場池', desc: '騎腳踏車抵達，適合帶小朋友一起觀察豐富的水岸植物生態。', tag: '自然生態', icon: '🦆', mapQuery: 'Kumoba Pond' }
                 ]
@@ -157,7 +156,7 @@ html_code = """
             }
         };
 
-        // 行程資料 (內嵌 tips 飲食建議，確認 Day 2 teamLab, Day 3 晴空塔)
+        // 行程資料 (已改回搭乘地鐵至淺草)
         const itinerary = [
              { day: 1, date: "4/17 (五)", title: "抵達與鈴芽的起點", events: [ 
                  { time: "13:25", title: "抵達成田機場", desc: "T1 (長榮)", icon: "✈️", location: "Narita International Airport Terminal 1", hideRoute: true }, 
@@ -172,7 +171,7 @@ html_code = """
              { day: 2, date: "4/18 (六)", title: "台場鋼彈 & 豐洲", events: [ 
                  { time: "08:45", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "Inaricho Station", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
                  { time: "09:00", title: "豐洲市場", desc: "早午餐", icon: "🍣", location: "Toyosu Market", transport: { route: "稻荷町 → 豐洲", line: "銀座線+有樂町線", time: "30分" }, tips: "和食推薦【茂助玉子燒】甜煎蛋捲；【八千代】炸物定食；【大江戶】海鮮丼(皆在水產棟3F)。" }, 
-                 { time: "11:30", title: "往台場", desc: "海鷗號", icon: "🚅", location: "Daiba Station", transport: { route: "豐洲 → 台場", line: "海鷗號", time: "20分" } }, 
+                 { time: "11:30", title: "往台場", desc: "海鷗號", icon: "🚅", location: "Daiba Station", transport: { route: "豐洲 → 台場", line: "海鷗號", time: "20分" }, tips: "💡 今日會搭乘四次海鷗號，強烈建議直接買「百合海鷗號一日券」(大人820/小孩410日圓)，省錢又免一直購票！" }, 
                  { time: "13:00", title: "獨角獸鋼彈", desc: "變身秀", icon: "🤖", location: "Unicorn Gundam Statue" }, 
                  { time: "17:30", title: "teamLab", desc: "需預約", icon: "✨", location: "teamLab Planets TOKYO", transport: { route: "台場 → 新豐洲", line: "海鷗號", time: "23分" } }, 
                  { time: "19:30", title: "豐洲 LaLaport", desc: "晚餐", icon: "🍽️", location: "Urban Dock LaLaport Toyosu", transport: { route: "新豐洲 → 豐洲", line: "海鷗號/步行", time: "10分" } }, 
@@ -184,14 +183,15 @@ html_code = """
                  { time: "11:00", title: "隅田川步道", desc: "散步", icon: "🚶", location: "Sumida River Walk", transport: { route: "淺草 → 晴空塔", line: "步行", time: "20分" } }, 
                  { time: "12:00", title: "晴空塔午餐", desc: "Solamachi 6F/3F", icon: "🍱", location: "Tokyo Skytree Town Solamachi", tips: "推薦【利久牛舌】有兒童咖哩；【3F美食街】選擇多免排隊。" }, 
                  { time: "13:30", title: "晴空塔寶可夢", desc: "Solamachi 4F", icon: "🛍️", location: "Pokemon Center Skytree Town" }, 
-                 { time: "17:30", title: "淺草晚餐", desc: "藏壽司 ROX館", icon: "🍣", location: "Kura Sushi Asakusa ROX", transport: { route: "押上 → 淺草", line: "淺草線", time: "3分" }, tips: "推薦【藏壽司 淺草ROX旗艦店】，有專屬祭典遊戲區與巨大扭蛋，小孩超愛！" }, 
-                 { time: "19:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "淺草 → 稻荷町", line: "銀座線", time: "3分" } } 
+                 { time: "17:30", title: "淺草晚餐", desc: "藏壽司 ROX館", icon: "🍣", location: "Kura Sushi Asakusa ROX", transport: { route: "押上 → 淺草", line: "淺草線+步行", time: "10分" }, tips: "推薦【藏壽司 淺草ROX旗艦店】，有專屬祭典遊戲區與巨大扭蛋，小孩超愛！" }, 
+                 { time: "19:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "田原町站 → 稻荷町", line: "銀座線", time: "3分" } } 
              ] },
              { day: 4, date: "4/20 (一)", title: "輕井澤一日遊", events: [ 
                  { time: "09:00", title: "往上野站", desc: "搭新幹線", icon: "🚶", location: "Ueno Station", transport: { route: "飯店 → 上野", line: "步行", time: "10分" } }, 
-                 { time: "10:10", title: "抵達輕井澤", desc: "Outlet", icon: "🛍️", location: "Karuizawa Prince Shopping Plaza", transport: { route: "上野 → 輕井澤", line: "新幹線", time: "60分" } }, 
-                 { time: "12:30", title: "輕井澤午餐", desc: "明治亭/美食街", icon: "🍱", location: "Karuizawa Prince Shopping Plaza Food Court", transport: { route: "Outlet 內", line: "步行", time: "5分" }, tips: "推薦【明治亭】長野名物醬汁豬排丼；或直接到【太陽與綠的美食街】有各式拉麵與烏龍麵。" }, 
-                 { time: "14:00", title: "舊輕井澤", desc: "騎車", icon: "🚲", location: "Kyu-Karuizawa Ginza Street", transport: { route: "車站 → 舊輕井澤", line: "巴士/單車", time: "15分" } }, 
+                 { time: "10:10", title: "抵達輕井澤", desc: "北口租單車", icon: "🚲", location: "Karuizawa Station", transport: { route: "上野 → 輕井澤", line: "新幹線", time: "60分" } }, 
+                 { time: "10:30", title: "舊輕井澤 & 雲場池", desc: "大自然散步", icon: "🦆", location: "Kumoba Pond", transport: { route: "車站 → 景點", line: "單車", time: "15分" } }, 
+                 { time: "12:30", title: "輕井澤午餐", desc: "舊輕井澤/車站周邊", icon: "🍱", location: "Kyu-Karuizawa Ginza Street", transport: { route: "雲場池 → 舊輕", line: "單車", time: "10分" }, tips: "可先在舊輕銀座通吃點心，或騎回車站還車後，去吃【明治亭】長野名物醬汁豬排丼。" }, 
+                 { time: "14:30", title: "王子 Outlet", desc: "購物與樂高區", icon: "🛍️", location: "Karuizawa Prince Shopping Plaza", transport: { route: "北口 → 南口", line: "單車還車+步行", time: "15分" }, tips: "💡 將 Outlet 移到下午，買完戰利品就能直接搭新幹線，不用提著大包小包騎腳踏車！" }, 
                  { time: "17:30", title: "返回上野", desc: "回程", icon: "🚅", location: "Ueno Station", transport: { route: "輕井澤 → 上野", line: "新幹線", time: "60分" } }, 
                  { time: "18:45", title: "壽司郎", desc: "上野分店", icon: "🍣", location: "Sushiro Ueno", transport: { route: "上野站 → 壽司郎", line: "步行", time: "5分" }, tips: "回程新幹線上可先開 App 抽號碼牌，減少現場排隊時間。" }, 
                  { time: "20:30", title: "返回飯店", desc: "步行", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "上野 → 飯店", line: "步行", time: "10分" } } 
@@ -229,6 +229,16 @@ html_code = """
                     { title: "Suica 官網說明", url: "https://www.jreast.co.jp/multi/zh-CHT/pass/suica.html" },
                     { title: "PASMO 兒童卡說明", url: "https://www.pasmo.co.jp/visitors/tc/buy/" }
                 ] 
+            },
+            { 
+                id: "yurikamome", name: "百合海鷗號 一日券", desc: "Day 2 必備省錢工具", 
+                tips: ["大人 820 日圓 / 兒童 410 日圓", "搭乘 3 次以上即回本", "無須出站重買票，最適合帶小孩"], 
+                routes: [
+                    "Day 2 在「豐洲站」轉乘百合海鷗號時，直接於自動售票機購買",
+                    "點選螢幕上的「おトクなきっぷ (優惠車票)」或「One-day Pass」",
+                    "選擇張數後付款即可，當日可無限次搭乘海鷗號"
+                ],
+                links: [{ title: "海鷗號一日券官網", url: "https://www.yurikamome.co.jp/zh-tw/ticket/coupon-ticket/one-day.html" }] 
             },
             { 
                 id: "narita", name: "成田機場 T1", desc: "Skyliner 起點站", 
@@ -323,7 +333,7 @@ html_code = """
             // --- Day 2 ---
             { id: "toyosu", name: "豐洲市場 (和食推薦)", icon: "🍣", tag: "海鮮/和食", desc: "東京最新海鮮廚房。推薦和食：【茂助玉子燒】甜甜的日式煎蛋捲小孩最愛；【八千代】炸海鮮與豬排定食，適合不吃生食的孩子；【大江戶】超豐盛海鮮丼，滿足爸媽的胃。", tips: "餐廳多集中在「水產仲卸賣場棟 3F」，建議避開排隊名店（如壽司大），選擇有提供熟食定食的店家。" },
             { id: "odaiba", name: "台場 獨角獸鋼彈", icon: "🤖", tag: "鋼彈", desc: "位於 DiverCity 廣場前。白天有 4 場變身秀(獨角獸模式->毀滅模式)，晚上有燈光秀。", tips: "變身時間：11:00, 13:00, 15:00, 17:00。" },
-            { id: "teamlab", name: "teamLab Planets", icon: "✨", tag: "沉浸式藝術", desc: "需赤腳進入的水中美術館。光影與水面的結合非常夢幻，適合大人小孩互動。", tips: "建議穿著短褲或易捲起的褲子(水深及膝)。" },
+            { id: "teamlab", name: "teamLab Planets", icon: "✨", tag: "沉浸式藝術", desc: "需赤腳進入的水中美術館。光影與水面的結合非常夢幻，適合大人小孩互動。", tips: "這天會在台場周邊頻繁轉車，建議直接購買「百合海鷗號一日券」！" },
             
             // --- Day 3 ---
             { id: "sensoji", name: "淺草寺 & 雷門", icon: "🏮", tag: "傳統文化", desc: "東京最古老的寺廟。巨大的紅燈籠「雷門」是東京象徵。仲見世通有許多人形燒、仙貝等傳統小吃。", tips: "遊客非常多，建議早上9點前抵達拍照。" },
@@ -332,8 +342,8 @@ html_code = """
             { id: "asakusa_food", name: "淺草親子晚餐", icon: "🍣", tag: "美食", desc: "推薦：【藏壽司 淺草ROX館】全球最大的藏壽司旗艦店之一！除了經典的吃壽司抽扭蛋，店內特別打造了日本祭典空間，有「射擊」、「套圈圈」等小遊戲攤位。好吃又好玩，是最完美的結尾。", tips: "建議提前下載藏壽司 App 預約訂位，或避開尖峰時段。" },
             
             // --- Day 4 ---
+            { id: "karuizawa", name: "輕井澤", icon: "🚲", tag: "度假勝地", desc: "避暑勝地，充滿歐風建築與森林。車站旁就是超大 Outlet，舊輕井澤銀座通適合騎車漫遊。", tips: "將逛 Outlet 改到下午，買完戰利品就能直接上新幹線，免提重物騎車！" },
             { id: "karuizawa_food", name: "輕井澤親子午餐", icon: "🍱", tag: "美食", desc: "推薦：【明治亭】位於 Outlet 內，主打長野名物「醬汁豬排丼」，份量足且小孩接受度高；或直接到【太陽與綠的美食街】(Food Court)，座位多且選擇豐富（拉麵、烏龍麵等和食都有）。", tips: "Outlet 餐廳假日容易客滿，建議 11:30 前就先入座用餐！" },
-            { id: "karuizawa", name: "輕井澤", icon: "🚲", tag: "度假勝地", desc: "避暑勝地，充滿歐風建築與森林。車站旁就是超大 Outlet，舊輕井澤銀座通適合騎車漫遊。", tips: "一定要吃 Sawaya 果醬與 Mikado 摩卡霜淇淋。" },
             
             // --- Day 5 ---
             { id: "shibuya_food", name: "澀谷親子午餐", icon: "🍽️", tag: "美食", desc: "推薦：【魚米 Uobei】平價且用新幹線軌道送餐，小孩超愛；【Scramble Square 12/13F】在 SHIBUYA SKY 樓下，吃飽直接上樓最順路，有鶴橋風月大阪燒、Katsukura豬排。", tips: "澀谷平日上班族也多，建議在 11:30 前或 13:30 後用餐避開人潮。" },
@@ -383,7 +393,7 @@ html_code = """
                                             {/* 行程表內嵌飲食 Tips */}
                                             {evt.tips && (
                                                 <div className="mb-3 bg-yellow-50 text-yellow-800 text-[13px] p-2.5 rounded-lg border border-yellow-100 leading-relaxed">
-                                                    <span className="font-bold">💡 美食推薦：</span>{evt.tips}
+                                                    <span className="font-bold">💡 行程提示：</span>{evt.tips}
                                                 </div>
                                             )}
 
