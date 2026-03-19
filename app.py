@@ -78,12 +78,11 @@ html_code = """
 
         const HOTEL_ADDRESS = "Stayme THE HOTEL Ueno, Higashiueno, Taito City, Tokyo";
 
-        // SVG Icons
+        // SVG Icons (車站選單已移除，保留其餘四個)
         const icons = {
             list: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>,
             map: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>,
             attraction: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>,
-            guide: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg>,
             booking: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
         };
 
@@ -205,13 +204,31 @@ html_code = """
             }
         };
 
-        // 行程資料 (更新第一天前往飯店方式為步行)
+        // 行程資料 (已整合車站攻略)
         const itinerary = [
              { day: 1, date: "4/17 (五)", title: "抵達與鈴芽的起點", events: [ 
-                 { time: "13:25", title: "抵達成田機場", desc: "T1 (長榮)", icon: "✈️", location: "成田国際空港 第1ターミナル", hideRoute: true, tips: "抵達 T1 後，先前往 B1 辦理兒童版西瓜卡與領取 Skyliner 車票。" }, 
-                 { time: "14:00", title: "往 Skyliner 乘車處", desc: "成田機場 T1 B1", icon: "🚶", location: "成田空港駅（第1旅客ターミナル）", transport: { route: "入境大廳 → B1 京成電鐵", line: "步行", time: "10分" } }, 
+                 { time: "13:25", title: "抵達成田機場", desc: "T1 (長榮)", icon: "✈️", location: "成田国際空港 第1ターミナル", hideRoute: true, tips: "抵達 T1 後，先前往 B1 辦理兒童版西瓜卡與領取 Skyliner 車票。",
+                   stationGuide: {
+                     name: "兒童版交通卡購買", desc: "機場實體卡申辦攻略",
+                     tips: ["限 6-12 歲兒童購買 (半價)", "無法綁定手機，需持實體卡", "必須出示小孩本人護照"],
+                     routes: ["抵達成田 T1 B1 鐵道樓層後，尋找「JR 東日本旅行服務中心」或藍色的「京成電鐵」櫃檯", "向櫃檯人員表示要購買兒童版 IC 卡 (Child Suica 或 Child PASMO)", "出示小孩的護照供人員核對年齡", "初次購買通常需付 2000 日圓 (含 500 日圓押金，可用額度 1500 日圓)", "進出車站閘門時，嗶卡會發出「小鳥叫聲(嗶嗶兩聲)」，即代表成功使用兒童票價"]
+                   }
+                 }, 
+                 { time: "14:00", title: "往 Skyliner 乘車處", desc: "成田機場 T1 B1", icon: "🚶", location: "成田空港駅（第1旅客ターミナル）", transport: { route: "入境大廳 → B1 京成電鐵", line: "步行", time: "10分" },
+                   stationGuide: {
+                     name: "成田機場 T1 車站", desc: "Skyliner 乘車指引",
+                     tips: ["長榮位於南翼 (South Wing)", "Skyliner 全車對號座"],
+                     routes: ["入境大廳位於 1F，領完行李後尋找「鐵道」指標", "搭乘手扶梯下樓至 B1", "尋找藍色櫃台「KEISEI (京成電鐵)」購票", "通過橘色剪票口，前往 4 或 5 號月台", "上車後行李放置於車廂前後的行李架"]
+                   }
+                 }, 
                  { time: "14:30", title: "搭乘 Skyliner", desc: "往京成上野站", icon: "🚅", location: "京成上野駅", transport: { route: "成田機場 → 京成上野", line: "京成 Skyliner", time: "41分" } }, 
-                 { time: "16:00", title: "Check-in", desc: "Stayme Ueno", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "上野 → 飯店", line: "步行", time: "10分" } }, 
+                 { time: "16:00", title: "Check-in", desc: "Stayme Ueno", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "上野 → 飯店", line: "步行", time: "10分" },
+                   stationGuide: {
+                     name: "京成上野站", desc: "前往飯店路線",
+                     tips: ["抵達時在地下月台", "往稻荷町方向步行約 10 分鐘"],
+                     routes: ["下車後搭手扶梯往上，尋找「正面口」出口", "出改札口後直走，不要往地鐵連絡通道走", "出站到地面後，開啟 Google Map 導航前往飯店", "沿著淺草通直走即可抵達 (步行約 10 分)"]
+                   }
+                 }, 
                  { time: "17:15", title: "往稻荷町站", desc: "步行", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
                  { time: "17:30", title: "御茶之水 聖橋", desc: "鈴芽場景", icon: "📸", location: "聖橋", transport: { route: "稻荷町 → 御茶之水", line: "東京地鐵銀座線 轉 JR中央線", time: "15分" } }, 
                  { time: "18:30", title: "秋葉原", desc: "逛街", icon: "🛍️", location: "秋葉原駅", transport: { route: "御茶之水 → 秋葉原", line: "步行", time: "10分" } }, 
@@ -221,7 +238,13 @@ html_code = """
              { day: 2, date: "4/18 (六)", title: "台場鋼彈 & 豐洲", events: [ 
                  { time: "08:45", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
                  { time: "09:00", title: "豐洲市場 / 千客萬來", desc: "參觀/小吃", icon: "🏮", location: "豊洲市場", transport: { route: "稻荷町 → 豐洲", line: "東京地鐵銀座線 轉 有樂町線", time: "30分" }, tips: "💡 早上先在豐洲周邊逛逛，可吃點玉子燒等小點心墊胃，將主力午餐移至台場商場內享用。" }, 
-                 { time: "11:30", title: "往台場 DiverCity", desc: "海鷗號", icon: "🚅", location: "台場駅", transport: { route: "豐洲 → 台場", line: "百合海鷗號 (ゆりかもめ)", time: "20分" }, tips: "💡 今日會搭乘多次海鷗號，強烈建議在豐洲站買「百合海鷗號一日券」(大人820/小孩410日圓)！" }, 
+                 { time: "11:30", title: "往台場 DiverCity", desc: "海鷗號", icon: "🚅", location: "台場駅", transport: { route: "豐洲 → 台場", line: "百合海鷗號 (ゆりかもめ)", time: "20分" }, tips: "💡 今日會搭乘多次海鷗號，強烈建議在豐洲站買「百合海鷗號一日券」(大人820/小孩410日圓)！",
+                   stationGuide: {
+                     name: "百合海鷗號 一日券", desc: "Day 2 必備省錢工具",
+                     tips: ["大人 820 日圓 / 兒童 410 日圓", "搭乘 3 次以上即回本", "無須出站重買票，最適合帶小孩"],
+                     routes: ["在「豐洲站」轉乘百合海鷗號時，直接於自動售票機購買", "點選螢幕上的「おトクなきっぷ (優惠車票)」或「One-day Pass」", "選擇張數後付款即可，當日可無限次搭乘海鷗號"]
+                   }
+                 }, 
                  { time: "11:50", title: "台場午餐", desc: "DiverCity 商場", icon: "🍔", location: "ダイバーシティ東京 プラザ", transport: { route: "台場站 → DiverCity", line: "步行", time: "5分" }, tips: "【台場 午餐5選】\\n1. 田中商店 (DiverCity 2F 濃郁豚骨拉麵)\\n2. 金子半之助 (DiverCity 2F 超人氣天丼)\\n3. 串家物語 (DiverCity 6F 自己動手炸串)\\n4. 蘋果樹蛋包飯 (Aqua City 5F)\\n5. 燒肉 平城苑 (Aqua City 1F)\\n💡 在 DiverCity 用餐，吃飽走到一樓廣場直接看 13:00 的鋼彈表演最順路！" }, 
                  { time: "13:00", title: "獨角獸鋼彈", desc: "變身秀", icon: "🤖", location: "実物大ユニコーンガンダム立像" }, 
                  { time: "17:30", title: "teamLab", desc: "需預約", icon: "✨", location: "teamLab Planets TOKYO", transport: { route: "台場 → 新豐洲", line: "百合海鷗號 (ゆりかもめ)", time: "23分" } }, 
@@ -238,7 +261,13 @@ html_code = """
                  { time: "19:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "田原町站 → 稻荷町", line: "東京地鐵銀座線", time: "3分" } } 
              ] },
              { day: 4, date: "4/20 (一)", title: "輕井澤一日遊", events: [ 
-                 { time: "09:00", title: "往上野站", desc: "搭新幹線", icon: "🚶", location: "上野駅", transport: { route: "飯店 → 上野", line: "步行", time: "10分" } }, 
+                 { time: "09:00", title: "往上野站", desc: "搭新幹線", icon: "🚶", location: "上野駅", transport: { route: "飯店 → 上野", line: "步行", time: "10分" },
+                   stationGuide: {
+                     name: "JR 上野站", desc: "搭乘新幹線攻略",
+                     tips: ["新幹線入口在站內深處", "必走「中央改札」"],
+                     routes: ["從地面進入 JR 上野站，請認明最大的「中央改札」", "進站後抬頭看綠色新幹線標示，直走約 3 分鐘", "通過第二道「新幹線專用改札」", "搭乘手扶梯向下至 B3/B4 月台 (通常往輕井澤在 19/20 月台)"]
+                   }
+                 }, 
                  { time: "10:10", title: "抵達輕井澤", desc: "北口租單車", icon: "🚲", location: "軽井沢駅", transport: { route: "上野 → 輕井澤", line: "JR 北陸新幹線", time: "60分" } }, 
                  { time: "10:30", title: "舊輕井澤 & 雲場池", desc: "大自然散步", icon: "🦆", location: "雲場池", transport: { route: "車站 → 景點", line: "單車", time: "15分" } }, 
                  { time: "12:30", title: "輕井澤午餐", desc: "美食街/餐廳", icon: "🍱", location: "軽井沢・プリンスショッピングプラザ フードコート", transport: { route: "雲場池 → Outlet", line: "單車", time: "10分" }, tips: "【輕井澤 飲食5選】\\n1. 明治亭 (Outlet 內，長野醬汁豬排丼)\\n2. 濃熟雞白湯 錦 (Outlet 美食街拉麵)\\n3. Aging Beef (Outlet 內，熟成和牛燒肉)\\n4. 川上庵 (舊輕井澤 人氣蕎麥麵)\\n5. Snoopy Village (舊輕井澤 史努比主題茶屋)" }, 
@@ -250,10 +279,22 @@ html_code = """
              { day: 5, date: "4/21 (二)", title: "築地・渋谷・新宿", events: [ 
                  { time: "08:40", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
                  { time: "09:00", title: "築地場外市場", desc: "早餐", icon: "🐟", location: "築地場外市場", transport: { route: "稻荷町 → 築地", line: "東京地鐵銀座線 轉 日比谷線", time: "20分" }, tips: "【築地市場 飲食5選】\\n1. 狐狸屋 (超濃郁牛雜/牛丼)\\n2. 築地 山長 (100円排隊玉子燒)\\n3. 築地 可樂餅 (明太子文字燒口味)\\n4. 黑銀 鮪魚店 (頂級黑鮪魚生魚片)\\n5. 壽司三味 本店 (知名平價壽司)\\n💡 狐狸屋極受歡迎，建議一早就去排隊！" }, 
-                 { time: "12:00", title: "渋谷 PARCO", desc: "寶可夢", icon: "🎮", location: "渋谷パルコ", transport: { route: "築地 → 渋谷", line: "東京地鐵日比谷線 轉 銀座線", time: "25分" } }, 
+                 { time: "12:00", title: "渋谷 PARCO", desc: "寶可夢", icon: "🎮", location: "渋谷パルコ", transport: { route: "築地 → 渋谷", line: "東京地鐵日比谷線 轉 銀座線", time: "25分" },
+                   stationGuide: {
+                     name: "渋谷站", desc: "銀座線抵達動線",
+                     tips: ["銀座線抵達時在 3F", "SHIBUYA SKY 直結"],
+                     routes: ["銀座線下車後位於 3F，跟隨 Scramble Square 指標", "SHIBUYA SKY 入口位於該棟大樓 14F (需搭專用電梯)", "若要看八公/過馬路：從 3F 搭很長的手扶梯下到 1F 廣場", "避開地下迷宮，盡量走地面或天橋"]
+                   }
+                 }, 
                  { time: "13:30", title: "澀谷午餐", desc: "魚米/美食街", icon: "🍽️", location: "渋谷スクランブルスクエア", transport: { route: "PARCO → 餐廳", line: "步行", time: "10分" }, tips: "【澀谷 飲食5選】\\n1. 魚米 Uobei (新幹線軌道送餐壽司)\\n2. 鶴橋風月 (Scramble Square 大阪燒)\\n3. AFURI 阿夫利 (清爽柚子鹽拉麵)\\n4. 燒肉 牛角 (平價連鎖燒肉)\\n5. 名代 かつくら (Scramble Square 京都炸豬排)\\n💡 吃飽直接搭電梯上 SHIBUYA SKY 最順路！" }, 
                  { time: "15:00", title: "SHIBUYA SKY", desc: "需預約", icon: "🏙️", location: "SHIBUYA SKY", transport: { route: "餐廳 → 展望台", line: "步行", time: "5分" } }, 
-                 { time: "17:30", title: "新宿 3D貓", desc: "東口", icon: "🐈", location: "クロス新宿ビジョン", transport: { route: "渋谷 → 新宿", line: "JR 山手線", time: "7分" } }, 
+                 { time: "17:30", title: "新宿 3D貓", desc: "東口", icon: "🐈", location: "クロス新宿ビジョン", transport: { route: "渋谷 → 新宿", line: "JR 山手線", time: "7分" },
+                   stationGuide: {
+                     name: "新宿站", desc: "東口攻略",
+                     tips: ["3D 貓在東口", "歌舞伎町在東口"],
+                     routes: ["下車後請務必尋找黃色招牌「東改札 (East Exit)」", "出站後到達地面，會看到一個大廣場", "3D 貓：往左前方看，大樓頂端的彎曲螢幕即是", "哥吉拉：沿著東口街道往「歌舞伎町」牌樓走，抬頭看電影院大樓"]
+                   }
+                 }, 
                  { time: "18:30", title: "新宿晚餐", desc: "串家物語/燒肉", icon: "🦖", location: "新宿東宝ビル", transport: { route: "東口 → 歌舞伎町", line: "步行", time: "10分" }, tips: "【新宿 飲食5選】\\n1. 串家物語 (自己動手炸串+巧克力噴泉)\\n2. 燒肉亭 六歌仙 (頂級和牛吃到飽)\\n3. 一蘭拉麵 新宿中央東口店 (經典拉麵)\\n4. 名代 宇奈とと (平價炭烤鰻魚飯)\\n5. 高島屋 Times Square 美食街 (精緻和食)\\n💡 哥吉拉頭像每整點會咆哮發光，去串家物語剛好可以看！" }, 
                  { time: "20:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "新宿 → 稻荷町", line: "JR 中央線 轉 東京地鐵銀座線", time: "30分" } } 
              ] },
@@ -263,90 +304,6 @@ html_code = """
                  { time: "12:25", title: "抵達機場", desc: "成田 T1 (南翼)", icon: "✈️", location: "成田国際空港 第1ターミナル" }, 
                  { time: "14:25", title: "起飛返台", desc: "長榮 BR197", icon: "✈️", location: "", transport: "" } 
              ] }
-        ];
-
-        const stationGuides = [
-            { 
-                id: "child_ic", name: "兒童版交通卡購買", desc: "機場實體卡申辦攻略", 
-                tips: ["限 6-12 歲兒童購買 (半價)", "無法綁定手機，需持實體卡", "必須出示小孩本人護照"], 
-                routes: [
-                    "抵達成田 T1 B1 鐵道樓層後，尋找「JR 東日本旅行服務中心」或藍色的「京成電鐵」櫃檯",
-                    "向櫃檯人員表示要購買兒童版 IC 卡 (Child Suica 或 Child PASMO)",
-                    "出示小孩的護照供人員核對年齡",
-                    "初次購買通常需付 2000 日圓 (含 500 日圓押金，可用額度 1500 日圓)",
-                    "進出車站閘門時，嗶卡會發出「小鳥叫聲(嗶嗶兩聲)」，即代表成功使用兒童票價"
-                ],
-                links: [
-                    { title: "Suica 官網說明", url: "https://www.jreast.co.jp/multi/zh-CHT/pass/suica.html" },
-                    { title: "PASMO 兒童卡說明", url: "https://www.pasmo.co.jp/visitors/tc/buy/" }
-                ] 
-            },
-            { 
-                id: "yurikamome", name: "百合海鷗號 一日券", desc: "Day 2 必備省錢工具", 
-                tips: ["大人 820 日圓 / 兒童 410 日圓", "搭乘 3 次以上即回本", "無須出站重買票，最適合帶小孩"], 
-                routes: [
-                    "Day 2 在「豐洲站」轉乘百合海鷗號時，直接於自動售票機購買",
-                    "點選螢幕上的「おトクなきっぷ (優惠車票)」或「One-day Pass」",
-                    "選擇張數後付款即可，當日可無限次搭乘海鷗號"
-                ],
-                links: [{ title: "海鷗號一日券官網", url: "https://www.yurikamome.co.jp/zh-tw/ticket/coupon-ticket/one-day.html" }] 
-            },
-            { 
-                id: "narita", name: "成田機場 T1", desc: "Skyliner 起點站", 
-                tips: ["長榮位於南翼 (South Wing)", "Skyliner 全車對號座"], 
-                routes: [
-                    "入境大廳位於 1F，領完行李後尋找「鐵道」指標",
-                    "搭乘手扶梯下樓至 B1",
-                    "尋找藍色櫃台「KEISEI (京成電鐵)」購票",
-                    "通過橘色剪票口，前往 4 或 5 號月台",
-                    "上車後行李放置於車廂前後的行李架"
-                ],
-                links: [{ title: "T1 樓層圖 (官網)", url: "https://www.narita-airport.jp/ch2/map/?terminal=1&map=1" }] 
-            },
-            { 
-                id: "ueno_keisei", name: "京成上野站", desc: "前往飯店路線", 
-                tips: ["抵達時在地下月台", "往稻荷町方向步行約 10 分鐘"], 
-                routes: [
-                    "下車後搭手扶梯往上，尋找「正面口」出口",
-                    "出改札口後直走，不要往地鐵連絡通道走",
-                    "出站到地面後，開啟 Google Map 導航前往飯店",
-                    "沿著淺草通直走即可抵達 (步行約 10 分)"
-                ],
-                links: [{ title: "京成上野構內圖", url: "https://www.keisei.co.jp/keisei/tetudou/stationmap/pdf/us/101.pdf" }] 
-            },
-            { 
-                id: "ueno_jr", name: "JR 上野站", desc: "搭乘新幹線", 
-                tips: ["新幹線入口在站內深處", "必走「中央改札」"], 
-                routes: [
-                    "從地面進入 JR 上野站，請認明最大的「中央改札」",
-                    "進站後抬頭看綠色新幹線標示，直走約 3 分鐘",
-                    "通過第二道「新幹線專用改札」",
-                    "搭乘手扶梯向下至 B3/B4 月台 (通常往輕井澤在 19/20 月台)"
-                ],
-                links: [{ title: "JR 構內圖", url: "https://www.jreast.co.jp/estation/stations/204.html" }] 
-            },
-            { 
-                id: "shibuya", name: "渋谷站", desc: "銀座線動線", 
-                tips: ["銀座線抵達時在 3F", "SHIBUYA SKY 直結"], 
-                routes: [
-                    "銀座線下車後位於 3F，跟隨 Scramble Square 指標",
-                    "SHIBUYA SKY 入口位於該棟大樓 14F (需搭專用電梯)",
-                    "若要看八公/過馬路：從 3F 搭很長的手扶梯下到 1F 廣場",
-                    "避開地下迷宮，盡量走地面或天橋"
-                ],
-                links: [{ title: "立體圖", url: "https://www.tokyometro.jp/station/shibuya/index.html" }] 
-            },
-            { 
-                id: "shinjuku", name: "新宿站", desc: "東口攻略", 
-                tips: ["3D 貓在東口", "歌舞伎町在東口"], 
-                routes: [
-                    "下車後請務必尋找黃色招牌「東改札 (East Exit)」",
-                    "出站後到達地面，會看到一個大廣場",
-                    "3D 貓：往左前方看，大樓頂端的彎曲螢幕即是",
-                    "哥吉拉：沿著東口街道往「歌舞伎町」牌樓走，抬頭看電影院大樓"
-                ],
-                links: [{ title: "JR 新宿構內圖", url: "https://www.jreast.co.jp/estation/stations/866.html" }] 
-            }
         ];
 
         const reservations = [
@@ -554,6 +511,33 @@ html_code = """
                                                 </div>
                                             )}
                                             
+                                            {/* ✅ 整合車站攻略卡片 */}
+                                            {evt.stationGuide && (
+                                                <div className="mb-3 bg-blue-50/60 rounded-xl p-3 border border-blue-100">
+                                                    <h4 className="font-bold text-blue-800 mb-1 flex items-center gap-1">🚉 {evt.stationGuide.name}</h4>
+                                                    <p className="text-[12px] text-blue-600 mb-2 font-medium">{evt.stationGuide.desc}</p>
+                                                    <div className="space-y-1.5 mb-3">
+                                                        {evt.stationGuide.tips.map((t, idx) => (
+                                                            <div key={idx} className="flex gap-1.5 text-[12px] items-start">
+                                                                <span className="bg-white border border-blue-200 text-blue-600 px-1 rounded text-[10px] mt-0.5 leading-none py-0.5 font-bold">Tip</span>
+                                                                <span className="text-gray-700 leading-tight">{t}</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                    <div className="border-t border-blue-200/60 pt-2.5">
+                                                        <h5 className="text-[11px] font-bold text-blue-800 mb-2">🚏 導航路徑</h5>
+                                                        <ul className="space-y-2 pl-1">
+                                                            {evt.stationGuide.routes.map((step, idx) => (
+                                                                <li key={idx} className="text-[12px] text-gray-700 flex gap-2.5 items-start">
+                                                                    <span className="flex-shrink-0 w-4 h-4 rounded-full bg-blue-500 text-white text-[9px] flex items-center justify-center font-bold mt-0.5">{idx + 1}</span>
+                                                                    <span className="leading-snug">{step}</span>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            )}
+                                            
                                             <div className="flex gap-2">
                                                 <a href={mapUrl} target="_blank" className="flex-1 bg-gray-50 hover:bg-gray-100 text-gray-700 text-xs font-bold py-2 rounded-lg text-center no-underline">📍 地圖</a>
                                                 {!evt.hideRoute && dirUrl && <a href={dirUrl} target="_blank" className="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 text-xs font-bold py-2 rounded-lg text-center no-underline">🚀 路線</a>}
@@ -683,41 +667,6 @@ html_code = """
                 </div>
             );
         };
-
-        const StationView = () => (
-            <div className="h-full overflow-y-auto p-4 pb-24 space-y-4">
-                <div className="text-center mb-6"><h2 className="text-xl font-bold text-gray-800">車站攻略</h2><p className="text-indigo-600 text-sm">迷路救星</p></div>
-                {stationGuides.map(s => (
-                    <div key={s.id} className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
-                        <h3 className="font-bold text-lg text-gray-800 flex items-center gap-2"><span className="w-2 h-6 bg-indigo-500 rounded-full"></span>{s.name}</h3>
-                        <p className="text-sm text-gray-500 mb-4 ml-4">{s.desc}</p>
-                        <div className="space-y-2 mb-4">
-                            {s.tips.map((t, idx) => (
-                                <div key={idx} className="flex gap-2 bg-gray-50 p-2 rounded-lg text-sm items-center">
-                                    <span className="bg-white text-indigo-600 border border-indigo-100 text-xs font-bold px-2 py-0.5 rounded">Tip</span>
-                                    <span className="text-gray-700">{t}</span>
-                                </div>
-                            ))}
-                        </div>
-                        {s.routes && (
-                            <div className="mb-4 bg-indigo-50/50 rounded-xl p-3 border border-indigo-100">
-                                <h4 className="text-xs font-bold text-indigo-800 mb-2 flex items-center gap-1">🚏 導航路徑</h4>
-                                <ul className="relative space-y-3">
-                                    {s.routes.map((step, idx) => (
-                                        <li key={idx} className="text-sm text-gray-700 flex gap-3 relative pl-2">
-                                            {idx !== s.routes.length - 1 && <div className="absolute left-[9px] top-5 bottom-[-12px] w-0.5 bg-indigo-200"></div>}
-                                            <div className="flex-shrink-0 w-4 h-4 rounded-full bg-indigo-500 text-white text-[10px] flex items-center justify-center font-bold mt-0.5">{idx + 1}</div>
-                                            <span className="leading-snug">{step}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-                        <div className="flex flex-wrap gap-2">{s.links.map((l, idx) => <a key={idx} href={l.url} target="_blank" className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-600 px-3 py-1 rounded-full font-bold no-underline transition-colors">🔗 {l.title}</a>)}</div>
-                    </div>
-                ))}
-            </div>
-        );
         
         const AttractionView = () => (
              <div className="h-full overflow-y-auto p-4 pb-24 space-y-4">
@@ -805,16 +754,15 @@ html_code = """
                         {view === 'list' && <ItineraryView />}
                         {view === 'map' && <MapView />}
                         {view === 'attraction' && <AttractionView />}
-                        {view === 'guide' && <StationView />}
                         {view === 'booking' && <BookingView />}
                     </div>
 
+                    {/* ✅ 將選單精簡為四個 */}
                     <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-1 pt-2 pb-8 safe-bottom flex justify-around items-center z-30 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
-                        <button onClick={() => setView('list')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[55px] transition-all ${view === 'list' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.list}<span className="text-[10px] font-bold">行程</span></button>
-                        <button onClick={() => setView('map')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[55px] transition-all ${view === 'map' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.map}<span className="text-[10px] font-bold">地圖</span></button>
-                        <button onClick={() => setView('attraction')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[55px] transition-all ${view === 'attraction' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.attraction}<span className="text-[10px] font-bold">百科</span></button>
-                        <button onClick={() => setView('guide')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[55px] transition-all ${view === 'guide' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.guide}<span className="text-[10px] font-bold">車站</span></button>
-                        <button onClick={() => setView('booking')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[55px] transition-all ${view === 'booking' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.booking}<span className="text-[10px] font-bold">預約</span></button>
+                        <button onClick={() => setView('list')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[65px] transition-all ${view === 'list' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.list}<span className="text-[11px] font-bold">行程</span></button>
+                        <button onClick={() => setView('map')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[65px] transition-all ${view === 'map' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.map}<span className="text-[11px] font-bold">地圖</span></button>
+                        <button onClick={() => setView('attraction')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[65px] transition-all ${view === 'attraction' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.attraction}<span className="text-[11px] font-bold">百科</span></button>
+                        <button onClick={() => setView('booking')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[65px] transition-all ${view === 'booking' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.booking}<span className="text-[11px] font-bold">預約</span></button>
                     </div>
                 </div>
             );
