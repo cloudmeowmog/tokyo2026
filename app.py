@@ -87,7 +87,6 @@ html_code = """
             booking: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
         };
 
-        // 親子周邊景點與餐食推薦 (加入豐洲早上市場與晚上 LaLaport 綜合列表)
         const surroundingGuides = {
             ueno: {
                 name: '上野 / 秋葉原',
@@ -206,61 +205,61 @@ html_code = """
             }
         };
 
-        // 行程資料
+        // 行程資料 (已全面標註精確的交通路線名稱)
         const itinerary = [
              { day: 1, date: "4/17 (五)", title: "抵達與鈴芽的起點", events: [ 
                  { time: "13:25", title: "抵達成田機場", desc: "T1 (長榮)", icon: "✈️", location: "成田国際空港 第1ターミナル", hideRoute: true, tips: "抵達 T1 後，先前往 B1 辦理兒童版西瓜卡與領取 Skyliner 車票。" }, 
                  { time: "14:00", title: "往 Skyliner 乘車處", desc: "成田機場 T1 B1", icon: "🚶", location: "成田空港駅（第1旅客ターミナル）", transport: { route: "入境大廳 → B1 京成電鐵", line: "步行", time: "10分" } }, 
-                 { time: "14:30", title: "搭乘 Skyliner", desc: "往京成上野站", icon: "🚅", location: "京成上野駅", transport: { route: "成田機場 → 京成上野", line: "Skyliner", time: "41分" } }, 
+                 { time: "14:30", title: "搭乘 Skyliner", desc: "往京成上野站", icon: "🚅", location: "京成上野駅", transport: { route: "成田機場 → 京成上野", line: "京成 Skyliner", time: "41分" } }, 
                  { time: "16:00", title: "Check-in", desc: "Stayme Ueno", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "上野 → 飯店", line: "計程車", time: "10分" } }, 
                  { time: "17:15", title: "往稻荷町站", desc: "步行", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
-                 { time: "17:30", title: "御茶之水 聖橋", desc: "鈴芽場景", icon: "📸", location: "聖橋", transport: { route: "稻荷町 → 御茶之水", line: "銀座線+JR", time: "15分" } }, 
+                 { time: "17:30", title: "御茶之水 聖橋", desc: "鈴芽場景", icon: "📸", location: "聖橋", transport: { route: "稻荷町 → 御茶之水", line: "東京地鐵銀座線 轉 JR中央線", time: "15分" } }, 
                  { time: "18:30", title: "秋葉原", desc: "逛街", icon: "🛍️", location: "秋葉原駅", transport: { route: "御茶之水 → 秋葉原", line: "步行", time: "10分" } }, 
                  { time: "19:00", title: "秋葉原晚餐", desc: "美食街或拉麵燒肉", icon: "🍛", location: "ヨドバシAkiba", transport: { route: "秋葉原 → 餐廳", line: "步行", time: "5分" }, tips: "【上野/秋葉原 飲食5選】\\n1. Yodobashi 8F美食街 (和幸豬排/漢堡排)\\n2. 九州 じゃんがら (濃郁豚骨拉麵)\\n3. 壽司郎 上野店 (扭蛋迴轉壽司)\\n4. 敘敘苑 上野不忍口 (高級和牛燒肉)\\n5. 鴨 to 蔥 (排隊人氣清湯拉麵)\\n💡 推薦在 Yodobashi 吃飽，直攻6F打寶可夢機台！" }, 
-                 { time: "21:00", title: "返回飯店", desc: "休息", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "秋葉原 → 飯店", line: "JR+步行", time: "20分" } } 
+                 { time: "21:00", title: "返回飯店", desc: "休息", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "秋葉原 → 飯店", line: "JR山手線 轉 東京地鐵銀座線", time: "20分" } } 
              ] },
              { day: 2, date: "4/18 (六)", title: "台場鋼彈 & 豐洲", events: [ 
                  { time: "08:45", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
-                 { time: "09:00", title: "豐洲市場 / 千客萬來", desc: "參觀/小吃", icon: "🏮", location: "豊洲市場", transport: { route: "稻荷町 → 豐洲", line: "銀座線+有樂町線", time: "30分" }, tips: "💡 早上先在豐洲周邊逛逛，可吃點玉子燒等小點心墊胃，將主力午餐移至台場商場內享用。" }, 
-                 { time: "11:30", title: "往台場 DiverCity", desc: "海鷗號", icon: "🚅", location: "台場駅", transport: { route: "豐洲 → 台場", line: "海鷗號", time: "20分" }, tips: "💡 今日會搭乘多次海鷗號，強烈建議在豐洲站買「百合海鷗號一日券」(大人820/小孩410日圓)！" }, 
+                 { time: "09:00", title: "豐洲市場 / 千客萬來", desc: "參觀/小吃", icon: "🏮", location: "豊洲市場", transport: { route: "稻荷町 → 豐洲", line: "東京地鐵銀座線 轉 有樂町線", time: "30分" }, tips: "💡 早上先在豐洲周邊逛逛，可吃點玉子燒等小點心墊胃，將主力午餐移至台場商場內享用。" }, 
+                 { time: "11:30", title: "往台場 DiverCity", desc: "海鷗號", icon: "🚅", location: "台場駅", transport: { route: "豐洲 → 台場", line: "百合海鷗號 (ゆりかもめ)", time: "20分" }, tips: "💡 今日會搭乘多次海鷗號，強烈建議在豐洲站買「百合海鷗號一日券」(大人820/小孩410日圓)！" }, 
                  { time: "11:50", title: "台場午餐", desc: "DiverCity 商場", icon: "🍔", location: "ダイバーシティ東京 プラザ", transport: { route: "台場站 → DiverCity", line: "步行", time: "5分" }, tips: "【台場 午餐5選】\\n1. 田中商店 (DiverCity 2F 濃郁豚骨拉麵)\\n2. 金子半之助 (DiverCity 2F 超人氣天丼)\\n3. 串家物語 (DiverCity 6F 自己動手炸串)\\n4. 蘋果樹蛋包飯 (Aqua City 5F)\\n5. 燒肉 平城苑 (Aqua City 1F)\\n💡 在 DiverCity 用餐，吃飽走到一樓廣場直接看 13:00 的鋼彈表演最順路！" }, 
                  { time: "13:00", title: "獨角獸鋼彈", desc: "變身秀", icon: "🤖", location: "実物大ユニコーンガンダム立像" }, 
-                 { time: "17:30", title: "teamLab", desc: "需預約", icon: "✨", location: "teamLab Planets TOKYO", transport: { route: "台場 → 新豐洲", line: "海鷗號", time: "23分" } }, 
-                 { time: "19:30", title: "豐洲 LaLaport", desc: "晚餐", icon: "🍽️", location: "ららぽーと豊洲", transport: { route: "新豐洲 → 豐洲", line: "海鷗號/步行", time: "10分" }, tips: "【豐洲 LaLaport 晚餐5選】\\n1. 100本のスプーン (質感親子餐廳，可點半份)\\n2. 燒肉トラジ Toraji (厚切牛舌與和牛)\\n3. 築地食堂 源ちゃん (海鮮與熟食定食)\\n4. 麵屋 黑琥 (日式拉麵，方便快速)\\n5. 玉丁本店 (味噌燉烏龍麵，適合小孩)\\n💡 商場 3F 還有玩具專賣店與扭蛋機，吃飽可以逛！" }, 
-                 { time: "21:30", title: "返回飯店", desc: "休息", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "豐洲 → 稻荷町", line: "有樂町線+銀座線", time: "30分" } } 
+                 { time: "17:30", title: "teamLab", desc: "需預約", icon: "✨", location: "teamLab Planets TOKYO", transport: { route: "台場 → 新豐洲", line: "百合海鷗號 (ゆりかもめ)", time: "23分" } }, 
+                 { time: "19:30", title: "豐洲 LaLaport", desc: "晚餐", icon: "🍽️", location: "ららぽーと豊洲", transport: { route: "新豐洲 → 豐洲", line: "百合海鷗號 (ゆりかもめ)", time: "10分" }, tips: "【豐洲 LaLaport 晚餐5選】\\n1. 100本のスプーン (質感親子餐廳，可點半份)\\n2. 燒肉トラジ Toraji (厚切牛舌與和牛)\\n3. 築地食堂 源ちゃん (海鮮與熟食定食)\\n4. 麵屋 黑琥 (日式拉麵，方便快速)\\n5. 玉丁本店 (味噌燉烏龍麵，適合小孩)\\n💡 商場 3F 還有玩具專賣店與扭蛋機，吃飽可以逛！" }, 
+                 { time: "21:30", title: "返回飯店", desc: "休息", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "豐洲 → 稻荷町", line: "東京地鐵有樂町線 轉 銀座線", time: "30分" } } 
              ] },
              { day: 3, date: "4/19 (日)", title: "淺草與晴空塔", events: [ 
                  { time: "08:45", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
-                 { time: "09:00", title: "淺草寺", desc: "雷門", icon: "🏮", location: "雷門", transport: { route: "稻荷町 → 淺草", line: "銀座線", time: "3分" } }, 
+                 { time: "09:00", title: "淺草寺", desc: "雷門", icon: "🏮", location: "雷門", transport: { route: "稻荷町 → 淺草", line: "東京地鐵銀座線", time: "3分" } }, 
                  { time: "11:00", title: "隅田川步道", desc: "散步", icon: "🚶", location: "すみだリバーウォーク", transport: { route: "淺草 → 晴空塔", line: "步行", time: "20分" } }, 
                  { time: "12:00", title: "晴空塔午餐", desc: "Solamachi 6F/3F", icon: "🍱", location: "東京ソラマチ", tips: "【晴空塔 飲食5選】\\n1. 六厘舍 (晴空塔6F 超人氣沾麵)\\n2. 迴轉壽司 根室花丸 (需提早抽號)\\n3. 利久牛舌 (晴空塔6F 附兒童咖哩)\\n4. 燒肉 ぴゅあ Pure (晴空塔11F 農協和牛)\\n5. Tabe-Terrace (晴空塔3F 美食街免排隊)" }, 
                  { time: "13:30", title: "晴空塔寶可夢", desc: "Solamachi 4F", icon: "🛍️", location: "ポケモンセンタースカイツリータウン" }, 
-                 { time: "17:30", title: "淺草晚餐", desc: "藏壽司 ROX館", icon: "🍣", location: "くら寿司 浅草ROX店", transport: { route: "押上 → 淺草", line: "淺草線+步行", time: "10分" }, tips: "【淺草 飲食5選】\\n1. 藏壽司 淺草ROX店 (全球旗艦店，有祭典遊戲區)\\n2. 一蘭拉麵 淺草店 (獨立包廂位)\\n3. 平城苑 淺草雷門店 (頂級和牛燒肉)\\n4. 淺草今半 (百年壽喜燒老店)\\n5. 淺草炸肉餅 (街邊現炸小吃)" }, 
-                 { time: "19:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "田原町站 → 稻荷町", line: "銀座線", time: "3分" } } 
+                 { time: "17:30", title: "淺草晚餐", desc: "藏壽司 ROX館", icon: "🍣", location: "くら寿司 浅草ROX店", transport: { route: "押上 → 淺草", line: "都營淺草線", time: "10分" }, tips: "【淺草 飲食5選】\\n1. 藏壽司 淺草ROX店 (全球旗艦店，有祭典遊戲區)\\n2. 一蘭拉麵 淺草店 (獨立包廂位)\\n3. 平城苑 淺草雷門店 (頂級和牛燒肉)\\n4. 淺草今半 (百年壽喜燒老店)\\n5. 淺草炸肉餅 (街邊現炸小吃)" }, 
+                 { time: "19:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "田原町站 → 稻荷町", line: "東京地鐵銀座線", time: "3分" } } 
              ] },
              { day: 4, date: "4/20 (一)", title: "輕井澤一日遊", events: [ 
                  { time: "09:00", title: "往上野站", desc: "搭新幹線", icon: "🚶", location: "上野駅", transport: { route: "飯店 → 上野", line: "步行", time: "10分" } }, 
-                 { time: "10:10", title: "抵達輕井澤", desc: "北口租單車", icon: "🚲", location: "軽井沢駅", transport: { route: "上野 → 輕井澤", line: "新幹線", time: "60分" } }, 
+                 { time: "10:10", title: "抵達輕井澤", desc: "北口租單車", icon: "🚲", location: "軽井沢駅", transport: { route: "上野 → 輕井澤", line: "JR 北陸新幹線", time: "60分" } }, 
                  { time: "10:30", title: "舊輕井澤 & 雲場池", desc: "大自然散步", icon: "🦆", location: "雲場池", transport: { route: "車站 → 景點", line: "單車", time: "15分" } }, 
                  { time: "12:30", title: "輕井澤午餐", desc: "美食街/餐廳", icon: "🍱", location: "軽井沢・プリンスショッピングプラザ フードコート", transport: { route: "雲場池 → Outlet", line: "單車", time: "10分" }, tips: "【輕井澤 飲食5選】\\n1. 明治亭 (Outlet 內，長野醬汁豬排丼)\\n2. 濃熟雞白湯 錦 (Outlet 美食街拉麵)\\n3. Aging Beef (Outlet 內，熟成和牛燒肉)\\n4. 川上庵 (舊輕井澤 人氣蕎麥麵)\\n5. Snoopy Village (舊輕井澤 史努比主題茶屋)" }, 
-                 { time: "14:30", title: "王子 Outlet", desc: "購物與樂高區", icon: "🛍️", location: "軽井沢・プリンスショッピングプラザ", transport: { route: "北口 → 南口", line: "單車還車+步行", time: "15分" }, tips: "💡 將 Outlet 移到下午，買完戰利品就能直接搭新幹線，不用提著大包小包騎腳踏車！" }, 
-                 { time: "17:30", title: "返回上野", desc: "回程", icon: "🚅", location: "上野駅", transport: { route: "輕井澤 → 上野", line: "新幹線", time: "60分" } }, 
+                 { time: "14:30", title: "王子 Outlet", desc: "購物與樂高區", icon: "🛍️", location: "軽井沢・プリンスショッピングプラザ", transport: { route: "北口 → 南口", line: "單車", time: "15分" }, tips: "💡 將 Outlet 移到下午，買完戰利品就能直接搭新幹線，不用提著大包小包騎腳踏車！" }, 
+                 { time: "17:30", title: "返回上野", desc: "回程", icon: "🚅", location: "上野駅", transport: { route: "輕井澤 → 上野", line: "JR 北陸新幹線", time: "60分" } }, 
                  { time: "18:45", title: "上野晚餐", desc: "壽司郎/拉麵", icon: "🍣", location: "スシロー 上野店", transport: { route: "上野站 → 餐廳", line: "步行", time: "5分" }, tips: "回程新幹線上可先開 App 抽號碼牌，減少壽司郎現場排隊時間。(若想換口味，上野有鴨to蔥、敘敘苑可選)" }, 
                  { time: "20:30", title: "返回飯店", desc: "步行", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "上野 → 飯店", line: "步行", time: "10分" } } 
              ] },
              { day: 5, date: "4/21 (二)", title: "築地・渋谷・新宿", events: [ 
                  { time: "08:40", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
-                 { time: "09:00", title: "築地場外市場", desc: "早餐", icon: "🐟", location: "築地場外市場", transport: { route: "稻荷町 → 築地", line: "銀座線+日比谷線", time: "20分" }, tips: "【築地市場 飲食5選】\\n1. 狐狸屋 (超濃郁牛雜/牛丼)\\n2. 築地 山長 (100円排隊玉子燒)\\n3. 築地 可樂餅 (明太子文字燒口味)\\n4. 黑銀 鮪魚店 (頂級黑鮪魚生魚片)\\n5. 壽司三味 本店 (知名平價壽司)\\n💡 狐狸屋極受歡迎，建議一早就去排隊！" }, 
-                 { time: "12:00", title: "渋谷 PARCO", desc: "寶可夢", icon: "🎮", location: "渋谷パルコ", transport: { route: "築地 → 渋谷", line: "日比谷線+銀座線", time: "25分" } }, 
+                 { time: "09:00", title: "築地場外市場", desc: "早餐", icon: "🐟", location: "築地場外市場", transport: { route: "稻荷町 → 築地", line: "東京地鐵銀座線 轉 日比谷線", time: "20分" }, tips: "【築地市場 飲食5選】\\n1. 狐狸屋 (超濃郁牛雜/牛丼)\\n2. 築地 山長 (100円排隊玉子燒)\\n3. 築地 可樂餅 (明太子文字燒口味)\\n4. 黑銀 鮪魚店 (頂級黑鮪魚生魚片)\\n5. 壽司三味 本店 (知名平價壽司)\\n💡 狐狸屋極受歡迎，建議一早就去排隊！" }, 
+                 { time: "12:00", title: "渋谷 PARCO", desc: "寶可夢", icon: "🎮", location: "渋谷パルコ", transport: { route: "築地 → 渋谷", line: "東京地鐵日比谷線 轉 銀座線", time: "25分" } }, 
                  { time: "13:30", title: "澀谷午餐", desc: "魚米/美食街", icon: "🍽️", location: "渋谷スクランブルスクエア", transport: { route: "PARCO → 餐廳", line: "步行", time: "10分" }, tips: "【澀谷 飲食5選】\\n1. 魚米 Uobei (新幹線軌道送餐壽司)\\n2. 鶴橋風月 (Scramble Square 大阪燒)\\n3. AFURI 阿夫利 (清爽柚子鹽拉麵)\\n4. 燒肉 牛角 (平價連鎖燒肉)\\n5. 名代 かつくら (Scramble Square 京都炸豬排)\\n💡 吃飽直接搭電梯上 SHIBUYA SKY 最順路！" }, 
-                 { time: "15:00", title: "SHIBUYA SKY", desc: "需預約", icon: "🏙️", location: "SHIBUYA SKY", transport: { route: "餐廳 → 展望台", line: "步行/電梯", time: "5-10分" } }, 
-                 { time: "17:30", title: "新宿 3D貓", desc: "東口", icon: "🐈", location: "クロス新宿ビジョン", transport: { route: "渋谷 → 新宿", line: "山手線", time: "7分" } }, 
+                 { time: "15:00", title: "SHIBUYA SKY", desc: "需預約", icon: "🏙️", location: "SHIBUYA SKY", transport: { route: "餐廳 → 展望台", line: "步行", time: "5分" } }, 
+                 { time: "17:30", title: "新宿 3D貓", desc: "東口", icon: "🐈", location: "クロス新宿ビジョン", transport: { route: "渋谷 → 新宿", line: "JR 山手線", time: "7分" } }, 
                  { time: "18:30", title: "新宿晚餐", desc: "串家物語/燒肉", icon: "🦖", location: "新宿東宝ビル", transport: { route: "東口 → 歌舞伎町", line: "步行", time: "10分" }, tips: "【新宿 飲食5選】\\n1. 串家物語 (自己動手炸串+巧克力噴泉)\\n2. 燒肉亭 六歌仙 (頂級和牛吃到飽)\\n3. 一蘭拉麵 新宿中央東口店 (經典拉麵)\\n4. 名代 宇奈とと (平價炭烤鰻魚飯)\\n5. 高島屋 Times Square 美食街 (精緻和食)\\n💡 哥吉拉頭像每整點會咆哮發光，去串家物語剛好可以看！" }, 
-                 { time: "20:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "新宿 → 稻荷町", line: "中央線+銀座線", time: "30分" } } 
+                 { time: "20:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "新宿 → 稻荷町", line: "JR 中央線 轉 東京地鐵銀座線", time: "30分" } } 
              ] },
              { day: 6, date: "4/22 (三)", title: "返台", events: [ 
                  { time: "10:00", title: "Check-out", desc: "阿美橫丁", icon: "🛍️", location: "アメ横商店街", transport: { route: "飯店 → 阿美橫丁", line: "步行", time: "10分" } }, 
-                 { time: "11:20", title: "往機場", desc: "搭 Skyliner", icon: "🚅", location: "京成上野駅", transport: { route: "京成上野 → 成田T1", line: "Skyliner", time: "41分" } }, 
+                 { time: "11:20", title: "往機場", desc: "搭 Skyliner", icon: "🚅", location: "京成上野駅", transport: { route: "京成上野 → 成田T1", line: "京成 Skyliner", time: "41分" } }, 
                  { time: "12:25", title: "抵達機場", desc: "成田 T1 (南翼)", icon: "✈️", location: "成田国際空港 第1ターミナル" }, 
                  { time: "14:25", title: "起飛返台", desc: "長榮 BR197", icon: "✈️", location: "", transport: "" } 
              ] }
@@ -375,7 +374,6 @@ html_code = """
             }
         ];
 
-        // 百科資料庫 (加入豐洲早上專區)
         const attractionInfos = [
             // --- Day 1 ---
             { id: "hijiri", name: "御茶之水 聖橋", icon: "🌉", tag: "聖地巡禮", desc: "電影《鈴芽之旅》經典場景。站在橋上可以同時看到紅、黃、橘三色電車交錯而過，是鐵道迷與影迷必拍聖地。", tips: "下午前往順光，拍攝效果最好。" },
@@ -533,13 +531,30 @@ html_code = """
                                                 </div>
                                             )}
 
+                                            {/* ✅ 更新：行程內的交通方式強制顯示路線名稱與專屬彩色標籤 */}
                                             {evt.transport && (
-                                                <div className="mb-3 bg-gray-50 p-2 rounded text-xs text-gray-600 flex items-center gap-2">
-                                                    <span>🚇 {evt.transport.route}</span>
-                                                    <span className="text-gray-400">|</span>
-                                                    <span>{evt.transport.time}</span>
+                                                <div className="mb-3 bg-slate-50 p-2.5 rounded-lg text-xs text-slate-600 flex flex-col gap-1.5 border border-slate-200">
+                                                    <div className="flex items-center gap-2 font-medium">
+                                                        <span>{evt.transport.line.includes('步行') && !evt.transport.line.includes('轉') ? '🚶' : '🚇'} {evt.transport.route}</span>
+                                                        <span className="text-slate-300">|</span>
+                                                        <span>⏱️ {evt.transport.time}</span>
+                                                    </div>
+                                                    {evt.transport.line && evt.transport.line !== '步行' && (
+                                                        <div className="mt-0.5">
+                                                            <span className={`inline-block px-2 py-1 rounded text-[11px] font-bold ${
+                                                                evt.transport.line.includes('計程車') ? 'bg-yellow-100 text-yellow-700 border border-yellow-200' : 
+                                                                evt.transport.line.includes('單車') ? 'bg-green-100 text-green-700 border border-green-200' :
+                                                                'bg-blue-100 text-blue-700 border border-blue-200'
+                                                            }`}>
+                                                                {evt.transport.line.includes('計程車') ? '🚕 ' : 
+                                                                 evt.transport.line.includes('單車') ? '🚲 ' : '🚊 '}
+                                                                {evt.transport.line}
+                                                            </span>
+                                                        </div>
+                                                    )}
                                                 </div>
                                             )}
+                                            
                                             <div className="flex gap-2">
                                                 <a href={mapUrl} target="_blank" className="flex-1 bg-gray-50 hover:bg-gray-100 text-gray-700 text-xs font-bold py-2 rounded-lg text-center no-underline">📍 地圖</a>
                                                 {!evt.hideRoute && dirUrl && <a href={dirUrl} target="_blank" className="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 text-xs font-bold py-2 rounded-lg text-center no-underline">🚀 路線</a>}
