@@ -204,7 +204,6 @@ html_code = """
             }
         };
 
-        // 行程資料 (已加入 Day 6 機場美食與伴手禮推薦)
         const itinerary = [
              { day: 1, date: "4/17 (五)", title: "抵達與鈴芽的起點", events: [ 
                  { time: "13:25", title: "抵達成田機場", desc: "T1 (長榮)", icon: "✈️", location: "成田国際空港 第1ターミナル", hideRoute: true, tips: "抵達 T1 後，先前往 B1 辦理兒童版西瓜卡與領取 Skyliner 車票。",
@@ -409,139 +408,46 @@ html_code = """
             }
         ];
 
-        const attractionInfos = [
-            // --- Day 1 ---
-            { id: "hijiri", name: "御茶之水 聖橋", icon: "🌉", tag: "聖地巡禮", desc: "電影《鈴芽之旅》經典場景。站在橋上可以同時看到紅、黃、橘三色電車交錯而過，是鐵道迷與影迷必拍聖地。", tips: "下午前往順光，拍攝效果最好。" },
-            { id: "akiba", name: "秋葉原 Electric Town", icon: "⚡", tag: "動漫/電器", desc: "日本次文化中心。滿街的動漫周邊、模型店、女僕咖啡廳與大型電器行。Yodobashi Akiba 是必逛地標。", tips: "旁邊的 Yodobashi 是吃喝玩樂一站式滿足的好地方！" },
-            { id: "akiba_food", name: "上野/秋葉原 飲食 (5選)", icon: "🍛", tag: "美食", desc: "Day 1 晚餐推薦：", tips: "推薦在 Yodobashi 吃飽，直攻 6F 打寶可夢機台！",
-                foodSpots: [
-                    { icon: "🍱", name: "Yodobashi 8F 美食街", desc: "和幸豬排/Meat Rush漢堡排，吃飽直接下樓玩", mapQuery: "ヨドバシAkiba" },
-                    { icon: "🍜", name: "九州 じゃんがら", desc: "秋葉原人氣豚骨拉麵，角肉軟爛", mapQuery: "九州じゃんがら 秋葉原本店" },
-                    { icon: "🍣", name: "壽司郎 上野店", desc: "扭蛋迴轉壽司，小孩最愛", mapQuery: "スシロー 上野店" },
-                    { icon: "🥩", name: "敘敘苑 上野不忍口店", desc: "高級和牛燒肉，環境舒適", mapQuery: "叙々苑 上野不忍口店" },
-                    { icon: "🍜", name: "鴨 to 蔥", desc: "上野排隊人氣清湯拉麵", mapQuery: "らーめん 鴨to葱 上野" }
-                ]
-            },
-            
-            // --- Day 2 ---
-            { id: "toyosu_market_morning", name: "豐洲市場 早上/點心", icon: "🐟", tag: "市場", desc: "Day 2 早上行程：逛逛千客萬來與市場水產棟，吃點海鮮與玉子燒墊胃。", tips: "因主力午餐將前往台場享用，建議在此與小孩分享小吃即可。",
-                foodSpots: [
-                    { icon: "🏮", name: "千客萬來", desc: "市場旁最新溫泉美食街，復古江戶風情", mapQuery: "豊洲 千客万来" },
-                    { icon: "🍳", name: "茂助玉子燒", desc: "市場內百年老店，甜甜的日式煎蛋捲", mapQuery: "豊洲市場 玉子焼" },
-                    { icon: "🍱", name: "海鮮丼 大江戶", desc: "超澎湃的新鮮海鮮丼", mapQuery: "海鮮丼 大江戸 豊洲市場" },
-                    { icon: "🍤", name: "炸物 八千代", desc: "炸大蝦與炸豬排定食", mapQuery: "とんかつ 八千代 豊洲市場" },
-                    { icon: "🍣", name: "壽司大", desc: "超人氣排隊壽司", mapQuery: "寿司大 豊洲市場" }
-                ]
-            },
-            { id: "odaiba", name: "台場 獨角獸鋼彈", icon: "🤖", tag: "鋼彈", desc: "位於 DiverCity 廣場前。白天有 4 場變身秀(獨角獸模式->毀滅模式)，晚上有燈光秀。", tips: "變身時間：11:00, 13:00, 15:00, 17:00。" },
-            { id: "odaiba_food", name: "台場 午餐 (5選)", icon: "🍔", tag: "美食", desc: "Day 2 午餐推薦 (方便銜接鋼彈表演)：", tips: "在 DiverCity 用餐，吃完剛好出去廣場看變身秀！",
-                foodSpots: [
-                    { icon: "🍜", name: "田中商店", desc: "DiverCity 2F 超濃郁豚骨拉麵", mapQuery: "田中商店 ダイバーシティ東京プラザ店" },
-                    { icon: "🍤", name: "金子半之助", desc: "DiverCity 2F 超人氣排隊天丼", mapQuery: "日本橋 天丼 金子半之助 ダイバーシティ東京プラザ店" },
-                    { icon: "🍡", name: "串家物語", desc: "DiverCity 6F 自己動手炸串吃到飽", mapQuery: "串家物語 ダイバーシティ東京プラザ店" },
-                    { icon: "🍳", name: "蘋果樹蛋包飯", desc: "Aqua City 5F 知名蛋包飯", mapQuery: "ポムの樹 アクアシティお台場店" },
-                    { icon: "🥩", name: "燒肉 平城苑", desc: "Aqua City 1F 看海景吃黑毛和牛燒肉", mapQuery: "焼肉 平城苑 アクアシティお台場店" }
-                ]
-            },
-            { id: "teamlab", name: "teamLab Planets", icon: "✨", tag: "沉浸式藝術", desc: "需赤腳進入的水中美術館。光影與水面的結合非常夢幻，適合大人小孩互動。", tips: "這天會在台場周邊頻繁轉車，建議直接購買「百合海鷗號一日券」！" },
-            { id: "toyosu_food", name: "豐洲 晚餐 (5選)", icon: "🍽️", tag: "美食", desc: "Day 2 晚餐推薦 (teamLab後，LaLaport內)：", tips: "LaLaport 3樓有扭蛋機與玩具專賣店喔！",
-                foodSpots: [
-                    { icon: "🍽️", name: "100本のスプーン", desc: "LaLaport 內，高質感親子餐廳，可點半份", mapQuery: "100本のスプーン ららぽーと豊洲" },
-                    { icon: "🥩", name: "燒肉トラジ Toraji", desc: "LaLaport 內，爽吃厚切牛舌與和牛", mapQuery: "焼肉トラジ ららぽーと豊洲店" },
-                    { icon: "🍱", name: "築地食堂 源ちゃん", desc: "LaLaport 內，熟食海鮮定食", mapQuery: "築地食堂 源ちゃん ららぽーと豊洲店" },
-                    { icon: "🍜", name: "麵屋 黑琥", desc: "LaLaport 內，豚骨醬油日式拉麵", mapQuery: "麺や 黒琥 ららぽーと豊洲" },
-                    { icon: "🍲", name: "玉丁本店", desc: "LaLaport 內，濃郁的味噌燉烏龍麵", mapQuery: "玉丁本店 ららぽーと豊洲店" }
-                ]
-            },
-            
-            // --- Day 3 ---
-            { id: "sensoji", name: "淺草寺 & 雷門", icon: "🏮", tag: "傳統文化", desc: "東京最古老的寺廟。巨大的紅燈籠「雷門」是東京象徵。仲見世通有許多人形燒、仙貝等傳統小吃。", tips: "遊客非常多，建議早上9點前抵達拍照。" },
-            { id: "skytree", name: "東京晴空塔", icon: "🗼", tag: "地標/寶可夢", desc: "世界最高電波塔。樓下 Solamachi 商場有寶可夢中心(烈空坐鎮店)與 Kirby Cafe。" },
-            { id: "skytree_food", name: "晴空塔 午餐 (5選)", icon: "🍱", tag: "美食", desc: "Day 3 午餐推薦：", tips: "假日時晴空塔餐廳人潮多，建議提早抽號或選美食街。",
-                foodSpots: [
-                    { icon: "🍜", name: "六厘舍", desc: "晴空塔 6F 超人氣排隊沾麵", mapQuery: "六厘舎 TOKYO スカイツリータウン・ソラマチ店" },
-                    { icon: "🍣", name: "迴轉壽司 根室花丸", desc: "晴空塔 6F 北海道新鮮壽司 (需提早抽號)", mapQuery: "東京スカイツリータウン 回転寿司" },
-                    { icon: "🍱", name: "利久牛舌", desc: "晴空塔 6F 炭烤厚切牛舌 (有兒童咖哩)", mapQuery: "牛たん炭焼 利久 東京ソラマチ店" },
-                    { icon: "🥩", name: "燒肉 ぴゅあ Pure", desc: "晴空塔 11F 農協直送黑毛和牛", mapQuery: "焼肉 ぴゅあ 東京スカイツリータウン・ソラマチ店" },
-                    { icon: "🍽️", name: "Tabe-Terrace 美食街", desc: "晴空塔 3F 美食街免排隊挑選", mapQuery: "東京ソラマチ タベテラス" }
-                ]
-            },
-            { id: "asakusa_food", name: "淺草 晚餐 (5選)", icon: "🍣", tag: "美食", desc: "Day 3 晚餐推薦：", tips: "藏壽司 ROX店有專屬祭典遊戲，小孩最愛！",
-                foodSpots: [
-                    { icon: "🍣", name: "藏壽司 淺草ROX店", desc: "全球旗艦店，有祭典遊戲區與巨大扭蛋", mapQuery: "くら寿司 浅草ROX店" },
-                    { icon: "🍜", name: "一蘭拉麵 淺草店", desc: "獨立包廂位的經典豚骨拉麵", mapQuery: "一蘭 浅草店" },
-                    { icon: "🥩", name: "平城苑 淺草雷門店", desc: "雷門旁的高級和牛燒肉", mapQuery: "東京焼肉 平城苑 浅草雷門店" },
-                    { icon: "🍲", name: "淺草今半", desc: "百年壽喜燒老店，黑毛和牛入口即化", mapQuery: "浅草今半 国際通り本店" },
-                    { icon: "🍘", name: "淺草炸肉餅", desc: "街邊現炸酥脆小吃", mapQuery: "浅草メンチ" }
-                ]
-            },
-            
-            // --- Day 4 ---
-            { id: "karuizawa", name: "輕井澤", icon: "🚲", tag: "度假勝地", desc: "避暑勝地，充滿歐風建築與森林。車站旁就是超大 Outlet，舊輕井澤銀座通適合騎車漫遊。", tips: "將逛 Outlet 改到下午，買完戰利品就能直接搭新幹線，免提重物騎車！" },
-            { id: "karuizawa_food", name: "輕井澤 飲食 (5選)", icon: "🍱", tag: "美食", desc: "Day 4 午餐推薦：", tips: "Outlet 餐廳容易客滿，建議 11:30 前入座。",
-                foodSpots: [
-                    { icon: "🍱", name: "明治亭", desc: "Outlet 內，長野名物醬汁豬排丼", mapQuery: "明治亭 軽井沢店" },
-                    { icon: "🍜", name: "濃熟雞白湯 錦", desc: "Outlet 美食街內，湯頭甘甜拉麵", mapQuery: "濃熟鶏白湯 錦 軽井沢" },
-                    { icon: "🥩", name: "Aging Beef", desc: "Outlet 內，熟成和牛燒肉", mapQuery: "エイジング・ビーフ 軽井沢" },
-                    { icon: "🥢", name: "川上庵", desc: "舊輕井澤 人氣信州蕎麥麵", mapQuery: "軽井沢 川上庵 本店" },
-                    { icon: "🐶", name: "Snoopy Village", desc: "舊輕井澤 史努比主題茶屋", mapQuery: "SNOOPY Village 軽井沢店" }
-                ]
-            },
-            
-            // --- Day 5 ---
-            { id: "tsukiji", name: "築地場外市場", icon: "🐟", tag: "傳統市場", desc: "被稱為東京的廚房。早上充滿各式現做海鮮小吃、玉子燒與乾貨，是體驗日本飲食文化的好地方。", tips: "築地市場多為街邊小吃或立食，請留意不要邊走邊吃（需在店家指定區域吃完）。" },
-            { id: "tsukiji_food", name: "築地市場 飲食 (5選)", icon: "🥘", tag: "美食", desc: "Day 5 早餐推薦：", tips: "狐狸屋極受歡迎，建議一早就去排隊！",
-                foodSpots: [
-                    { icon: "🥘", name: "狐狸屋 牛雜/牛丼", desc: "超濃郁的排隊名店，適合喜歡重口味的爸爸", mapQuery: "きつねや 築地" },
-                    { icon: "🍳", name: "築地 山長", desc: "街邊現煎玉子燒，100日圓一串，小孩最愛", mapQuery: "築地山長" },
-                    { icon: "🍘", name: "築地 可樂餅", desc: "現炸的明太子文字燒可樂餅，極推", mapQuery: "築地コロッケ" },
-                    { icon: "🍣", name: "黑銀 鮪魚店", desc: "頂級黑鮪魚生魚片與握壽司，立食體驗", mapQuery: "築地黒銀 まぐろや" },
-                    { icon: "🍣", name: "壽司三味 本店", desc: "知名連鎖壽司本店，價格透明、座位寬敞", mapQuery: "すしざんまい 本店" }
-                ]
-            },
-            { id: "shibuya", name: "SHIBUYA SKY", icon: "🏙️", tag: "高空夜景", desc: "目前東京最熱門的露天展望台，360度無死角美景。角落的玻璃扶手是網美必拍點。", tips: "日落時段最美，但需提早一個月搶票。" },
-            { id: "shinjuku", name: "新宿 3D 貓", icon: "🐈", tag: "科技看板", desc: "新宿東口廣場對面大樓的 4K 彎曲螢幕。巨大的三花貓會探頭打招呼，非常逼真可愛。", tips: "每 15 分鐘會有一次特殊演出。" },
-            { id: "shibuya_food", name: "澀谷 午餐 (5選)", icon: "🍣", tag: "美食", desc: "Day 5 午餐推薦：", tips: "吃飽直接搭電梯上 SHIBUYA SKY 最順路！",
-                foodSpots: [
-                    { icon: "🍣", name: "魚米 Uobei", desc: "新幹線軌道送餐壽司，平價好玩", mapQuery: "魚べい 渋谷道玄坂店" },
-                    { icon: "🍳", name: "鶴橋風月", desc: "Scramble Square 12F 大阪燒", mapQuery: "鶴橋風月 渋谷スクランブルスクエア店" },
-                    { icon: "🍜", name: "AFURI 阿夫利", desc: "PARCO B1 清爽柚子鹽拉麵", mapQuery: "AFURI 渋谷パルコ" },
-                    { icon: "🥩", name: "燒肉 牛角 渋谷店", desc: "平價連鎖燒肉，菜單豐富", mapQuery: "牛角 渋谷店" },
-                    { icon: "🍱", name: "名代 かつくら", desc: "Scramble Square 14F 京都炸豬排", mapQuery: "名代 かつくら 渋谷スクランブルスクエア店" }
-                ]
-            },
-            { id: "shinjuku_food", name: "新宿 晚餐 (5選)", icon: "🍤", tag: "美食", desc: "Day 5 晚餐推薦：", tips: "哥吉拉頭像每整點會咆哮，去串家物語剛好可以看！",
-                foodSpots: [
-                    { icon: "🍤", name: "串家物語", desc: "東寶大樓，自己動手炸串吃到飽+巧克力噴泉", mapQuery: "串家物語 新宿東宝ビル店" },
-                    { icon: "🥩", name: "燒肉亭 六歌仙", desc: "頂級和牛吃到飽", mapQuery: "焼肉亭 六歌仙 新宿" },
-                    { icon: "🍜", name: "一蘭拉麵", desc: "新宿中央東口店，經典獨立包廂拉麵", mapQuery: "一蘭 新宿中央東口店" },
-                    { icon: "🍱", name: "名代 宇奈とと", desc: "平價高CP值炭烤鰻魚飯", mapQuery: "名代 宇奈とと 新宿" },
-                    { icon: "🍽️", name: "高島屋 Times Square", desc: "12-14F 美食街，免排隊挑選", mapQuery: "新宿タカシマヤ タイムズスクエア" }
-                ]
-            },
-            
-            // --- Day 6 (機場推薦) ---
-            { id: "narita_food", name: "成田 T1 餐廳 (5選)", icon: "🍜", tag: "美食", desc: "回程搭機前的最後一餐（多位於中央大樓 4F）：", tips: "若時間充裕，強烈推薦吃碗「とみ田」沾麵！",
-                foodSpots: [
-                    { icon: "🍜", name: "中華蕎麦 とみ田", desc: "千葉松戶超人氣沾麵名店，機場就能吃到", mapQuery: "中華蕎麦 とみ田 成田空港" },
-                    { icon: "🍚", name: "八代目儀兵衛", desc: "京都百年米店，極致美味的白飯與和食定食", mapQuery: "八代目儀兵衛 成田空港" },
-                    { icon: "🍲", name: "だし茶漬け えん", desc: "高湯茶泡飯，清爽暖胃，適合搭機前享用", mapQuery: "だし茶漬け えん 成田空港" },
-                    { icon: "🥢", name: "杵屋麦丸", desc: "中央大樓 5F。平價美味的自助式讚岐烏龍麵", mapQuery: "杵屋麦丸 成田空港" },
-                    { icon: "🍣", name: "壽司 京辰", desc: "入關後(免稅區)的高品質江戶前壽司", mapQuery: "寿司 京辰 成田空港" }
-                ]
-            },
-            { id: "narita_souvenir", name: "成田 T1 伴手禮 (5選)", icon: "🎁", tag: "購物", desc: "最後衝刺！入關前或 FaSoLa 免稅店必買清單：", tips: "液體或果凍狀伴手禮務必放托運行李，過安檢入關後再買免稅品最方便直接手提上機！",
-                foodSpots: [
-                    { icon: "🍌", name: "東京ばな奈 (Tokyo Banana)", desc: "經典不敗，常有寶可夢或聯名限定包裝", mapQuery: "FaSoLa 成田空港" },
-                    { icon: "🍪", name: "PRESS BUTTER SAND", desc: "酥脆外皮與焦糖奶油夾心，質感極佳", mapQuery: "FaSoLa 成田空港" },
-                    { icon: "🧀", name: "NY PERFECT CHEESE", desc: "超人氣排隊起司奶油脆餅，送禮超有面子", mapQuery: "FaSoLa 成田空港" },
-                    { icon: "🍫", name: "ROYCE' 生巧克力", desc: "北海道名產，機場免稅店永遠的熱銷冠軍", mapQuery: "FaSoLa 成田空港" },
-                    { icon: "✈️", name: "TRAVELER'S FACTORY", desc: "中央大樓 4F(入關前)。機場限定版文具與筆記本", mapQuery: "TRAVELER'S FACTORY AIRPORT" }
-                ]
-            }
-        ];
+        const AttractionView = () => (
+             <div className="h-full overflow-y-auto p-4 pb-24 space-y-4">
+                <div className="text-center mb-6"><h2 className="text-xl font-bold text-gray-800">景點百科</h2><p className="text-indigo-600 text-sm">依行程時序 Day 1 ~ Day 6 排序</p></div>
+                {attractionInfos.map((item, idx) => (
+                    <div key={idx} className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm flex flex-col gap-2">
+                        <div className="flex items-center gap-3">
+                             <div className="text-3xl">{item.icon}</div>
+                             <div>
+                                 <h3 className="font-bold text-gray-800">{item.name}</h3>
+                                 <span className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded">{item.tag}</span>
+                             </div>
+                        </div>
+                        {item.desc && <p className="text-sm text-gray-600 mt-2 whitespace-pre-line">{item.desc}</p>}
+                        
+                        {item.foodSpots && (
+                            <div className="mt-2 space-y-2">
+                                {item.foodSpots.map((spot, sIdx) => {
+                                    const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.mapQuery)}`;
+                                    return (
+                                        <div key={sIdx} className="bg-gray-50 p-2 rounded-lg flex items-start gap-2 border border-gray-100">
+                                            <div className="text-lg leading-none mt-0.5">{spot.icon}</div>
+                                            <div className="flex-1">
+                                                <a href={mapUrl} target="_blank" className="font-bold text-indigo-600 hover:text-indigo-800 text-[14px] no-underline flex items-center gap-1 transition-colors">
+                                                    {spot.name} 
+                                                    <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                                </a>
+                                                <p className="text-[12px] text-gray-500 mt-1 m-0 leading-snug">{spot.desc}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        )}
+                        
+                        {item.tips && <div className="bg-yellow-50 text-yellow-800 text-[13px] p-2 rounded-lg border border-yellow-100 mt-2 leading-relaxed font-medium">💡 {item.tips}</div>}
+                    </div>
+                ))}
+             </div>
+        );
 
-        // --- View Components ---
         const ItineraryView = () => {
             const [activeDay, setActiveDay] = useState(0);
             return (
@@ -764,46 +670,6 @@ html_code = """
                 </div>
             );
         };
-        
-        const AttractionView = () => (
-             <div className="h-full overflow-y-auto p-4 pb-24 space-y-4">
-                <div className="text-center mb-6"><h2 className="text-xl font-bold text-gray-800">景點百科</h2><p className="text-indigo-600 text-sm">依行程時序 Day 1 ~ Day 6 排序</p></div>
-                {attractionInfos.map((item, idx) => (
-                    <div key={idx} className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm flex flex-col gap-2">
-                        <div className="flex items-center gap-3">
-                             <div className="text-3xl">{item.icon}</div>
-                             <div>
-                                 <h3 className="font-bold text-gray-800">{item.name}</h3>
-                                 <span className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded">{item.tag}</span>
-                             </div>
-                        </div>
-                        {item.desc && <p className="text-sm text-gray-600 mt-2 whitespace-pre-line">{item.desc}</p>}
-                        
-                        {item.foodSpots && (
-                            <div className="mt-2 space-y-2">
-                                {item.foodSpots.map((spot, sIdx) => {
-                                    const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.mapQuery)}`;
-                                    return (
-                                        <div key={sIdx} className="bg-gray-50 p-2 rounded-lg flex items-start gap-2 border border-gray-100">
-                                            <div className="text-lg leading-none mt-0.5">{spot.icon}</div>
-                                            <div className="flex-1">
-                                                <a href={mapUrl} target="_blank" className="font-bold text-indigo-600 hover:text-indigo-800 text-[14px] no-underline flex items-center gap-1 transition-colors">
-                                                    {spot.name} 
-                                                    <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                                                </a>
-                                                <p className="text-[12px] text-gray-500 mt-1 m-0 leading-snug">{spot.desc}</p>
-                                            </div>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        )}
-                        
-                        {item.tips && <div className="bg-yellow-50 text-yellow-800 text-[13px] p-2 rounded-lg border border-yellow-100 mt-2 leading-relaxed font-medium">💡 {item.tips}</div>}
-                    </div>
-                ))}
-             </div>
-        );
 
         const BookingView = () => (
             <div className="h-full overflow-y-auto p-4 pb-24 space-y-6">
@@ -854,11 +720,12 @@ html_code = """
                         {view === 'booking' && <BookingView />}
                     </div>
 
-                    <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-1 pt-2 pb-8 safe-bottom flex justify-around items-center z-30 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
-                        <button onClick={() => setView('list')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[65px] transition-all ${view === 'list' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.list}<span className="text-[11px] font-bold">行程</span></button>
-                        <button onClick={() => setView('map')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[65px] transition-all ${view === 'map' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.map}<span className="text-[11px] font-bold">地圖</span></button>
-                        <button onClick={() => setView('attraction')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[65px] transition-all ${view === 'attraction' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.attraction}<span className="text-[11px] font-bold">百科</span></button>
-                        <button onClick={() => setView('booking')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[65px] transition-all ${view === 'booking' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.booking}<span className="text-[11px] font-bold">預約</span></button>
+                    {/* ✅ 將選單向左靠攏，並在右側預留空間避開 Streamlit 紅色圖示 */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 pl-4 pr-20 pt-2 pb-8 safe-bottom flex justify-start gap-5 items-center z-30 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+                        <button onClick={() => setView('list')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[60px] transition-all ${view === 'list' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.list}<span className="text-[11px] font-bold">行程</span></button>
+                        <button onClick={() => setView('map')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[60px] transition-all ${view === 'map' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.map}<span className="text-[11px] font-bold">地圖</span></button>
+                        <button onClick={() => setView('attraction')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[60px] transition-all ${view === 'attraction' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.attraction}<span className="text-[11px] font-bold">百科</span></button>
+                        <button onClick={() => setView('booking')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[60px] transition-all ${view === 'booking' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.booking}<span className="text-[11px] font-bold">預約</span></button>
                     </div>
                 </div>
             );
