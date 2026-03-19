@@ -87,7 +87,7 @@ html_code = """
             booking: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
         };
 
-        // 親子周邊景點與【擴充至 5 間餐食推薦】資料 (全面更新對應行程)
+        // 親子周邊景點與餐食推薦 (加入築地選項)
         const surroundingGuides = {
             ueno: {
                 name: '上野 / 秋葉原',
@@ -100,16 +100,6 @@ html_code = """
                     { name: '壽司郎 上野店', desc: '自動化點餐，小孩愛吃扭蛋好玩，優質備案。', tag: '迴轉壽司', icon: '🍣', mapQuery: 'スシロー 上野店' },
                     { name: '敘敘苑 上野不忍口店', desc: '頂級燒肉代名詞！環境舒適，適合犒賞全家。', tag: '高級燒肉', icon: '🥩', mapQuery: '叙々苑 上野不忍口店' },
                     { name: '鴨 to 蔥', desc: '上野超人氣排隊名店，清甜鴨蔥湯頭極獨特。', tag: '排隊拉麵', icon: '🍜', mapQuery: 'らーめん 鴨to葱 上野' }
-                ]
-            },
-            tsukiji: {
-                name: '築地市場',
-                spots: [
-                    { name: '築地場外市場', desc: '東京的廚房！早上充滿各式現做海鮮小吃與乾貨。', tag: '傳統市場', icon: '🐟', mapQuery: '築地場外市場' },
-                    { name: '狐狸屋 牛丼/牛雜', desc: '超濃郁的排隊名店，適合喜歡重口味的爸爸。', tag: '排隊名店', icon: '🥘', mapQuery: 'きつねや 築地' },
-                    { name: '築地 山長', desc: '街邊現煎玉子燒，100日圓一串，小孩最愛。', tag: '玉子燒', icon: '🍳', mapQuery: '築地山長' },
-                    { name: '築地 可樂餅', desc: '現炸的明太子文字燒可樂餅，邊走邊吃極推。', tag: '街邊點心', icon: '🍘', mapQuery: '築地コロッケ' },
-                    { name: '壽司三味 本店', desc: '知名連鎖壽司本店，價格透明、座位寬敞好排。', tag: '平價壽司', icon: '🍣', mapQuery: 'すしざんまい 本店' }
                 ]
             },
             toyosu: {
@@ -171,6 +161,17 @@ html_code = """
                     { name: 'Aging Beef', desc: 'Outlet 內。主打熟成和牛燒肉，肉質柔軟。', tag: '熟成燒肉', icon: '🥩', mapQuery: 'エイジング・ビーフ 軽井沢' },
                     { name: 'Snoopy Village', desc: '舊輕井澤。超可愛的史努比茶屋與伴手禮。', tag: '卡通茶屋', icon: '🐶', mapQuery: 'SNOOPY Village 軽井沢店' },
                     { name: '川上庵', desc: '舊輕井澤名店。信州蕎麥麵與炸天婦羅。', tag: '蕎麥麵', icon: '🥢', mapQuery: '軽井沢 川上庵 本店' }
+                ]
+            },
+            tsukiji: {
+                name: '築地市場',
+                spots: [
+                    { name: '築地場外市場', desc: '東京的廚房！早上充滿各式現做海鮮小吃與乾貨。', tag: '傳統市場', icon: '🐟', mapQuery: '築地場外市場' },
+                    { name: '狐狸屋 牛雜/牛丼', desc: '超濃郁的排隊名店，適合喜歡重口味的爸爸。', tag: '排隊名店', icon: '🥘', mapQuery: 'きつねや 築地' },
+                    { name: '築地 山長', desc: '街邊現煎玉子燒，100日圓一串，小孩最愛。', tag: '玉子燒', icon: '🍳', mapQuery: '築地山長' },
+                    { name: '築地 可樂餅', desc: '現炸的明太子文字燒可樂餅，極推。', tag: '街邊點心', icon: '🍘', mapQuery: '築地コロッケ' },
+                    { name: '黑銀 鮪魚店', desc: '頂級黑鮪魚生魚片與握壽司，立食體驗。', tag: '黑鮪魚', icon: '🍣', mapQuery: '築地黒銀 まぐろや' },
+                    { name: '壽司三味 本店', desc: '知名連鎖壽司本店，價格透明、座位寬敞好排。', tag: '平價壽司', icon: '🍣', mapQuery: 'すしざんまい 本店' }
                 ]
             },
             shibuya: {
@@ -242,7 +243,7 @@ html_code = """
              ] },
              { day: 5, date: "4/21 (二)", title: "築地・渋谷・新宿", events: [ 
                  { time: "08:40", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
-                 { time: "09:00", title: "築地場外市場", desc: "早餐", icon: "🐟", location: "築地場外市場", transport: { route: "稻荷町 → 築地", line: "銀座線+日比谷線", time: "20分" } }, 
+                 { time: "09:00", title: "築地場外市場", desc: "早餐", icon: "🐟", location: "築地場外市場", transport: { route: "稻荷町 → 築地", line: "銀座線+日比谷線", time: "20分" }, tips: "【築地市場 飲食5選】\\n1. 狐狸屋 (超濃郁牛雜/牛丼)\\n2. 築地 山長 (100円排隊玉子燒)\\n3. 築地 可樂餅 (明太子文字燒口味)\\n4. 黑銀 鮪魚店 (頂級黑鮪魚生魚片)\\n5. 壽司三味 本店 (知名平價壽司)\\n💡 狐狸屋極受歡迎，建議一早就去排隊！" }, 
                  { time: "12:00", title: "渋谷 PARCO", desc: "寶可夢", icon: "🎮", location: "渋谷パルコ", transport: { route: "築地 → 渋谷", line: "日比谷線+銀座線", time: "25分" } }, 
                  { time: "13:30", title: "澀谷午餐", desc: "魚米/美食街", icon: "🍽️", location: "渋谷スクランブルスクエア", transport: { route: "PARCO → 餐廳", line: "步行", time: "10分" }, tips: "【澀谷 飲食5選】\\n1. 魚米 Uobei (新幹線軌道送餐壽司)\\n2. 鶴橋風月 (Scramble Square 大阪燒)\\n3. AFURI 阿夫利 (清爽柚子鹽拉麵)\\n4. 燒肉 牛角 (平價連鎖燒肉)\\n5. 名代 かつくら (Scramble Square 京都炸豬排)\\n💡 吃飽直接搭電梯上 SHIBUYA SKY 最順路！" }, 
                  { time: "15:00", title: "SHIBUYA SKY", desc: "需預約", icon: "🏙️", location: "SHIBUYA SKY", transport: { route: "餐廳 → 展望台", line: "步行/電梯", time: "5-10分" } }, 
@@ -367,7 +368,7 @@ html_code = """
             }
         ];
 
-        // 百科資料庫 (全面修正 Google Maps 格式)
+        // 百科資料庫 (加入築地選項)
         const attractionInfos = [
             // --- Day 1 ---
             { id: "hijiri", name: "御茶之水 聖橋", icon: "🌉", tag: "聖地巡禮", desc: "電影《鈴芽之旅》經典場景。站在橋上可以同時看到紅、黃、橘三色電車交錯而過，是鐵道迷與影迷必拍聖地。", tips: "下午前往順光，拍攝效果最好。" },
@@ -439,7 +440,17 @@ html_code = """
             },
             
             // --- Day 5 ---
-            { id: "shibuya", name: "SHIBUYA SKY", icon: "🏙️", tag: "高空夜景", desc: "目前東京最熱門的露天展望台，360度無死角美景。角落的玻璃扶手是網美必拍點。", tips: "日落時段最美，但需提早一個月搶票。" },
+            { id: "tsukiji", name: "築地場外市場", icon: "🐟", tag: "傳統市場", desc: "被稱為東京的廚房。早上充滿各式現做海鮮小吃、玉子燒與乾貨，是體驗日本飲食文化的好地方。", tips: "築地市場多為街邊小吃或立食，請留意不要邊走邊吃（需在店家指定區域吃完）。" },
+            { id: "tsukiji_food", name: "築地市場 飲食 (5選)", icon: "🥘", tag: "美食", desc: "Day 5 早餐推薦：", tips: "狐狸屋極受歡迎，建議一早就去排隊！",
+                foodSpots: [
+                    { icon: "🥘", name: "狐狸屋 牛雜/牛丼", desc: "超濃郁的排隊名店，適合喜歡重口味的爸爸", mapQuery: "きつねや 築地" },
+                    { icon: "🍳", name: "築地 山長", desc: "街邊現煎玉子燒，100日圓一串，小孩最愛", mapQuery: "築地山長" },
+                    { icon: "🍘", name: "築地 可樂餅", desc: "現炸的明太子文字燒可樂餅，極推", mapQuery: "築地コロッケ" },
+                    { icon: "🍣", name: "黑銀 鮪魚店", desc: "頂級黑鮪魚生魚片與握壽司，立食體驗", mapQuery: "築地黒銀 まぐろや" },
+                    { icon: "🍣", name: "壽司三味 本店", desc: "知名連鎖壽司本店，價格透明、座位寬敞", mapQuery: "すしざんまい 本店" }
+                ]
+            },
+            { id: "shibuya", name: "SHIBUYA SKY", icon: "🏙️", tag: "高空夜景", desc: "目前東京最熱門的露天展望台，360度無死角美景。角落的玻璃扶手是網美必拍點。", tips: "日落時段最美，但需提提早一個月搶票。" },
             { id: "shinjuku", name: "新宿 3D 貓", icon: "🐈", tag: "科技看板", desc: "新宿東口廣場對面大樓的 4K 彎曲螢幕。巨大的三花貓會探頭打招呼，非常逼真可愛。", tips: "每 15 分鐘會有一次特殊演出。" },
             { id: "shibuya_food", name: "澀谷 午餐 (5選)", icon: "🍣", tag: "美食", desc: "Day 5 午餐推薦：", tips: "吃飽直接搭電梯上 SHIBUYA SKY 最順路！",
                 foodSpots: [
@@ -486,7 +497,7 @@ html_code = """
                                 let prevLoc = i === 0 ? HOTEL_ADDRESS : itinerary[activeDay].events[i-1].location;
                                 if (activeDay === 0 && i < 2) prevLoc = null; 
                                 
-                                // ✅ 統一修復為官方標準 Google Maps API 網址
+                                // ✅ 統一修復為官方標準 Google Maps Search/Dir API 網址
                                 const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(evt.location)}`;
                                 const dirUrl = prevLoc ? `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(prevLoc)}&destination=${encodeURIComponent(evt.location)}&travelmode=transit` : null;
 
@@ -556,7 +567,7 @@ html_code = """
                 return (
                     <div className="w-full flex flex-col gap-3 p-2">
                         {guide.spots.map((spot, idx) => {
-                            // ✅ 統一修復為官方標準 Google Maps API 網址
+                            // ✅ 統一修復為官方標準 Google Maps Search API 網址
                             const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.mapQuery)}`;
                             return (
                                 <div key={idx} className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm flex flex-col gap-2 w-full">
@@ -606,16 +617,16 @@ html_code = """
                         
                         {mode === 'surrounding' && (
                             <div className="w-full flex flex-col items-center">
-                                {/* ✅ 新增築地分類並重排序，對應完整行程 */}
+                                {/* ✅ 重新排序：依時序 Day 1 到 Day 5 排列 (築地位於 Day 5，放在更右方) */}
                                 <div className="flex gap-2 mb-3 overflow-x-auto w-full justify-start flex-shrink-0 hide-scrollbar px-1 py-1">
                                     {[
                                         {id: 'ueno', name: '上野/秋葉原'},
-                                        {id: 'tsukiji', name: '築地'},
                                         {id: 'toyosu', name: '豐洲'}, 
                                         {id: 'odaiba', name: '台場'}, 
                                         {id: 'asakusa', name: '淺草'},
                                         {id: 'skytree', name: '晴空塔'},
                                         {id: 'karuizawa', name: '輕井澤'},
+                                        {id: 'tsukiji', name: '築地'},
                                         {id: 'shibuya', name: '渋谷'},
                                         {id: 'shinjuku', name: '新宿'}
                                     ].map(area => (
@@ -699,7 +710,7 @@ html_code = """
                         {item.foodSpots && (
                             <div className="mt-2 space-y-2">
                                 {item.foodSpots.map((spot, sIdx) => {
-                                    // ✅ 統一修復為官方標準 Google Maps API 網址
+                                    // ✅ 統一修復為官方標準 Google Maps Search API 網址
                                     const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.mapQuery)}`;
                                     return (
                                         <div key={sIdx} className="bg-gray-50 p-2 rounded-lg flex items-start gap-2 border border-gray-100">
@@ -757,7 +768,7 @@ html_code = """
                         <div className="flex justify-between items-start">
                             <div><h1 className="text-2xl font-bold">東京親子之旅</h1><p className="text-indigo-100 text-sm mt-1">4/17 - 4/22 • 6天5夜</p></div>
                         </div>
-                        {/* ✅ 統一修復為官方標準 Google Maps API 網址 */}
+                        {/* ✅ 統一修復為官方標準 Google Maps Search API 網址 */}
                         <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(HOTEL_ADDRESS)}`} target="_blank" className="mt-4 bg-indigo-700/50 p-3 rounded-xl flex items-center gap-3 backdrop-blur-sm active:scale-95 transition-transform border border-indigo-500/30 text-left no-underline">
                             <div className="bg-white p-2 rounded-full text-indigo-600">
                                 {icons.map}
