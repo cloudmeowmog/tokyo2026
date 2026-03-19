@@ -87,104 +87,119 @@ html_code = """
             booking: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
         };
 
-        // 親子周邊景點與【擴充至 5 間餐食推薦】資料
+        // 親子周邊景點與【擴充至 5 間餐食推薦】資料 (全面更新對應行程)
         const surroundingGuides = {
             ueno: {
                 name: '上野 / 秋葉原',
                 spots: [
-                    { name: 'Yamashiroya 玩具店', desc: 'JR 上野站對面。整整 6 層樓的玩具專賣店，寶可夢周邊極度齊全。', tag: '玩具百貨', icon: '🧸', mapQuery: 'ヤマシロヤ 上野' },
-                    { name: '上野動物園', desc: '就在上野公園內。門票超便宜，適合早起帶小孩去看熊貓散步放電。', tag: '動物園', icon: '🐼', mapQuery: '上野動物園' },
-                    { name: 'Yodobashi 8F 美食街', desc: '【和食/洋食】有和幸豬排、Meat Rush，吃飽下樓直接打寶可夢機台。', tag: '定食漢堡排', icon: '🍛', mapQuery: 'ヨドバシAkiba' },
-                    { name: '壽司郎 上野店', desc: '【壽司】自動化無壓力點餐，小孩愛吃扭蛋好玩，上野晚餐優質備案。', tag: '迴轉壽司', icon: '🍣', mapQuery: 'スシロー 上野店' },
-                    { name: '九州 じゃんがら 拉麵', desc: '【拉麵】秋葉原本店。濃郁豚骨湯頭配上超軟爛的角肉，小孩也容易入口。', tag: '豚骨拉麵', icon: '🍜', mapQuery: '九州じゃんがら 秋葉原本店' },
-                    { name: '敘敘苑 上野不忍口店', desc: '【燒肉】日本頂級燒肉代名詞！環境寬敞舒適，和牛品質極佳，適合犒賞全家。', tag: '高級燒肉', icon: '🥩', mapQuery: '叙々苑 上野不忍口店' },
-                    { name: '鴨 to 蔥', desc: '【拉麵】上野超人氣排隊名店，清甜的鴨蔥湯頭非常獨特。', tag: '排隊拉麵', icon: '🍜', mapQuery: 'らーめん 鴨to葱 上野' }
+                    { name: '御茶之水 聖橋', desc: '鈴芽之旅經典場景，三線電車交會。', tag: '聖地巡禮', icon: '📸', mapQuery: '聖橋' },
+                    { name: 'Yamashiroya 玩具店', desc: 'JR 上野站對面。6 層樓玩具專賣店，寶可夢周邊齊全。', tag: '玩具百貨', icon: '🧸', mapQuery: 'ヤマシロヤ 上野' },
+                    { name: '上野動物園', desc: '門票超便宜，適合早起帶小孩看熊貓散步放電。', tag: '動物園', icon: '🐼', mapQuery: '上野動物園' },
+                    { name: 'Yodobashi 8F 美食街', desc: '有和幸豬排、Meat Rush，吃飽直攻6F寶可夢機台。', tag: '定食漢堡排', icon: '🍛', mapQuery: 'ヨドバシAkiba' },
+                    { name: '九州 じゃんがら 拉麵', desc: '秋葉原本店。濃郁豚骨湯配超軟爛角肉。', tag: '豚骨拉麵', icon: '🍜', mapQuery: '九州じゃんがら 秋葉原本店' },
+                    { name: '壽司郎 上野店', desc: '自動化點餐，小孩愛吃扭蛋好玩，優質備案。', tag: '迴轉壽司', icon: '🍣', mapQuery: 'スシロー 上野店' },
+                    { name: '敘敘苑 上野不忍口店', desc: '頂級燒肉代名詞！環境舒適，適合犒賞全家。', tag: '高級燒肉', icon: '🥩', mapQuery: '叙々苑 上野不忍口店' },
+                    { name: '鴨 to 蔥', desc: '上野超人氣排隊名店，清甜鴨蔥湯頭極獨特。', tag: '排隊拉麵', icon: '🍜', mapQuery: 'らーめん 鴨to葱 上野' }
+                ]
+            },
+            tsukiji: {
+                name: '築地市場',
+                spots: [
+                    { name: '築地場外市場', desc: '東京的廚房！早上充滿各式現做海鮮小吃與乾貨。', tag: '傳統市場', icon: '🐟', mapQuery: '築地場外市場' },
+                    { name: '狐狸屋 牛丼/牛雜', desc: '超濃郁的排隊名店，適合喜歡重口味的爸爸。', tag: '排隊名店', icon: '🥘', mapQuery: 'きつねや 築地' },
+                    { name: '築地 山長', desc: '街邊現煎玉子燒，100日圓一串，小孩最愛。', tag: '玉子燒', icon: '🍳', mapQuery: '築地山長' },
+                    { name: '築地 可樂餅', desc: '現炸的明太子文字燒可樂餅，邊走邊吃極推。', tag: '街邊點心', icon: '🍘', mapQuery: '築地コロッケ' },
+                    { name: '壽司三味 本店', desc: '知名連鎖壽司本店，價格透明、座位寬敞好排。', tag: '平價壽司', icon: '🍣', mapQuery: 'すしざんまい 本店' }
                 ]
             },
             toyosu: {
-                name: '豐洲周邊',
+                name: '豐洲 / 市場',
                 spots: [
-                    { name: '豐洲 LaLaport', desc: '超大型商場！內有 KidZania，3樓有玩具店、扭蛋機，非常適合放電。', tag: '購物遊樂', icon: '🛍️', mapQuery: 'ららぽーと豊洲' },
-                    { name: 'teamLab Planets', desc: '超夢幻沉浸式光影展，裡面有一整區可以踩水互動，小孩玩得超開心。', tag: '光影藝術', icon: '✨', mapQuery: 'teamLab Planets TOKYO' },
-                    { name: '100本のスプーン', desc: '【親子餐廳】LaLaport 內。質感極佳，小孩可點跟大人一模一樣的「半份」餐點。', tag: '親子餐廳', icon: '🍽️', mapQuery: '100本のスプーン ららぽーと豊洲' },
-                    { name: '燒肉トラジ (Toraji)', desc: '【燒肉】LaLaport 內。著名的厚切牛舌與和牛，商場內吃燒肉環境舒適無煙味。', tag: '和牛燒肉', icon: '🥩', mapQuery: '焼肉トラジ ららぽーと豊洲店' },
-                    { name: '麵屋 黑琥', desc: '【拉麵】LaLaport 內。提供多種口味的豚骨與醬油拉麵，方便快速。', tag: '日式拉麵', icon: '🍜', mapQuery: '麺や 黒琥 ららぽーと豊洲' },
-                    { name: '築地食堂 源ちゃん', desc: '【和食】LaLaport 內。提供美味生魚片丼與炸雞炸蝦熟食定食，滿足全家。', tag: '海鮮定食', icon: '🍱', mapQuery: '築地食堂 源ちゃん ららぽーと豊洲店' },
-                    { name: '茂助玉子燒', desc: '【小吃】豐洲市場百年老店，甜甜的日式煎蛋捲小孩絕對愛吃。', tag: '市場玉子燒', icon: '🍳', mapQuery: '豊洲市場 玉子焼' }
+                    { name: '千客萬來', desc: '市場旁最新溫泉美食街，復古江戶風情超好拍。', tag: '觀光美食', icon: '🏮', mapQuery: '豊洲 千客万来' },
+                    { name: '茂助玉子燒', desc: '市場內百年老店，甜甜的日式煎蛋捲小孩絕對愛吃。', tag: '市場玉子燒', icon: '🍳', mapQuery: '豊洲市場 玉子焼' },
+                    { name: '海鮮丼 大江戶', desc: '豐洲市場水產棟，超澎湃的新鮮海鮮丼。', tag: '豐盛海鮮', icon: '🍱', mapQuery: '海鮮丼 大江戸 豊洲市場' },
+                    { name: '炸物 八千代', desc: '不吃生食的好選擇！炸大蝦與炸豬排定食。', tag: '熟食定食', icon: '🍤', mapQuery: 'とんかつ 八千代 豊洲市場' },
+                    { name: 'teamLab Planets', desc: '需赤腳的水中光影美術館，小孩玩水超開心。', tag: '光影藝術', icon: '✨', mapQuery: 'teamLab Planets TOKYO' },
+                    { name: '豐洲 LaLaport', desc: '超大商場！3樓有玩具店、扭蛋機，非常適合放電。', tag: '購物遊樂', icon: '🛍️', mapQuery: 'ららぽーと豊洲' },
+                    { name: '100本のスプーン', desc: 'LaLaport 內親子餐廳。小孩可點大人一模一樣的半份餐。', tag: '親子餐廳', icon: '🍽️', mapQuery: '100本のスプーン ららぽーと豊洲' },
+                    { name: '燒肉トラジ (Toraji)', desc: 'LaLaport 內吃厚切牛舌與和牛，舒適無煙味。', tag: '和牛燒肉', icon: '🥩', mapQuery: '焼肉トラジ ららぽーと豊洲店' }
                 ]
             },
             odaiba: {
                 name: '台場周邊',
                 spots: [
-                    { name: '鋼彈基地 (DiverCity)', desc: '滿滿的鋼彈模型與限定商品，父子一起買瘋的聖地！', tag: '模型', icon: '🤖', mapQuery: 'ガンダムベース東京' },
-                    { name: 'LEGOLAND 探索中心', desc: '室內樂高樂園，超多互動設施與積木池，完全為小孩打造。', tag: '樂高樂園', icon: '🧱', mapQuery: 'レゴランド・ディスカバリー・センター東京' },
-                    { name: '東京拉麵國技館 舞', desc: '【拉麵】Aqua City 5F。集結全日本6家拉麵名店，想吃沾麵、豚骨通通有。', tag: '拉麵聖地', icon: '🍜', mapQuery: '東京ラーメン国技館 舞' },
-                    { name: '燒肉 平城苑', desc: '【燒肉】Aqua City 1F。可以看著東京灣美景吃頂級黑毛和牛燒肉。', tag: '景觀燒肉', icon: '🥩', mapQuery: '焼肉 平城苑 アクアシティお台場店' },
-                    { name: '築地玉壽司', desc: '【壽司】Decks 5F。食材新鮮的握壽司，也有提供熟食海鮮與兒童壽司盤。', tag: '握壽司', icon: '🍣', mapQuery: '築地玉寿司 デックス東京ビーチ店' },
-                    { name: '蘋果樹蛋包飯', desc: '【洋食】Aqua City 5F。日本知名的蛋包飯專賣店，口味選擇極多，小孩超愛。', tag: '蛋包飯', icon: '🍳', mapQuery: 'ポムの樹 アクアシティお台場店' },
-                    { name: 'KUA`AINA 漢堡', desc: '【美式】夏威夷人氣漢堡，酪梨漢堡與細薯條份量超大，看海景吃漢堡。', tag: '漢堡薯條', icon: '🍔', mapQuery: 'クア・アイナ アクアシティお台場店' }
+                    { name: '獨角獸鋼彈', desc: 'DiverCity 前實物大鋼彈，變身秀父子必看！', tag: '地標', icon: '🤖', mapQuery: '実物大ユニコーンガンダム立像' },
+                    { name: '鋼彈基地 (DiverCity)', desc: '滿滿的鋼彈模型與限定商品，買瘋的聖地。', tag: '模型', icon: '🛍️', mapQuery: 'ガンダムベース東京' },
+                    { name: 'LEGOLAND 探索中心', desc: '室內樂高樂園，超多積木池與遊樂設施。', tag: '樂高樂園', icon: '🧱', mapQuery: 'レゴランド・ディスカバリー・センター東京' },
+                    { name: '東京拉麵國技館 舞', desc: 'Aqua City 5F。集結全日本6家拉麵名店。', tag: '拉麵聖地', icon: '🍜', mapQuery: '東京ラーメン国技館 舞' },
+                    { name: '燒肉 平城苑', desc: 'Aqua City 1F。看著東京灣美景吃黑毛和牛燒肉。', tag: '景觀燒肉', icon: '🥩', mapQuery: '焼肉 平城苑 アクアシティお台場店' },
+                    { name: '蘋果樹蛋包飯', desc: 'Aqua City 5F。知名蛋包飯，口味極多小孩超愛。', tag: '蛋包飯', icon: '🍳', mapQuery: 'ポムの樹 アクアシティお台場店' }
                 ]
             },
             asakusa: {
                 name: '淺草周邊',
                 spots: [
-                    { name: '淺草寺 仲見世通', desc: '買人形燒、吃仙貝，感受濃濃的江戶傳統風情。', tag: '傳統文化', icon: '🏮', mapQuery: '浅草 仲見世商店街' },
-                    { name: '藏壽司 淺草ROX店', desc: '【壽司】全球最大旗艦店！有獨家祭典裝潢、射擊遊戲與巨大扭蛋機。', tag: '和食遊樂', icon: '🍣', mapQuery: 'くら寿司 浅草ROX店' },
-                    { name: '一蘭拉麵 淺草店', desc: '【拉麵】獨立座位的經典豚骨拉麵，小朋友通常很喜歡這種半包廂體驗。', tag: '經典拉麵', icon: '🍜', mapQuery: '一蘭 浅草店' },
-                    { name: '平城苑 淺草雷門店', desc: '【燒肉】雷門旁的高級燒肉店，提供A5和牛，肉質極度軟嫩。', tag: '和牛燒肉', icon: '🥩', mapQuery: '東京焼肉 平城苑 浅草雷門店' },
-                    { name: '淺草今半', desc: '【壽喜燒】日本最知名的百年壽喜燒老店，黑毛和牛入口即化。', tag: '頂級壽喜燒', icon: '🍲', mapQuery: '浅草今半 国際通り本店' },
-                    { name: '淺草炸肉餅', desc: '【小吃】仲見世通周邊的排隊名物，現炸的酥脆肉餅充滿肉汁。', tag: '街邊點心', icon: '🍘', mapQuery: '浅草メンチ' }
+                    { name: '淺草寺 雷門', desc: '巨大的紅燈籠是東京象徵，體驗傳統文化。', tag: '傳統文化', icon: '🏮', mapQuery: '雷門' },
+                    { name: '仲見世通', desc: '買人形燒、吃仙貝，感受濃濃的江戶風情。', tag: '商店街', icon: '🛍️', mapQuery: '浅草 仲見世商店街' },
+                    { name: '藏壽司 淺草ROX店', desc: '全球最大旗艦店！有祭典裝潢、射擊遊戲與巨大扭蛋。', tag: '和食遊樂', icon: '🍣', mapQuery: 'くら寿司 浅草ROX店' },
+                    { name: '一蘭拉麵 淺草店', desc: '獨立座位的經典豚骨，小朋友很喜歡這種包廂感。', tag: '經典拉麵', icon: '🍜', mapQuery: '一蘭 浅草店' },
+                    { name: '平城苑 淺草雷門店', desc: '雷門旁的高級燒肉店，提供A5和牛。', tag: '和牛燒肉', icon: '🥩', mapQuery: '東京焼肉 平城苑 浅草雷門店' },
+                    { name: '淺草今半', desc: '日本最知名的百年壽喜燒老店，和牛入口即化。', tag: '頂級壽喜燒', icon: '🍲', mapQuery: '浅草今半 国際通り本店' },
+                    { name: '淺草炸肉餅', desc: '排隊名物，現炸的酥脆肉餅充滿肉汁。', tag: '街邊點心', icon: '🍘', mapQuery: '浅草メンチ' }
                 ]
             },
             skytree: {
                 name: '晴空塔周邊',
                 spots: [
-                    { name: '寶可夢中心 (4F)', desc: '以烈空坐為主題的超大店面，商品極度齊全，旁邊有寶可夢機台可以玩。', tag: '寶可夢', icon: '🐾', mapQuery: 'ポケモンセンタースカイツリータウン' },
-                    { name: 'KIRBY CAFÉ 星之卡比', desc: '【主題餐廳】4F。超可愛主題餐點，門口的專賣店免預約就能買伴手禮。', tag: '主題餐廳', icon: '⭐', mapQuery: 'KIRBY CAFE TOKYO' },
-                    { name: '六厘舍', desc: '【拉麵】6F。日本超人氣「沾麵」名店，粗麵條配上濃郁的魚介豚骨湯頭。', tag: '排隊沾麵', icon: '🍜', mapQuery: '六厘舎 TOKYO スカイツリータウン・ソラマチ店' },
-                    { name: '燒肉 ぴゅあ (Pure)', desc: '【燒肉】11F。JA全農開設的燒肉店，主打安心安全的日本產黑毛和牛。', tag: '農協燒肉', icon: '🥩', mapQuery: '焼肉 ぴゅあ 東京スカイツリータウン・ソラマチ店' },
-                    { name: '迴轉壽司 根室花丸', desc: '【壽司】6F。來自北海道的超人氣排隊名店，食材極度新鮮，務必提早抽號。', tag: '排隊壽司', icon: '🍣', mapQuery: '東京スカイツリータウン 回転寿司' },
-                    { name: '利久牛舌', desc: '【和食】6F。仙台厚切牛舌名店，有特別提供兒童咖哩飯套餐，對小孩友善。', tag: '炭烤牛舌', icon: '🍱', mapQuery: '牛たん炭焼 利久 東京ソラマチ店' }
+                    { name: '東京晴空塔', desc: '世界最高電波塔，上層有展望台。', tag: '地標', icon: '🗼', mapQuery: '東京スカイツリー' },
+                    { name: '寶可夢中心 (4F)', desc: '烈空坐為主題的超大店面，旁邊有寶可夢機台。', tag: '寶可夢', icon: '🐾', mapQuery: 'ポケモンセンタースカイツリータウン' },
+                    { name: 'KIRBY CAFÉ', desc: '4F。超可愛星之卡比主題餐點與專賣店。', tag: '主題餐廳', icon: '⭐', mapQuery: 'KIRBY CAFE TOKYO' },
+                    { name: '六厘舍', desc: '6F。超人氣「沾麵」名店，粗麵配濃郁魚介豚骨湯。', tag: '排隊沾麵', icon: '🍜', mapQuery: '六厘舎 TOKYO スカイツリータウン・ソラマチ店' },
+                    { name: '燒肉 ぴゅあ (Pure)', desc: '11F。農協開設，主打安心安全日本黑毛和牛。', tag: '農協燒肉', icon: '🥩', mapQuery: '焼肉 ぴゅあ 東京スカイツリータウン・ソラマチ店' },
+                    { name: '迴轉壽司 根室花丸', desc: '6F。北海道超人氣名店，食材極新鮮需提早抽號。', tag: '排隊壽司', icon: '🍣', mapQuery: '東京スカイツリータウン 回転寿司' },
+                    { name: '利久牛舌', desc: '6F。仙台厚切牛舌，有提供兒童咖哩飯套餐。', tag: '炭烤牛舌', icon: '🍱', mapQuery: '牛たん炭焼 利久 東京ソラマチ店' },
+                    { name: 'Tabe-Terrace', desc: '3F。美食街選擇豐富且免排隊。', tag: '美食街', icon: '🍽️', mapQuery: '東京ソラマチ タベテラス' }
                 ]
             },
             karuizawa: {
                 name: '輕井澤周邊',
                 spots: [
-                    { name: '王子 Outlet 玩具區', desc: '除了爸媽血拚，商場內有 LEGO 樂高專賣店與扭蛋機，草地很適合小孩奔跑。', tag: '購物遊樂', icon: '🛍️', mapQuery: '軽井沢・プリンスショッピングプラザ' },
-                    { name: '雲場池', desc: '騎腳踏車抵達，適合帶小朋友一起觀察豐富的水岸植物與鴨群生態。', tag: '自然生態', icon: '🦆', mapQuery: '雲場池' },
-                    { name: '濃熟雞白湯 錦', desc: '【拉麵】Outlet 太陽與綠的美食街內。湯頭溫和甘甜的雞白湯拉麵。', tag: '雞白湯拉麵', icon: '🍜', mapQuery: '濃熟鶏白湯 錦 軽井沢' },
-                    { name: 'Aging Beef', desc: '【燒肉】Outlet 內。主打熟成和牛燒肉，肉質柔軟，逛累了隨時可以補充體力。', tag: '熟成燒肉', icon: '🥩', mapQuery: 'エイジング・ビーフ 軽井沢' },
-                    { name: '明治亭', desc: '【和食】Outlet 味之街內。長野名物「醬汁豬排丼」，甜鹹醬汁很受小朋友歡迎。', tag: '醬汁豬排', icon: '🍱', mapQuery: '明治亭 軽井沢店' },
-                    { name: 'Snoopy Village', desc: '【主題餐廳】舊輕井澤。超可愛的史努比茶屋，旁邊還有米飛兔森林廚房！', tag: '卡通茶屋', icon: '🐶', mapQuery: 'SNOOPY Village 軽井沢店' },
-                    { name: '川上庵', desc: '【和食】舊輕井澤名店。知名的信州蕎麥麵與炸天婦羅，麵條Q彈好吃。', tag: '蕎麥麵', icon: '🥢', mapQuery: '軽井沢 川上庵 本店' }
+                    { name: '雲場池', desc: '騎腳踏車抵達，適合帶小朋友觀察鴨群生態。', tag: '自然生態', icon: '🦆', mapQuery: '雲場池' },
+                    { name: '王子 Outlet', desc: '除了血拚，內有樂高專賣店與扭蛋機，草地可奔跑。', tag: '購物遊樂', icon: '🛍️', mapQuery: '軽井沢・プリンスショッピングプラザ' },
+                    { name: '明治亭', desc: 'Outlet 內。長野名物「醬汁豬排丼」，甜鹹醬汁下飯。', tag: '醬汁豬排', icon: '🍱', mapQuery: '明治亭 軽井沢店' },
+                    { name: '濃熟雞白湯 錦', desc: 'Outlet 內。湯頭溫和甘甜的雞白湯拉麵。', tag: '雞白湯拉麵', icon: '🍜', mapQuery: '濃熟鶏白湯 錦 軽井沢' },
+                    { name: 'Aging Beef', desc: 'Outlet 內。主打熟成和牛燒肉，肉質柔軟。', tag: '熟成燒肉', icon: '🥩', mapQuery: 'エイジング・ビーフ 軽井沢' },
+                    { name: 'Snoopy Village', desc: '舊輕井澤。超可愛的史努比茶屋與伴手禮。', tag: '卡通茶屋', icon: '🐶', mapQuery: 'SNOOPY Village 軽井沢店' },
+                    { name: '川上庵', desc: '舊輕井澤名店。信州蕎麥麵與炸天婦羅。', tag: '蕎麥麵', icon: '🥢', mapQuery: '軽井沢 川上庵 本店' }
                 ]
             },
             shibuya: {
                 name: '渋谷周邊',
                 spots: [
-                    { name: 'Pokémon Center Shibuya', desc: 'PARCO 6F。最潮的寶可夢中心，門口有一隻 1:1 的沉睡超夢。', tag: '寶可夢', icon: '🐾', mapQuery: 'ポケモンセンターシブヤ' },
-                    { name: 'SHIBUYA SKY', desc: '目前東京最熱門的露天展望台，360度無死角美景。', tag: '高空夜景', icon: '🏙️', mapQuery: 'SHIBUYA SKY' },
-                    { name: 'AFURI 阿夫利', desc: '【拉麵】PARCO B1。帶有柚子清香的清爽拉麵，不油膩非常受歡迎。', tag: '柚子拉麵', icon: '🍜', mapQuery: 'AFURI 渋谷パルコ' },
-                    { name: '燒肉 牛角 渋谷店', desc: '【燒肉】知名平價連鎖燒肉，菜單豐富、點餐無壓力，非常適合親子客群。', tag: '平價燒肉', icon: '🥩', mapQuery: '牛角 渋谷店' },
-                    { name: '魚米 (Uobei)', desc: '【壽司】無迴轉輸送帶，全由「高速新幹線軌道」直送座位，平價極具娛樂性。', tag: '新幹線壽司', icon: '🍣', mapQuery: '魚べい 渋谷道玄坂店' },
-                    { name: '鶴橋風月', desc: '【和食】Scramble Square 12F。超人氣大阪燒，師傅桌邊現煎，吃飽直接去展望台最順路。', tag: '大阪燒', icon: '🍳', mapQuery: '鶴橋風月 渋谷スクランブルスクエア店' },
-                    { name: '名代 かつくら', desc: '【和食】Scramble Square 14F。京都知名炸豬排，白飯高麗菜味噌湯可續加。', tag: '炸豬排', icon: '🍱', mapQuery: '名代 かつくら 渋谷スクランブルスクエア店' }
+                    { name: 'SHIBUYA SKY', desc: '目前最熱門的露天展望台，360度無死角美景。', tag: '高空夜景', icon: '🏙️', mapQuery: 'SHIBUYA SKY' },
+                    { name: 'Pokémon Center', desc: 'PARCO 6F。最潮的寶可夢中心，門口有1:1沉睡超夢。', tag: '寶可夢', icon: '🐾', mapQuery: 'ポケモンセンターシブヤ' },
+                    { name: '魚米 (Uobei)', desc: '全由「高速新幹線軌道」直送座位，平價極具娛樂性。', tag: '新幹線壽司', icon: '🍣', mapQuery: '魚べい 渋谷道玄坂店' },
+                    { name: '鶴橋風月', desc: 'Scramble Square 12F。大阪燒桌邊現煎，吃飽去展望台最順。', tag: '大阪燒', icon: '🍳', mapQuery: '鶴橋風月 渋谷スクランブルスクエア店' },
+                    { name: 'AFURI 阿夫利', desc: 'PARCO B1。帶有柚子清香的清爽拉麵，不油膩。', tag: '柚子拉麵', icon: '🍜', mapQuery: 'AFURI 渋谷パルコ' },
+                    { name: '燒肉 牛角 渋谷店', desc: '平價連鎖燒肉，菜單豐富無壓力，適合親子。', tag: '平價燒肉', icon: '🥩', mapQuery: '牛角 渋谷店' },
+                    { name: '名代 かつくら', desc: 'Scramble Square 14F。京都知名炸豬排，飯湯可續。', tag: '炸豬排', icon: '🍱', mapQuery: '名代 かつくら 渋谷スクランブルスクエア店' }
                 ]
             },
             shinjuku: {
                 name: '新宿周邊',
                 spots: [
-                    { name: '新宿 3D 貓', desc: '東口廣場對面 4K 彎曲螢幕，巨大的三花貓會探頭打招呼。', tag: '科技看板', icon: '🐈', mapQuery: 'クロス新宿ビジョン' },
-                    { name: '一蘭拉麵 新宿中央東口店', desc: '【拉麵】小朋友最愛的獨立小包廂座位，客製化口味最不容易出錯的選擇。', tag: '經典拉麵', icon: '🍜', mapQuery: '一蘭 新宿中央東口店' },
-                    { name: '燒肉亭 六歌仙', desc: '【燒肉】新宿超人氣頂級和牛吃到飽，甚至有帝王蟹，座位寬敞適合家庭。', tag: '和牛吃到飽', icon: '🥩', mapQuery: '焼肉亭 六歌仙 新宿' },
-                    { name: '串家物語 (東寶大樓)', desc: '【美食DIY】就在哥吉拉樓下！主打「自己動手炸串吃到飽」，還有巧克力噴泉。', tag: '炸串吃到飽', icon: '🍤', mapQuery: '串家物語 新宿東宝ビル店' },
-                    { name: '名代 宇奈とと', desc: '【和食】CP值超高的炭烤鰻魚飯，醬汁配飯非常香，小朋友也很喜歡。', tag: '平價鰻魚飯', icon: '🍱', mapQuery: '名代 宇奈とと 新宿' },
-                    { name: '高島屋 Times Square', desc: '【和食】12-14F 空間寬敞舒適，有豐富的日本料理美食街可以免排隊挑選。', tag: '百貨美食街', icon: '🍽️', mapQuery: '新宿タカシマヤ タイムズスクエア' }
+                    { name: '新宿 3D 貓', desc: '東口廣場 4K 彎曲螢幕，巨大的三花貓會探頭打招呼。', tag: '科技看板', icon: '🐈', mapQuery: 'クロス新宿ビジョン' },
+                    { name: '歌舞伎町 哥吉拉', desc: '東寶大樓上方的巨大哥吉拉，整點會咆哮發光。', tag: '地標', icon: '🦖', mapQuery: '新宿東宝ビル' },
+                    { name: '串家物語', desc: '就在哥吉拉樓下！「自己動手炸串吃到飽」+巧克力噴泉。', tag: '炸串吃到飽', icon: '🍤', mapQuery: '串家物語 新宿東宝ビル店' },
+                    { name: '燒肉亭 六歌仙', desc: '新宿超人氣頂級和牛吃到飽，座位寬敞適合家庭。', tag: '和牛吃到飽', icon: '🥩', mapQuery: '焼肉亭 六歌仙 新宿' },
+                    { name: '一蘭拉麵', desc: '中央東口店。小朋友最愛的獨立小包廂座位。', tag: '經典拉麵', icon: '🍜', mapQuery: '一蘭 新宿中央東口店' },
+                    { name: '名代 宇奈とと', desc: 'CP值超高的炭烤鰻魚飯，醬汁配飯非常香。', tag: '平價鰻魚飯', icon: '🍱', mapQuery: '名代 宇奈とと 新宿' },
+                    { name: '高島屋 Times Square', desc: '12-14F 空間寬敞舒適，豐富和食美食街免排隊。', tag: '百貨美食街', icon: '🍽️', mapQuery: '新宿タカシマヤ タイムズスクエア' }
                 ]
             }
         };
 
-        // 行程資料 (Day 1 拆分機場導航、各餐飲加入 5 選 1 提示)
+        // 行程資料
         const itinerary = [
              { day: 1, date: "4/17 (五)", title: "抵達與鈴芽的起點", events: [ 
                  { time: "13:25", title: "抵達成田機場", desc: "T1 (長榮)", icon: "✈️", location: "成田国際空港 第1ターミナル", hideRoute: true, tips: "抵達 T1 後，先前往 B1 辦理兒童版西瓜卡與領取 Skyliner 車票。" }, 
@@ -208,7 +223,7 @@ html_code = """
              ] },
              { day: 3, date: "4/19 (日)", title: "淺草與晴空塔", events: [ 
                  { time: "08:45", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
-                 { time: "09:00", title: "淺草寺", desc: "雷門", icon: "🏮", location: "浅草寺", transport: { route: "稻荷町 → 淺草", line: "銀座線", time: "3分" } }, 
+                 { time: "09:00", title: "淺草寺", desc: "雷門", icon: "🏮", location: "雷門", transport: { route: "稻荷町 → 淺草", line: "銀座線", time: "3分" } }, 
                  { time: "11:00", title: "隅田川步道", desc: "散步", icon: "🚶", location: "すみだリバーウォーク", transport: { route: "淺草 → 晴空塔", line: "步行", time: "20分" } }, 
                  { time: "12:00", title: "晴空塔午餐", desc: "Solamachi 6F/3F", icon: "🍱", location: "東京ソラマチ", tips: "【晴空塔 飲食5選】\\n1. 六厘舍 (晴空塔6F 超人氣沾麵)\\n2. 迴轉壽司 根室花丸 (需提早抽號)\\n3. 利久牛舌 (晴空塔6F 附兒童咖哩)\\n4. 燒肉 ぴゅあ Pure (晴空塔11F 農協和牛)\\n5. Tabe-Terrace (晴空塔3F 美食街免排隊)" }, 
                  { time: "13:30", title: "晴空塔寶可夢", desc: "Solamachi 4F", icon: "🛍️", location: "ポケモンセンタースカイツリータウン" }, 
@@ -352,7 +367,7 @@ html_code = """
             }
         ];
 
-        // 依時序 Day 1 -> Day 5 排序，並加入獨立的 Google Map 連結功能 (精準日文)
+        // 百科資料庫 (全面修正 Google Maps 格式)
         const attractionInfos = [
             // --- Day 1 ---
             { id: "hijiri", name: "御茶之水 聖橋", icon: "🌉", tag: "聖地巡禮", desc: "電影《鈴芽之旅》經典場景。站在橋上可以同時看到紅、黃、橘三色電車交錯而過，是鐵道迷與影迷必拍聖地。", tips: "下午前往順光，拍攝效果最好。" },
@@ -471,7 +486,7 @@ html_code = """
                                 let prevLoc = i === 0 ? HOTEL_ADDRESS : itinerary[activeDay].events[i-1].location;
                                 if (activeDay === 0 && i < 2) prevLoc = null; 
                                 
-                                // ✅ 修正：套用正確的 Google Map Intent 網址格式
+                                // ✅ 統一修復為官方標準 Google Maps API 網址
                                 const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(evt.location)}`;
                                 const dirUrl = prevLoc ? `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(prevLoc)}&destination=${encodeURIComponent(evt.location)}&travelmode=transit` : null;
 
@@ -486,7 +501,6 @@ html_code = """
                                             <h3 className="font-bold text-gray-800 text-lg">{evt.title}</h3>
                                             <p className="text-sm text-gray-500 mb-2">{evt.desc}</p>
                                             
-                                            {/* 行程表內嵌飲食 Tips 支援換行 */}
                                             {evt.tips && (
                                                 <div className="mb-3 bg-yellow-50 text-yellow-800 text-[13px] p-2.5 rounded-lg border border-yellow-100 leading-relaxed whitespace-pre-line">
                                                     <span className="font-bold">💡 </span>{evt.tips}
@@ -534,7 +548,7 @@ html_code = """
                 }
             }, [mode]);
 
-            // 渲染親子景點卡片
+            // 渲染景點建議卡片
             const renderSurrounding = () => {
                 const guide = surroundingGuides[surrArea];
                 if (!guide) return null;
@@ -542,7 +556,7 @@ html_code = """
                 return (
                     <div className="w-full flex flex-col gap-3 p-2">
                         {guide.spots.map((spot, idx) => {
-                            // ✅ 修正：套用正確的 Google Map Intent 網址格式
+                            // ✅ 統一修復為官方標準 Google Maps API 網址
                             const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.mapQuery)}`;
                             return (
                                 <div key={idx} className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm flex flex-col gap-2 w-full">
@@ -592,9 +606,11 @@ html_code = """
                         
                         {mode === 'surrounding' && (
                             <div className="w-full flex flex-col items-center">
+                                {/* ✅ 新增築地分類並重排序，對應完整行程 */}
                                 <div className="flex gap-2 mb-3 overflow-x-auto w-full justify-start flex-shrink-0 hide-scrollbar px-1 py-1">
                                     {[
                                         {id: 'ueno', name: '上野/秋葉原'},
+                                        {id: 'tsukiji', name: '築地'},
                                         {id: 'toyosu', name: '豐洲'}, 
                                         {id: 'odaiba', name: '台場'}, 
                                         {id: 'asakusa', name: '淺草'},
@@ -666,7 +682,6 @@ html_code = """
             </div>
         );
         
-        // 渲染依行程排序的景點與餐廳列表
         const AttractionView = () => (
              <div className="h-full overflow-y-auto p-4 pb-24 space-y-4">
                 <div className="text-center mb-6"><h2 className="text-xl font-bold text-gray-800">景點百科</h2><p className="text-indigo-600 text-sm">依行程時序 Day 1 ~ Day 5 排序</p></div>
@@ -681,11 +696,10 @@ html_code = """
                         </div>
                         {item.desc && <p className="text-sm text-gray-600 mt-2 whitespace-pre-line">{item.desc}</p>}
                         
-                        {/* 渲染獨立加入的餐飲店家連結 */}
                         {item.foodSpots && (
                             <div className="mt-2 space-y-2">
                                 {item.foodSpots.map((spot, sIdx) => {
-                                    // ✅ 修正：套用正確的 Google Map Intent 網址格式
+                                    // ✅ 統一修復為官方標準 Google Maps API 網址
                                     const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.mapQuery)}`;
                                     return (
                                         <div key={sIdx} className="bg-gray-50 p-2 rounded-lg flex items-start gap-2 border border-gray-100">
@@ -743,7 +757,7 @@ html_code = """
                         <div className="flex justify-between items-start">
                             <div><h1 className="text-2xl font-bold">東京親子之旅</h1><p className="text-indigo-100 text-sm mt-1">4/17 - 4/22 • 6天5夜</p></div>
                         </div>
-                        {/* ✅ 修正：套用正確的 Google Map Intent 網址格式 */}
+                        {/* ✅ 統一修復為官方標準 Google Maps API 網址 */}
                         <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(HOTEL_ADDRESS)}`} target="_blank" className="mt-4 bg-indigo-700/50 p-3 rounded-xl flex items-center gap-3 backdrop-blur-sm active:scale-95 transition-transform border border-indigo-500/30 text-left no-underline">
                             <div className="bg-white p-2 rounded-full text-indigo-600">
                                 {icons.map}
