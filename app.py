@@ -78,6 +78,7 @@ html_code = """
 
         const HOTEL_ADDRESS = "Stayme THE HOTEL Ueno, Higashiueno, Taito City, Tokyo";
 
+        // SVG Icons
         const icons = {
             list: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>,
             map: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>,
@@ -203,7 +204,7 @@ html_code = """
             }
         };
 
-        // 行程資料 (所有搭車/轉乘皆已補齊 stationGuide)
+        // 行程資料 (已加入 Day 6 機場美食與伴手禮推薦)
         const itinerary = [
              { day: 1, date: "4/17 (五)", title: "抵達與鈴芽的起點", events: [ 
                  { time: "13:25", title: "抵達成田機場", desc: "T1 (長榮)", icon: "✈️", location: "成田国際空港 第1ターミナル", hideRoute: true, tips: "抵達 T1 後，先前往 B1 辦理兒童版西瓜卡與領取 Skyliner 車票。",
@@ -378,7 +379,7 @@ html_code = """
                      routes: ["提著行李步行前往「京成上野站」(在 JR 上野站旁，不忍口方向)", "使用事先買好的車票或兌換券進入閘口", "搭乘手扶梯前往地下月台，確認車次與座位", "約 41 分鐘直達「成田機場 T1」站"]
                    }
                  }, 
-                 { time: "12:25", title: "抵達機場", desc: "成田 T1 (南翼)", icon: "✈️", location: "成田国際空港 第1ターミナル" }, 
+                 { time: "12:25", title: "抵達機場", desc: "成田 T1 (南翼)", icon: "✈️", location: "成田国際空港 第1ターミナル", tips: "【成田 T1 必吃美食 5選】\\n1. 中華蕎麦 とみ田 (超人氣沾麵)\\n2. 八代目儀兵衛 (頂級白飯和食)\\n3. だし茶漬け えん (清爽高湯茶泡飯)\\n4. 杵屋麦丸 (平價自助烏龍麵)\\n5. 壽司 京辰 (入關後的高品質壽司)\\n\\n【必買伴手禮 5選】\\n1. 東京ばな奈 (常有寶可夢聯名包裝)\\n2. PRESS BUTTER SAND (焦糖奶油夾心餅)\\n3. NY PERFECT CHEESE (超人氣起司脆餅)\\n4. ROYCE' 生巧克力 (免稅店熱銷冠軍)\\n5. TRAVELER'S FACTORY (機場限定文具)" }, 
                  { time: "14:25", title: "起飛返台", desc: "長榮 BR197", icon: "✈️", location: "", transport: "" } 
              ] }
         ];
@@ -516,6 +517,26 @@ html_code = """
                     { icon: "🍜", name: "一蘭拉麵", desc: "新宿中央東口店，經典獨立包廂拉麵", mapQuery: "一蘭 新宿中央東口店" },
                     { icon: "🍱", name: "名代 宇奈とと", desc: "平價高CP值炭烤鰻魚飯", mapQuery: "名代 宇奈とと 新宿" },
                     { icon: "🍽️", name: "高島屋 Times Square", desc: "12-14F 美食街，免排隊挑選", mapQuery: "新宿タカシマヤ タイムズスクエア" }
+                ]
+            },
+            
+            // --- Day 6 (機場推薦) ---
+            { id: "narita_food", name: "成田 T1 餐廳 (5選)", icon: "🍜", tag: "美食", desc: "回程搭機前的最後一餐（多位於中央大樓 4F）：", tips: "若時間充裕，強烈推薦吃碗「とみ田」沾麵！",
+                foodSpots: [
+                    { icon: "🍜", name: "中華蕎麦 とみ田", desc: "千葉松戶超人氣沾麵名店，機場就能吃到", mapQuery: "中華蕎麦 とみ田 成田空港" },
+                    { icon: "🍚", name: "八代目儀兵衛", desc: "京都百年米店，極致美味的白飯與和食定食", mapQuery: "八代目儀兵衛 成田空港" },
+                    { icon: "🍲", name: "だし茶漬け えん", desc: "高湯茶泡飯，清爽暖胃，適合搭機前享用", mapQuery: "だし茶漬け えん 成田空港" },
+                    { icon: "🥢", name: "杵屋麦丸", desc: "中央大樓 5F。平價美味的自助式讚岐烏龍麵", mapQuery: "杵屋麦丸 成田空港" },
+                    { icon: "🍣", name: "壽司 京辰", desc: "入關後(免稅區)的高品質江戶前壽司", mapQuery: "寿司 京辰 成田空港" }
+                ]
+            },
+            { id: "narita_souvenir", name: "成田 T1 伴手禮 (5選)", icon: "🎁", tag: "購物", desc: "最後衝刺！入關前或 FaSoLa 免稅店必買清單：", tips: "液體或果凍狀伴手禮務必放托運行李，過安檢入關後再買免稅品最方便直接手提上機！",
+                foodSpots: [
+                    { icon: "🍌", name: "東京ばな奈 (Tokyo Banana)", desc: "經典不敗，常有寶可夢或聯名限定包裝", mapQuery: "FaSoLa 成田空港" },
+                    { icon: "🍪", name: "PRESS BUTTER SAND", desc: "酥脆外皮與焦糖奶油夾心，質感極佳", mapQuery: "FaSoLa 成田空港" },
+                    { icon: "🧀", name: "NY PERFECT CHEESE", desc: "超人氣排隊起司奶油脆餅，送禮超有面子", mapQuery: "FaSoLa 成田空港" },
+                    { icon: "🍫", name: "ROYCE' 生巧克力", desc: "北海道名產，機場免稅店永遠的熱銷冠軍", mapQuery: "FaSoLa 成田空港" },
+                    { icon: "✈️", name: "TRAVELER'S FACTORY", desc: "中央大樓 4F(入關前)。機場限定版文具與筆記本", mapQuery: "TRAVELER'S FACTORY AIRPORT" }
                 ]
             }
         ];
@@ -746,7 +767,7 @@ html_code = """
         
         const AttractionView = () => (
              <div className="h-full overflow-y-auto p-4 pb-24 space-y-4">
-                <div className="text-center mb-6"><h2 className="text-xl font-bold text-gray-800">景點百科</h2><p className="text-indigo-600 text-sm">依行程時序 Day 1 ~ Day 5 排序</p></div>
+                <div className="text-center mb-6"><h2 className="text-xl font-bold text-gray-800">景點百科</h2><p className="text-indigo-600 text-sm">依行程時序 Day 1 ~ Day 6 排序</p></div>
                 {attractionInfos.map((item, idx) => (
                     <div key={idx} className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm flex flex-col gap-2">
                         <div className="flex items-center gap-3">
