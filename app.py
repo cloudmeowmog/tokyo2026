@@ -87,7 +87,7 @@ html_code = """
             booking: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
         };
 
-        // 親子周邊景點與餐食推薦 (加入築地選項)
+        // 親子周邊景點與餐食推薦 (Day 2 台場/豐洲大幅更新)
         const surroundingGuides = {
             ueno: {
                 name: '上野 / 秋葉原',
@@ -105,14 +105,14 @@ html_code = """
             toyosu: {
                 name: '豐洲 / 市場',
                 spots: [
-                    { name: '千客萬來', desc: '市場旁最新溫泉美食街，復古江戶風情超好拍。', tag: '觀光美食', icon: '🏮', mapQuery: '豊洲 千客万来' },
-                    { name: '茂助玉子燒', desc: '市場內百年老店，甜甜的日式煎蛋捲小孩絕對愛吃。', tag: '市場玉子燒', icon: '🍳', mapQuery: '豊洲市場 玉子焼' },
-                    { name: '海鮮丼 大江戶', desc: '豐洲市場水產棟，超澎湃的新鮮海鮮丼。', tag: '豐盛海鮮', icon: '🍱', mapQuery: '海鮮丼 大江戸 豊洲市場' },
-                    { name: '炸物 八千代', desc: '不吃生食的好選擇！炸大蝦與炸豬排定食。', tag: '熟食定食', icon: '🍤', mapQuery: 'とんかつ 八千代 豊洲市場' },
                     { name: 'teamLab Planets', desc: '需赤腳的水中光影美術館，小孩玩水超開心。', tag: '光影藝術', icon: '✨', mapQuery: 'teamLab Planets TOKYO' },
                     { name: '豐洲 LaLaport', desc: '超大商場！3樓有玩具店、扭蛋機，非常適合放電。', tag: '購物遊樂', icon: '🛍️', mapQuery: 'ららぽーと豊洲' },
+                    { name: '千客萬來', desc: '豐洲市場旁最新溫泉美食街，復古江戶風情超好拍。', tag: '觀光美食', icon: '🏮', mapQuery: '豊洲 千客万来' },
                     { name: '100本のスプーン', desc: 'LaLaport 內親子餐廳。小孩可點大人一模一樣的半份餐。', tag: '親子餐廳', icon: '🍽️', mapQuery: '100本のスプーン ららぽーと豊洲' },
-                    { name: '燒肉トラジ (Toraji)', desc: 'LaLaport 內吃厚切牛舌與和牛，舒適無煙味。', tag: '和牛燒肉', icon: '🥩', mapQuery: '焼肉トラジ ららぽーと豊洲店' }
+                    { name: '燒肉トラジ (Toraji)', desc: 'LaLaport 內吃厚切牛舌與和牛，舒適無煙味。', tag: '和牛燒肉', icon: '🥩', mapQuery: '焼肉トラジ ららぽーと豊洲店' },
+                    { name: '築地食堂 源ちゃん', desc: 'LaLaport 內。提供美味生魚片丼與炸雞海鮮定食。', tag: '海鮮定食', icon: '🍱', mapQuery: '築地食堂 源ちゃん ららぽーと豊洲店' },
+                    { name: '麵屋 黑琥', desc: 'LaLaport 內。豚骨與醬油拉麵，方便快速。', tag: '日式拉麵', icon: '🍜', mapQuery: '麺や 黒琥 ららぽーと豊洲' },
+                    { name: '玉丁本店', desc: 'LaLaport 內。濃郁的味噌燉烏龍麵，麵條Q彈小孩好入口。', tag: '烏龍麵', icon: '🍲', mapQuery: '玉丁本店 ららぽーと豊洲店' }
                 ]
             },
             odaiba: {
@@ -121,9 +121,11 @@ html_code = """
                     { name: '獨角獸鋼彈', desc: 'DiverCity 前實物大鋼彈，變身秀父子必看！', tag: '地標', icon: '🤖', mapQuery: '実物大ユニコーンガンダム立像' },
                     { name: '鋼彈基地 (DiverCity)', desc: '滿滿的鋼彈模型與限定商品，買瘋的聖地。', tag: '模型', icon: '🛍️', mapQuery: 'ガンダムベース東京' },
                     { name: 'LEGOLAND 探索中心', desc: '室內樂高樂園，超多積木池與遊樂設施。', tag: '樂高樂園', icon: '🧱', mapQuery: 'レゴランド・ディスカバリー・センター東京' },
-                    { name: '東京拉麵國技館 舞', desc: 'Aqua City 5F。集結全日本6家拉麵名店。', tag: '拉麵聖地', icon: '🍜', mapQuery: '東京ラーメン国技館 舞' },
-                    { name: '燒肉 平城苑', desc: 'Aqua City 1F。看著東京灣美景吃黑毛和牛燒肉。', tag: '景觀燒肉', icon: '🥩', mapQuery: '焼肉 平城苑 アクアシティお台場店' },
-                    { name: '蘋果樹蛋包飯', desc: 'Aqua City 5F。知名蛋包飯，口味極多小孩超愛。', tag: '蛋包飯', icon: '🍳', mapQuery: 'ポムの樹 アクアシティお台場店' }
+                    { name: '田中商店', desc: 'DiverCity 2F美食街。超濃郁豚骨拉麵，吃完馬上看鋼彈。', tag: '豚骨拉麵', icon: '🍜', mapQuery: '田中商店 ダイバーシティ東京プラザ店' },
+                    { name: '金子半之助', desc: 'DiverCity 2F美食街。超人氣排隊天丼，炸蝦與炸半熟蛋必吃。', tag: '超值天丼', icon: '🍤', mapQuery: '日本橋 天丼 金子半之助 ダイバーシティ東京プラザ店' },
+                    { name: '串家物語', desc: 'DiverCity 6F。自己動手炸串吃到飽，還有巧克力噴泉。', tag: '炸串吃到飽', icon: '🍡', mapQuery: '串家物語 ダイバーシティ東京プラザ店' },
+                    { name: '蘋果樹蛋包飯', desc: 'Aqua City 5F。知名蛋包飯，口味極多小孩超愛。', tag: '蛋包飯', icon: '🍳', mapQuery: 'ポムの樹 アクアシティお台場店' },
+                    { name: '燒肉 平城苑', desc: 'Aqua City 1F。看著東京灣美景吃黑毛和牛燒肉。', tag: '景觀燒肉', icon: '🥩', mapQuery: '焼肉 平城苑 アクアシティお台場店' }
                 ]
             },
             asakusa: {
@@ -200,7 +202,7 @@ html_code = """
             }
         };
 
-        // 行程資料
+        // 行程資料 (Day 2 餐食邏輯更新)
         const itinerary = [
              { day: 1, date: "4/17 (五)", title: "抵達與鈴芽的起點", events: [ 
                  { time: "13:25", title: "抵達成田機場", desc: "T1 (長榮)", icon: "✈️", location: "成田国際空港 第1ターミナル", hideRoute: true, tips: "抵達 T1 後，先前往 B1 辦理兒童版西瓜卡與領取 Skyliner 車票。" }, 
@@ -215,11 +217,12 @@ html_code = """
              ] },
              { day: 2, date: "4/18 (六)", title: "台場鋼彈 & 豐洲", events: [ 
                  { time: "08:45", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
-                 { time: "09:00", title: "豐洲市場午餐", desc: "和食海鮮", icon: "🍣", location: "豊洲市場", transport: { route: "稻荷町 → 豐洲", line: "銀座線+有樂町線", time: "30分" }, tips: "【豐洲市場 飲食5選】\\n1. 茂助玉子燒 (甜煎蛋捲)\\n2. 炸物 八千代 (熟食/炸海鮮定食)\\n3. 海鮮丼 大江戶 (超豐盛海鮮)\\n4. 壽司大 (超人氣排隊壽司)\\n5. 千客萬來 (市場旁最新溫泉美食街)\\n💡 市場餐廳多在水產棟3F，建議避開排隊壽司名店。" }, 
-                 { time: "11:30", title: "往台場", desc: "海鷗號", icon: "🚅", location: "台場駅", transport: { route: "豐洲 → 台場", line: "海鷗號", time: "20分" }, tips: "💡 今日會搭乘四次海鷗號，強烈建議直接買「百合海鷗號一日券」(大人820/小孩410日圓)，省錢又免一直購票！" }, 
+                 { time: "09:00", title: "豐洲市場 / 千客萬來", desc: "參觀/小吃", icon: "🏮", location: "豊洲市場", transport: { route: "稻荷町 → 豐洲", line: "銀座線+有樂町線", time: "30分" }, tips: "💡 早上先在豐洲周邊逛逛，可吃點玉子燒等小點心墊胃，將主力午餐移至台場商場內享用。" }, 
+                 { time: "11:30", title: "往台場 DiverCity", desc: "海鷗號", icon: "🚅", location: "台場駅", transport: { route: "豐洲 → 台場", line: "海鷗號", time: "20分" }, tips: "💡 今日會搭乘多次海鷗號，強烈建議在豐洲站買「百合海鷗號一日券」(大人820/小孩410日圓)！" }, 
+                 { time: "11:50", title: "台場午餐", desc: "DiverCity 商場", icon: "🍔", location: "ダイバーシティ東京 プラザ", transport: { route: "台場站 → DiverCity", line: "步行", time: "5分" }, tips: "【台場 午餐5選】\\n1. 田中商店 (DiverCity 2F 濃郁豚骨拉麵)\\n2. 金子半之助 (DiverCity 2F 超人氣天丼)\\n3. 串家物語 (DiverCity 6F 自己動手炸串)\\n4. 蘋果樹蛋包飯 (Aqua City 5F)\\n5. 燒肉 平城苑 (Aqua City 1F)\\n💡 在 DiverCity 用餐，吃飽走到一樓廣場直接看 13:00 的鋼彈表演最順路！" }, 
                  { time: "13:00", title: "獨角獸鋼彈", desc: "變身秀", icon: "🤖", location: "実物大ユニコーンガンダム立像" }, 
                  { time: "17:30", title: "teamLab", desc: "需預約", icon: "✨", location: "teamLab Planets TOKYO", transport: { route: "台場 → 新豐洲", line: "海鷗號", time: "23分" } }, 
-                 { time: "19:30", title: "豐洲 LaLaport", desc: "晚餐", icon: "🍽️", location: "ららぽーと豊洲", transport: { route: "新豐洲 → 豐洲", line: "海鷗號/步行", time: "10分" }, tips: "【豐洲/台場 晚餐5選】\\n1. 100本のスプーン (LaLaport質感親子餐廳)\\n2. 燒肉トラジ Toraji (LaLaport厚切牛舌)\\n3. 麵屋 黑琥 (LaLaport日式拉麵)\\n4. 築地食堂 源ちゃん (LaLaport熟食定食)\\n5. 東京拉麵國技館 舞 (若還在台場Aqua City)\\n💡 LaLaport 3樓有扭蛋機與玩具專賣店喔！" }, 
+                 { time: "19:30", title: "豐洲 LaLaport", desc: "晚餐", icon: "🍽️", location: "ららぽーと豊洲", transport: { route: "新豐洲 → 豐洲", line: "海鷗號/步行", time: "10分" }, tips: "【豐洲 LaLaport 晚餐5選】\\n1. 100本のスプーン (質感親子餐廳，可點半份)\\n2. 燒肉トラジ Toraji (厚切牛舌與和牛)\\n3. 築地食堂 源ちゃん (海鮮與熟食定食)\\n4. 麵屋 黑琥 (日式拉麵，方便快速)\\n5. 玉丁本店 (味噌燉烏龍麵，適合小孩)\\n💡 商場 3F 還有玩具專賣店與扭蛋機，吃飽可以逛！" }, 
                  { time: "21:30", title: "返回飯店", desc: "休息", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "豐洲 → 稻荷町", line: "有樂町線+銀座線", time: "30分" } } 
              ] },
              { day: 3, date: "4/19 (日)", title: "淺草與晴空塔", events: [ 
@@ -266,7 +269,7 @@ html_code = """
                 routes: [
                     "抵達成田 T1 B1 鐵道樓層後，尋找「JR 東日本旅行服務中心」或藍色的「京成電鐵」櫃檯",
                     "向櫃檯人員表示要購買兒童版 IC 卡 (Child Suica 或 Child PASMO)",
-                    "出示小孩的護照供人員核對年齡",
+                    "出示小孩的護照供午核對年齡",
                     "初次購買通常需付 2000 日圓 (含 500 日圓押金，可用額度 1500 日圓)",
                     "進出車站閘門時，嗶卡會發出「小鳥叫聲(嗶嗶兩聲)」，即代表成功使用兒童票價"
                 ],
@@ -368,7 +371,7 @@ html_code = """
             }
         ];
 
-        // 百科資料庫 (加入築地選項)
+        // 百科資料庫 (Day 2 餐食更新)
         const attractionInfos = [
             // --- Day 1 ---
             { id: "hijiri", name: "御茶之水 聖橋", icon: "🌉", tag: "聖地巡禮", desc: "電影《鈴芽之旅》經典場景。站在橋上可以同時看到紅、黃、橘三色電車交錯而過，是鐵道迷與影迷必拍聖地。", tips: "下午前往順光，拍攝效果最好。" },
@@ -384,24 +387,24 @@ html_code = """
             },
             
             // --- Day 2 ---
-            { id: "toyosu_market_food", name: "豐洲市場 飲食 (5選)", icon: "🐟", tag: "美食", desc: "Day 2 午餐推薦：", tips: "市場餐廳多在水產棟 3F，建議避開排隊壽司名店。",
+            { id: "odaiba", name: "台場 獨角獸鋼彈", icon: "🤖", tag: "鋼彈", desc: "位於 DiverCity 廣場前。白天有 4 場變身秀(獨角獸模式->毀滅模式)，晚上有燈光秀。", tips: "變身時間：11:00, 13:00, 15:00, 17:00。" },
+            { id: "odaiba_food", name: "台場 午餐 (5選)", icon: "🍔", tag: "美食", desc: "Day 2 午餐推薦 (方便銜接鋼彈表演)：", tips: "在 DiverCity 用餐，吃完剛好出去廣場看變身秀！",
                 foodSpots: [
-                    { icon: "🍳", name: "茂助玉子燒", desc: "百年老店甜煎蛋捲", mapQuery: "豊洲市場 玉子焼" },
-                    { icon: "🍤", name: "炸物 八千代", desc: "熟食/炸海鮮定食", mapQuery: "とんかつ 八千代 豊洲市場" },
-                    { icon: "🍱", name: "海鮮丼 大江戶", desc: "超豐盛海鮮丼飯", mapQuery: "海鮮丼 大江戸 豊洲市場" },
-                    { icon: "🍣", name: "壽司大", desc: "超人氣排隊壽司", mapQuery: "寿司大 豊洲市場" },
-                    { icon: "🏮", name: "千客萬來", desc: "市場旁最新溫泉美食街", mapQuery: "豊洲 千客万来" }
+                    { icon: "🍜", name: "田中商店", desc: "DiverCity 2F 超濃郁豚骨拉麵", mapQuery: "田中商店 ダイバーシティ東京プラザ店" },
+                    { icon: "🍤", name: "金子半之助", desc: "DiverCity 2F 超人氣排隊天丼", mapQuery: "日本橋 天丼 金子半之助 ダイバーシティ東京プラザ店" },
+                    { icon: "🍡", name: "串家物語", desc: "DiverCity 6F 自己動手炸串吃到飽", mapQuery: "串家物語 ダイバーシティ東京プラザ店" },
+                    { icon: "🍳", name: "蘋果樹蛋包飯", desc: "Aqua City 5F 知名蛋包飯", mapQuery: "ポムの樹 アクアシティお台場店" },
+                    { icon: "🥩", name: "燒肉 平城苑", desc: "Aqua City 1F 看海景吃黑毛和牛燒肉", mapQuery: "焼肉 平城苑 アクアシティお台場店" }
                 ]
             },
-            { id: "odaiba", name: "台場 獨角獸鋼彈", icon: "🤖", tag: "鋼彈", desc: "位於 DiverCity 廣場前。白天有 4 場變身秀(獨角獸模式->毀滅模式)，晚上有燈光秀。", tips: "變身時間：11:00, 13:00, 15:00, 17:00。" },
             { id: "teamlab", name: "teamLab Planets", icon: "✨", tag: "沉浸式藝術", desc: "需赤腳進入的水中美術館。光影與水面的結合非常夢幻，適合大人小孩互動。", tips: "這天會在台場周邊頻繁轉車，建議直接購買「百合海鷗號一日券」！" },
-            { id: "toyosu_odaiba_food", name: "豐洲/台場 晚餐 (5選)", icon: "🍽️", tag: "美食", desc: "Day 2 晚餐推薦 (teamLab後)：", tips: "LaLaport 3樓有扭蛋機與玩具專賣店喔！",
+            { id: "toyosu_food", name: "豐洲 晚餐 (5選)", icon: "🍽️", tag: "美食", desc: "Day 2 晚餐推薦 (teamLab後，LaLaport內)：", tips: "LaLaport 3樓有扭蛋機與玩具專賣店喔！",
                 foodSpots: [
-                    { icon: "🍽️", name: "100本のスプーン", desc: "LaLaport 質感親子餐廳，可點半份", mapQuery: "100本のスプーン ららぽーと豊洲" },
-                    { icon: "🥩", name: "燒肉トラジ Toraji", desc: "LaLaport 內吃厚切牛舌與和牛", mapQuery: "焼肉トラジ ららぽーと豊洲店" },
-                    { icon: "🍜", name: "麵屋 黑琥", desc: "LaLaport 日式拉麵，方便快速", mapQuery: "麺や 黒琥 ららぽーと豊洲" },
-                    { icon: "🍱", name: "築地食堂 源ちゃん", desc: "LaLaport 熟食定食與生魚片", mapQuery: "築地食堂 源ちゃん ららぽーと豊洲店" },
-                    { icon: "🍜", name: "東京拉麵國技館 舞", desc: "若還在台場Aqua City，集結6家名店", mapQuery: "東京ラーメン国技館 舞" }
+                    { icon: "🍽️", name: "100本のスプーン", desc: "LaLaport 內，高質感親子餐廳，可點半份", mapQuery: "100本のスプーン ららぽーと豊洲" },
+                    { icon: "🥩", name: "燒肉トラジ Toraji", desc: "LaLaport 內，爽吃厚切牛舌與和牛", mapQuery: "焼肉トラジ ららぽーと豊洲店" },
+                    { icon: "🍱", name: "築地食堂 源ちゃん", desc: "LaLaport 內，熟食海鮮定食", mapQuery: "築地食堂 源ちゃん ららぽーと豊洲店" },
+                    { icon: "🍜", name: "麵屋 黑琥", desc: "LaLaport 內，豚骨醬油日式拉麵", mapQuery: "麺や 黒琥 ららぽーと豊洲" },
+                    { icon: "🍲", name: "玉丁本店", desc: "LaLaport 內，濃郁的味噌燉烏龍麵", mapQuery: "玉丁本店 ららぽーと豊洲店" }
                 ]
             },
             
@@ -450,7 +453,7 @@ html_code = """
                     { icon: "🍣", name: "壽司三味 本店", desc: "知名連鎖壽司本店，價格透明、座位寬敞", mapQuery: "すしざんまい 本店" }
                 ]
             },
-            { id: "shibuya", name: "SHIBUYA SKY", icon: "🏙️", tag: "高空夜景", desc: "目前東京最熱門的露天展望台，360度無死角美景。角落的玻璃扶手是網美必拍點。", tips: "日落時段最美，但需提提早一個月搶票。" },
+            { id: "shibuya", name: "SHIBUYA SKY", icon: "🏙️", tag: "高空夜景", desc: "目前東京最熱門的露天展望台，360度無死角美景。角落的玻璃扶手是網美必拍點。", tips: "日落時段最美，但需提早一個月搶票。" },
             { id: "shinjuku", name: "新宿 3D 貓", icon: "🐈", tag: "科技看板", desc: "新宿東口廣場對面大樓的 4K 彎曲螢幕。巨大的三花貓會探頭打招呼，非常逼真可愛。", tips: "每 15 分鐘會有一次特殊演出。" },
             { id: "shibuya_food", name: "澀谷 午餐 (5選)", icon: "🍣", tag: "美食", desc: "Day 5 午餐推薦：", tips: "吃飽直接搭電梯上 SHIBUYA SKY 最順路！",
                 foodSpots: [
@@ -497,7 +500,6 @@ html_code = """
                                 let prevLoc = i === 0 ? HOTEL_ADDRESS : itinerary[activeDay].events[i-1].location;
                                 if (activeDay === 0 && i < 2) prevLoc = null; 
                                 
-                                // ✅ 統一修復為官方標準 Google Maps Search/Dir API 網址
                                 const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(evt.location)}`;
                                 const dirUrl = prevLoc ? `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(prevLoc)}&destination=${encodeURIComponent(evt.location)}&travelmode=transit` : null;
 
@@ -559,7 +561,6 @@ html_code = """
                 }
             }, [mode]);
 
-            // 渲染景點建議卡片
             const renderSurrounding = () => {
                 const guide = surroundingGuides[surrArea];
                 if (!guide) return null;
@@ -567,7 +568,6 @@ html_code = """
                 return (
                     <div className="w-full flex flex-col gap-3 p-2">
                         {guide.spots.map((spot, idx) => {
-                            // ✅ 統一修復為官方標準 Google Maps Search API 網址
                             const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.mapQuery)}`;
                             return (
                                 <div key={idx} className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm flex flex-col gap-2 w-full">
@@ -617,7 +617,6 @@ html_code = """
                         
                         {mode === 'surrounding' && (
                             <div className="w-full flex flex-col items-center">
-                                {/* ✅ 重新排序：依時序 Day 1 到 Day 5 排列 (築地位於 Day 5，放在更右方) */}
                                 <div className="flex gap-2 mb-3 overflow-x-auto w-full justify-start flex-shrink-0 hide-scrollbar px-1 py-1">
                                     {[
                                         {id: 'ueno', name: '上野/秋葉原'},
@@ -710,7 +709,6 @@ html_code = """
                         {item.foodSpots && (
                             <div className="mt-2 space-y-2">
                                 {item.foodSpots.map((spot, sIdx) => {
-                                    // ✅ 統一修復為官方標準 Google Maps Search API 網址
                                     const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.mapQuery)}`;
                                     return (
                                         <div key={sIdx} className="bg-gray-50 p-2 rounded-lg flex items-start gap-2 border border-gray-100">
@@ -768,7 +766,6 @@ html_code = """
                         <div className="flex justify-between items-start">
                             <div><h1 className="text-2xl font-bold">東京親子之旅</h1><p className="text-indigo-100 text-sm mt-1">4/17 - 4/22 • 6天5夜</p></div>
                         </div>
-                        {/* ✅ 統一修復為官方標準 Google Maps Search API 網址 */}
                         <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(HOTEL_ADDRESS)}`} target="_blank" className="mt-4 bg-indigo-700/50 p-3 rounded-xl flex items-center gap-3 backdrop-blur-sm active:scale-95 transition-transform border border-indigo-500/30 text-left no-underline">
                             <div className="bg-white p-2 rounded-full text-indigo-600">
                                 {icons.map}
