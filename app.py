@@ -352,31 +352,98 @@ html_code = """
             }
         ];
 
-        // 依時序 Day 1 -> Day 5 排序，整合拉麵與燒肉
+        // 依時序 Day 1 -> Day 5 排序，並加入獨立的 Google Map 連結功能
         const attractionInfos = [
             // --- Day 1 ---
             { id: "hijiri", name: "御茶之水 聖橋", icon: "🌉", tag: "聖地巡禮", desc: "電影《鈴芽之旅》經典場景。站在橋上可以同時看到紅、黃、橘三色電車交錯而過，是鐵道迷與影迷必拍聖地。", tips: "下午前往順光，拍攝效果最好。" },
             { id: "akiba", name: "秋葉原 Electric Town", icon: "⚡", tag: "動漫/電器", desc: "日本次文化中心。滿街的動漫周邊、模型店、女僕咖啡廳與大型電器行。Yodobashi Akiba 是必逛地標。", tips: "旁邊的 Yodobashi 是吃喝玩樂一站式滿足的好地方！" },
-            { id: "akiba_food", name: "上野/秋葉原 親子飲食 (5選)", icon: "🍛", tag: "美食", desc: "🥩【燒肉】敘敘苑 上野不忍口店：頂級和牛，環境舒適。\\n🍜【拉麵】九州 じゃんがら：秋葉原人氣豚骨，角肉軟爛；鴨 to 蔥：上野排隊名店。\\n🍱【定食】Yodobashi 8F 美食街：有和幸豬排、Meat Rush漢堡排。\\n🍣【壽司】壽司郎 上野店：平板點餐有扭蛋，小孩最愛。", tips: "Day 1 推薦直接在 Yodobashi 8F 用餐，吃飽下樓 6 樓就是玩具專區與寶可夢機台！" },
+            { id: "akiba_food", name: "上野/秋葉原 飲食 (5選)", icon: "🍛", tag: "美食", desc: "Day 1 晚餐推薦：", tips: "推薦在 Yodobashi 吃飽，直攻 6F 打寶可夢機台！",
+                foodSpots: [
+                    { icon: "🍱", name: "Yodobashi 8F 美食街", desc: "和幸豬排/Meat Rush漢堡排，吃飽直接下樓玩", mapQuery: "Yodobashi Akiba" },
+                    { icon: "🍜", name: "九州 じゃんがら", desc: "秋葉原人氣豚骨拉麵，角肉軟爛", mapQuery: "Kyushu Jangara Akihabara" },
+                    { icon: "🍣", name: "壽司郎 上野店", desc: "扭蛋迴轉壽司，小孩最愛", mapQuery: "Sushiro Ueno" },
+                    { icon: "🥩", name: "敘敘苑 上野不忍口店", desc: "高級和牛燒肉，環境舒適", mapQuery: "Jojoen Ueno Shinobazuguchi" },
+                    { icon: "🍜", name: "鴨 to 蔥", desc: "上野排隊人氣清湯拉麵", mapQuery: "Ramen Kamo to Negi" }
+                ]
+            },
             
             // --- Day 2 ---
+            { id: "toyosu_market_food", name: "豐洲市場 飲食 (5選)", icon: "🐟", tag: "美食", desc: "Day 2 午餐推薦：", tips: "市場餐廳多在水產棟 3F，建議避開排隊壽司名店。",
+                foodSpots: [
+                    { icon: "🍳", name: "茂助玉子燒", desc: "百年老店甜煎蛋捲", mapQuery: "Mosuke Tamagoyaki Toyosu Market" },
+                    { icon: "🍤", name: "炸物 八千代", desc: "熟食/炸海鮮定食", mapQuery: "Tonkatsu Yachiyo Toyosu" },
+                    { icon: "🍱", name: "海鮮丼 大江戶", desc: "超豐盛海鮮丼飯", mapQuery: "Kaisendon Oedo Toyosu" },
+                    { icon: "🍣", name: "壽司大", desc: "超人氣排隊壽司", mapQuery: "Sushi Dai Toyosu" },
+                    { icon: "🏮", name: "千客萬來", desc: "市場旁最新溫泉美食街", mapQuery: "Toyosu Senkyaku Banrai" }
+                ]
+            },
             { id: "odaiba", name: "台場 獨角獸鋼彈", icon: "🤖", tag: "鋼彈", desc: "位於 DiverCity 廣場前。白天有 4 場變身秀(獨角獸模式->毀滅模式)，晚上有燈光秀。", tips: "變身時間：11:00, 13:00, 15:00, 17:00。" },
             { id: "teamlab", name: "teamLab Planets", icon: "✨", tag: "沉浸式藝術", desc: "需赤腳進入的水中美術館。光影與水面的結合非常夢幻，適合大人小孩互動。", tips: "這天會在台場周邊頻繁轉車，建議直接購買「百合海鷗號一日券」！" },
-            { id: "toyosu_food", name: "豐洲/台場 親子飲食 (5選)", icon: "🍽️", tag: "美食", desc: "🥩【燒肉】トラジ (Toraji)：LaLaport 內的厚切和牛燒肉；平城苑：Aqua City 景觀燒肉。\\n🍜【拉麵】麵屋 黑琥 (LaLaport)；東京拉麵國技館 舞 (Aqua City)。\\n🍱【海鮮】築地食堂 源ちゃん；大江戶 海鮮丼 (豐洲市場)。\\n🍽️【洋食】100本のスプーン：知名親子餐廳，可點半份套餐。\\n🍳【小吃】茂助玉子燒：甜甜煎蛋捲。", tips: "Day 2 午餐在豐洲市場吃海鮮或玉子燒，晚餐在 LaLaport 挑選拉麵或燒肉最順路！" },
+            { id: "toyosu_odaiba_food", name: "豐洲/台場 晚餐 (5選)", icon: "🍽️", tag: "美食", desc: "Day 2 晚餐推薦 (teamLab後)：", tips: "LaLaport 3樓有扭蛋機與玩具專賣店喔！",
+                foodSpots: [
+                    { icon: "🍽️", name: "100本のスプーン", desc: "LaLaport 質感親子餐廳，可點半份", mapQuery: "100 Spoons Toyosu" },
+                    { icon: "🥩", name: "燒肉トラジ Toraji", desc: "LaLaport 內吃厚切牛舌與和牛", mapQuery: "Yakiniku Toraji LaLaport Toyosu" },
+                    { icon: "🍜", name: "麵屋 黑琥", desc: "LaLaport 日式拉麵，方便快速", mapQuery: "Menya Kuroku Toyosu" },
+                    { icon: "🍱", name: "築地食堂 源ちゃん", desc: "LaLaport 熟食定食與生魚片", mapQuery: "Tsukiji Shokudo Genchan LaLaport Toyosu" },
+                    { icon: "🍜", name: "東京拉麵國技館 舞", desc: "若還在台場Aqua City，集結6家名店", mapQuery: "Tokyo Ramen Kokugikan Mai" }
+                ]
+            },
             
             // --- Day 3 ---
             { id: "sensoji", name: "淺草寺 & 雷門", icon: "🏮", tag: "傳統文化", desc: "東京最古老的寺廟。巨大的紅燈籠「雷門」是東京象徵。仲見世通有許多人形燒、仙貝等傳統小吃。", tips: "遊客非常多，建議早上9點前抵達拍照。" },
-            { id: "skytree", name: "東京晴空塔", icon: "🗼", tag: "地標/寶可夢", desc: "世界最高電波塔。樓下 Solamachi 商場有寶可夢中心(烈空坐鎮店)與 Kirby Cafe。", tips: "4F 戶外露台是拍攝晴空塔全貌的好位置。" },
-            { id: "skytree_asakusa_food", name: "晴空塔/淺草 親子飲食 (5選)", icon: "🍣", tag: "美食", desc: "🍜【拉麵】六厘舍 (晴空塔 6F)：超人氣排隊沾麵；一蘭拉麵 (淺草店)：經典豚骨。\\n🥩【燒肉】ぴゅあ Pure (晴空塔 11F)：農協直送黑毛和牛；平城苑 (淺草雷門)：頂級燒肉。\\n🍣【壽司】藏壽司 淺草ROX店：全球旗艦店，有祭典遊戲區；根室花丸 (晴空塔 6F)：北海道新鮮壽司。\\n🍱【定食】利久牛舌 (晴空塔 6F)：有兒童咖哩飯套餐。\\n⭐【主題】KIRBY CAFÉ 星之卡比 (晴空塔 4F)。", tips: "Day 3 推薦中午在晴空塔吃沾麵或牛舌，晚上到淺草 ROX 旗艦店吃藏壽司玩祭典遊戲！" },
+            { id: "skytree", name: "東京晴空塔", icon: "🗼", tag: "地標/寶可夢", desc: "世界最高電波塔。樓下 Solamachi 商場有寶可夢中心(烈空坐鎮店)與 Kirby Cafe。" },
+            { id: "skytree_food", name: "晴空塔 午餐 (5選)", icon: "🍱", tag: "美食", desc: "Day 3 午餐推薦：", tips: "假日時晴空塔餐廳人潮多，建議提早抽號或選美食街。",
+                foodSpots: [
+                    { icon: "🍜", name: "六厘舍", desc: "晴空塔 6F 超人氣排隊沾麵", mapQuery: "Rokurinsha Tokyo Skytree" },
+                    { icon: "🍣", name: "迴轉壽司 根室花丸", desc: "晴空塔 6F 北海道新鮮壽司 (需提早抽號)", mapQuery: "Kaitensushi Nemuro Hanamaru Tokyo Skytree" },
+                    { icon: "🍱", name: "利久牛舌", desc: "晴空塔 6F 炭烤厚切牛舌 (有兒童咖哩)", mapQuery: "Gyutan Rikyu Tokyo Skytree" },
+                    { icon: "🥩", name: "燒肉 ぴゅあ Pure", desc: "晴空塔 11F 農協直送黑毛和牛", mapQuery: "Yakiniku Pure Tokyo Skytree" },
+                    { icon: "🍽️", name: "Tabe-Terrace 美食街", desc: "晴空塔 3F 美食街免排隊挑選", mapQuery: "Tokyo Skytree Town Solamachi 3F Food Court" }
+                ]
+            },
+            { id: "asakusa_food", name: "淺草 晚餐 (5選)", icon: "🍣", tag: "美食", desc: "Day 3 晚餐推薦：", tips: "藏壽司 ROX店有專屬祭典遊戲，小孩最愛！",
+                foodSpots: [
+                    { icon: "🍣", name: "藏壽司 淺草ROX店", desc: "全球旗艦店，有祭典遊戲區與巨大扭蛋", mapQuery: "Kura Sushi Asakusa ROX" },
+                    { icon: "🍜", name: "一蘭拉麵 淺草店", desc: "獨立包廂位的經典豚骨拉麵", mapQuery: "Ichiran Asakusa" },
+                    { icon: "🥩", name: "平城苑 淺草雷門店", desc: "雷門旁的高級和牛燒肉", mapQuery: "Yakiniku Heijoen Asakusa Kaminarimon" },
+                    { icon: "🍲", name: "淺草今半", desc: "百年壽喜燒老店，黑毛和牛入口即化", mapQuery: "Asakusa Imahan" },
+                    { icon: "🍘", name: "淺草炸肉餅", desc: "街邊現炸酥脆小吃", mapQuery: "Asakusa Menchi" }
+                ]
+            },
             
             // --- Day 4 ---
-            { id: "karuizawa", name: "輕井澤", icon: "🚲", tag: "度假勝地", desc: "避暑勝地，充滿歐風建築與森林。車站旁就是超大 Outlet，舊輕井澤銀座通適合騎車漫遊。", tips: "將逛 Outlet 改到下午，買完戰利品就能直接上新幹線，免提重物騎車！" },
-            { id: "karuizawa_food", name: "輕井澤 親子飲食 (5選)", icon: "🍱", tag: "美食", desc: "🥩【燒肉】Aging Beef：Outlet 內熟成和牛燒肉，肉質極度柔軟。\\n🍜【拉麵】濃熟雞白湯 錦：Outlet 美食街內，湯頭甘甜。\\n🍱【和食】明治亭 (Outlet 內)：長野名物醬汁豬排丼，份量足；川上庵 (舊輕井澤)：知名信州蕎麥麵。\\n🐶【主題】Snoopy Village：超可愛史努比茶屋。", tips: "Outlet 餐廳假日容易客滿，建議 11:30 前就先入座用餐！" },
+            { id: "karuizawa", name: "輕井澤", icon: "🚲", tag: "度假勝地", desc: "避暑勝地，充滿歐風建築與森林。車站旁就是超大 Outlet，舊輕井澤銀座通適合騎車漫遊。", tips: "將逛 Outlet 改到下午，買完戰利品就能直接搭新幹線，免提重物騎車！" },
+            { id: "karuizawa_food", name: "輕井澤 飲食 (5選)", icon: "🍱", tag: "美食", desc: "Day 4 午餐推薦：", tips: "Outlet 餐廳容易客滿，建議 11:30 前入座。",
+                foodSpots: [
+                    { icon: "🍱", name: "明治亭", desc: "Outlet 內，長野名物醬汁豬排丼", mapQuery: "Meijitei Karuizawa" },
+                    { icon: "🍜", name: "濃熟雞白湯 錦", desc: "Outlet 美食街內，湯頭甘甜拉麵", mapQuery: "Ramen Nishiki Karuizawa" },
+                    { icon: "🥩", name: "Aging Beef", desc: "Outlet 內，熟成和牛燒肉", mapQuery: "Aging Beef Karuizawa" },
+                    { icon: "🥢", name: "川上庵", desc: "舊輕井澤 人氣信州蕎麥麵", mapQuery: "Kawakami An Karuizawa" },
+                    { icon: "🐶", name: "Snoopy Village", desc: "舊輕井澤 史努比主題茶屋", mapQuery: "Snoopy Village Karuizawa" }
+                ]
+            },
             
             // --- Day 5 ---
             { id: "shibuya", name: "SHIBUYA SKY", icon: "🏙️", tag: "高空夜景", desc: "目前東京最熱門的露天展望台，360度無死角美景。角落的玻璃扶手是網美必拍點。", tips: "日落時段最美，但需提早一個月搶票。" },
             { id: "shinjuku", name: "新宿 3D 貓", icon: "🐈", tag: "科技看板", desc: "新宿東口廣場對面大樓的 4K 彎曲螢幕。巨大的三花貓會探頭打招呼，非常逼真可愛。", tips: "每 15 分鐘會有一次特殊演出。" },
-            { id: "shibuya_shinjuku_food", name: "澀谷/新宿 親子飲食 (5選)", icon: "🍤", tag: "美食", desc: "🥩【燒肉】六歌仙 (新宿)：超人氣頂級和牛吃到飽；牛角 (渋谷)：平價友善。\\n🍜【拉麵】AFURI 阿夫利 (渋谷)：清爽柚子拉麵；一蘭拉麵 (新宿中央東口)。\\n🍣【壽司】魚米 Uobei (渋谷)：新幹線軌道送餐，小孩最愛。\\n🍤【體驗】串家物語 (新宿東寶大樓)：自己動手炸串吃到飽＋巧克力噴泉。\\n🍳【定食】鶴橋風月 (渋谷 12F)：大阪燒；名代 宇奈とと (新宿)：平價鰻魚飯。", tips: "Day 5 推薦中午在澀谷吃新幹線壽司或柚子拉麵，晚上在新宿體驗好玩的炸串吃到飽！" }
+            { id: "shibuya_food", name: "澀谷 午餐 (5選)", icon: "🍣", tag: "美食", desc: "Day 5 午餐推薦：", tips: "吃飽直接搭電梯上 SHIBUYA SKY 最順路！",
+                foodSpots: [
+                    { icon: "🍣", name: "魚米 Uobei", desc: "新幹線軌道送餐壽司，平價好玩", mapQuery: "Uobei Shibuya Dogenzaka" },
+                    { icon: "🍳", name: "鶴橋風月", desc: "Scramble Square 12F 大阪燒", mapQuery: "Tsuruhashi Fugetsu Shibuya Scramble Square" },
+                    { icon: "🍜", name: "AFURI 阿夫利", desc: "PARCO B1 清爽柚子鹽拉麵", mapQuery: "AFURI Harajuku" },
+                    { icon: "🥩", name: "燒肉 牛角 渋谷店", desc: "平價連鎖燒肉，菜單豐富", mapQuery: "Gyu-Kaku Shibuya" },
+                    { icon: "🍱", name: "名代 かつくら", desc: "Scramble Square 14F 京都炸豬排", mapQuery: "Katsukura Shibuya Scramble Square" }
+                ]
+            },
+            { id: "shinjuku_food", name: "新宿 晚餐 (5選)", icon: "🍤", tag: "美食", desc: "Day 5 晚餐推薦：", tips: "哥吉拉頭像每整點會咆哮，去串家物語剛好可以看！",
+                foodSpots: [
+                    { icon: "🍤", name: "串家物語", desc: "東寶大樓，自己動手炸串吃到飽+巧克力噴泉", mapQuery: "Kushiya Monogatari Shinjuku Toho Building" },
+                    { icon: "🥩", name: "燒肉亭 六歌仙", desc: "頂級和牛吃到飽", mapQuery: "Rokkasen Shinjuku" },
+                    { icon: "🍜", name: "一蘭拉麵", desc: "新宿中央東口店，經典獨立包廂拉麵", mapQuery: "Ichiran Shinjuku Central East" },
+                    { icon: "🍱", name: "名代 宇奈とと", desc: "平價高CP值炭烤鰻魚飯", mapQuery: "Naday Unatoto Shinjuku" },
+                    { icon: "🍽️", name: "高島屋 Times Square", desc: "12-14F 美食街，免排隊挑選", mapQuery: "Takashimaya Times Square Shinjuku" }
+                ]
+            }
         ];
 
         // --- View Components ---
@@ -610,9 +677,10 @@ html_code = """
             </div>
         );
         
+        // 渲染依行程排序的景點與餐廳列表
         const AttractionView = () => (
              <div className="h-full overflow-y-auto p-4 pb-24 space-y-4">
-                <div className="text-center mb-6"><h2 className="text-xl font-bold text-gray-800">景點百科</h2><p className="text-indigo-600 text-sm">依行程順序排列 (含5大飲食建議)</p></div>
+                <div className="text-center mb-6"><h2 className="text-xl font-bold text-gray-800">景點百科</h2><p className="text-indigo-600 text-sm">依行程時序 Day 1 ~ Day 5 排序</p></div>
                 {attractionInfos.map((item, idx) => (
                     <div key={idx} className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm flex flex-col gap-2">
                         <div className="flex items-center gap-3">
@@ -622,8 +690,30 @@ html_code = """
                                  <span className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded">{item.tag}</span>
                              </div>
                         </div>
-                        <p className="text-sm text-gray-600 mt-2 whitespace-pre-line">{item.desc}</p>
-                        <div className="bg-yellow-50 text-yellow-800 text-xs p-2 rounded mt-1">💡 {item.tips}</div>
+                        {item.desc && <p className="text-sm text-gray-600 mt-2 whitespace-pre-line">{item.desc}</p>}
+                        
+                        {/* 渲染獨立加入的餐飲店家連結 */}
+                        {item.foodSpots && (
+                            <div className="mt-2 space-y-2">
+                                {item.foodSpots.map((spot, sIdx) => {
+                                    const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.mapQuery)}`;
+                                    return (
+                                        <div key={sIdx} className="bg-gray-50 p-2 rounded-lg flex items-start gap-2 border border-gray-100">
+                                            <div className="text-lg leading-none mt-0.5">{spot.icon}</div>
+                                            <div className="flex-1">
+                                                <a href={mapUrl} target="_blank" className="font-bold text-indigo-600 hover:text-indigo-800 text-[14px] no-underline flex items-center gap-1 transition-colors">
+                                                    {spot.name} 
+                                                    <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                                </a>
+                                                <p className="text-[12px] text-gray-500 mt-1 m-0 leading-snug">{spot.desc}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        )}
+                        
+                        {item.tips && <div className="bg-yellow-50 text-yellow-800 text-[13px] p-2 rounded-lg border border-yellow-100 mt-2 leading-relaxed font-medium">💡 {item.tips}</div>}
                     </div>
                 ))}
              </div>
