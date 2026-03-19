@@ -205,13 +205,13 @@ html_code = """
             }
         };
 
-        // 行程資料 (已全面標註精確的交通路線名稱)
+        // 行程資料 (更新第一天前往飯店方式為步行)
         const itinerary = [
              { day: 1, date: "4/17 (五)", title: "抵達與鈴芽的起點", events: [ 
                  { time: "13:25", title: "抵達成田機場", desc: "T1 (長榮)", icon: "✈️", location: "成田国際空港 第1ターミナル", hideRoute: true, tips: "抵達 T1 後，先前往 B1 辦理兒童版西瓜卡與領取 Skyliner 車票。" }, 
                  { time: "14:00", title: "往 Skyliner 乘車處", desc: "成田機場 T1 B1", icon: "🚶", location: "成田空港駅（第1旅客ターミナル）", transport: { route: "入境大廳 → B1 京成電鐵", line: "步行", time: "10分" } }, 
                  { time: "14:30", title: "搭乘 Skyliner", desc: "往京成上野站", icon: "🚅", location: "京成上野駅", transport: { route: "成田機場 → 京成上野", line: "京成 Skyliner", time: "41分" } }, 
-                 { time: "16:00", title: "Check-in", desc: "Stayme Ueno", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "上野 → 飯店", line: "計程車", time: "10分" } }, 
+                 { time: "16:00", title: "Check-in", desc: "Stayme Ueno", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "上野 → 飯店", line: "步行", time: "10分" } }, 
                  { time: "17:15", title: "往稻荷町站", desc: "步行", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
                  { time: "17:30", title: "御茶之水 聖橋", desc: "鈴芽場景", icon: "📸", location: "聖橋", transport: { route: "稻荷町 → 御茶之水", line: "東京地鐵銀座線 轉 JR中央線", time: "15分" } }, 
                  { time: "18:30", title: "秋葉原", desc: "逛街", icon: "🛍️", location: "秋葉原駅", transport: { route: "御茶之水 → 秋葉原", line: "步行", time: "10分" } }, 
@@ -304,13 +304,13 @@ html_code = """
                 links: [{ title: "T1 樓層圖 (官網)", url: "https://www.narita-airport.jp/ch2/map/?terminal=1&map=1" }] 
             },
             { 
-                id: "ueno_keisei", name: "京成上野站", desc: "轉乘與計程車", 
-                tips: ["抵達時在地下月台", "行李多強烈建議搭計程車"], 
+                id: "ueno_keisei", name: "京成上野站", desc: "前往飯店路線", 
+                tips: ["抵達時在地下月台", "往稻荷町方向步行約 10 分鐘"], 
                 routes: [
                     "下車後搭手扶梯往上，尋找「正面口」出口",
                     "出改札口後直走，不要往地鐵連絡通道走",
-                    "出站到地面，右手邊即是計程車招呼站",
-                    "出示飯店地址給司機 (車程約 5-10 分)"
+                    "出站到地面後，開啟 Google Map 導航前往飯店",
+                    "沿著淺草通直走即可抵達 (步行約 10 分)"
                 ],
                 links: [{ title: "京成上野構內圖", url: "https://www.keisei.co.jp/keisei/tetudou/stationmap/pdf/us/101.pdf" }] 
             },
@@ -531,7 +531,6 @@ html_code = """
                                                 </div>
                                             )}
 
-                                            {/* ✅ 更新：行程內的交通方式強制顯示路線名稱與專屬彩色標籤 */}
                                             {evt.transport && (
                                                 <div className="mb-3 bg-slate-50 p-2.5 rounded-lg text-xs text-slate-600 flex flex-col gap-1.5 border border-slate-200">
                                                     <div className="flex items-center gap-2 font-medium">
