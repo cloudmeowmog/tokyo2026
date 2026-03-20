@@ -104,7 +104,7 @@ html_code = """
                     { name: '海鮮丼 大江戶', desc: '豐洲市場水產棟，超澎湃的新鮮海鮮丼。', tag: '豐盛海鮮', icon: '🍱', mapQuery: '海鮮丼 大江戸 豊洲市場' },
                     { name: '炸物 八千代', desc: '不吃生食的好選擇！炸大蝦與炸豬排定食。', tag: '熟食定食', icon: '🍤', mapQuery: 'とんかつ 八千代 豊洲市場' },
                     { name: '壽司大', desc: '豐洲市場超人氣排隊壽司，想吃需起個大早。', tag: '排隊壽司', icon: '🍣', mapQuery: '寿司大 豊洲市場' },
-                    { name: 'teamLab Planets', desc: '需赤腳的水中光影美術館，小孩玩水超開心。', tag: '光影藝術', icon: '✨', mapQuery: 'teamLab Planets TOKYO' },
+                    { name: 'teamLab Planets', desc: '需赤腳的水中光影美術館，小孩玩水超开心。', tag: '光影藝術', icon: '✨', mapQuery: 'teamLab Planets TOKYO' },
                     { name: '豐洲 LaLaport', desc: '超大商場！3樓有玩具店、扭蛋機，非常適合放電。', tag: '購物遊樂', icon: '🛍️', mapQuery: 'ららぽーと豊洲' },
                     { name: '100本のスプーン', desc: 'LaLaport 內親子餐廳。小孩可點大人一模一樣的半份餐。', tag: '親子餐廳', icon: '🍽️', mapQuery: '100本のスプーン ららぽーと豊洲' },
                     { name: '燒肉トラジ (Toraji)', desc: 'LaLaport 內吃厚切牛舌與和牛，舒適無煙味。', tag: '和牛燒肉', icon: '🥩', mapQuery: '焼肉トラジ ららぽーと豊洲店' },
@@ -283,12 +283,12 @@ html_code = """
                  } 
              ] },
              { day: 3, date: "4/19 (日)", title: "淺草與晴空塔", events: [ 
-                 { time: "08:45", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" }, hideMap: true }, 
-                 { time: "09:00", title: "淺草寺", desc: "雷門", icon: "🏮", location: "雷門", transport: { route: "稻荷町 → 淺草", line: "東京地鐵銀座線 直達", time: "3分" }, hideMap: true,
+                 { time: "08:45", title: "往上野站", desc: "出發", icon: "🚶", location: "上野駅", transport: { route: "飯店 → 上野站", line: "步行", time: "10分" }, hideMap: true }, 
+                 { time: "09:00", title: "淺草寺", desc: "雷門", icon: "🏮", location: "雷門", transport: { route: "上野 → 淺草", line: "東京地鐵銀座線 直達", time: "5分" }, hideMap: true,
                    stationGuide: {
                      name: "前往淺草", desc: "銀座線直達",
-                     tips: ["免轉乘，非常輕鬆"],
-                     routes: ["從稻荷町站搭乘「銀座線(黃色)」往淺草方向", "搭乘 2 站即可抵達終點「淺草站」", "出站後依循「雷門」指標步行約 3 分鐘即可抵達"]
+                     tips: ["從上野站搭乘，指標明確"],
+                     routes: ["從飯店步行約 10 分鐘至「上野站」", "搭乘「銀座線(黃色)」往淺草方向", "搭乘 3 站即可抵達終點「淺草站」", "出站後依循「雷門」指標步行約 3 分鐘即可抵達"]
                    }
                  }, 
                  { time: "11:00", title: "隅田川步道", desc: "散步", icon: "🚶", location: "すみだリバーウォーク", transport: { route: "淺草 → 晴空塔", line: "步行", time: "20分" }, hideMap: true }, 
@@ -301,11 +301,11 @@ html_code = """
                      routes: ["从晴空塔旁的「押上站」搭乘「都營淺草線(玫瑰紅)」往西馬込/羽田機場方向", "搭乘 2 站至「淺草站」下車", "出站後依導航步行約 5-8 分鐘前往淺草 ROX 商場"]
                    }
                  }, 
-                 { time: "19:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "田原町站 → 稻荷町", line: "東京地鐵銀座線 直達", time: "3分" }, hideMap: true,
+                 { time: "19:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "田原町站 → 上野 → 飯店", line: "銀座線 直達轉步行", time: "15分" }, hideMap: true,
                    stationGuide: {
-                     name: "返回飯店 (淺草出發)", desc: "銀座線直達",
-                     tips: ["從田原町站上車最近"],
-                     routes: ["吃飽後步行至 ROX 商場附近的「田原町站」", "搭乘「銀座線(黃色)」往澀谷方向", "搭乘 1 站即達「稻荷町站」，步行回飯店"]
+                     name: "返回飯店 (淺草出發)", desc: "搭乘銀座線至上野後步行",
+                     tips: ["從田原町站上車最近", "回到熟悉的上野站再散步回飯店"],
+                     routes: ["吃飽後步行至 ROX 商場附近的「田原町站」", "搭乘「銀座線(黃色)」往澀谷方向", "搭乘 2 站至「上野站」下車", "出站後沿著淺草通往東直走，步行約 10 分鐘即可抵達飯店"]
                    }
                  } 
              ] },
@@ -443,7 +443,7 @@ html_code = """
                 foodSpots: [
                     { icon: "🍽️", name: "100本のスプーン", desc: "LaLaport 內，高質感親子餐廳，可點半份", mapQuery: "100本のスプーン ららぽーと豊洲" },
                     { icon: "🥩", name: "燒肉トラジ Toraji", desc: "LaLaport 內，爽吃厚切牛舌與和牛", mapQuery: "焼肉トラジ ららぽーと豊洲店" },
-                    { icon: "🍱", name: "築食堂 源ちゃん", desc: "LaLaport 內，熟食海鮮定食", mapQuery: "築地食堂 源ちゃん ららぽーと豊洲店" },
+                    { icon: "🍱", name: "築地食堂 源ちゃん", desc: "LaLaport 內，熟食海鮮定食", mapQuery: "築地食堂 源ちゃん ららぽーと豊洲店" },
                     { icon: "🍜", name: "麵屋 黑琥", desc: "LaLaport 內，豚骨醬油日式拉麵", mapQuery: "麺や 黒琥 ららぽーと豊洲" },
                     { icon: "🍲", name: "玉丁本店", desc: "LaLaport 內，濃郁的味噌燉烏龍麵", mapQuery: "玉丁本店 ららぽーと豊洲店" }
                 ]
