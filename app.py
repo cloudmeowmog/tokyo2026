@@ -318,8 +318,9 @@ html_code = """
                    }
                  }, 
                  { time: "10:10", title: "抵達輕井澤", desc: "北口租單車", icon: "🚲", location: "軽井沢駅", transport: { route: "上野 → 輕井澤", line: "JR 北陸新幹線", time: "60分" } }, 
-                 { time: "10:30", title: "舊輕井澤 & 雲場池", desc: "大自然散步", icon: "🦆", location: "長野県 雲場池", transport: { route: "車站 → 景點", line: "單車", time: "15分" } }, 
-                 { time: "12:30", title: "輕井澤午餐", desc: "美食街/餐廳", icon: "🍱", location: "軽井沢プリンスショッピングプラザ 太陽と緑のキッチン", transport: { route: "雲場池 → Outlet", line: "單車", time: "10分" }, tips: "【輕井澤 飲食5選】\\n1. 明治亭 (Outlet 內，長野醬汁豬排丼)\\n2. 濃熟雞白湯 錦 (Outlet 美食街拉麵)\\n3. Aging Beef (Outlet 內，熟成和牛燒肉)\\n4. 川上庵 (舊輕井澤 人氣蕎麥麵)\\n5. Snoopy Village (舊輕井澤 史努比主題茶屋)" }, 
+                 { time: "10:30", title: "雲場池", desc: "大自然散步", icon: "🦆", location: "長野県 雲場池", transport: { route: "車站 → 雲場池", line: "單車", time: "10分" } }, 
+                 { time: "11:15", title: "舊輕井澤", desc: "老街漫遊", icon: "🏘️", location: "旧軽井沢銀座通り", transport: { route: "雲場池 → 舊輕井澤", line: "單車", time: "10分" } }, 
+                 { time: "12:30", title: "輕井澤午餐", desc: "美食街/餐廳", icon: "🍱", location: "軽井沢プリンスショッピングプラザ 太陽と緑のキッチン", transport: { route: "舊輕井澤 → Outlet", line: "單車", time: "15分" }, tips: "【輕井澤 飲食5選】\\n1. 明治亭 (Outlet 內，長野醬汁豬排丼)\\n2. 濃熟雞白湯 錦 (Outlet 美食街拉麵)\\n3. Aging Beef (Outlet 內，熟成和牛燒肉)\\n4. 川上庵 (舊輕井澤 人氣蕎麥麵)\\n5. Snoopy Village (舊輕井澤 史努比主題茶屋)" }, 
                  { time: "14:30", title: "王子 Outlet", desc: "購物與樂高區", icon: "🛍️", location: "軽井沢プリンスショッピングプラザ", hideRoute: true, tips: "💡 將 Outlet 移到下午，買完戰利品就能直接搭新幹線，不用提著大包小包騎腳踏車！" }, 
                  { time: "17:30", title: "返回上野", desc: "回程", icon: "🚅", location: "JR 上野駅", transport: { route: "輕井澤 → 上野", line: "JR 北陸新幹線", time: "60分" },
                    stationGuide: {
@@ -333,7 +334,7 @@ html_code = """
              ] },
              { day: 5, date: "4/21 (二)", title: "築地・渋谷・新宿", events: [ 
                  { time: "08:40", title: "往上野站", desc: "出發", icon: "🚶", location: "上野駅", transport: { route: "飯店 → 上野站", line: "步行", time: "10分" } }, 
-                 { time: "09:00", title: "築地場外市場", desc: "早餐", icon: "🐟", location: "築地場外市場", transport: { route: "上野 → 築地", line: "東京地鐵日比谷線 直達", time: "12分" }, tips: "【築地市場 飲食5選】\\n1. 狐狸屋 (超濃郁牛雜/牛丼)\\n2. 築地 山長 (100円排隊玉子燒)\\n3. 築地 可樂餅 (明太子文字燒口味)\\n4. 黑銀 鮪魚店 (頂級黑鮪魚生魚片)\\n5. 壽司三味 本店 (知名平價壽司)\\n💡 狐狸屋極受歡迎，建議一早就去排隊！",
+                 { time: "09:00", title: "築地場外市場", desc: "早餐", icon: "🐟", location: "築地場外市場", transport: { route: "上野 → 築地", line: "東京地鐵日比谷線 直達", time: "12分" }, tips: "【築地市場 飲食5選】\\n1. 狐狸屋 (超濃郁牛雜/牛丼)\\n2. 築地 山長 (100円排隊玉子燒)\\n3. 築地 可রাপ可餅 (明太子文字燒口味)\\n4. 黑銀 鮪魚店 (頂級黑鮪魚生魚片)\\n5. 壽司三味 本店 (知名平價壽司)\\n💡 狐狸屋極受歡迎，建議一早就去排隊！",
                    stationGuide: {
                      name: "前往築地市場", desc: "日比谷線直達 (免轉乘)",
                      tips: ["從上野站搭乘，免換線直達"],
