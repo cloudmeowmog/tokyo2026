@@ -160,7 +160,7 @@ html_code = """
                     { name: '濃熟雞白湯 錦', desc: 'Outlet 內。湯頭溫和甘甜的雞白湯拉麵。', tag: '雞白湯拉麵', icon: '🍜', mapQuery: '濃熟鶏白湯 錦 軽井沢・プリンスショッピングプラザ店' },
                     { name: 'Aging Beef', desc: 'Outlet 內。主打熟成和牛燒肉，肉質柔軟。', tag: '熟成燒肉', icon: '🥩', mapQuery: '熟成和牛焼肉エイジング・ビーフ 軽井沢' },
                     { name: 'Snoopy Village', desc: '舊輕井澤。超可愛的史努比茶屋與伴手禮。', tag: '卡通茶屋', icon: '🐶', mapQuery: 'SNOOPY Village 軽井沢' },
-                    { name: 'やまへい (Yamahei)', desc: 'Outlet 內。信州蕎麥麵老店，麵條滑順。', tag: '蕎麥麵', icon: '🥢', mapQuery: '信州そば処 やまへい 軽井沢店' }
+                    { name: 'きよやす庵 (Kiyoyasuan)', desc: 'Outlet 內。超多汁的黑毛和牛漢堡排與牛排。', tag: '漢堡排', icon: '🍽️', mapQuery: '御曹司 きよやす庵 軽井沢プリンスショッピングプラザ店' }
                 ]
             },
             tsukiji: {
@@ -244,7 +244,7 @@ html_code = """
              ] },
              { day: 2, date: "4/18 (六)", title: "台場鋼彈 & 豐洲", events: [ 
                  { time: "08:45", title: "往上野站", desc: "出發", icon: "🚶", location: "上野駅", transport: { route: "飯店 → 上野站", line: "步行", time: "10分" }, hideMap: true }, 
-                 { time: "09:00", title: "豐洲市場 / 千客萬來", desc: "參觀/小吃", icon: "🏮", location: "豊洲市場", transport: { route: "上野 → 豐洲", line: "JR山手線 轉 有樂町線", time: "30分" }, hideMap: true, tips: "💡 早上先在豐洲周邊逛逛，可吃點玉子燒等小點心墊胃，將主力午餐移至台場商場內享用。",
+                 { time: "09:00", title: "豐洲市場 / 千客萬來", desc: "參觀/小吃", icon: "🏮", location: "豊洲市場", transport: { route: "上野 → 豐洲", line: "JR山手線 轉 有樂町線", time: "30分" }, hideMap: true, tips: "💡 早上先在豐洲周邊逛逛，可吃點玉子燒等小點心墊胃，將主力午餐移至台場商場内享用。",
                    stationGuide: {
                      name: "前往豐洲市場", desc: "JR山手線轉乘有樂町線",
                      tips: ["在有樂町站轉乘", "有樂町線往新木場方向"],
@@ -320,7 +320,7 @@ html_code = """
                  { time: "10:10", title: "抵達輕井澤", desc: "北口租單車", icon: "🚲", location: "軽井沢駅", transport: { route: "上野 → 輕井澤", line: "JR 北陸新幹線", time: "60分" }, hideMap: true }, 
                  { time: "10:30", title: "雲場池", desc: "大自然散步", icon: "🦆", location: "長野県 雲場池", transport: { route: "車站 → 雲場池", line: "單車", time: "10分" }, hideMap: true }, 
                  { time: "11:15", title: "舊輕井澤", desc: "老街漫遊", icon: "🏘️", location: "旧軽井沢銀座通り", transport: { route: "雲場池 → 舊輕井澤", line: "單車", time: "10分" }, hideMap: true }, 
-                 { time: "12:30", title: "輕井澤午餐", desc: "美食街/餐廳", icon: "🍱", location: "軽井沢プリンスショッピングプラザ 太陽と緑のキッチン", transport: { route: "舊輕井澤 → Outlet", line: "單車", time: "15分" }, hideMap: true, tips: "【輕井澤 飲食5選】\\n1. 明治亭 (Outlet 內，長野醬汁豬排丼)\\n2. 濃熟雞白湯 錦 (Outlet 美食街拉麵)\\n3. Aging Beef (Outlet 內，熟成和牛燒肉)\\n4. 信州そば処 やまへい (Outlet 內，信州蕎麥麵)\\n5. Snoopy Village (舊輕井澤 史努比主題茶屋)" }, 
+                 { time: "12:30", title: "輕井澤午餐", desc: "美食街/餐廳", icon: "🍱", location: "軽井沢プリンスショッピングプラザ 太陽と緑のキッチン", transport: { route: "舊輕井澤 → Outlet", line: "單車", time: "15分" }, hideMap: true, tips: "【輕井澤 飲食5選】\\n1. 明治亭 (Outlet 內，長野醬汁豬排丼)\\n2. 濃熟雞白湯 錦 (Outlet 美食街拉麵)\\n3. Aging Beef (Outlet 內，熟成和牛燒肉)\\n4. きよやす庵 (Outlet 內，和牛漢堡排)\\n5. Snoopy Village (舊輕井澤 史努比主題茶屋)" }, 
                  { time: "14:30", title: "王子 Outlet", desc: "購物與樂高區", icon: "🛍️", location: "軽井沢プリンスショッピングプラザ", hideRoute: true, tips: "💡 將 Outlet 移到下午，買完戰利品就能直接搭新幹線，不用提著大包小包騎腳踏車！" }, 
                  { time: "17:30", title: "返回上野", desc: "回程", icon: "🚅", location: "JR 上野駅", transport: { route: "輕井澤 → 上野", line: "JR 北陸新幹線", time: "60分" }, hideMap: true,
                    stationGuide: {
@@ -479,7 +479,7 @@ html_code = """
                     { icon: "🍱", name: "明治亭", desc: "Outlet 內，長野名物醬汁豬排丼", mapQuery: "ソースかつ丼 明治亭 軽井沢店" },
                     { icon: "🍜", name: "濃熟雞白湯 錦", desc: "Outlet 美食街內，湯頭甘甜拉麵", mapQuery: "濃熟鶏白湯 錦 軽井沢・プリンスショッピングプラザ店" },
                     { icon: "🥩", name: "Aging Beef", desc: "Outlet 內，熟成和牛燒肉", mapQuery: "熟成和牛焼肉エイジング・ビーフ 軽井沢" },
-                    { icon: "🥢", name: "やまへい (Yamahei)", desc: "Outlet 內，平價好吃的信州蕎麥麵", mapQuery: "信州そば処 やまへい 軽井沢店" },
+                    { icon: "🍽️", name: "きよやす庵 (Kiyoyasuan)", desc: "Outlet 內。超多汁的黑毛和牛漢堡排與牛排。", mapQuery: "御曹司 きよやす庵 軽井沢プリンスショッピングプラザ店" },
                     { icon: "🐶", name: "Snoopy Village", desc: "舊輕井澤 史努比主題茶屋", mapQuery: "SNOOPY Village 軽井沢" }
                 ]
             },
