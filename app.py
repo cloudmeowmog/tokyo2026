@@ -678,7 +678,7 @@ html_code = """
                     
                     <div className="flex-1 overflow-y-auto p-4 pb-24 space-y-4">
                         {subView === 'attractions' && (
-                            <>
+                            <div>
                                 <div className="text-center mb-6"><h2 className="text-xl font-bold text-gray-800">景點百科</h2><p className="text-indigo-600 text-sm">依行程時序 Day 1 ~ Day 6 排序</p></div>
                                 {attractionInfos.map((item, idx) => (
                                     <div key={idx} className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm flex flex-col gap-2 mb-4">
@@ -713,11 +713,11 @@ html_code = """
                                         {item.tips && <div className="bg-yellow-50 text-yellow-800 text-[13px] p-2 rounded-lg border border-yellow-100 mt-2 leading-relaxed font-medium">💡 {item.tips}</div>}
                                     </div>
                                 ))}
-                            </>
+                            </div>
                         )}
                         
                         {subView === 'travel' && (
-                            <>
+                            <div>
                                 <div className="text-center mb-6"><h2 className="text-xl font-bold text-gray-800">旅遊資訊</h2><p className="text-teal-600 text-sm">車站、機場與行李指南</p></div>
                                 {travelInfos.map((info, idx) => (
                                     <div key={idx} className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm flex flex-col gap-2 mb-4">
@@ -732,11 +732,11 @@ html_code = """
                                         </div>
                                     </div>
                                 ))}
-                            </>
+                            </div>
                         )}
                         
                         {subView === 'language' && (
-                            <>
+                            <div>
                                 <div className="text-center mb-6"><h2 className="text-xl font-bold text-gray-800">實用日文</h2><p className="text-orange-600 text-sm">地點拼音與基本會話</p></div>
                                 {japanesePhrases.map((phraseGroup, idx) => (
                                     <div key={idx} className="mb-6">
@@ -754,7 +754,7 @@ html_code = """
                                         </div>
                                     </div>
                                 ))}
-                            </>
+                            </div>
                         )}
                     </div>
                 </div>
