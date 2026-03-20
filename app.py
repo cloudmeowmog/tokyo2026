@@ -244,7 +244,7 @@ html_code = """
              ] },
              { day: 2, date: "4/18 (六)", title: "台場鋼彈 & 豐洲", events: [ 
                  { time: "08:45", title: "往上野站", desc: "出發", icon: "🚶", location: "上野駅", transport: { route: "飯店 → 上野站", line: "步行", time: "10分" }, hideMap: true }, 
-                 { time: "09:00", title: "豐洲市場 / 千客萬來", desc: "參觀/小吃", icon: "🏮", location: "豊洲市場", transport: { route: "上野 → 豐洲", line: "JR山手線 轉 有樂町線", time: "30分" }, hideMap: true, tips: "💡 早上先在豐洲周邊逛逛，可吃點玉子燒等小點心墊胃，將主力午餐移至台場商場内享用。",
+                 { time: "09:00", title: "豐洲市場 / 千客萬來", desc: "參觀/小吃", icon: "🏮", location: "豊洲市場", transport: { route: "上野 → 豐洲", line: "JR山手線 轉 有樂町線", time: "30分" }, hideMap: true, tips: "💡 早上先在豐洲周邊逛逛，可吃點玉子燒等小點心墊胃，將主力午餐移至台場商場內享用。",
                    stationGuide: {
                      name: "前往豐洲市場", desc: "JR山手線轉乘有樂町線",
                      tips: ["在有樂町站轉乘", "有樂町線往新木場方向"],
@@ -333,32 +333,32 @@ html_code = """
                  { time: "20:30", title: "返回飯店", desc: "步行", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "上野 → 飯店", line: "步行", time: "10分" }, hideMap: true } 
              ] },
              { day: 5, date: "4/21 (二)", title: "築地・渋谷・新宿", events: [ 
-                 { time: "08:40", title: "往上野站", desc: "出發", icon: "🚶", location: "上野駅", transport: { route: "飯店 → 上野站", line: "步行", time: "10分" } }, 
-                 { time: "09:00", title: "築地場外市場", desc: "早餐", icon: "🐟", location: "築地場外市場", transport: { route: "上野 → 築地", line: "東京地鐵日比谷線 直達", time: "12分" }, tips: "【築地市場 飲食5選】\\n1. 狐狸屋 (超濃郁牛雜/牛丼)\\n2. 築地 山長 (100円排隊玉子燒)\\n3. 築地 可樂餅 (明太子文字燒口味)\\n4. 黑銀 鮪魚店 (頂級黑鮪魚生魚片)\\n5. 壽司三味 本店 (知名平價壽司)\\n💡 狐狸屋極受歡迎，建議一早就去排隊！",
+                 { time: "08:40", title: "往上野站", desc: "出發", icon: "🚶", location: "上野駅", transport: { route: "飯店 → 上野站", line: "步行", time: "10分" }, hideMap: true }, 
+                 { time: "09:00", title: "築地場外市場", desc: "早餐", icon: "🐟", location: "築地場外市場", transport: { route: "上野 → 築地", line: "東京地鐵日比谷線 直達", time: "12分" }, hideMap: true, tips: "【築地市場 飲食5選】\\n1. 狐狸屋 (超濃郁牛雜/牛丼)\\n2. 築地 山長 (100円排隊玉子燒)\\n3. 築地 可樂餅 (明太子文字燒口味)\\n4. 黑銀 鮪魚店 (頂級黑鮪魚生魚片)\\n5. 壽司三味 本店 (知名平價壽司)\\n💡 狐狸屋極受歡迎，建議一早就去排隊！",
                    stationGuide: {
                      name: "前往築地市場", desc: "日比谷線直達 (免轉乘)",
                      tips: ["從上野站搭乘，免換線直達"],
                      routes: ["從飯店步行約 10 分鐘至「上野站」", "依循指標前往地下鐵「日比谷線(銀色)」", "搭乘往中目黑/六本木方向列車，約 12 分鐘直達「築地站」下車", "出站步行約 3 分鐘即可抵達場外市場"]
                    }
                  }, 
-                 { time: "12:00", title: "渋谷 PARCO", desc: "寶可夢", icon: "🎮", location: "渋谷パルコ", transport: { route: "築地 → 渋谷", line: "東京地鐵日比谷線 轉 銀座線", time: "25分" },
+                 { time: "12:00", title: "渋谷 PARCO", desc: "寶可夢", icon: "🎮", location: "渋谷パルコ", transport: { route: "銀座站 → 渋谷", line: "東京地鐵銀座線 直達", time: "16分" }, hideMap: true,
                    stationGuide: {
-                     name: "前往澀谷", desc: "日比谷線轉銀座線",
-                     tips: ["在銀座站轉乘", "抵達後先逛 PARCO 或去吃飯"],
-                     routes: ["從築地站搭乘「日比谷線(銀色)」至「銀座站」", "在站內轉乘「銀座線(黃色)」往澀谷方向，搭至終點「澀谷站」", "下車後位於 3F，可跟隨 Scramble Square 指標或下至 1F 廣場過馬路前往 PARCO"]
+                     name: "前往澀谷", desc: "銀座線直達 (免轉乘)",
+                     tips: ["從築地散步至銀座站搭車", "抵達後先逛 PARCO 或去吃飯"],
+                     routes: ["從築地場外市場步行約 10-12 分鐘至「銀座站」", "進入地鐵站搭乘「銀座線(黃色)」往澀谷方向", "直達終點「澀谷站」下車", "下車後位於 3F，可跟隨 Scramble Square 指標或下至 1F 廣場過馬路前往 PARCO"]
                    }
                  }, 
                  { time: "13:30", title: "澀谷午餐", desc: "魚米/美食街", icon: "🍽️", location: "渋谷スクランブルスクエア", transport: { route: "PARCO → 餐廳", line: "步行", time: "10分" }, tips: "【澀谷 飲食5選】\\n1. 魚米 Uobei (新幹線軌道送餐壽司)\\n2. 鶴橋風月 (Scramble Square 大阪燒)\\n3. AFURI 阿夫利 (清爽柚子鹽拉麵)\\n4. 燒肉 牛角 (平價連鎖燒肉)\\n5. 名代 かつくら (Scramble Square 京都炸豬排)\\n💡 吃飽直接搭電梯上 SHIBUYA SKY 最順路！" }, 
-                 { time: "15:00", title: "SHIBUYA SKY", desc: "需預約", icon: "🏙️", location: "SHIBUYA SKY", transport: { route: "餐廳 → 展望台", line: "步行", time: "5分" } }, 
-                 { time: "17:30", title: "新宿 3D貓", desc: "東口", icon: "🐈", location: "クロス新宿ビジョン", transport: { route: "渋谷 → 新宿", line: "JR 山手線", time: "7分" },
+                 { time: "15:00", title: "SHIBUYA SKY", desc: "需預約", icon: "🏙️", location: "SHIBUYA SKY", transport: { route: "餐廳 → 展望台", line: "步行", time: "5分" }, hideMap: true }, 
+                 { time: "17:30", title: "新宿 3D貓", desc: "東口", icon: "🐈", location: "クロス新宿ビジョン", transport: { route: "渋谷 → 新宿", line: "JR 山手線", time: "7分" }, hideMap: true,
                    stationGuide: {
                      name: "前往新宿", desc: "JR 山手線動線",
                      tips: ["3D 貓與歌舞伎町都在東口"],
                      routes: ["從澀谷站進入 JR 閘口，搭乘「山手線(綠色)」往新宿/池袋方向", "搭乘約 7 分鐘抵達「新宿站」", "下車後請務必尋找黃色招牌「東改札 (East Exit)」", "出站到達地面廣場，往左前方抬頭即可看見 3D 貓"]
                    }
                  }, 
-                 { time: "18:30", title: "新宿晚餐", desc: "串家物語/燒肉", icon: "🦖", location: "新宿東宝ビル", transport: { route: "東口 → 歌舞伎町", line: "步行", time: "10分" }, tips: "【新宿 飲食5選】\\n1. 串家物語 (自己動手炸串+巧克力噴泉)\\n2. 燒肉亭 六歌仙 (頂級和牛吃到飽)\\n3. 一蘭拉麵 新宿中央東口店 (經典拉麵)\\n4. 名代 宇奈とと (平價炭烤鰻魚飯)\\n5. 高島屋 Times Square 美食街 (精緻和食)\\n💡 哥吉拉頭像每整點會咆哮發光，去串家物語剛好可以看！" }, 
-                 { time: "20:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "新宿 → 上野 → 飯店", line: "JR 山手線 直達轉步行", time: "35分" },
+                 { time: "18:30", title: "新宿晚餐", desc: "串家物語/燒肉", icon: "🦖", location: "新宿東宝ビル", transport: { route: "東口 → 歌舞伎町", line: "步行", time: "10分" }, hideMap: true, tips: "【新宿 飲食5選】\\n1. 串家物語 (自己動手炸串+巧克力噴泉)\\n2. 燒肉亭 六歌仙 (頂級和牛吃到飽)\\n3. 一蘭拉麵 新宿中央東口店 (經典拉麵)\\n4. 名代 宇奈とと (平價炭烤鰻魚飯)\\n5. 高島屋 Times Square 美食街 (精緻和食)\\n💡 哥吉拉頭像每整點會咆哮發光，去串家物語剛好可以看！" }, 
+                 { time: "20:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "新宿 → 上野 → 飯店", line: "JR 山手線 直達轉步行", time: "35分" }, hideMap: true,
                    stationGuide: {
                      name: "返回飯店 (新宿出發)", desc: "JR 山手線直達 (免轉乘)",
                      tips: ["搭乘山手線外回(池袋/上野方向)"],
