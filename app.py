@@ -216,25 +216,25 @@ html_code = """
                      routes: ["入境大廳位於 1F，領完行李後尋找「鐵道」指標", "搭乘手扶梯下樓至 B1", "尋找藍色櫃台「KEISEI (京成電鐵)」購票", "通過橘色剪票口，前往 4 或 5 號月台", "上車後行李放置於車廂前後的行李架"]
                    }
                  }, 
-                 { time: "14:30", title: "搭乘 Skyliner", desc: "往京成上野站", icon: "🚅", location: "京成上野駅", transport: { route: "成田機場 → 京成上野", line: "京成 Skyliner", time: "41分" } }, 
-                 { time: "16:00", title: "Check-in", desc: "Stayme Ueno", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "上野 → 飯店", line: "步行", time: "10分" },
+                 { time: "14:30", title: "搭乘 Skyliner", desc: "往京成上野站", icon: "🚅", location: "京成上野駅", transport: { route: "成田機場 → 京成上野", line: "京成 Skyliner", time: "41分" }, hideMap: true }, 
+                 { time: "16:00", title: "Check-in", desc: "Stayme Ueno", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "上野 → 飯店", line: "步行", time: "10分" }, hideMap: true,
                    stationGuide: {
                      name: "京成上野站", desc: "前往飯店路線",
                      tips: ["抵達時在地下月台", "往稻荷町方向步行約 10 分鐘"],
                      routes: ["下車後搭手扶梯往上，尋找「正面口」出口", "出改札口後直走，不要往地鐵連絡通道走", "出站到地面後，開啟 Google Map 導航前往飯店", "沿著淺草通直走即可抵達 (步行約 10 分)"]
                    }
                  }, 
-                 { time: "17:15", title: "往稻荷町站", desc: "步行", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
-                 { time: "17:30", title: "御茶之水 聖橋", desc: "鈴芽場景", icon: "📸", location: "聖橋", transport: { route: "稻荷町 → 御茶之水", line: "東京地鐵銀座線 轉 JR中央線", time: "15分" },
+                 { time: "17:15", title: "往稻荷町站", desc: "步行", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" }, hideMap: true }, 
+                 { time: "17:30", title: "御茶之水 聖橋", desc: "鈴芽場景", icon: "📸", location: "聖橋", transport: { route: "稻荷町 → 御茶之水", line: "東京地鐵銀座線 轉 JR中央線", time: "15分" }, hideMap: true,
                    stationGuide: {
                      name: "前往聖橋 (御茶之水)", desc: "銀座線轉乘 JR",
                      tips: ["神田站轉乘最順路", "注意 JR 中央線是橘色標誌"],
                      routes: ["從稻荷町站搭乘「銀座線(黃色)」往澀谷方向，搭至「神田站」", "出地鐵閘門，依循「JR線」指標步行約 3 分鐘", "進入 JR 站內轉乘「JR中央線(橘色)」往新宿方向，搭乘 1 站至「御茶之水站」", "出「聖橋口」即可抵達拍攝點"]
                    }
                  }, 
-                 { time: "18:30", title: "秋葉原", desc: "逛街", icon: "🛍️", location: "秋葉原駅", transport: { route: "御茶之水 → 秋葉原", line: "步行", time: "10分" } }, 
+                 { time: "18:30", title: "秋葉原", desc: "逛街", icon: "🛍️", location: "秋葉原駅", transport: { route: "御茶之水 → 秋葉原", line: "步行", time: "10分" }, hideMap: true }, 
                  { time: "19:00", title: "秋葉原晚餐", desc: "美食街或拉麵燒肉", icon: "🍛", location: "ヨドバシAkiba", transport: { route: "秋葉原 → 餐廳", line: "步行", time: "5分" }, tips: "【上野/秋葉原 飲食5選】\\n1. Yodobashi 8F美食街 (和幸豬排/漢堡排)\\n2. 九州 じゃんがら (濃郁豚骨拉麵)\\n3. 壽司郎 上野店 (扭蛋迴轉壽司)\\n4. 敘敘苑 上野不忍口 (高級和牛燒肉)\\n5. 鴨 to 蔥 (排隊人氣清湯拉麵)\\n💡 推薦在 Yodobashi 吃飽，直攻6F打寶可夢機台！" }, 
-                 { time: "21:00", title: "返回飯店", desc: "休息", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "秋葉原 → 飯店", line: "JR山手線 轉 東京地鐵銀座線", time: "20分" },
+                 { time: "21:00", title: "返回飯店", desc: "休息", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "秋葉原 → 飯店", line: "JR山手線 轉 東京地鐵銀座線", time: "20分" }, hideMap: true,
                    stationGuide: {
                      name: "返回飯店 (秋葉原出發)", desc: "JR 轉乘銀座線",
                      tips: ["在上野站轉乘", "銀座線往淺草方向"],
@@ -631,7 +631,7 @@ html_code = """
                                             )}
                                             
                                             <div className="flex gap-2">
-                                                <a href={mapUrl} target="_blank" className="flex-1 bg-gray-50 hover:bg-gray-100 text-gray-700 text-xs font-bold py-2 rounded-lg text-center no-underline">📍 地圖</a>
+                                                {!evt.hideMap && <a href={mapUrl} target="_blank" className="flex-1 bg-gray-50 hover:bg-gray-100 text-gray-700 text-xs font-bold py-2 rounded-lg text-center no-underline">📍 地圖</a>}
                                                 {!evt.hideRoute && dirUrl && <a href={dirUrl} target="_blank" className="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 text-xs font-bold py-2 rounded-lg text-center no-underline">🚀 路線</a>}
                                             </div>
                                         </div>
