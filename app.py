@@ -213,7 +213,7 @@ html_code = """
                    stationGuide: {
                      name: "成田機場 T1 車站", desc: "Skyliner 乘車指引",
                      tips: ["長榮位於南翼 (South Wing)", "Skyliner 全車對號座"],
-                     routes: ["入境大廳位於 1F，領完行李後尋找「鐵道」指標", "搭乘手扶梯下樓至 B1", "尋找藍色櫃台「KEISEI (京成電鐵)」購票", "通過橘色剪票口，前往 4 或 5 號月台", "上車後行李放置於車廂前後的行李架"]
+                     routes: ["入境大廳位于 1F，領完行李後尋找「鐵道」指標", "搭乘手扶梯下樓至 B1", "尋找藍色櫃台「KEISEI (京成電鐵)」購票", "通過橘色剪票口，前往 4 或 5 號月台", "上車後行李放置於車廂前後的行李架"]
                    }
                  }, 
                  { time: "14:30", title: "搭乘 Skyliner", desc: "往京成上野站", icon: "🚅", location: "京成上野駅", transport: { route: "成田機場 → 京成上野", line: "京成 Skyliner", time: "41分" }, hideMap: true }, 
@@ -234,11 +234,11 @@ html_code = """
                  }, 
                  { time: "18:30", title: "秋葉原", desc: "逛街", icon: "🛍️", location: "秋葉原駅", transport: { route: "御茶之水 → 秋葉原", line: "步行", time: "10分" }, hideMap: true }, 
                  { time: "19:00", title: "秋葉原晚餐", desc: "美食街或拉麵燒肉", icon: "🍛", location: "ヨドバシAkiba", transport: { route: "秋葉原 → 餐廳", line: "步行", time: "5分" }, tips: "【上野/秋葉原 飲食5選】\\n1. Yodobashi 8F美食街 (和幸豬排/漢堡排)\\n2. 九州 じゃんがら (濃郁豚骨拉麵)\\n3. 壽司郎 上野店 (扭蛋迴轉壽司)\\n4. 敘敘苑 上野不忍口 (高級和牛燒肉)\\n5. 鴨 to 蔥 (排隊人氣清湯拉麵)\\n💡 推薦在 Yodobashi 吃飽，直攻6F打寶可夢機台！" }, 
-                 { time: "21:00", title: "返回飯店", desc: "休息", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "秋葉原 → 飯店", line: "JR山手線 轉 東京地鐵銀座線", time: "20分" }, hideMap: true,
+                 { time: "21:00", title: "返回飯店", desc: "休息", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "秋葉原 → 上野 → 飯店", line: "JR 直達轉步行", time: "15分" }, hideMap: true,
                    stationGuide: {
-                     name: "返回飯店 (秋葉原出發)", desc: "JR 轉乘銀座線",
-                     tips: ["在上野站轉乘", "銀座線往淺草方向"],
-                     routes: ["從秋葉原站搭乘「JR山手線(綠色)」或「京濱東北線(淺藍)」往上野方向", "搭乘 2 站至「上野站」下車", "出 JR 閘門後，依循地下鐵指標前往轉乘「銀座線(黃色)」", "搭乘「銀座線」往淺草方向，1 站即達「稻荷町站」，步行回飯店"]
+                     name: "返回飯店 (秋葉原出發)", desc: "搭乘 JR 至上野後步行",
+                     tips: ["在上野站下車", "免轉乘地鐵，直接散步回去"],
+                     routes: ["從秋葉原站搭乘「JR山手線(綠色)」或「京濱東北線(淺藍)」往上野方向", "搭乘 2 站至「上野站」下車", "出 JR 閘口 (建議走淺草口或入谷口)，開啟導航", "沿著淺草通往東(稻荷町方向)直走，步行約 10 分鐘即可抵達飯店"]
                    }
                  } 
              ] },
