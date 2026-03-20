@@ -367,16 +367,16 @@ html_code = """
                  } 
              ] },
              { day: 6, date: "4/22 (三)", title: "返台", events: [ 
-                 { time: "10:00", title: "Check-out", desc: "阿美橫丁", icon: "🛍️", location: "アメ横商店街", transport: { route: "飯店 → 阿美橫丁", line: "步行", time: "10分" } }, 
-                 { time: "11:20", title: "往機場", desc: "搭 Skyliner", icon: "🚅", location: "京成上野駅", transport: { route: "京成上野 → 成田T1", line: "京成 Skyliner", time: "41分" },
+                 { time: "10:00", title: "Check-out", desc: "阿美橫丁", icon: "🛍️", location: "アメ横商店街", transport: { route: "飯店 → 阿美橫丁", line: "步行", time: "10分" }, hideMap: true }, 
+                 { time: "11:20", title: "往機場", desc: "搭 Skyliner", icon: "🚅", location: "京成上野駅", transport: { route: "京成上野 → 成田T1", line: "京成 Skyliner", time: "41分" }, hideMap: true,
                    stationGuide: {
                      name: "前往成田機場", desc: "搭乘 Skyliner",
                      tips: ["從京成上野站發車", "全車對號入座"],
                      routes: ["提著行李步行前往「京成上野站」(在 JR 上野站旁，不忍口方向)", "使用事先買好的車票或兌換券進入閘口", "搭乘手扶梯前往地下月台，確認車次與座位", "約 41 分鐘直達「成田機場 T1」站"]
                    }
                  }, 
-                 { time: "12:25", title: "抵達機場", desc: "成田 T1 (南翼)", icon: "✈️", location: "成田国際空港 第1ターミナル", tips: "【成田 T1 必吃美食 5選】\\n1. 中華蕎麦 とみ田 (超人氣沾麵)\\n2. 八代目儀兵衛 (頂級白飯和食)\\n3. だし茶漬け えん (清爽高湯茶泡飯)\\n4. 杵屋麦丸 (平價自助烏龍麵)\\n5. 壽司 京辰 (入關後的高品質壽司)\\n\\n【必買伴手禮 5選】\\n1. 東京ばな奈 (常有寶可夢聯名包裝)\\n2. PRESS BUTTER SAND (焦糖奶油夾心餅)\\n3. NY PERFECT CHEESE (超人氣起司脆餅)\\n4. ROYCE' 生巧克力 (免稅店熱銷冠軍)\\n5. TRAVELER'S FACTORY (機場限定文具)" }, 
-                 { time: "14:25", title: "起飛返台", desc: "長榮 BR197", icon: "✈️", location: "", transport: "" } 
+                 { time: "12:25", title: "抵達機場", desc: "成田 T1 (南翼)", icon: "✈️", location: "成田国際空港 第1ターミナル", hideRoute: true, tips: "【成田 T1 必吃美食 5選】\\n1. 中華蕎麦 とみ田 (超人氣沾麵)\\n2. 八代目儀兵衛 (頂級白飯和食)\\n3. だし茶漬け えん (清爽高湯茶泡飯)\\n4. 杵屋麦丸 (平價自助烏龍麵)\\n5. 壽司 京辰 (入關後的高品質壽司)\\n\\n【必買伴手禮 5選】\\n1. 東京ばな奈 (常有寶可夢聯名包裝)\\n2. PRESS BUTTER SAND (焦糖奶油夾心餅)\\n3. NY PERFECT CHEESE (超人氣起司脆餅)\\n4. ROYCE' 生巧克力 (免稅店熱銷冠軍)\\n5. TRAVELER'S FACTORY (機場限定文具)" }, 
+                 { time: "14:25", title: "起飛返台", desc: "長榮 BR197", icon: "✈️", location: "", hideRoute: true, transport: "" } 
              ] }
         ];
 
