@@ -243,15 +243,15 @@ html_code = """
                  } 
              ] },
              { day: 2, date: "4/18 (六)", title: "台場鋼彈 & 豐洲", events: [ 
-                 { time: "08:45", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
-                 { time: "09:00", title: "豐洲市場 / 千客萬來", desc: "參觀/小吃", icon: "🏮", location: "豊洲市場", transport: { route: "稻荷町 → 豐洲", line: "東京地鐵銀座線 轉 有樂町線", time: "30分" }, tips: "💡 早上先在豐洲周邊逛逛，可吃點玉子燒等小點心墊胃，將主力午餐移至台場商場內享用。",
+                 { time: "08:45", title: "往上野站", desc: "出發", icon: "🚶", location: "上野駅", transport: { route: "飯店 → 上野站", line: "步行", time: "10分" }, hideMap: true }, 
+                 { time: "09:00", title: "豐洲市場 / 千客萬來", desc: "參觀/小吃", icon: "🏮", location: "豊洲市場", transport: { route: "上野 → 豐洲", line: "JR山手線 轉 有樂町線", time: "30分" }, hideMap: true, tips: "💡 早上先在豐洲周邊逛逛，可吃點玉子燒等小點心墊胃，將主力午餐移至台場商場內享用。",
                    stationGuide: {
-                     name: "前往豐洲市場", desc: "銀座線轉乘有樂町線",
-                     tips: ["在銀座/銀座一丁目轉乘", "有樂町線往新木場方向"],
-                     routes: ["從稻荷町搭乘「銀座線(黃色)」往澀谷方向，搭至「銀座站」", "出站後跟隨『有樂町線』指標步行約 5 分鐘，前往「銀座一丁目站」", "轉乘「有樂町線(金色)」往新木場方向，搭乘至「豐洲站」", "出站後可步行前往市場，或轉乘百合海鷗號搭 1 站至「市場前站」"]
+                     name: "前往豐洲市場", desc: "JR山手線轉乘有樂町線",
+                     tips: ["在有樂町站轉乘", "有樂町線往新木場方向"],
+                     routes: ["從飯店步行約 10 分鐘至「JR上野站」", "搭乘「JR山手線(綠色)」往東京/品川方向，搭至「有樂町站」", "出 JR 閘門，依循指標前往地下鐵轉乘「有樂町線(金色)」往新木場方向", "搭乘至終點「豐洲站」下車，可步行或轉乘百合海鷗號至市場前站"]
                    }
                  }, 
-                 { time: "11:30", title: "往台場 DiverCity", desc: "海鷗號", icon: "🚅", location: "台場駅", transport: { route: "豐洲 → 台場", line: "百合海鷗號 (ゆりかもめ)", time: "20分" }, tips: "💡 今日會搭乘多次海鷗號，強烈建議在豐洲站買「百合海鷗號一日券」(大人820/小孩410日圓)！",
+                 { time: "11:30", title: "往台場 DiverCity", desc: "海鷗號", icon: "🚅", location: "台場駅", transport: { route: "豐洲 → 台場", line: "百合海鷗號 (ゆりかもめ)", time: "20分" }, hideMap: true, tips: "💡 今日會搭乘多次海鷗號，強烈建議在豐洲站買「百合海鷗號一日券」(大人820/小孩410日圓)！",
                    stationGuide: {
                      name: "百合海鷗號 一日券", desc: "Day 2 必備省錢工具",
                      tips: ["大人 820 日圓 / 兒童 410 日圓", "搭乘 3 次以上即回本", "無須出站重買票，最適合帶小孩"],
@@ -260,31 +260,31 @@ html_code = """
                  }, 
                  { time: "11:50", title: "台場午餐", desc: "DiverCity 商場", icon: "🍔", location: "ダイバーシティ東京 プラザ", transport: { route: "台場站 → DiverCity", line: "步行", time: "5分" }, tips: "【台場 午餐5選】\\n1. 田中商店 (DiverCity 2F 濃郁豚骨拉麵)\\n2. 金子半之助 (DiverCity 2F 超人氣天丼)\\n3. 串家物語 (DiverCity 6F 自己動手炸串)\\n4. 蘋果樹蛋包飯 (Aqua City 5F)\\n5. 燒肉 平城苑 (Aqua City 1F)\\n💡 在 DiverCity 用餐，吃飽走到一樓廣場直接看 13:00 的鋼彈表演最順路！" }, 
                  { time: "13:00", title: "獨角獸鋼彈", desc: "變身秀", icon: "🤖", location: "実物大ユニコーンガンダム立像" }, 
-                 { time: "17:30", title: "teamLab", desc: "需預約", icon: "✨", location: "teamLab Planets TOKYO", transport: { route: "台場 → 新豐洲", line: "百合海鷗號 (ゆりかもめ)", time: "23分" },
+                 { time: "17:30", title: "teamLab", desc: "需預約", icon: "✨", location: "teamLab Planets TOKYO", transport: { route: "台場 → 新豐洲", line: "百合海鷗號 (ゆりかもめ)", time: "23分" }, hideMap: true,
                    stationGuide: {
                      name: "前往 teamLab", desc: "百合海鷗號直達",
                      tips: ["往豐洲方向"],
                      routes: ["從「台場站」使用一日券進入百合海鷗號閘口", "搭乘往「豐洲」方向的列車", "搭乘至「新豐洲站」下車，出站即可看見 teamLab 展館"]
                    }
                  }, 
-                 { time: "19:30", title: "豐洲 LaLaport", desc: "晚餐", icon: "🍽️", location: "ららぽーと豊洲", transport: { route: "新豐洲 → 豐洲", line: "百合海鷗號 (ゆりかもめ)", time: "10分" }, tips: "【豐洲 LaLaport 晚餐5選】\\n1. 100本のスプーン (質感親子餐廳，可點半份)\\n2. 燒肉トラジ Toraji (厚切牛舌與和牛)\\n3. 築地食堂 源ちゃん (海鮮與熟食定食)\\n4. 麵屋 黑琥 (日式拉麵，方便快速)\\n5. 玉丁本店 (味噌燉烏龍麵，適合小孩)\\n💡 商場 3F 還有玩具專賣店與扭蛋機，吃飽可以逛！",
+                 { time: "19:30", title: "豐洲 LaLaport", desc: "晚餐", icon: "🍽️", location: "ららぽーと豊洲", transport: { route: "新豐洲 → 豐洲", line: "百合海鷗號 (ゆりかもめ)", time: "10分" }, hideMap: true, tips: "【豐洲 LaLaport 晚餐5選】\\n1. 100本のスプーン (質感親子餐廳，可點半份)\\n2. 燒肉トラジ Toraji (厚切牛舌與和牛)\\n3. 築地食堂 源ちゃん (海鮮與熟食定食)\\n4. 麵屋 黑琥 (日式拉麵，方便快速)\\n5. 玉丁本店 (味噌燉烏龍麵，適合小孩)\\n💡 商場 3F 還有玩具專賣店與扭蛋機，吃飽可以逛！",
                    stationGuide: {
                      name: "前往 LaLaport", desc: "百合海鷗號",
                      tips: ["僅需搭乘 1 站", "亦可選擇直接散步 10 分鐘前往"],
                      routes: ["從「新豐洲站」搭乘百合海鷗號往「豐洲」方向", "搭乘 1 站至終點「豐洲站」下車", "依循指標前往 LaLaport 商場連通道"]
                    }
                  }, 
-                 { time: "21:30", title: "返回飯店", desc: "休息", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "豐洲 → 稻荷町", line: "東京地鐵有樂町線 轉 銀座線", time: "30分" },
+                 { time: "21:30", title: "返回飯店", desc: "休息", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "豐洲 → 上野 → 飯店", line: "有樂町線 轉 JR山手線", time: "30分" }, hideMap: true,
                    stationGuide: {
-                     name: "返回飯店 (豐洲出發)", desc: "有樂町線轉乘銀座線",
-                     tips: ["在銀座一丁目/銀座轉乘最順"],
-                     routes: ["從豐洲站搭乘「有樂町線(金色)」往池袋/和光市方向", "搭乘至「銀座一丁目站」下車", "出站步行約 5 分鐘至「銀座站」", "轉乘「銀座線(黃色)」往淺草方向，搭乘至「稻荷町站」回飯店"]
+                     name: "返回飯店 (豐洲出發)", desc: "有樂町線轉乘JR山手線",
+                     tips: ["在有樂町站轉乘回上野"],
+                     routes: ["從豐洲站搭乘「有樂町線(金色)」往池袋/和光市方向", "搭乘至「有樂町站」下車", "出站轉乘「JR山手線(綠色)」往東京/上野方向", "搭乘至「上野站」下車，步行約 10 分鐘回飯店"]
                    }
                  } 
              ] },
              { day: 3, date: "4/19 (日)", title: "淺草與晴空塔", events: [ 
                  { time: "08:45", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
-                 { time: "09:00", title: "淺草寺", desc: "雷門", icon: "🏮", location: "雷門", transport: { route: "稻荷町 → 淺草", line: "東京地鐵銀座線", time: "3分" },
+                 { time: "09:00", title: "淺草寺", desc: "雷門", icon: "🏮", location: "雷門", transport: { route: "稻荷町 → 淺草", line: "東京地鐵銀座線 直達", time: "3分" },
                    stationGuide: {
                      name: "前往淺草", desc: "銀座線直達",
                      tips: ["免轉乘，非常輕鬆"],
@@ -298,10 +298,10 @@ html_code = """
                    stationGuide: {
                      name: "前往淺草藏壽司", desc: "都營淺草線直達",
                      tips: ["從晴空塔旁的「押上站」出發"],
-                     routes: ["從晴空塔旁的「押上站」搭乘「都營淺草線(玫瑰紅)」往西馬込/羽田機場方向", "搭乘 2 站至「淺草站」下車", "出站後依導航步行約 5-8 分鐘前往淺草 ROX 商場"]
+                     routes: ["从晴空塔旁的「押上站」搭乘「都營淺草線(玫瑰紅)」往西馬込/羽田機場方向", "搭乘 2 站至「淺草站」下車", "出站後依導航步行約 5-8 分鐘前往淺草 ROX 商場"]
                    }
                  }, 
-                 { time: "19:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "田原町站 → 稻荷町", line: "東京地鐵銀座線", time: "3分" },
+                 { time: "19:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "田原町站 → 稻荷町", line: "東京地鐵銀座線 直達", time: "3分" },
                    stationGuide: {
                      name: "返回飯店 (淺草出發)", desc: "銀座線直達",
                      tips: ["從田原町站上車最近"],
@@ -332,12 +332,12 @@ html_code = """
                  { time: "20:30", title: "返回飯店", desc: "步行", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "上野 → 飯店", line: "步行", time: "10分" } } 
              ] },
              { day: 5, date: "4/21 (二)", title: "築地・渋谷・新宿", events: [ 
-                 { time: "08:40", title: "往稻荷町站", desc: "出發", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" } }, 
-                 { time: "09:00", title: "築地場外市場", desc: "早餐", icon: "🐟", location: "築地場外市場", transport: { route: "稻荷町 → 築地", line: "東京地鐵銀座線 轉 日比谷線", time: "20分" }, tips: "【築地市場 飲食5選】\\n1. 狐狸屋 (超濃郁牛雜/牛丼)\\n2. 築地 山長 (100円排隊玉子燒)\\n3. 築地 可樂餅 (明太子文字燒口味)\\n4. 黑銀 鮪魚店 (頂級黑鮪魚生魚片)\\n5. 壽司三味 本店 (知名平價壽司)\\n💡 狐狸屋極受歡迎，建議一早就去排隊！",
+                 { time: "08:40", title: "往上野站", desc: "出發", icon: "🚶", location: "上野駅", transport: { route: "飯店 → 上野站", line: "步行", time: "10分" } }, 
+                 { time: "09:00", title: "築地場外市場", desc: "早餐", icon: "🐟", location: "築地場外市場", transport: { route: "上野 → 築地", line: "東京地鐵日比谷線 直達", time: "12分" }, tips: "【築地市場 飲食5選】\\n1. 狐狸屋 (超濃郁牛雜/牛丼)\\n2. 築地 山長 (100円排隊玉子燒)\\n3. 築地 可樂餅 (明太子文字燒口味)\\n4. 黑銀 鮪魚店 (頂級黑鮪魚生魚片)\\n5. 壽司三味 本店 (知名平價壽司)\\n💡 狐狸屋極受歡迎，建議一早就去排隊！",
                    stationGuide: {
-                     name: "前往築地市場", desc: "銀座線轉乘日比谷線",
-                     tips: ["在上野站轉乘"],
-                     routes: ["從稻荷町站搭乘「銀座線(黃色)」至「上野站」", "依循指標在站內轉乘「日比谷線(銀色)」往中目黑方向", "搭乘約 12 分鐘至「築地站」下車", "出站步行約 3 分鐘即可抵達場外市場"]
+                     name: "前往築地市場", desc: "日比谷線直達 (免轉乘)",
+                     tips: ["從上野站搭乘，免換線直達"],
+                     routes: ["從飯店步行約 10 分鐘至「上野站」", "依循指標前往地下鐵「日比谷線(銀色)」", "搭乘往中目黑/六本木方向列車，約 12 分鐘直達「築地站」下車", "出站步行約 3 分鐘即可抵達場外市場"]
                    }
                  }, 
                  { time: "12:00", title: "渋谷 PARCO", desc: "寶可夢", icon: "🎮", location: "渋谷パルコ", transport: { route: "築地 → 渋谷", line: "東京地鐵日比谷線 轉 銀座線", time: "25分" },
@@ -357,11 +357,11 @@ html_code = """
                    }
                  }, 
                  { time: "18:30", title: "新宿晚餐", desc: "串家物語/燒肉", icon: "🦖", location: "新宿東宝ビル", transport: { route: "東口 → 歌舞伎町", line: "步行", time: "10分" }, tips: "【新宿 飲食5選】\\n1. 串家物語 (自己動手炸串+巧克力噴泉)\\n2. 燒肉亭 六歌仙 (頂級和牛吃到飽)\\n3. 一蘭拉麵 新宿中央東口店 (經典拉麵)\\n4. 名代 宇奈とと (平價炭烤鰻魚飯)\\n5. 高島屋 Times Square 美食街 (精緻和食)\\n💡 哥吉拉頭像每整點會咆哮發光，去串家物語剛好可以看！" }, 
-                 { time: "20:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "新宿 → 稻荷町", line: "JR 中央線 轉 東京地鐵銀座線", time: "30分" },
+                 { time: "20:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "新宿 → 上野 → 飯店", line: "JR 山手線 直達轉步行", time: "35分" },
                    stationGuide: {
-                     name: "返回飯店 (新宿出發)", desc: "中央線轉銀座線",
-                     tips: ["在神田站轉乘最順"],
-                     routes: ["從新宿站搭乘「JR中央線(橘色) 快速」往東京方向", "搭乘至「神田站」下車", "出 JR 閘口後轉乘地下鐵「銀座線(黃色)」往淺草方向", "搭乘至「稻荷町站」下車，步行回飯店"]
+                     name: "返回飯店 (新宿出發)", desc: "JR 山手線直達 (免轉乘)",
+                     tips: ["搭乘山手線外回(池袋/上野方向)"],
+                     routes: ["從新宿站搭乘「JR山手線(綠色)」往池袋/上野方向", "搭乘約 25 分鐘直達「上野站」下車 (不需轉車)", "出 JR 閘口 (建議走淺草口或入谷口)，開啟導航", "沿著淺草通往東直走，步行約 10 分鐘即可抵達飯店"]
                    }
                  } 
              ] },
