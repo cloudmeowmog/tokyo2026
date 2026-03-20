@@ -224,12 +224,12 @@ html_code = """
                      routes: ["下車後搭手扶梯往上，尋找「正面口」出口", "出改札口後直走，不要往地鐵連絡通道走", "出站到地面後，開啟 Google Map 導航前往飯店", "沿著淺草通直走即可抵達 (步行約 10 分)"]
                    }
                  }, 
-                 { time: "17:15", title: "往稻荷町站", desc: "步行", icon: "🚶", location: "稲荷町駅 東京", transport: { route: "飯店 → 車站", line: "步行", time: "5分" }, hideMap: true }, 
-                 { time: "17:30", title: "御茶之水 聖橋", desc: "鈴芽場景", icon: "📸", location: "聖橋", transport: { route: "稻荷町 → 御茶之水", line: "東京地鐵銀座線 轉 JR中央線", time: "15分" }, hideMap: true,
+                 { time: "17:15", title: "往上野站", desc: "步行", icon: "🚶", location: "上野駅", transport: { route: "飯店 → 上野站", line: "步行", time: "10分" }, hideMap: true }, 
+                 { time: "17:30", title: "御茶之水 聖橋", desc: "鈴芽場景", icon: "📸", location: "聖橋", transport: { route: "上野 → 秋葉原 → 聖橋", line: "JR 直達轉步行", time: "20分" }, hideMap: true,
                    stationGuide: {
-                     name: "前往聖橋 (御茶之水)", desc: "銀座線轉乘 JR",
-                     tips: ["神田站轉乘最順路", "注意 JR 中央線是橘色標誌"],
-                     routes: ["從稻荷町站搭乘「銀座線(黃色)」往澀谷方向，搭至「神田站」", "出地鐵閘門，依循「JR線」指標步行約 3 分鐘", "進入 JR 站內轉乘「JR中央線(橘色)」往新宿方向，搭乘 1 站至「御茶之水站」", "出「聖橋口」即可抵達拍攝點"]
+                     name: "前往聖橋 (經由秋葉原)", desc: "搭乘 JR 直達秋葉原後散步",
+                     tips: ["免去站內換線轉乘的麻煩", "出秋葉原站後步行約 10-15 分鐘即可抵達"],
+                     routes: ["從飯店步行約 10 分鐘前往「JR 上野站」", "搭乘「JR山手線(綠色)」或「京濱東北線(淺藍)」往東京方向", "搭乘 2 站直達「秋葉原站」下車 (不需轉車)", "出站後開啟導航，往西邊(御茶之水方向)散步約 10-15 分鐘，即可抵達「聖橋」拍攝點"]
                    }
                  }, 
                  { time: "18:30", title: "秋葉原", desc: "逛街", icon: "🛍️", location: "秋葉原駅", transport: { route: "御茶之水 → 秋葉原", line: "步行", time: "10分" }, hideMap: true }, 
@@ -529,7 +529,7 @@ html_code = """
                 foodSpots: [
                     { icon: "🍌", name: "東京ばな奈", desc: "經典不敗，常有寶可夢或聯名限定包裝", mapQuery: "FaSoLa 成田空港" },
                     { icon: "🍪", name: "PRESS BUTTER SAND", desc: "酥脆外皮與焦糖奶油夾心，質感極佳", mapQuery: "FaSoLa 成田空港" },
-                    { icon: "🧀", name: "NY PERFECT CHEESE", desc: "超人氣排隊起司奶油脆餅，送禮超有面子", mapQuery: "FaSoLa 成田空港" },
+                    { icon: "🧀", name: "NY PERFECT CHEESE", desc: "超人氣排起司奶油脆餅，送禮超有面子", mapQuery: "FaSoLa 成田空港" },
                     { icon: "🍫", name: "ROYCE 生巧克力", desc: "北海道名產，機場免稅店永遠的熱銷冠軍", mapQuery: "FaSoLa 成田空港" },
                     { icon: "✈️", name: "TRAVELER'S FACTORY", desc: "中央大樓 4F(入關前)。機場限定版文具與筆記本", mapQuery: "TRAVELERS FACTORY AIRPORT" }
                 ]
