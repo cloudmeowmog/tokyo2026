@@ -251,11 +251,11 @@ html_code = """
                      routes: ["從飯店步行約 10 分鐘至「JR上野站」", "搭乘「JR山手線(綠色)」往東京/品川方向，搭至「有樂町站」", "出 JR 閘門，依循指標前往地下鐵轉乘「有樂町線(金色)」往新木場方向", "搭乘至終點「豐洲站」下車，可步行或轉乘百合海鷗號至市場前站"]
                    }
                  }, 
-                 { time: "11:30", title: "往台場 DiverCity", desc: "海鷗號", icon: "🚅", location: "台場駅", transport: { route: "豐洲 → 台場", line: "百合海鷗號 (ゆりかもめ)", time: "20分" }, hideMap: true, tips: "💡 今日會搭乘多次海鷗號，強烈建議在豐洲站買「百合海鷗號一日券」(大人820/小孩410日圓)！",
+                 { time: "11:30", title: "往台場 DiverCity", desc: "海鷗號", icon: "🚅", location: "台場駅", transport: { route: "豐洲 → 台場", line: "百合海鷗號 (ゆりかもめ)", time: "20分" }, hideMap: true, tips: "💡 今日搭乘海鷗號的次數不多，直接使用西瓜卡(Suica)進出站即可，最為方便！",
                    stationGuide: {
-                     name: "百合海鷗號 一日券", desc: "Day 2 必備省錢工具",
-                     tips: ["大人 820 日圓 / 兒童 410 日圓", "搭乘 3 次以上即回本", "無須出站重買票，最適合帶小孩"],
-                     routes: ["在「豐洲站」轉乘百合海鷗號時，直接於自動售票機購買", "點選螢幕上的「おトクなきっぷ (優惠車票)」或「One-day Pass」", "選擇張數後付款即可，當日可無限次搭乘海鷗號"]
+                     name: "搭乘百合海鷗號", desc: "直接刷西瓜卡最划算",
+                     tips: ["今日僅搭乘兩次，不需買一日券", "直接刷西瓜卡進站即可"],
+                     routes: ["在「豐洲站」依循百合海鷗號指標", "直接使用西瓜卡(Suica/PASMO)嗶卡進站", "搭乘往「台場/新橋」方向的列車"]
                    }
                  }, 
                  { time: "11:50", title: "台場午餐", desc: "DiverCity 商場", icon: "🍔", location: "ダイバーシティ東京 プラザ", transport: { route: "台場站 → DiverCity", line: "步行", time: "5分" }, tips: "【台場 午餐5選】\\n1. 田中商店 (DiverCity 2F 濃郁豚骨拉麵)\\n2. 金子半之助 (DiverCity 2F 超人氣天丼)\\n3. 串家物語 (DiverCity 6F 自己動手炸串)\\n4. 蘋果樹蛋包飯 (Aqua City 5F)\\n5. 燒肉 平城苑 (Aqua City 1F)\\n💡 在 DiverCity 用餐，吃飽走到一樓廣場直接看 13:00 的鋼彈表演最順路！" }, 
@@ -264,14 +264,14 @@ html_code = """
                    stationGuide: {
                      name: "前往 teamLab", desc: "百合海鷗號直達",
                      tips: ["往豐洲方向"],
-                     routes: ["從「台場站」使用一日券進入百合海鷗號閘口", "搭乘往「豐洲」方向的列車", "搭乘至「新豐洲站」下車，出站即可看見 teamLab 展館"]
+                     routes: ["從「台場站」使用西瓜卡進入百合海鷗號閘口", "搭乘往「豐洲」方向的列車", "搭乘至「新豐洲站」下車，出站即可看見 teamLab 展館"]
                    }
                  }, 
-                 { time: "19:30", title: "豐洲 LaLaport", desc: "晚餐", icon: "🍽️", location: "ららぽーと豊洲", transport: { route: "新豐洲 → 豐洲", line: "百合海鷗號 (ゆりかもめ)", time: "10分" }, hideMap: true, tips: "【豐洲 LaLaport 晚餐5選】\\n1. 100本のスプーン (質感親子餐廳，可點半份)\\n2. 燒肉トラジ Toraji (厚切牛舌與和牛)\\n3. 築地食堂 源ちゃん (海鮮與熟食定食)\\n4. 麵屋 黑琥 (日式拉麵，方便快速)\\n5. 玉丁本店 (味噌燉烏龍麵，適合小孩)\\n💡 商場 3F 還有玩具專賣店與扭蛋機，吃飽可以逛！",
+                 { time: "19:30", title: "豐洲 LaLaport", desc: "晚餐", icon: "🍽️", location: "ららぽーと豊洲", transport: { route: "新豐洲 → 豐洲", line: "步行", time: "10分" }, hideMap: true, tips: "【豐洲 LaLaport 晚餐5選】\\n1. 100本のスプーン (質感親子餐廳，可點半份)\\n2. 燒肉トラジ Toraji (厚切牛舌與和牛)\\n3. 築地食堂 源ちゃん (海鮮與熟食定食)\\n4. 麵屋 黑琥 (日式拉麵，方便快速)\\n5. 玉丁本店 (味噌燉烏龍麵，適合小孩)\\n💡 商場 3F 還有玩具專賣店與扭蛋機，吃飽可以逛！",
                    stationGuide: {
-                     name: "前往 LaLaport", desc: "百合海鷗號",
-                     tips: ["僅需搭乘 1 站", "亦可選擇直接散步 10 分鐘前往"],
-                     routes: ["從「新豐洲站」搭乘百合海鷗號往「豐洲」方向", "搭乘 1 站至終點「豐洲站」下車", "依循指標前往 LaLaport 商場連通道"]
+                     name: "前往 LaLaport", desc: "步行前往",
+                     tips: ["散步約 10 分鐘即可抵達"],
+                     routes: ["從 teamLab (新豐洲站) 出發", "沿著晴海通往豐洲站方向直走", "步行約 10 分鐘即可看見 LaLaport 商場"]
                    }
                  }, 
                  { time: "21:30", title: "返回飯店", desc: "休息", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "豐洲 → 上野 → 飯店", line: "有樂町線 轉 JR山手線", time: "30分" }, hideMap: true,
