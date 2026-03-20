@@ -563,6 +563,9 @@ html_code = """
                                 
                                 const mapUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(evt.location);
                                 const dirUrl = prevLoc ? "https://www.google.com/maps/dir/?api=1&origin=" + encodeURIComponent(prevLoc) + "&destination=" + encodeURIComponent(evt.location) + "&travelmode=transit" : null;
+                                
+                                // 判斷是否為「移動」性質的行程
+                                const isMovementEvent = evt.title.startsWith("往") || evt.title.startsWith("搭乘") || evt.title.startsWith("返回") || evt.title.startsWith("起飛");
 
                                 return (
                                     <div key={i} className="relative pl-6">
@@ -631,8 +634,12 @@ html_code = """
                                             )}
                                             
                                             <div className="flex gap-2">
-                                                <a href={mapUrl} target="_blank" className="flex-1 bg-gray-50 hover:bg-gray-100 text-gray-700 text-xs font-bold py-2 rounded-lg text-center no-underline">📍 地圖</a>
-                                                {!evt.hideRoute && dirUrl && <a href={dirUrl} target="_blank" className="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 text-xs font-bold py-2 rounded-lg text-center no-underline">🚀 路線</a>}
+                                                {!isMovementEvent && (
+                                                    <a href={mapUrl} target="_blank" className="flex-1 bg-gray-50 hover:bg-gray-100 text-gray-700 text-xs font-bold py-2 rounded-lg text-center no-underline">📍 地圖</a>
+                                                )}
+                                                {!evt.hideRoute && dirUrl && (
+                                                    <a href={dirUrl} target="_blank" className="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 text-xs font-bold py-2 rounded-lg text-center no-underline">🚀 路線</a>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
