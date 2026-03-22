@@ -124,7 +124,7 @@ html_code = """
                     { name: '田中商店（博多長浜らーめん 田中商店，Tanaka Shoten）', desc: 'DiverCity 2F美食街。超濃郁豚骨拉麵，吃完馬上看鋼彈。', tag: '豚骨拉麵', icon: '🍜', mapQuery: '田中商店 ダイバーシティ東京プラザ店' },
                     { name: '金子半之助（日本橋 天丼 金子半之助，Kaneko Hannosuke）', desc: 'DiverCity 2F美食街。超人氣排隊天丼，炸蝦與炸半熟蛋必吃。', tag: '超值天丼', icon: '🍤', mapQuery: '日本橋 天丼 金子半之助 ダイバーシティ東京プラザ店' },
                     { name: '傳說的斯塔丼屋（伝説のすた丼屋，Densetsu no Sutadon-ya）', desc: 'DiverCity 2F美食街。超人氣蒜香豬肉丼飯，份量十足豪邁過癮。', tag: '日式丼飯', icon: '🍚', mapQuery: '伝説のすた丼屋 ダイバーシティ東京プラザ店' },
-                    { name: '蘋果樹蛋包飯（ポムの樹，Pomme-no-ki）', desc: 'Aqua City 5F。知名蛋包飯，口味極多小孩超愛。', tag: '蛋包飯', icon: '🍳', mapQuery: 'ポムの樹 アクアシティお台場店' },
+                    { name: '蘋果樹蛋包飯（ポムの樹，Pomme-no-ki）', desc: 'Aqua City 5F。知名蛋包飯，口味極多小孩超愛. tag: '蛋包飯', icon: '🍳', mapQuery: 'ポムの樹 アクアシティお台場店' },
                     { name: '燒肉 平城苑（東京焼肉 平城苑，Heijoen）', desc: 'Aqua City 1F。看著東京灣美景吃黑毛和牛燒肉。', tag: '景觀燒肉', icon: '🥩', mapQuery: '焼肉 平城苑 アクアシティお台場店' }
                 ]
             },
@@ -308,7 +308,7 @@ html_code = """
                    stationGuide: {
                      name: "前往淺草藏壽司", desc: "都營淺草線直達",
                      tips: ["從晴空塔旁的「押上站」出發"],
-                     routes: ["從晴空塔樓下依循指標前往「押上站」，尋找『都營淺草線(玫瑰紅色)』的專屬閘口", "進站後，前往搭乘往「西馬込/羽田機場」方向的列車", "搭乘 2 站至「淺草站」下車 (車程約 3 分鐘)", "出站後開啟導航，沿著大馬路『雷門通』往西直行", "步行約 8-10 分鐘即可看見『淺草 ROX 商場』，藏壽司位於 4F"]
+                     routes: ["晴空塔樓下依循指標前往「押上站」，尋找『都營淺草線(玫瑰紅色)』的專屬閘口", "進站後，前往搭乘往「西馬込/羽田機場」方向的列車", "搭乘 2 站至「淺草站」下車 (車程約 3 分鐘)", "出站後開啟導航，沿著大馬路『雷門通』往西直行", "步行約 8-10 分鐘即可看見『淺草 ROX 商場』，藏壽司位於 4F"]
                    }
                  }, 
                  { time: "19:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "淺草/田原町 → 上野站 → 飯店", line: "銀座線 直達轉步行", time: "15分" }, hideMap: true,
@@ -330,7 +330,7 @@ html_code = """
                  { time: "10:10", title: "抵達輕井澤", desc: "北口租單車", icon: "🚲", location: "軽井沢駅", transport: { route: "上野 → 輕井澤", line: "JR 北陸新幹線", time: "60分" }, hideMap: true }, 
                  { time: "10:30", title: "雲場池", desc: "大自然散步", icon: "🦆", location: "長野県 雲場池", transport: { route: "車站 → 雲場池", line: "單車", time: "10分" }, hideMap: true }, 
                  { time: "11:15", title: "舊輕井澤", desc: "老街漫遊", icon: "🏘️", location: "旧軽井沢銀座通り", transport: { route: "雲場池 → 舊輕井澤", line: "單車", time: "10分" }, hideMap: true }, 
-                 { time: "12:30", title: "輕井澤午餐", desc: "美食街/餐廳", icon: "🍱", location: "軽井沢プリンスショッピングプラザ 太陽と緑のキッチン", transport: { route: "舊輕井澤 → Outlet", line: "單車", time: "15分" }, hideMap: true, tips: "【輕井澤 飲食5選】\\n1. 明治亭（ソースかつ丼 明治亭，Meijitei）\\n2. 濃熟雞白湯 錦（濃熟鶏白湯 錦，Nishiki）\\n3. 熟成和牛燒肉 Aging Beef（熟成和牛焼肉エイジング・ビーフ，Aging Beef）\\n4. 清安庵（御曹司 きよやす庵，Kiyoyasuan）\\n5. 史努比村（SNOOPY Village / スヌーピービレッジ，Snoopy Village）" }, 
+                 { time: "12:30", title: "輕井澤午餐", desc: "美食街/餐廳", icon: "🍱", location: "軽井沢プリンスショッピングプラザ 太陽と緑的キッチン", transport: { route: "舊輕井澤 → Outlet", line: "單車", time: "15分" }, hideMap: true, tips: "【輕井澤 飲食5選】\\n1. 明治亭（ソースかつ丼 明治亭，Meijitei）\\n2. 濃熟雞白湯 錦（濃熟鶏白湯 錦，Nishiki）\\n3. 熟成和牛燒肉 Aging Beef（熟成和牛焼肉エイジング・ビーフ，Aging Beef）\\n4. 清安庵（御曹司 きよやす庵，Kiyoyasuan）\\n5. 史努比村（SNOOPY Village / スヌーピービレッジ，Snoopy Village）" }, 
                  { time: "14:30", title: "王子 Outlet", desc: "購物與樂高區", icon: "🛍️", location: "軽井沢プリンスショッピングプラザ", hideRoute: true, tips: "💡 將 Outlet 移到下午，買完戰利品就能直接搭新幹線，不用提著大包小包騎腳踏車！" }, 
                  { time: "17:30", title: "返回上野", desc: "回程", icon: "🚅", location: "JR 上野駅", transport: { route: "輕井澤 → 上野", line: "JR 北陸新幹線", time: "60分" }, hideMap: true,
                    stationGuide: {
@@ -373,7 +373,7 @@ html_code = """
                      routes: ["從澀谷站進入 JR 閘口，搭乘「山手線(綠色)」往新宿/池袋方向", "搭乘約 7 分鐘抵達「新宿站」", "下車後請務必尋找黃色招牌「東改札 (East Exit)」", "出站到達地面廣場，往左前方抬頭即可看見 3D 貓"]
                    }
                  }, 
-                 { time: "18:30", title: "新宿晚餐", desc: "天婦羅丼飯/燒肉", icon: "🦖", location: "新宿東宝ビル", transport: { route: "東口 → 歌舞伎町", line: "步行", time: "10分" }, hideMap: true, tips: "【新宿 飲食6選】\\n1. 天丼 Tenya（天丼てんや，Tenya）\\n2. 燒肉亭 六歌仙（焼肉亭 六歌仙，Rokkasen）\\n3. 一蘭拉麵 新宿中央東口店（一蘭，Ichiran）\\n4. 名代 宇奈とと（名代 宇奈とと，Unatoto）\\n5. 高島屋 Times Square（新宿タカシマヤ，Takashimaya）\\n6. 客美多咖啡 新宿靖國通店（コメダ珈琲店，Komeda's Coffee）\\n💡 哥吉拉頭像每整點會咆哮發光，在歌舞伎町吃晚餐剛好可以看！" }, 
+                 { time: "18:30", title: "新宿晚餐", desc: "天婦羅丼飯/燒肉", icon: "🦖", location: "新宿東宝ビル", transport: { route: "東口 → 歌舞伎町", line: "步行", time: "10分" }, hideMap: true, tips: "【新宿 飲食6選】\\n1. 天丼 Tenya（天丼てんや，Tenya）\\n2. 燒肉亭 六歌仙（焼肉亭 六歌仙，Rokkasen）\\n3. 一蘭拉麵 新宿中央東口店（一蘭，Ichiran）\\n4. 名代 宇奈とと（名代 宇奈とと，Unatoto）\\n5. 高島屋 Times Square（新宿タカシマヤ，Takashimaya）\\n6. 客美多咖啡 新宿靖國通店（コメダ珈琲店，Komeda's Coffee）\\n💡 哥吉拉頭像每整點會咆哮，在歌舞伎町吃晚餐剛好可以看！" }, 
                  { time: "20:30", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "新宿 → 上野 → 飯店", line: "JR 山手線 直達轉步行", time: "35分" }, hideMap: true,
                    stationGuide: {
                      name: "返回飯店 (新宿出發)", desc: "JR 山手線直達 (免轉乘)",
@@ -451,10 +451,10 @@ html_code = """
                 { ch: "你好", jp: "こんにちは", romaji: "Konnichiwa" },
                 { ch: "謝謝", jp: "ありがとうございます", romaji: "Arigatou gozaimasu" },
                 { ch: "不好意思 / 請問", jp: "すみません", romaji: "Sumimasen" },
-                { ch: "這個多少錢？", jp: "これはいくらですか？", romaji: "Kore wa ikura desu ka?" },
-                { ch: "洗手間在哪裡？", jp: "トイレはどこですか？", romaji: "Toire wa doko desu ka?" },
-                { ch: "太好吃了", jp: "とてもおいしいです", romaji: "Totemo oishii desu" },
-                { ch: "請給我這個", jp: "これをください", romaji: "Kore o kudasai" }
+                { ch: "這個多少錢？", jp: "這是多少錢？", romaji: "Kore wa ikura desu ka?" },
+                { ch: "洗手間在哪裡？", jp: "廁所是在哪裡？", romaji: "Toire wa doko desu ka?" },
+                { ch: "太好吃了", jp: "非常好吃", romaji: "Totemo oishii desu" },
+                { ch: "請給我這個", jp: "請給我這個", romaji: "Kore o kudasai" }
             ]
         };
 
@@ -489,7 +489,7 @@ html_code = """
                     { icon: "🍜", name: "田中商店（博多長浜らーめん 田中商店，Tanaka Shoten）", desc: "DiverCity 2F 超濃郁豚骨拉麵", mapQuery: "田中商店 ダイバーシティ東京プラザ店" },
                     { icon: "🍤", name: "金子半之助（日本橋 天丼 金子半之助，Kaneko Hannosuke）", desc: "DiverCity 2F 超人氣排隊天丼", mapQuery: "日本橋 天丼 金子半之助 ダイバーシティ東京プラザ店" },
                     { icon: "🍚", name: "傳說的斯塔丼屋（伝説のすた丼屋，Densetsu no Sutadon-ya）", desc: "DiverCity 2F 超人氣大份量蒜香豬肉丼飯", mapQuery: "伝説のすた丼屋 ダイバーシティ東京プラザ店" },
-                    { icon: "🍳", name: "蘋果樹蛋包飯（ポムの樹，Pomme-no-ki）", desc: "Aqua City 5F 知名蛋包飯", mapQuery: "ポムの樹 アクアシティお台場店" },
+                    { icon: "🍳", name: "蘋果樹蛋包飯（ポムの樹，Pomme-no-ki）", desc: "Aqua City 5F 知名蛋包飯", mapQuery: "ポム的樹 アクアシティお台場店" },
                     { icon: "🥩", name: "燒肉 平城苑（東京焼肉 平城苑，Heijoen）", desc: "Aqua City 1F 看海景吃黑毛和牛燒肉", mapQuery: "焼肉 平城苑 アクアシティお台場店" }
                 ]
             },
@@ -499,7 +499,7 @@ html_code = """
                     { icon: "🍽️", name: "100支湯匙（100本のスプーン，100 Spoons）", desc: "LaLaport 內，高質感親子餐廳，可點半份", mapQuery: "100本のスプーン ららぽーと豊洲" },
                     { icon: "🥩", name: "燒肉 Toraji（焼肉トラジ，Yakiniku Toraji）", desc: "LaLaport 內，爽吃厚切牛舌與和牛", mapQuery: "焼肉トラジ ららぽーと豊洲店" },
                     { icon: "🍱", name: "築地食堂 源ちゃん（築地食堂 源ちゃん，Genchan）", desc: "LaLaport 內，熟食海鮮定食", mapQuery: "築地食堂 源ちゃん ららぽーと豊洲店" },
-                    { icon: "🍜", name: "麵屋 黑琥（麺や 黒琥，Kuroko）", desc: "LaLaport 內，豚骨醬油日式拉麵", mapQuery: "麺や 黒琥 ららぽーと豊洲" },
+                    { icon: "🍜", name: "麵屋 黑琥（麺や 黑琥，Kuroko）", desc: "LaLaport 內，豚骨醬油日式拉麵", mapQuery: "麺や 黑琥 ららぽーと豊洲" },
                     { icon: "🍲", name: "玉丁本店（玉丁本店，Tamacho Honten）", desc: "LaLaport 內，濃郁的味噌燉烏龍麵", mapQuery: "玉丁本店 ららぽーと豊洲店" },
                     { icon: "☕", name: "客美多咖啡 豐洲店（コメダ珈琲店，Komeda's Coffee）", desc: "豐洲站旁，買飲料送早餐，休息吃甜點", mapQuery: "コメダ珈琲店 豊洲店" }
                 ]
@@ -517,7 +517,7 @@ html_code = """
                     { icon: "🍽️", name: "Tabe-Terrace 美食街（タベテラス，Tabe-Terrace）", desc: "晴空塔 3F 美食街免排隊挑選", mapQuery: "東京ソラマチ タベテラス" }
                 ]
             },
-            { id: "asakusa_food", name: "淺草 晚餐 (6選)", icon: "🍣", tag: "美食", desc: "Day 3 晚餐推薦：", tips: "藏壽司 ROX店有專屬祭典遊戲，小孩最愛！",
+            { id: "asakusa_food", name: "淺草 晚餐 (6選)", icon: "🍣", tag: "美食", desc: "Day 3 晚餐推薦：", tips: "藏壽司 ROX館有專屬祭典遊戲，小孩最愛！",
                 foodSpots: [
                     { icon: "🍣", name: "藏壽司 淺草ROX店（くら寿司，Kura Sushi）", desc: "全球旗艦店，有祭典遊戲區與巨大扭蛋", mapQuery: "くら寿司 浅草ROX店" },
                     { icon: "🍜", name: "一蘭拉麵 淺草店（一蘭，Ichiran）", desc: "獨立包廂位的經典豚骨拉麵", mapQuery: "一蘭 浅草店" },
@@ -547,7 +547,7 @@ html_code = """
                     { icon: "🥘", name: "狐狸屋（きつねや，Kitsuneya）", desc: "超濃郁的排隊名店，適合喜歡重口味的爸爸", mapQuery: "きつねや 築地" },
                     { icon: "🍳", name: "築地 山長（築地山長，Yamacho）", desc: "街邊現煎玉子燒，100日圓一串，小孩最愛", mapQuery: "築地山長" },
                     { icon: "🍘", name: "築地 可樂餅（築地コロッケ，Tsukiji Croquette）", desc: "現炸的明太子文字燒可樂餅，極推", mapQuery: "築地コロッケ" },
-                    { icon: "🍣", name: "黑銀 鮪魚店（築地黒銀 まぐろや，Kurogin）", desc: "頂級黑鮪魚生魚片與握壽司，立食體驗", mapQuery: "築地黒銀 まぐろや" },
+                    { icon: "🍣", name: "黑銀 鮪魚店（築地黒銀 まぐろや，Kurogin）", desc: "頂級黑鮪魚生魚片與握壽司，立食體驗", mapQuery: "築地黑銀 まぐろや" },
                     { icon: "🍣", name: "壽司三味 本店（すしざんまい，Sushizanmai）", desc: "知名連鎖壽司本店，價格透明、座位寬敞", mapQuery: "すしざんまい 本店" }
                 ]
             },
@@ -558,7 +558,7 @@ html_code = """
                     { icon: "🍣", name: "魚米（魚べい，Uobei）", desc: "新幹線軌道送餐壽司，平價好玩", mapQuery: "魚べい 渋谷道玄坂店" },
                     { icon: "🍳", name: "鶴橋風月（鶴橋風月，Tsuruhashi Fugetsu）", desc: "Scramble Square 12F 大阪燒", mapQuery: "鶴橋風月 渋谷スクランブルスクエア店" },
                     { icon: "🍜", name: "阿夫利（AFURI，Afuri）", desc: "PARCO B1 清爽柚子鹽拉麵", mapQuery: "AFURI 渋谷パルコ" },
-                    { icon: "🥩", name: "燒肉 牛角 渋谷店（牛角，Gyukaku）", desc: "平價連鎖燒肉，菜單豐富", mapQuery: "牛角 渋谷店" },
+                    { icon: "🥩", name: "燒肉 牛角 澀谷店（牛角，Gyukaku）", desc: "平價連鎖燒肉，菜單豐富", mapQuery: "牛角 渋谷店" },
                     { icon: "🍱", name: "名代 豬排（名代 かつくら，Katsukura）", desc: "Scramble Square 14F 京都炸豬排", mapQuery: "名代 かつくら 渋谷スクランブルスクエア店" }
                 ]
             },
@@ -755,64 +755,67 @@ html_code = """
             };
 
             return (
-                <div className="h-full flex flex-col p-4 pb-24 overflow-y-auto">
-                    <div className="sticky top-0 z-10 bg-white/95 backdrop-blur shadow-sm p-2 rounded-xl mb-4 overflow-x-auto flex gap-2 flex-shrink-0">
+                <div className="flex flex-col h-full bg-gray-50">
+                    {/* Corrected full-width sticky sub-nav bar */}
+                    <div className="sticky top-0 z-10 bg-white/95 backdrop-blur shadow-sm p-2 flex gap-2 flex-shrink-0 overflow-x-auto hide-scrollbar">
                          <button onClick={() => setMode('attraction')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${mode === 'attraction' ? 'bg-indigo-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🗺️ 全覽</button>
                         <button onClick={() => setMode('surrounding')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${mode === 'surrounding' ? 'bg-teal-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🏙️ 景點建議</button>
                         <button onClick={() => setMode('metro')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${mode === 'metro' ? 'bg-gray-800 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🚇 路線</button>
                         <button onClick={() => setMode('full')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${mode === 'full' ? 'bg-orange-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>📑 完整地鐵</button>
                     </div>
                     
-                    <div className="flex-1 flex flex-col items-center w-full">
-                        
-                        {mode === 'attraction' && (
-                            <div className="w-full h-[65vh] bg-blue-50 rounded-xl overflow-hidden border border-blue-200 relative">
-                                 <div className="w-full h-full flex items-center justify-center overflow-hidden">
-                                    <img ref={tripImgRef} src={URL_TRIP} alt="行程全覽地圖" className="w-full h-auto object-contain cursor-grab" />
-                                 </div>
-                                 <div className="absolute bottom-2 left-0 right-0 text-center pointer-events-none">
-                                    <span className="bg-black/50 text-white text-[10px] px-2 py-1 rounded-full">雙指或滾輪可縮放移動</span>
-                                 </div>
-                            </div>
-                        )}
-                        
-                        {mode === 'surrounding' && (
-                            <div className="w-full flex flex-col items-center">
-                                <div className="flex gap-2 mb-3 overflow-x-auto w-full justify-start flex-shrink-0 hide-scrollbar px-1 py-1">
-                                    {[
-                                        {id: 'ueno', name: '上野/秋葉原'},
-                                        {id: 'toyosu', name: '豐洲'}, 
-                                        {id: 'odaiba', name: '台場'}, 
-                                        {id: 'asakusa', name: '淺草'},
-                                        {id: 'skytree', name: '晴空塔'},
-                                        {id: 'karuizawa', name: '輕井澤'},
-                                        {id: 'tsukiji', name: '築地'},
-                                        {id: 'shibuya', name: '渋谷'},
-                                        {id: 'shinjuku', name: '新宿'}
-                                    ].map(area => (
-                                        <button key={area.id} onClick={() => setSurrArea(area.id)} className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${surrArea === area.id ? 'bg-teal-600 text-white shadow-md' : 'bg-white text-gray-600 border border-gray-200'}`}>{area.name}</button>
-                                    ))}
+                    {/* Content area with correct padding and overflow to match AttractionView */}
+                    <div className="flex-1 overflow-y-auto p-4 pb-24">
+                        <div className="flex flex-col items-center w-full">
+                            {mode === 'attraction' && (
+                                <div className="w-full h-[65vh] bg-blue-50 rounded-xl overflow-hidden border border-blue-200 relative">
+                                     <div className="w-full h-full flex items-center justify-center overflow-hidden">
+                                        <img ref={tripImgRef} src={URL_TRIP} alt="行程全覽地圖" className="w-full h-auto object-contain cursor-grab" />
+                                     </div>
+                                     <div className="absolute bottom-2 left-0 right-0 text-center pointer-events-none">
+                                        <span className="bg-black/50 text-white text-[10px] px-2 py-1 rounded-full">雙指或滾輪可縮放移動</span>
+                                     </div>
                                 </div>
-                                <div className="w-full max-w-sm">{renderSurrounding()}</div>
-                            </div>
-                        )}
+                            )}
+                            
+                            {mode === 'surrounding' && (
+                                <div className="w-full flex flex-col items-center">
+                                    <div className="flex gap-2 mb-3 overflow-x-auto w-full justify-start flex-shrink-0 hide-scrollbar px-1 py-1">
+                                        {[
+                                            {id: 'ueno', name: '上野/秋葉原'},
+                                            {id: 'toyosu', name: '豐洲'}, 
+                                            {id: 'odaiba', name: '台場'}, 
+                                            {id: 'asakusa', name: '淺草'},
+                                            {id: 'skytree', name: '晴空塔'},
+                                            {id: 'karuizawa', name: '輕井澤'},
+                                            {id: 'tsukiji', name: '築地'},
+                                            {id: 'shibuya', name: '渋谷'},
+                                            {id: 'shinjuku', name: '新宿'}
+                                        ].map(area => (
+                                            <button key={area.id} onClick={() => setSurrArea(area.id)} className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${surrArea === area.id ? 'bg-teal-600 text-white shadow-md' : 'bg-white text-gray-600 border border-gray-200'}`}>{area.name}</button>
+                                        ))}
+                                    </div>
+                                    <div className="w-full max-w-sm">{renderSurrounding()}</div>
+                                </div>
+                            )}
 
-                        {mode === 'metro' && (
-                            <div className="w-full max-w-sm bg-white rounded-xl overflow-hidden shadow-inner border-2 border-gray-200 p-0">
-                                <img src={URL_NOTE} alt="路線手稿" className="w-full h-auto" />
-                            </div>
-                        )}
+                            {mode === 'metro' && (
+                                <div className="w-full max-w-sm bg-white rounded-xl overflow-hidden shadow-inner border-2 border-gray-200 p-0">
+                                    <img src={URL_NOTE} alt="路線手稿" className="w-full h-auto" />
+                                </div>
+                            )}
 
-                        {mode === 'full' && (
-                            <div className="w-full h-[65vh] bg-gray-100 rounded-xl overflow-hidden border border-gray-300 relative">
-                                 <div className="w-full h-full flex items-center justify-center overflow-hidden">
-                                    <img ref={imgRef} src={URL_MAP} alt="完整地鐵圖" className="w-full h-auto object-contain cursor-grab" />
-                                 </div>
-                                 <div className="absolute bottom-2 left-0 right-0 text-center pointer-events-none">
-                                    <span className="bg-black/50 text-white text-[10px] px-2 py-1 rounded-full">雙指或滾輪可縮放</span>
-                                 </div>
-                            </div>
-                        )}
+                            {mode === 'full' && (
+                                <div className="w-full h-[65vh] bg-gray-100 rounded-xl overflow-hidden border border-gray-300 relative">
+                                     <div className="w-full h-full flex items-center justify-center overflow-hidden">
+                                        <img ref={imgRef} src={URL_MAP} alt="完整地鐵圖" className="w-full h-auto object-contain cursor-grab" />
+                                     </div>
+                                     <div className="absolute bottom-2 left-0 right-0 text-center pointer-events-none">
+                                        <span className="bg-black/50 text-white text-[10px] px-2 py-1 rounded-full">雙指或滾輪可縮放</span>
+                                     </div>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             );
