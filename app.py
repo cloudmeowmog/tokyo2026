@@ -101,7 +101,7 @@ html_code = """
                 name: '豐洲 / 市場',
                 spots: [
                     { name: '千客萬來（豊洲 千客万来，Senkyaku Banrai）', desc: '市場旁最新溫泉美食街，復古江戶風情超好拍。', tag: '觀光美食', icon: '🏮', mapQuery: '豊洲 千客万来' },
-                    { name: '茂助糰子/玉子燒（茂助だんご，Mosuke）', desc: '市場內百年老店，除了甜點也有日式煎蛋捲小孩絕對愛吃。', tag: '市場玉子燒', icon: '🍳', mapQuery: '茂助だんご 豊洲市場' },
+                    { name: '茂助玉子燒（茂助だんご，Mosuke）', desc: '市場內百年老店，甜甜的日式煎蛋捲小孩絕對愛吃。', tag: '市場玉子燒', icon: '🍳', mapQuery: '茂助だんご 豊洲市場' },
                     { name: '海鮮丼 大江戶（海鮮丼 大江戸，Oedo）', desc: '豐洲市場水產棟，超澎湃的新鮮海鮮丼。', tag: '豐盛海鮮', icon: '🍱', mapQuery: '海鮮丼 大江戸 豊洲市場' },
                     { name: '炸物 八千代（とんかつ 八千代，Tonkatsu Yachiyo）', desc: '不吃生食的好選擇！炸大蝦與炸豬排定食。', tag: '熟食定食', icon: '🍤', mapQuery: 'とんかつ 八千代 豊洲市場' },
                     { name: '壽司大（寿司大，Sushidai）', desc: '豐洲市場超人氣排隊壽司，想吃需起個大早。', tag: '排隊壽司', icon: '🍣', mapQuery: '寿司大 豊洲市場' },
@@ -184,8 +184,8 @@ html_code = """
                     { name: 'Pokémon Center', desc: 'PARCO 6F。最潮的寶可夢中心，門口有1:1沉睡超夢。', tag: '寶可夢', icon: '🐾', mapQuery: 'ポケモンセンターシブヤ' },
                     { name: '魚米（魚べい，Uobei）', desc: '全由「高速新幹線軌道」直送座位，平價極具娛樂性。', tag: '新幹線壽司', icon: '🍣', mapQuery: '魚べい 渋谷道玄坂店' },
                     { name: '鶴橋風月（鶴橋風月，Tsuruhashi Fugetsu）', desc: 'Scramble Square 12F。大阪燒桌邊現煎，吃飽去展望台最順。', tag: '大阪燒', icon: '🍳', mapQuery: '鶴橋風月 渋谷スクランブルスクエア店' },
-                    { name: '阿夫利（AFURI，Afuri）', desc: '原宿店。從澀谷散步或搭一站到原宿，超人氣柚子鹽拉麵。', tag: '柚子拉麵', icon: '🍜', mapQuery: 'AFURI 原宿' },
-                    { name: '燒肉 牛角 澀谷店（牛角，Gyukaku）', desc: '平價連鎖燒肉，菜單豐富無壓力，適合親子。', tag: '平價燒肉', icon: '🥩', mapQuery: '牛角 渋谷センター街店' },
+                    { name: '阿夫利（AFURI，Afuri）', desc: '原宿店。從澀谷搭一站或散步至原宿，超人氣柚子鹽拉麵。', tag: '柚子拉麵', icon: '🍜', mapQuery: 'AFURI 原宿' },
+                    { name: '燒肉 牛角 澀谷店（牛角，Gyukaku）', desc: '平價連鎖燒肉，菜單豐富無壓力，適合親子。', tag: '平價燒肉', icon: '🥩', mapQuery: '牛角 渋谷店' },
                     { name: '名代 豬排（名代 かつくら，Katsukura）', desc: 'Scramble Square 14F。京都知名炸豬排，飯湯可續。', tag: '炸豬排', icon: '🍱', mapQuery: '名代 かつくら 渋谷スクランブルスクエア店' }
                 ]
             },
@@ -458,6 +458,230 @@ html_code = """
             ]
         };
 
+        const ItineraryView = () => {
+            const [activeDay, setActiveDay] = useState(0);
+            return (
+                <div className="flex flex-col h-full bg-gray-50">
+                    <div className="sticky top-0 z-10 bg-white shadow-sm">
+                        <div className="flex overflow-x-auto hide-scrollbar p-2 gap-2">
+                            {itinerary.map((d, i) => (
+                                <button key={i} onClick={() => setActiveDay(i)} 
+                                    className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${activeDay === i ? 'bg-indigo-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>
+                                    Day {d.day}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="flex-1 overflow-y-auto p-4 pb-24">
+                        <div className="text-center mb-4">
+                            <h2 className="text-xl font-bold text-gray-800">{itinerary[activeDay].date}</h2>
+                            <p className="text-indigo-600 font-medium">{itinerary[activeDay].title}</p>
+                        </div>
+                        <div className="relative pl-4 space-y-8 border-l-2 border-gray-200 ml-3">
+                            {itinerary[activeDay].events.map((evt, i) => {
+                                let prevLoc = i === 0 ? HOTEL_ADDRESS : itinerary[activeDay].events[i-1].location;
+                                if (activeDay === 0 && i < 2) prevLoc = null; 
+                                
+                                const mapUrl = "https://www.google.com/maps/search/?api=1&query=?q=" + encodeURIComponent(evt.location);
+                                const dirUrl = prevLoc ? "https://www.google.com/maps/dir/?api=1&origin=?saddr=" + encodeURIComponent(prevLoc) + "&daddr=" + encodeURIComponent(evt.location) + "&dirflg=r" : null;
+
+                                return (
+                                    <div key={i} className="relative pl-6">
+                                        <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-indigo-500 border-2 border-white shadow"></div>
+                                        <div className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm">
+                                            <div className="flex justify-between items-start mb-1">
+                                                <span className="bg-indigo-50 text-indigo-700 text-xs font-bold px-2 py-1 rounded">{evt.time}</span>
+                                                <span className="text-2xl">{evt.icon}</span>
+                                            </div>
+                                            <h3 className="font-bold text-gray-800 text-lg">{evt.title}</h3>
+                                            <p className="text-sm text-gray-500 mb-2">{evt.desc}</p>
+                                            
+                                            {evt.tips && (
+                                                <div className="mb-3 bg-yellow-50 text-yellow-800 text-[13px] p-2.5 rounded-lg border border-yellow-100 leading-relaxed whitespace-pre-line">
+                                                    <span className="font-bold">💡 </span>{evt.tips}
+                                                </div>
+                                            )}
+
+                                            {evt.transport && (
+                                                <div className="mb-3 bg-slate-50 p-2.5 rounded-lg text-xs text-slate-600 flex flex-col gap-1.5 border border-slate-200">
+                                                    <div className="flex items-center gap-2 font-medium">
+                                                        <span>{evt.transport.line.includes('步行') && !evt.transport.line.includes('轉') ? '🚶' : '🚇'} {evt.transport.route}</span>
+                                                        <span className="text-slate-300">|</span>
+                                                        <span>⏱️ {evt.transport.time}</span>
+                                                    </div>
+                                                    {evt.transport.line && evt.transport.line !== '步行' && (
+                                                        <div className="mt-0.5">
+                                                            <span className={`inline-block px-2 py-1 rounded text-[11px] font-bold ${
+                                                                evt.transport.line.includes('計程車') ? 'bg-yellow-100 text-yellow-700 border border-yellow-200' : 
+                                                                evt.transport.line.includes('單車') ? 'bg-green-100 text-green-700 border border-green-200' :
+                                                                'bg-blue-100 text-blue-700 border border-blue-200'
+                                                            }`}>
+                                                                {evt.transport.line.includes('計程車') ? '🚕 ' : 
+                                                                 evt.transport.line.includes('單車') ? '🚲 ' : '🚊 '}
+                                                                {evt.transport.line}
+                                                            </span>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            )}
+                                            
+                                            {evt.stationGuide && (
+                                                <div className="mb-3 bg-blue-50/60 rounded-xl p-3 border border-blue-100">
+                                                    <h4 className="font-bold text-blue-800 mb-1 flex items-center gap-1">🚉 {evt.stationGuide.name}</h4>
+                                                    <p className="text-[12px] text-blue-600 mb-2 font-medium">{evt.stationGuide.desc}</p>
+                                                    <div className="space-y-1.5 mb-3">
+                                                        {evt.stationGuide.tips.map((t, idx) => (
+                                                            <div key={idx} className="flex gap-1.5 text-[12px] items-start">
+                                                                <span className="bg-white border border-blue-200 text-blue-600 px-1 rounded text-[10px] mt-0.5 leading-none py-0.5 font-bold">Tip</span>
+                                                                <span className="text-gray-700 leading-tight">{t}</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                    <div className="border-t border-blue-200/60 pt-2.5">
+                                                        <h5 className="text-[11px] font-bold text-blue-800 mb-2">🚏 導航路徑</h5>
+                                                        <ul className="space-y-2 pl-1">
+                                                            {evt.stationGuide.routes.map((step, idx) => (
+                                                                <li key={idx} className="text-[12px] text-gray-700 flex gap-2.5 items-start">
+                                                                    <span className="flex-shrink-0 w-4 h-4 rounded-full bg-blue-500 text-white text-[9px] flex items-center justify-center font-bold mt-0.5">{idx + 1}</span>
+                                                                    <span className="leading-snug">{step}</span>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            )}
+                                            
+                                            <div className="flex gap-2">
+                                                {!evt.hideMap && <a href={mapUrl} target="_blank" className="flex-1 bg-gray-50 hover:bg-gray-100 text-gray-700 text-xs font-bold py-2 rounded-lg text-center no-underline">📍 地圖</a>}
+                                                {!evt.hideRoute && dirUrl && <a href={dirUrl} target="_blank" className="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 text-xs font-bold py-2 rounded-lg text-center no-underline">🚀 路線</a>}
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const MapView = () => {
+            const [mode, setMode] = useState('attraction');
+            const [surrArea, setSurrArea] = useState('ueno');
+            const imgRef = useRef(null);
+            const tripImgRef = useRef(null);
+
+            useEffect(() => {
+                if (mode === 'full' && imgRef.current) {
+                    const pz = Panzoom(imgRef.current, { maxScale: 8, minScale: 1, contain: null, startScale: 1 });
+                    if(imgRef.current.parentElement) imgRef.current.parentElement.addEventListener('wheel', pz.zoomWithWheel);
+                }
+            }, [mode]);
+
+            useEffect(() => {
+                if (mode === 'attraction' && tripImgRef.current) {
+                    const pz = Panzoom(tripImgRef.current, { maxScale: 8, minScale: 1, contain: null, startScale: 1 });
+                    if(tripImgRef.current.parentElement) tripImgRef.current.parentElement.addEventListener('wheel', pz.zoomWithWheel);
+                }
+            }, [mode]);
+
+            const renderSurrounding = () => {
+                const guide = surroundingGuides[surrArea];
+                if (!guide) return null;
+
+                return (
+                    <div className="w-full flex flex-col gap-3 p-2">
+                        {guide.spots.map((spot, idx) => {
+                            const mapUrl = "https://www.google.com/maps/search/?api=1&query=?q=" + encodeURIComponent(spot.mapQuery);
+                            return (
+                                <div key={idx} className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm flex flex-col gap-2 w-full">
+                                    <div className="flex items-start gap-3">
+                                        <div className="text-3xl mt-1">{spot.icon}</div>
+                                        <div className="flex-1">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <h4 className="font-bold text-gray-800 text-[15px] m-0">{spot.name}</h4>
+                                                <span className="bg-indigo-50 text-indigo-600 text-[10px] px-2 py-0.5 rounded font-bold whitespace-nowrap">{spot.tag}</span>
+                                            </div>
+                                            <p className="text-[13px] text-gray-600 leading-relaxed m-0">{spot.desc}</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex justify-end border-t border-gray-50 pt-2 mt-1">
+                                         <a href={mapUrl} target="_blank" className="bg-blue-50 hover:bg-blue-100 text-blue-600 border border-blue-100 text-xs font-bold py-1.5 px-3 rounded-lg flex items-center gap-1 no-underline transition-colors">
+                                            📍 開啟地圖
+                                        </a>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                );
+            };
+
+            return (
+                <div className="flex flex-col h-full bg-gray-50">
+                    <div className="sticky top-0 z-10 bg-white/95 backdrop-blur shadow-sm p-2 flex gap-2 flex-shrink-0 overflow-x-auto hide-scrollbar">
+                         <button onClick={() => setMode('attraction')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${mode === 'attraction' ? 'bg-indigo-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🗺️ 全覽</button>
+                        <button onClick={() => setMode('surrounding')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${mode === 'surrounding' ? 'bg-teal-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🏙️ 景點建議</button>
+                        <button onClick={() => setMode('metro')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${mode === 'metro' ? 'bg-gray-800 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🚇 路線</button>
+                        <button onClick={() => setMode('full')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${mode === 'full' ? 'bg-orange-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>📑 完整地鐵</button>
+                    </div>
+                    
+                    <div className="flex-1 overflow-y-auto p-4 pb-24">
+                        <div className="flex flex-col items-center w-full">
+                            {mode === 'attraction' && (
+                                <div className="w-full h-[65vh] bg-blue-50 rounded-xl overflow-hidden border border-blue-200 relative">
+                                     <div className="w-full h-full flex items-center justify-center overflow-hidden">
+                                        <img ref={tripImgRef} src={URL_TRIP} alt="行程全覽地圖" className="w-full h-auto object-contain cursor-grab" />
+                                     </div>
+                                     <div className="absolute bottom-2 left-0 right-0 text-center pointer-events-none">
+                                        <span className="bg-black/50 text-white text-[10px] px-2 py-1 rounded-full">雙指或滾輪可縮放移動</span>
+                                     </div>
+                                </div>
+                            )}
+                            
+                            {mode === 'surrounding' && (
+                                <div className="w-full flex flex-col items-center">
+                                    <div className="flex gap-2 mb-3 overflow-x-auto w-full justify-start flex-shrink-0 hide-scrollbar px-1 py-1">
+                                        {[
+                                            {id: 'ueno', name: '上野/秋葉原'},
+                                            {id: 'toyosu', name: '豐洲'}, 
+                                            {id: 'odaiba', name: '台場'}, 
+                                            {id: 'asakusa', name: '淺草'},
+                                            {id: 'skytree', name: '晴空塔'},
+                                            {id: 'karuizawa', name: '輕井澤'},
+                                            {id: 'tsukiji', name: '築地'},
+                                            {id: 'shibuya', name: '渋谷'},
+                                            {id: 'shinjuku', name: '新宿'}
+                                        ].map(area => (
+                                            <button key={area.id} onClick={() => setSurrArea(area.id)} className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${surrArea === area.id ? 'bg-teal-600 text-white shadow-md' : 'bg-white text-gray-600 border border-gray-200'}`}>{area.name}</button>
+                                        ))}
+                                    </div>
+                                    <div className="w-full max-w-sm">{renderSurrounding()}</div>
+                                </div>
+                            )}
+
+                            {mode === 'metro' && (
+                                <div className="w-full max-w-sm bg-white rounded-xl overflow-hidden shadow-inner border-2 border-gray-200 p-0">
+                                    <img src={URL_NOTE} alt="路線手稿" className="w-full h-auto" />
+                                </div>
+                            )}
+
+                            {mode === 'full' && (
+                                <div className="w-full h-[65vh] bg-gray-100 rounded-xl overflow-hidden border border-gray-300 relative">
+                                     <div className="w-full h-full flex items-center justify-center overflow-hidden">
+                                        <img ref={imgRef} src={URL_MAP} alt="完整地鐵圖" className="w-full h-auto object-contain cursor-grab" />
+                                     </div>
+                                     <div className="absolute bottom-2 left-0 right-0 text-center pointer-events-none">
+                                        <span className="bg-black/50 text-white text-[10px] px-2 py-1 rounded-full">雙指或滾輪可縮放</span>
+                                     </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
         const AttractionView = () => {
             const [subTab, setSubTab] = useState('attractions');
             
@@ -489,7 +713,7 @@ html_code = """
                                         {item.foodSpots && (
                                             <div className="mt-2 space-y-2">
                                                 {item.foodSpots.map((spot, sIdx) => {
-                                                    const mapUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(spot.mapQuery);
+                                                    const mapUrl = "https://www.google.com/maps/search/?api=1&query=?q=" + encodeURIComponent(spot.mapQuery);
                                                     return (
                                                         <div key={sIdx} className="bg-gray-50 p-2 rounded-lg flex items-start gap-2 border border-gray-100">
                                                             <div className="text-lg leading-none mt-0.5">{spot.icon}</div>
@@ -598,7 +822,7 @@ html_code = """
                         <div className="flex justify-between items-start">
                             <div><h1 className="text-2xl font-bold">東京親子之旅</h1><p className="text-indigo-100 text-sm mt-1">4/17 - 4/22 • 6天5夜</p></div>
                         </div>
-                        <a href={"https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(HOTEL_ADDRESS)} target="_blank" className="mt-4 bg-indigo-700/50 p-3 rounded-xl flex items-center gap-3 backdrop-blur-sm active:scale-95 transition-transform border border-indigo-500/30 text-left no-underline">
+                        <a href={"https://www.google.com/maps/search/?api=1&query=?q=" + encodeURIComponent(HOTEL_ADDRESS)} target="_blank" className="mt-4 bg-indigo-700/50 p-3 rounded-xl flex items-center gap-3 backdrop-blur-sm active:scale-95 transition-transform border border-indigo-500/30 text-left no-underline">
                             <div className="bg-white p-2 rounded-full text-indigo-600">
                                 {icons.map}
                             </div>
