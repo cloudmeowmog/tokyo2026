@@ -224,14 +224,14 @@ html_code = """
                      routes: ["下車後搭手扶梯往上，尋找「正面口」出口", "出改札口後直走，不要往地鐵連絡通道走", "出站到地面後，開啟 Google Map 導航前往飯店", "沿著淺草通直走即可抵達 (步行約 10 分)"]
                    }
                  }, 
-                 { time: "17:15", title: "前往秋葉原", desc: "從飯店出發", icon: "🚇", location: "秋葉原駅", transport: { route: "飯店 → 上野站 → 秋葉原", line: "步行轉 JR", time: "20分" }, 
+                 { time: "17:15", title: "前往秋葉原", desc: "從飯店出發", icon: "🚇", location: "秋葉原駅", transport: { route: "飯店 → 上野站 → 秋葉原", line: "步行轉 JR", time: "20分" }, hideMap: true, 
                    stationGuide: {
                      name: "前往秋葉原", desc: "搭乘 JR 直達",
-                     tips: ["從飯店步行至上野站搭車", "免換線轉乘最方便"],
-                     routes: ["從飯店步行約 10 分鐘前往「JR 上野站」", "搭乘「JR山手線(綠色)」或「京濱東北線(淺藍)」往東京方向", "搭乘 2 站直達「秋葉原站」下車"]
+                     tips: ["從飯店步行至上野站搭車", "免換線轉乘最方便", "請認明『JR 上野站』的綠色標誌，不要走進地下鐵(Tokyo Metro)"],
+                     routes: ["從飯店出發，沿著淺草通往西(上野站方向)直行約 10 分鐘", "抵達「JR 上野站」後，從「淺草口」或「廣小路口」進站", "使用西瓜卡(Suica)進站，尋找 3 號月台(山手線外回) 或 4 號月台(京濱東北線往大船方向)", "搭乘 2 站 (上野 -> 御徒町 -> 秋葉原)，在「秋葉原站」下車", "車程僅約 4 分鐘，請留意下車站點"]
                    }
                  }, 
-                 { time: "17:45", title: "御茶之水 聖橋", desc: "鈴芽場景", icon: "📸", location: "聖橋", transport: { route: "秋葉原 → 聖橋", line: "步行", time: "10分" },
+                 { time: "17:45", title: "御茶之水 聖橋", desc: "鈴芽場景", icon: "📸", location: "聖橋", transport: { route: "秋葉原 → 聖橋", line: "步行", time: "10分" }, hideMap: true,
                    stationGuide: {
                      name: "前往聖橋", desc: "秋葉原出發散步",
                      tips: ["出站後開啟路線導航步行前往"],
@@ -453,7 +453,7 @@ html_code = """
         const attractionInfos = [
             // --- Day 1 ---
             { id: "hijiri", name: "御茶之水 聖橋", icon: "🌉", tag: "聖地巡禮", desc: "電影《鈴芽之旅》經典場景。站在橋上可以同時看到紅、黃、橘三色電車交錯而過，是鐵道迷與影迷必拍聖地。", tips: "下午前往順光，拍攝效果最好。" },
-            { id: "akiba", name: "秋葉原 Electric Town", icon: "⚡", tag: "動漫/電器", desc: "日本次文化中心。滿街的動漫周邊、模型店、女遇到咖啡廳與大型電器行。Yodobashi Akiba 是必逛地標。", tips: "旁邊的 Yodobashi 是吃喝玩樂一站式滿足的好地方！" },
+            { id: "akiba", name: "秋葉原 Electric Town", icon: "⚡", tag: "動漫/電器", desc: "日本次文化中心。滿街的動漫周邊、模型店、女僕咖啡廳與大型電器行。Yodobashi Akiba 是必逛地標。", tips: "旁邊的 Yodobashi 是吃喝玩樂一站式滿足的好地方！" },
             { id: "akiba_food", name: "上野/秋葉原 飲食 (5選)", icon: "🍛", tag: "美食", desc: "Day 1 晚餐推薦：", tips: "推薦在 Yodobashi 吃飽，直攻 6F 打寶可夢機台！",
                 foodSpots: [
                     { icon: "🍱", name: "Yodobashi 8F 美食街", desc: "和幸豬排/Meat Rush漢堡排，吃飽直接下樓玩", mapQuery: "ヨドバシAkiba" },
