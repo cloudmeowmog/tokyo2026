@@ -224,15 +224,21 @@ html_code = """
                      routes: ["下車後搭手扶梯往上，尋找「正面口」出口", "出改札口後直走，不要往地鐵連絡通道走", "出站到地面後，開啟 Google Map 導航前往飯店", "沿著淺草通直走即可抵達 (步行約 10 分)"]
                    }
                  }, 
-                 { time: "17:15", title: "往上野站", desc: "步行", icon: "🚶", location: "上野駅", transport: { route: "飯店 → 上野站", line: "步行", time: "10分" }, hideMap: true }, 
-                 { time: "17:30", title: "御茶之水 聖橋", desc: "鈴芽場景", icon: "📸", location: "聖橋", transport: { route: "上野 → 秋葉原 → 聖橋", line: "JR 直達轉步行", time: "20分" }, hideMap: true,
+                 { time: "17:15", title: "前往秋葉原", desc: "從飯店出發", icon: "🚇", location: "秋葉原駅", transport: { route: "飯店 → 上野站 → 秋葉原", line: "步行轉 JR", time: "20分" }, 
                    stationGuide: {
-                     name: "前往聖橋 (經由秋葉原)", desc: "搭乘 JR 直達秋葉原後散步",
-                     tips: ["免去站內換線轉乘的麻煩", "出秋葉原站後步行約 10-15 分鐘即可抵達"],
-                     routes: ["從飯店步行約 10 分鐘前往「JR 上野站」", "搭乘「JR山手線(綠色)」或「京濱東北線(淺藍)」往東京方向", "搭乘 2 站直達「秋葉原站」下車 (不需轉車)", "出站後開啟導航，往西邊(御茶之水方向)散步約 10-15 分鐘，即可抵達「聖橋」拍攝點"]
+                     name: "前往秋葉原", desc: "搭乘 JR 直達",
+                     tips: ["從飯店步行至上野站搭車", "免換線轉乘最方便"],
+                     routes: ["從飯店步行約 10 分鐘前往「JR 上野站」", "搭乘「JR山手線(綠色)」或「京濱東北線(淺藍)」往東京方向", "搭乘 2 站直達「秋葉原站」下車"]
                    }
                  }, 
-                 { time: "18:30", title: "秋葉原", desc: "逛街", icon: "🛍️", location: "秋葉原駅", transport: { route: "御茶之水 → 秋葉原", line: "步行", time: "10分" }, hideMap: true }, 
+                 { time: "17:45", title: "御茶之水 聖橋", desc: "鈴芽場景", icon: "📸", location: "聖橋", transport: { route: "秋葉原 → 聖橋", line: "步行", time: "10分" },
+                   stationGuide: {
+                     name: "前往聖橋", desc: "秋葉原出發散步",
+                     tips: ["出站後開啟路線導航步行前往"],
+                     routes: ["出秋葉原站後，往西邊(御茶之水方向)散步約 10 分鐘，即可抵達「聖橋」拍攝點"]
+                   }
+                 }, 
+                 { time: "18:30", title: "秋葉原", desc: "逛街", icon: "🛍️", location: "秋葉原駅", transport: { route: "聖橋 → 秋葉原", line: "步行", time: "10分" }, hideMap: true }, 
                  { time: "19:00", title: "秋葉原晚餐", desc: "美食街或拉麵燒肉", icon: "🍛", location: "ヨドバシAkiba", transport: { route: "秋葉原 → 餐廳", line: "步行", time: "5分" }, tips: "【上野/秋葉原 飲食5選】\\n1. Yodobashi 8F美食街 (和幸豬排/漢堡排)\\n2. 九州 じゃんがら (濃郁豚骨拉麵)\\n3. 壽司郎 上野店 (扭蛋迴轉壽司)\\n4. 敘敘苑 上野不忍口 (高級和牛燒肉)\\n5. 鴨 to 蔥 (排隊人氣清湯拉麵)\\n💡 推薦在 Yodobashi 吃飽，直攻6F打寶可夢機台！" }, 
                  { time: "21:00", title: "返回飯店", desc: "休息", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "秋葉原 → 上野 → 飯店", line: "JR 直達轉步行", time: "15分" }, hideMap: true,
                    stationGuide: {
@@ -447,7 +453,7 @@ html_code = """
         const attractionInfos = [
             // --- Day 1 ---
             { id: "hijiri", name: "御茶之水 聖橋", icon: "🌉", tag: "聖地巡禮", desc: "電影《鈴芽之旅》經典場景。站在橋上可以同時看到紅、黃、橘三色電車交錯而過，是鐵道迷與影迷必拍聖地。", tips: "下午前往順光，拍攝效果最好。" },
-            { id: "akiba", name: "秋葉原 Electric Town", icon: "⚡", tag: "動漫/電器", desc: "日本次文化中心。滿街的動漫周邊、模型店、女僕咖啡廳與大型電器行。Yodobashi Akiba 是必逛地標。", tips: "旁邊的 Yodobashi 是吃喝玩樂一站式滿足的好地方！" },
+            { id: "akiba", name: "秋葉原 Electric Town", icon: "⚡", tag: "動漫/電器", desc: "日本次文化中心。滿街的動漫周邊、模型店、女遇到咖啡廳與大型電器行。Yodobashi Akiba 是必逛地標。", tips: "旁邊的 Yodobashi 是吃喝玩樂一站式滿足的好地方！" },
             { id: "akiba_food", name: "上野/秋葉原 飲食 (5選)", icon: "🍛", tag: "美食", desc: "Day 1 晚餐推薦：", tips: "推薦在 Yodobashi 吃飽，直攻 6F 打寶可夢機台！",
                 foodSpots: [
                     { icon: "🍱", name: "Yodobashi 8F 美食街", desc: "和幸豬排/Meat Rush漢堡排，吃飽直接下樓玩", mapQuery: "ヨドバシAkiba" },
