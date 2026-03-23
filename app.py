@@ -571,26 +571,110 @@ html_code = """
             { id: "shinjuku_sta", name: "JR 新宿站", icon: "🏢", tag: "車站/迷宮", desc: "號稱日本第一大迷宮，擁有眾多私鐵與出口，容易迷路。", tips: "【前往東口】Day 5 前往 3D 貓與歌舞伎町哥吉拉，下車後請務必尋找黃色招牌「東改札 (East Exit)」出站，到達地面廣場即可抵達，切勿亂走其他出口。" }
         ];
 
+        // Google TTS 發音功能
+        const speakJapanese = (text) => {
+            const audio = new Audio(
+                'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=ja&q=' + encodeURIComponent(text)
+            );
+            audio.play().catch(() => {
+                // fallback: 使用 Web Speech API
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'ja-JP';
+                    utterance.rate = 0.85;
+                    window.speechSynthesis.cancel();
+                    window.speechSynthesis.speak(utterance);
+                }
+            });
+        };
+
         const japaneseData = {
             locations: [
                 { ch: "上野", jp: "うえの", romaji: "Ueno" },
                 { ch: "淺草", jp: "あさくさ", romaji: "Asakusa" },
-                { ch: "晴空塔", jp: "スカイツリー", romaji: "Sukai-tsurī" },
+                { ch: "晴空塔", jp: "スカイツリー", romaji: "Sukai Tsurī" },
                 { ch: "豐洲", jp: "とよす", romaji: "Toyosu" },
                 { ch: "台場", jp: "おだいば", romaji: "Odaiba" },
+                { ch: "秋葉原", jp: "あきはばら", romaji: "Akihabara" },
                 { ch: "澀谷", jp: "しぶや", romaji: "Shibuya" },
                 { ch: "新宿", jp: "しんじゅく", romaji: "Shinjuku" },
                 { ch: "輕井澤", jp: "かるいざわ", romaji: "Karuizawa" },
                 { ch: "成田機場", jp: "なりたくうこう", romaji: "Narita Kūkō" }
             ],
-            phrases: [
-                { ch: "你好", jp: "こんにちは", romaji: "Konnichiwa" },
-                { ch: "謝謝", jp: "ありがとうございます", romaji: "Arigatou gozaimasu" },
-                { ch: "不好意思 / 請問", jp: "すみません", romaji: "Sumimasen" },
-                { ch: "這個多少錢？", jp: "これはいくらですか？", romaji: "Kore wa ikura desu ka?" },
-                { ch: "洗手間在哪裡？", jp: "トイレはどこですか？", romaji: "Toire wa doko desu ka?" },
-                { ch: "太好吃了", jp: "とてもおいしいです", romaji: "Totemo oishii desu" },
-                { ch: "請給我這個", jp: "これをください", romaji: "Kore o kudasai" }
+            scenarios: [
+                {
+                    title: "🍽️ 餐廳點餐",
+                    icon: "🍽️",
+                    phrases: [
+                        { ch: "（進門時店員說）歡迎光臨！", jp: "いらっしゃいませ！", romaji: "Irasshaimase!", note: "店員招呼語，微笑點頭即可" },
+                        { ch: "不好意思，請問有幾位？", jp: "何名様ですか？", romaji: "Nan-mei-sama desu ka?", note: "店員會問你幾位" },
+                        { ch: "兩個大人、一個小孩", jp: "大人二人、子供一人です。", romaji: "Otona futari, kodomo hitori desu.", note: "" },
+                        { ch: "不好意思，我要點餐", jp: "すみません、注文をお願いします。", romaji: "Sumimasen, chūmon o onegai shimasu.", note: "先說すみません引起注意" },
+                        { ch: "請給我這個", jp: "これをお願いします。", romaji: "Kore o onegai shimasu.", note: "手指菜單即可" },
+                        { ch: "請給我兩份這個", jp: "これを二つお願いします。", romaji: "Kore o futatsu onegai shimasu.", note: "" },
+                        { ch: "有兒童餐嗎？", jp: "お子様メニューはありますか？", romaji: "Okosama menyū wa arimasu ka?", note: "" },
+                        { ch: "不要辣 / 不加辣", jp: "辛くしないでください。", romaji: "Karaku shinaide kudasai.", note: "帶小孩很實用" },
+                        { ch: "我要結帳", jp: "お会計をお願いします。", romaji: "Okaikei o onegai shimasu.", note: "" },
+                        { ch: "可以刷卡嗎？", jp: "カードは使えますか？", romaji: "Kādo wa tsukaemasu ka?", note: "" },
+                        { ch: "非常好吃！謝謝招待", jp: "とてもおいしかったです！ごちそうさまでした。", romaji: "Totemo oishikatta desu! Gochisōsama deshita.", note: "離開餐廳時說，很有禮貌" }
+                    ]
+                },
+                {
+                    title: "🚃 交通移動",
+                    icon: "🚃",
+                    phrases: [
+                        { ch: "請問○○站怎麼走？", jp: "すみません、○○駅はどう行けばいいですか？", romaji: "Sumimasen, ○○ eki wa dō ikeba ii desu ka?", note: "把○○換成站名" },
+                        { ch: "到○○站要多久？", jp: "○○駅まで何分くらいですか？", romaji: "○○ eki made nan-pun kurai desu ka?", note: "" },
+                        { ch: "這班電車到○○嗎？", jp: "この電車は○○に行きますか？", romaji: "Kono densha wa ○○ ni ikimasu ka?", note: "" },
+                        { ch: "我要買兒童票", jp: "子供の切符をお願いします。", romaji: "Kodomo no kippu o onegai shimasu.", note: "" },
+                        { ch: "下一班幾點？", jp: "次は何時ですか？", romaji: "Tsugi wa nanji desu ka?", note: "" }
+                    ]
+                },
+                {
+                    title: "🛍️ 購物逛街",
+                    icon: "🛍️",
+                    phrases: [
+                        { ch: "這個多少錢？", jp: "これはいくらですか？", romaji: "Kore wa ikura desu ka?", note: "" },
+                        { ch: "可以試穿嗎？", jp: "試着してもいいですか？", romaji: "Shichaku shitemo ii desu ka?", note: "" },
+                        { ch: "有別的顏色嗎？", jp: "他の色はありますか？", romaji: "Hoka no iro wa arimasu ka?", note: "" },
+                        { ch: "可以免稅嗎？", jp: "免税できますか？", romaji: "Menzei dekimasu ka?", note: "消費滿 5000 日圓可問" },
+                        { ch: "請幫我包起來（送禮用）", jp: "プレゼント用に包んでいただけますか？", romaji: "Purezento-yō ni tsutsunde itadakemasu ka?", note: "非常有禮貌的說法" },
+                        { ch: "請給我袋子", jp: "袋をお願いします。", romaji: "Fukuro o onegai shimasu.", note: "日本超商需自費購袋" }
+                    ]
+                },
+                {
+                    title: "🏨 飯店住宿",
+                    icon: "🏨",
+                    phrases: [
+                        { ch: "我要辦理入住", jp: "チェックインをお願いします。", romaji: "Chekkuin o onegai shimasu.", note: "" },
+                        { ch: "我姓○○，有預約", jp: "○○と申します。予約しています。", romaji: "○○ to mōshimasu. Yoyaku shiteimasu.", note: "把○○換成你的姓" },
+                        { ch: "可以寄放行李嗎？", jp: "荷物を預かっていただけますか？", romaji: "Nimotsu o azukatte itadakemasu ka?", note: "check-in 前或 check-out 後都適用" },
+                        { ch: "請問 Wi-Fi 密碼是？", jp: "Wi-Fiのパスワードを教えていただけますか？", romaji: "Waifai no pasuwādo o oshiete itadakemasu ka?", note: "" },
+                        { ch: "我要退房", jp: "チェックアウトをお願いします。", romaji: "Chekkuauto o onegai shimasu.", note: "" }
+                    ]
+                },
+                {
+                    title: "🆘 緊急求助",
+                    icon: "🆘",
+                    phrases: [
+                        { ch: "請幫幫我", jp: "助けてください。", romaji: "Tasukete kudasai.", note: "" },
+                        { ch: "小孩走丟了", jp: "子供が迷子になりました。", romaji: "Kodomo ga maigo ni narimashita.", note: "趕快找工作人員" },
+                        { ch: "請叫救護車", jp: "救急車を呼んでください。", romaji: "Kyūkyūsha o yonde kudasai.", note: "" },
+                        { ch: "洗手間在哪裡？", jp: "トイレはどこですか？", romaji: "Toire wa doko desu ka?", note: "帶小孩最常用！" },
+                        { ch: "我不會說日文", jp: "日本語が話せません。", romaji: "Nihongo ga hanasemasen.", note: "" },
+                        { ch: "有會說英文的人嗎？", jp: "英語を話せる方はいますか？", romaji: "Eigo o hanaseru kata wa imasu ka?", note: "" }
+                    ]
+                },
+                {
+                    title: "🔢 實用數字",
+                    icon: "🔢",
+                    phrases: [
+                        { ch: "1 / 2 / 3", jp: "いち / に / さん", romaji: "Ichi / Ni / San", note: "" },
+                        { ch: "4 / 5 / 6", jp: "よん / ご / ろく", romaji: "Yon / Go / Roku", note: "" },
+                        { ch: "7 / 8 / 9 / 10", jp: "なな / はち / きゅう / じゅう", romaji: "Nana / Hachi / Kyū / Jū", note: "" },
+                        { ch: "100 / 1000 / 10000", jp: "ひゃく / せん / いちまん", romaji: "Hyaku / Sen / Ichiman", note: "日圓常用單位" }
+                    ]
+                }
             ]
         };
 
@@ -892,12 +976,13 @@ html_code = """
                         {/* 子分頁 3：實用日文 */}
                         {subTab === 'japanese' && (
                             <>
-                                <div className="text-center mb-6"><h2 className="text-xl font-bold text-gray-800">實用日文</h2><p className="text-orange-600 text-sm">地名唸法與基本對話</p></div>
+                                <div className="text-center mb-6"><h2 className="text-xl font-bold text-gray-800">實用日文</h2><p className="text-orange-600 text-sm">點擊 🔊 即可聽發音</p></div>
                                 
                                 <h3 className="text-lg font-bold text-gray-700 mb-3 ml-1 flex items-center"><span className="w-1 h-5 bg-orange-400 mr-2 rounded-full"></span>重要地名讀法</h3>
                                 <div className="grid grid-cols-2 gap-3 mb-6">
                                     {japaneseData.locations.map((loc, idx) => (
-                                        <div key={idx} className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm flex flex-col items-center text-center">
+                                        <div key={idx} onClick={() => speakJapanese(loc.jp)} className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm flex flex-col items-center text-center active:scale-95 active:bg-orange-50 transition-all cursor-pointer relative">
+                                            <span className="absolute top-2 right-2 text-orange-400 text-xs">🔊</span>
                                             <span className="font-bold text-gray-800 text-[15px]">{loc.ch}</span>
                                             <span className="text-orange-600 font-bold text-sm mt-1">{loc.jp}</span>
                                             <span className="text-gray-400 text-xs mt-0.5">{loc.romaji}</span>
@@ -905,16 +990,27 @@ html_code = """
                                     ))}
                                 </div>
 
-                                <h3 className="text-lg font-bold text-gray-700 mb-3 ml-1 flex items-center"><span className="w-1 h-5 bg-orange-400 mr-2 rounded-full"></span>實用對話句子</h3>
-                                <div className="space-y-3">
-                                    {japaneseData.phrases.map((phrase, idx) => (
-                                        <div key={idx} className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm">
-                                            <div className="text-gray-500 text-xs mb-1">中文：{phrase.ch}</div>
-                                            <div className="font-bold text-orange-600 text-[16px] mb-1">{phrase.jp}</div>
-                                            <div className="text-gray-400 text-xs">發音：{phrase.romaji}</div>
+                                <h3 className="text-lg font-bold text-gray-700 mb-3 ml-1 flex items-center"><span className="w-1 h-5 bg-orange-400 mr-2 rounded-full"></span>情境對話</h3>
+                                {japaneseData.scenarios.map((scenario, sIdx) => (
+                                    <div key={sIdx} className="mb-5">
+                                        <div className="bg-orange-50 border border-orange-200 rounded-xl px-3 py-2 mb-3 font-bold text-orange-700 text-[15px]">{scenario.title}</div>
+                                        <div className="space-y-2.5">
+                                            {scenario.phrases.map((phrase, pIdx) => (
+                                                <div key={pIdx} onClick={() => speakJapanese(phrase.jp)} className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm active:scale-[0.98] active:bg-orange-50 transition-all cursor-pointer">
+                                                    <div className="flex items-start justify-between gap-2">
+                                                        <div className="flex-1 min-w-0">
+                                                            <div className="text-gray-500 text-xs mb-1">{phrase.ch}</div>
+                                                            <div className="font-bold text-orange-600 text-[15px] mb-0.5">{phrase.jp}</div>
+                                                            <div className="text-gray-400 text-xs">{phrase.romaji}</div>
+                                                            {phrase.note && <div className="text-teal-600 text-[11px] mt-1 bg-teal-50 rounded px-1.5 py-0.5 inline-block">💡 {phrase.note}</div>}
+                                                        </div>
+                                                        <span className="text-orange-400 text-lg mt-1 flex-shrink-0">🔊</span>
+                                                    </div>
+                                                </div>
+                                            ))}
                                         </div>
-                                    ))}
-                                </div>
+                                    </div>
+                                ))}
                             </>
                         )}
                     </div>
