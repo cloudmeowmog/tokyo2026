@@ -1110,6 +1110,177 @@ html_code = """
             );
         };
 
+        const ChecklistPanel = () => {
+            const CHECKLIST_DATA = [
+                {
+                    cat: '📄 證件文件',
+                    color: 'red',
+                    items: [
+                        { name: '護照（確認效期 6 個月以上）', critical: true },
+                        { name: '護照影本 / 手機翻拍備份', critical: true },
+                        { name: '兒童護照', critical: true },
+                        { name: '機票電子確認信（長榮 BR196 / BR197）', critical: true },
+                        { name: '飯店預約確認信', critical: false },
+                        { name: 'teamLab Planets 門票 QR Code', critical: false },
+                        { name: 'SHIBUYA SKY 門票 QR Code', critical: false },
+                        { name: 'Skyliner 車票 / 兌換憑證', critical: false },
+                        { name: '新幹線車票 (e5489)', critical: false },
+                        { name: '旅遊平安險保單號碼', critical: false }
+                    ]
+                },
+                {
+                    cat: '💰 金錢支付',
+                    color: 'amber',
+                    items: [
+                        { name: '日圓現金（建議 5~8 萬日圓）', critical: true },
+                        { name: '信用卡（Visa / Master 為主）', critical: true },
+                        { name: '西瓜卡 Suica（大人）', critical: false },
+                        { name: '兒童版西瓜卡（機場現場辦）', critical: false }
+                    ]
+                },
+                {
+                    cat: '📱 3C 電子',
+                    color: 'blue',
+                    items: [
+                        { name: '手機 + 充電線', critical: true },
+                        { name: '行動電源', critical: true },
+                        { name: '萬用轉接頭（日本為 A 型兩扁腳）', critical: false },
+                        { name: '相機 / GoPro + 記憶卡', critical: false },
+                        { name: '日本上網 eSIM / Wi-Fi 分享器', critical: true },
+                        { name: '耳機（飛機上用）', critical: false }
+                    ]
+                },
+                {
+                    cat: '👕 衣物穿著',
+                    color: 'purple',
+                    items: [
+                        { name: '換洗衣物（6 天份）', critical: false },
+                        { name: '薄外套 / 防風外套（4月早晚涼）', critical: true },
+                        { name: '好走的鞋（每天走超多路！）', critical: true },
+                        { name: '拖鞋（飛機上 / teamLab 後穿）', critical: false },
+                        { name: '帽子 / 墨鏡', critical: false },
+                        { name: '摺疊雨傘', critical: true },
+                        { name: '小孩替換衣物（多帶 1~2 套）', critical: false }
+                    ]
+                },
+                {
+                    cat: '🧴 盥洗藥品',
+                    color: 'teal',
+                    items: [
+                        { name: '牙刷牙膏 / 毛巾', critical: false },
+                        { name: '防曬乳', critical: false },
+                        { name: '面紙 / 濕紙巾', critical: true },
+                        { name: '常備藥品（感冒、腸胃、退燒）', critical: true },
+                        { name: '小孩藥品（退燒藥水、止瀉）', critical: true },
+                        { name: 'OK 繃 / 痠痛貼布', critical: false },
+                        { name: '保溫瓶 / 水壺', critical: false }
+                    ]
+                },
+                {
+                    cat: '🧸 小孩專區',
+                    color: 'orange',
+                    items: [
+                        { name: '兒童背包（裝自己的零食和玩具）', critical: false },
+                        { name: '小零食（飛機上、排隊時用）', critical: true },
+                        { name: '小玩具 / 畫筆著色本', critical: false },
+                        { name: '平板 / 兒童耳機（飛機救星）', critical: false },
+                        { name: '輕便推車（視需要）', critical: false }
+                    ]
+                },
+                {
+                    cat: '🧳 行李收納',
+                    color: 'gray',
+                    items: [
+                        { name: '行李箱（留空間裝戰利品！）', critical: false },
+                        { name: '摺疊購物袋（買太多時用）', critical: true },
+                        { name: '夾鏈袋（分裝零食/液體）', critical: false },
+                        { name: '行李秤（避免超重）', critical: false },
+                        { name: '頸枕（飛機 / 新幹線上用）', critical: false }
+                    ]
+                }
+            ];
+
+            const [checked, setChecked] = useState(() => {
+                try {
+                    const saved = localStorage.getItem('trip_checklist');
+                    return saved ? JSON.parse(saved) : {};
+                } catch { return {}; }
+            });
+
+            const toggle = (key) => {
+                const next = { ...checked, [key]: !checked[key] };
+                setChecked(next);
+                try { localStorage.setItem('trip_checklist', JSON.stringify(next)); } catch {}
+            };
+
+            const resetAll = () => {
+                setChecked({});
+                try { localStorage.removeItem('trip_checklist'); } catch {}
+            };
+
+            const totalItems = CHECKLIST_DATA.reduce((sum, cat) => sum + cat.items.length, 0);
+            const checkedCount = Object.values(checked).filter(Boolean).length;
+            const progress = totalItems > 0 ? Math.round((checkedCount / totalItems) * 100) : 0;
+
+            const colorMap = {
+                red: { bg: 'bg-red-50', border: 'border-red-200', text: 'text-red-700', bar: 'bg-red-400', check: 'bg-red-500' },
+                amber: { bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-700', bar: 'bg-amber-400', check: 'bg-amber-500' },
+                blue: { bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-700', bar: 'bg-blue-400', check: 'bg-blue-500' },
+                purple: { bg: 'bg-purple-50', border: 'border-purple-200', text: 'text-purple-700', bar: 'bg-purple-400', check: 'bg-purple-500' },
+                teal: { bg: 'bg-teal-50', border: 'border-teal-200', text: 'text-teal-700', bar: 'bg-teal-400', check: 'bg-teal-500' },
+                orange: { bg: 'bg-orange-50', border: 'border-orange-200', text: 'text-orange-700', bar: 'bg-orange-400', check: 'bg-orange-500' },
+                gray: { bg: 'bg-gray-50', border: 'border-gray-200', text: 'text-gray-700', bar: 'bg-gray-400', check: 'bg-gray-500' }
+            };
+
+            return (
+                <>
+                    <div className="text-center mb-4"><h2 className="text-xl font-bold text-gray-800">行李清單</h2><p className="text-emerald-600 text-sm">出發前逐項打勾確認</p></div>
+
+                    <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm mb-5">
+                        <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm font-bold text-gray-700">打包進度</span>
+                            <span className="text-sm font-bold text-emerald-600">{checkedCount} / {totalItems}</span>
+                        </div>
+                        <div className="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                            <div className="h-full bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full transition-all duration-500" style={{width: progress + '%'}}></div>
+                        </div>
+                        <div className="flex justify-between items-center mt-2">
+                            <span className="text-xs text-gray-400">{progress === 100 ? '✅ 全部打包完成！準備出發！' : progress >= 80 ? '🎉 快完成了！' : progress >= 50 ? '💪 加油，過半了！' : '📦 開始打包吧～'}</span>
+                            <button onClick={resetAll} className="text-[11px] text-gray-400 underline active:text-red-500">清除全部</button>
+                        </div>
+                    </div>
+
+                    {CHECKLIST_DATA.map((cat, cIdx) => {
+                        const c = colorMap[cat.color] || colorMap.gray;
+                        const catChecked = cat.items.filter((_, idx) => checked[`${cIdx}-${idx}`]).length;
+                        return (
+                            <div key={cIdx} className={`${c.bg} border ${c.border} rounded-2xl p-4 mb-4`}>
+                                <div className="flex items-center justify-between mb-3">
+                                    <h3 className={`font-bold text-base ${c.text}`}>{cat.cat}</h3>
+                                    <span className="text-xs text-gray-400 font-bold">{catChecked}/{cat.items.length}</span>
+                                </div>
+                                <div className="space-y-1.5">
+                                    {cat.items.map((item, iIdx) => {
+                                        const key = `${cIdx}-${iIdx}`;
+                                        const isChecked = !!checked[key];
+                                        return (
+                                            <div key={iIdx} onClick={() => toggle(key)} className={`flex items-center gap-3 bg-white rounded-xl p-2.5 border border-gray-100 active:scale-[0.98] transition-all cursor-pointer ${isChecked ? 'opacity-50' : ''}`}>
+                                                <div className={`w-5 h-5 rounded-md border-2 flex-shrink-0 flex items-center justify-center transition-colors ${isChecked ? c.check + ' border-transparent' : 'border-gray-300 bg-white'}`}>
+                                                    {isChecked && <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>}
+                                                </div>
+                                                <span className={`text-sm ${isChecked ? 'line-through text-gray-400' : 'text-gray-700'}`}>{item.name}</span>
+                                                {item.critical && !isChecked && <span className="ml-auto text-[10px] bg-red-100 text-red-600 px-1.5 py-0.5 rounded font-bold flex-shrink-0">必帶</span>}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        );
+                    })}
+                </>
+            );
+        };
+
         const AttractionView = () => {
             const [subTab, setSubTab] = useState('attractions');
             
@@ -1120,6 +1291,8 @@ html_code = """
                         <button onClick={() => setSubTab('travel_info')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'travel_info' ? 'bg-teal-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🚉 旅遊資訊</button>
                         <button onClick={() => setSubTab('weather')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'weather' ? 'bg-sky-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🌤️ 天氣</button>
                         <button onClick={() => setSubTab('japanese')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'japanese' ? 'bg-orange-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🗣️ 實用日文</button>
+                        <button onClick={() => setSubTab('emergency')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'emergency' ? 'bg-red-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🆘 緊急卡</button>
+                        <button onClick={() => setSubTab('checklist')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'checklist' ? 'bg-emerald-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>✅ 行李</button>
                     </div>
 
                     <div className="flex-1 overflow-y-auto p-4 pb-24 space-y-4">
@@ -1227,6 +1400,118 @@ html_code = """
                                 ))}
                             </>
                         )}
+
+                        {/* 子分頁 4：緊急聯絡卡 */}
+                        {subTab === 'emergency' && (
+                            <>
+                                <div className="text-center mb-5"><h2 className="text-xl font-bold text-gray-800">緊急聯絡卡</h2><p className="text-red-500 text-sm">存到手機截圖，以備不時之需</p></div>
+
+                                <div className="bg-red-50 border-2 border-red-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-red-700 text-base mb-3 flex items-center gap-2">🚨 日本緊急電話</h3>
+                                    <div className="space-y-2.5">
+                                        {[
+                                            { label: '報警（警察）', number: '110', note: '遺失物品、犯罪事件' },
+                                            { label: '火災 / 救護車', number: '119', note: '受傷、生病、火災' },
+                                            { label: '海上事故', number: '118', note: '海上急難救助' }
+                                        ].map((item, idx) => (
+                                            <a key={idx} href={`tel:${item.number}`} className="flex items-center justify-between bg-white rounded-xl p-3 border border-red-100 no-underline active:scale-[0.98] transition-transform">
+                                                <div>
+                                                    <div className="font-bold text-gray-800 text-sm">{item.label}</div>
+                                                    <div className="text-gray-400 text-xs">{item.note}</div>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <span className="font-black text-red-600 text-xl">{item.number}</span>
+                                                    <span className="text-red-400 text-lg">📞</span>
+                                                </div>
+                                            </a>
+                                        ))}
+                                    </div>
+                                    <div className="mt-3 bg-red-100/60 rounded-lg p-2.5 text-[11px] text-red-700 leading-relaxed">
+                                        💡 日本報警/叫救護車<strong>免費</strong>，可用任何電話撥打。接通後說「English please」可轉英語服務。
+                                    </div>
+                                </div>
+
+                                <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-blue-700 text-base mb-3 flex items-center gap-2">🏥 旅外求助</h3>
+                                    <div className="space-y-2.5">
+                                        {[
+                                            { label: '台灣駐日代表處（東京）', number: '+81-3-3280-7811', note: '平日 9:00-12:00 / 13:00-18:00' },
+                                            { label: '急難救助（24hr）', number: '+81-80-6552-4764', note: '非上班時間、假日專線' },
+                                            { label: '旅外國人急難救助全球專線', number: '+886-800-085-095', note: '24小時免費（海外撥打需付費）' }
+                                        ].map((item, idx) => (
+                                            <a key={idx} href={`tel:${item.number}`} className="flex items-center justify-between bg-white rounded-xl p-3 border border-blue-100 no-underline active:scale-[0.98] transition-transform">
+                                                <div className="flex-1 min-w-0 mr-2">
+                                                    <div className="font-bold text-gray-800 text-sm">{item.label}</div>
+                                                    <div className="text-gray-400 text-[11px]">{item.note}</div>
+                                                </div>
+                                                <div className="flex items-center gap-1.5 flex-shrink-0">
+                                                    <span className="font-bold text-blue-600 text-[13px]">{item.number}</span>
+                                                    <span className="text-blue-400">📞</span>
+                                                </div>
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-amber-700 text-base mb-3 flex items-center gap-2">🏨 住宿資訊（給計程車看）</h3>
+                                    <div className="bg-white rounded-xl p-4 border border-amber-100">
+                                        <div className="text-center">
+                                            <div className="text-lg font-black text-gray-800 mb-1">Stayme THE HOTEL Ueno</div>
+                                            <div className="text-base font-bold text-amber-700 mb-2">ステイミー ザ ホテル 上野</div>
+                                            <div className="bg-amber-50 rounded-lg p-2 text-sm text-gray-700">
+                                                〒110-0015<br/>
+                                                東京都台東区東上野2丁目18-4
+                                            </div>
+                                            <a href={"https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Stayme THE HOTEL Ueno, Higashiueno, Taito City, Tokyo")} target="_blank" className="inline-block mt-3 bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl no-underline active:scale-95 transition-transform">📍 開啟 Google Map</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-purple-50 border-2 border-purple-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-purple-700 text-base mb-3 flex items-center gap-2">📋 重要資訊速查</h3>
+                                    <div className="space-y-2">
+                                        {[
+                                            { label: '航班去程', value: '長榮 BR196 · 4/17 桃園→成田' },
+                                            { label: '航班回程', value: '長榮 BR197 · 4/22 成田→桃園' },
+                                            { label: '日本國碼', value: '+81' },
+                                            { label: '台灣國碼', value: '+886' },
+                                            { label: '日本電壓', value: '100V / 60Hz（A型兩扁腳）' },
+                                            { label: '時差', value: '日本比台灣快 1 小時' }
+                                        ].map((item, idx) => (
+                                            <div key={idx} className="flex justify-between items-center bg-white rounded-lg p-2.5 border border-purple-100">
+                                                <span className="text-gray-500 text-xs font-bold">{item.label}</span>
+                                                <span className="text-gray-800 text-xs font-bold text-right">{item.value}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-4">
+                                    <h3 className="font-bold text-green-700 text-base mb-3 flex items-center gap-2">💬 求助日文（點擊發音）</h3>
+                                    <div className="space-y-2">
+                                        {[
+                                            { ch: '請幫幫我', jp: '助けてください。' },
+                                            { ch: '請叫救護車', jp: '救急車を呼んでください。' },
+                                            { ch: '小孩走丟了', jp: '子供が迷子になりました。' },
+                                            { ch: '我不會說日文', jp: '日本語が話せません。' },
+                                            { ch: '請帶我去這個地址', jp: 'この住所までお願いします。' }
+                                        ].map((item, idx) => (
+                                            <div key={idx} onClick={() => speakJapanese(item.jp)} className="flex items-center justify-between bg-white rounded-lg p-2.5 border border-green-100 active:bg-green-50 active:scale-[0.98] transition-all cursor-pointer">
+                                                <div>
+                                                    <div className="text-gray-500 text-[11px]">{item.ch}</div>
+                                                    <div className="font-bold text-green-700 text-sm">{item.jp}</div>
+                                                </div>
+                                                <span className="text-green-400 text-lg flex-shrink-0">🔊</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </>
+                        )}
+
+                        {/* 子分頁 5：行李清單 */}
+                        {subTab === 'checklist' && <ChecklistPanel />}
                     </div>
                 </div>
             );
