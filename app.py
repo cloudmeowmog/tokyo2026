@@ -900,6 +900,216 @@ html_code = """
             );
         };
 
+        const WeatherPanel = () => {
+            const [weather, setWeather] = useState(null);
+            const [loading, setLoading] = useState(true);
+            const [error, setError] = useState(null);
+
+            const WMO_CODES = {
+                0: { icon: '☀️', desc: '晴天' }, 1: { icon: '🌤️', desc: '大致晴朗' }, 2: { icon: '⛅', desc: '局部多雲' }, 3: { icon: '☁️', desc: '多雲' },
+                45: { icon: '🌫️', desc: '霧' }, 48: { icon: '🌫️', desc: '霜霧' },
+                51: { icon: '🌦️', desc: '小毛毛雨' }, 53: { icon: '🌦️', desc: '毛毛雨' }, 55: { icon: '🌧️', desc: '密集毛毛雨' },
+                61: { icon: '🌧️', desc: '小雨' }, 63: { icon: '🌧️', desc: '中雨' }, 65: { icon: '🌧️', desc: '大雨' },
+                71: { icon: '🌨️', desc: '小雪' }, 73: { icon: '🌨️', desc: '中雪' }, 75: { icon: '❄️', desc: '大雪' },
+                80: { icon: '🌦️', desc: '小陣雨' }, 81: { icon: '🌧️', desc: '中陣雨' }, 82: { icon: '⛈️', desc: '強陣雨' },
+                95: { icon: '⛈️', desc: '雷陣雨' }, 96: { icon: '⛈️', desc: '雷陣雨夾冰雹' }, 99: { icon: '⛈️', desc: '強雷陣雨' }
+            };
+
+            const TRIP_DAYS = [
+                { date: '2026-04-17', day: 'Day 1', title: '抵達東京', area: '上野' },
+                { date: '2026-04-18', day: 'Day 2', title: '台場&豐洲', area: '台場' },
+                { date: '2026-04-19', day: 'Day 3', title: '淺草&晴空塔', area: '淺草' },
+                { date: '2026-04-20', day: 'Day 4', title: '輕井澤', area: '輕井澤' },
+                { date: '2026-04-21', day: 'Day 5', title: '築地&澀谷&新宿', area: '澀谷' },
+                { date: '2026-04-22', day: 'Day 6', title: '返台', area: '成田' }
+            ];
+
+            const WEEKDAY_MAP = ['日', '一', '二', '三', '四', '五', '六'];
+
+            useEffect(() => {
+                const fetchWeather = async () => {
+                    try {
+                        setLoading(true);
+                        // 東京 (35.6762, 139.6503) 和輕井澤 (36.3486, 138.5970)
+                        const [tokyoRes, karuizawaRes] = await Promise.all([
+                            fetch('https://api.open-meteo.com/v1/forecast?latitude=35.6762&longitude=139.6503&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,windspeed_10m_max&timezone=Asia/Tokyo&forecast_days=16'),
+                            fetch('https://api.open-meteo.com/v1/forecast?latitude=36.3486&longitude=138.5970&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,windspeed_10m_max&timezone=Asia/Tokyo&forecast_days=16')
+                        ]);
+                        const tokyo = await tokyoRes.json();
+                        const karuizawa = await karuizawaRes.json();
+                        setWeather({ tokyo, karuizawa });
+                    } catch (err) {
+                        setError('無法取得天氣資料，請確認網路連線');
+                    } finally {
+                        setLoading(false);
+                    }
+                };
+                fetchWeather();
+            }, []);
+
+            const getDayWeather = (data, dateStr) => {
+                if (!data || !data.daily) return null;
+                const idx = data.daily.time.indexOf(dateStr);
+                if (idx === -1) return null;
+                return {
+                    code: data.daily.weathercode[idx],
+                    max: Math.round(data.daily.temperature_2m_max[idx]),
+                    min: Math.round(data.daily.temperature_2m_min[idx]),
+                    rainProb: data.daily.precipitation_probability_max[idx],
+                    rainMm: data.daily.precipitation_sum[idx],
+                    wind: Math.round(data.daily.windspeed_10m_max[idx])
+                };
+            };
+
+            const getUmbrellaAdvice = (rainProb, rainMm) => {
+                if (rainProb >= 60 || rainMm >= 5) return { text: '帶傘', color: 'text-blue-600', bg: 'bg-blue-50 border-blue-200' };
+                if (rainProb >= 30) return { text: '備傘', color: 'text-yellow-600', bg: 'bg-yellow-50 border-yellow-200' };
+                return { text: '免傘', color: 'text-green-600', bg: 'bg-green-50 border-green-200' };
+            };
+
+            const getClothingAdvice = (max, min) => {
+                const avg = (max + min) / 2;
+                if (avg >= 25) return '短袖短褲即可';
+                if (avg >= 20) return '薄長袖或襯衫';
+                if (avg >= 15) return '外套+長袖';
+                if (avg >= 10) return '保暖外套+長褲';
+                return '厚外套+圍巾';
+            };
+
+            if (loading) return (
+                <div className="flex flex-col items-center justify-center py-20">
+                    <div className="spinner" style={{borderLeftColor: '#0284c7'}}></div>
+                    <p className="text-gray-500 text-sm mt-3">正在取得天氣預報...</p>
+                </div>
+            );
+
+            if (error) return (
+                <div className="text-center py-16">
+                    <div className="text-4xl mb-3">⚠️</div>
+                    <p className="text-gray-600 text-sm">{error}</p>
+                    <p className="text-gray-400 text-xs mt-2">天氣預報僅在出發前 14 天內可顯示</p>
+                </div>
+            );
+
+            const hasTripData = TRIP_DAYS.some(td => getDayWeather(weather.tokyo, td.date));
+
+            return (
+                <>
+                    <div className="text-center mb-5">
+                        <h2 className="text-xl font-bold text-gray-800">旅程天氣</h2>
+                        <p className="text-sky-600 text-sm">4/17 ~ 4/22 東京 & 輕井澤</p>
+                    </div>
+
+                    {!hasTripData && (
+                        <div className="bg-sky-50 border border-sky-200 rounded-xl p-4 mb-4 text-center">
+                            <p className="text-sky-700 text-sm font-bold mb-1">尚未進入預報範圍</p>
+                            <p className="text-sky-600 text-xs">天氣預報通常在出發前 7~14 天才會出現，以下先顯示東京近日天氣供參考。</p>
+                        </div>
+                    )}
+
+                    {hasTripData ? (
+                        <div className="space-y-3">
+                            {TRIP_DAYS.map((td, idx) => {
+                                const isKaruizawa = td.date === '2026-04-20';
+                                const src = isKaruizawa ? weather.karuizawa : weather.tokyo;
+                                const w = getDayWeather(src, td.date);
+                                if (!w) return (
+                                    <div key={idx} className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm opacity-60">
+                                        <div className="flex items-center gap-3">
+                                            <span className="bg-sky-100 text-sky-700 text-xs font-bold px-2 py-1 rounded">{td.day}</span>
+                                            <span className="text-gray-500 text-sm">{td.title}</span>
+                                        </div>
+                                        <p className="text-gray-400 text-xs mt-2">尚無預報資料</p>
+                                    </div>
+                                );
+                                const wmo = WMO_CODES[w.code] || { icon: '❓', desc: '未知' };
+                                const umbrella = getUmbrellaAdvice(w.rainProb, w.rainMm);
+                                const dateObj = new Date(td.date);
+                                const weekday = WEEKDAY_MAP[dateObj.getDay()];
+
+                                return (
+                                    <div key={idx} className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+                                        <div className="flex items-center justify-between mb-3">
+                                            <div className="flex items-center gap-2">
+                                                <span className="bg-sky-100 text-sky-700 text-xs font-bold px-2 py-1 rounded">{td.day}</span>
+                                                <span className="text-gray-700 text-sm font-bold">{td.date.slice(5)} ({weekday})</span>
+                                            </div>
+                                            <span className="text-gray-400 text-xs">{isKaruizawa ? '📍 輕井澤' : '📍 東京'}</span>
+                                        </div>
+                                        <div className="flex items-center gap-4 mb-3">
+                                            <div className="text-5xl leading-none">{wmo.icon}</div>
+                                            <div className="flex-1">
+                                                <div className="font-bold text-gray-800 text-lg">{wmo.desc}</div>
+                                                <div className="text-gray-500 text-sm mt-0.5">{td.title} · {td.area}</div>
+                                            </div>
+                                            <div className="text-right">
+                                                <div className="font-bold text-2xl text-gray-800">{w.max}°</div>
+                                                <div className="text-gray-400 text-sm">{w.min}°</div>
+                                            </div>
+                                        </div>
+                                        <div className="grid grid-cols-3 gap-2 mb-3">
+                                            <div className="bg-gray-50 rounded-lg p-2 text-center border border-gray-100">
+                                                <div className="text-gray-400 text-[10px]">降雨機率</div>
+                                                <div className="font-bold text-sky-600 text-sm">{w.rainProb}%</div>
+                                            </div>
+                                            <div className="bg-gray-50 rounded-lg p-2 text-center border border-gray-100">
+                                                <div className="text-gray-400 text-[10px]">降雨量</div>
+                                                <div className="font-bold text-sky-600 text-sm">{w.rainMm}mm</div>
+                                            </div>
+                                            <div className="bg-gray-50 rounded-lg p-2 text-center border border-gray-100">
+                                                <div className="text-gray-400 text-[10px]">最大風速</div>
+                                                <div className="font-bold text-sky-600 text-sm">{w.wind}km/h</div>
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-2">
+                                            <div className={`flex-1 rounded-lg p-2 text-center border ${umbrella.bg}`}>
+                                                <span className={`text-xs font-bold ${umbrella.color}`}>☂️ {umbrella.text}</span>
+                                            </div>
+                                            <div className="flex-1 bg-purple-50 border border-purple-200 rounded-lg p-2 text-center">
+                                                <span className="text-xs font-bold text-purple-600">👕 {getClothingAdvice(w.max, w.min)}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    ) : (
+                        <div className="space-y-3">
+                            <h3 className="text-base font-bold text-gray-700 ml-1 flex items-center"><span className="w-1 h-5 bg-sky-400 mr-2 rounded-full"></span>東京近日天氣</h3>
+                            {weather.tokyo.daily.time.slice(0, 7).map((date, idx) => {
+                                const w = {
+                                    code: weather.tokyo.daily.weathercode[idx],
+                                    max: Math.round(weather.tokyo.daily.temperature_2m_max[idx]),
+                                    min: Math.round(weather.tokyo.daily.temperature_2m_min[idx]),
+                                    rainProb: weather.tokyo.daily.precipitation_probability_max[idx]
+                                };
+                                const wmo = WMO_CODES[w.code] || { icon: '❓', desc: '未知' };
+                                const dateObj = new Date(date);
+                                const weekday = WEEKDAY_MAP[dateObj.getDay()];
+                                return (
+                                    <div key={idx} className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm flex items-center gap-3">
+                                        <div className="text-3xl">{wmo.icon}</div>
+                                        <div className="flex-1">
+                                            <div className="font-bold text-gray-700 text-sm">{date.slice(5)} ({weekday})</div>
+                                            <div className="text-gray-400 text-xs">{wmo.desc}</div>
+                                        </div>
+                                        <div className="text-right">
+                                            <div className="font-bold text-gray-800">{w.max}° / {w.min}°</div>
+                                            <div className="text-sky-500 text-xs">💧 {w.rainProb}%</div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    )}
+
+                    <div className="mt-5 bg-gray-50 border border-gray-200 rounded-xl p-3">
+                        <p className="text-gray-400 text-[11px] text-center">資料來源：Open-Meteo · 每次開啟自動更新</p>
+                    </div>
+                </>
+            );
+        };
+
         const AttractionView = () => {
             const [subTab, setSubTab] = useState('attractions');
             
@@ -908,6 +1118,7 @@ html_code = """
                     <div className="sticky top-0 z-10 bg-white/95 backdrop-blur shadow-sm p-2 flex gap-2 flex-shrink-0 overflow-x-auto hide-scrollbar">
                         <button onClick={() => setSubTab('attractions')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'attractions' ? 'bg-indigo-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🏞️ 景點百科</button>
                         <button onClick={() => setSubTab('travel_info')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'travel_info' ? 'bg-teal-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🚉 旅遊資訊</button>
+                        <button onClick={() => setSubTab('weather')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'weather' ? 'bg-sky-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🌤️ 天氣</button>
                         <button onClick={() => setSubTab('japanese')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'japanese' ? 'bg-orange-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🗣️ 實用日文</button>
                     </div>
 
@@ -972,6 +1183,9 @@ html_code = """
                                 ))}
                             </>
                         )}
+
+                        {/* 子分頁 2.5：天氣預報 */}
+                        {subTab === 'weather' && <WeatherPanel />}
 
                         {/* 子分頁 3：實用日文 */}
                         {subTab === 'japanese' && (
