@@ -1414,16 +1414,15 @@ html_code = """
                                             { label: '火災 / 救護車', number: '119', note: '受傷、生病、火災' },
                                             { label: '海上事故', number: '118', note: '海上急難救助' }
                                         ].map((item, idx) => (
-                                            <a key={idx} href={`tel:${item.number}`} className="flex items-center justify-between bg-white rounded-xl p-3 border border-red-100 no-underline active:scale-[0.98] transition-transform">
+                                            <div key={idx} className="flex items-center justify-between bg-white rounded-xl p-3 border border-red-100">
                                                 <div>
                                                     <div className="font-bold text-gray-800 text-sm">{item.label}</div>
                                                     <div className="text-gray-400 text-xs">{item.note}</div>
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <span className="font-black text-red-600 text-xl">{item.number}</span>
-                                                    <span className="text-red-400 text-lg">📞</span>
                                                 </div>
-                                            </a>
+                                            </div>
                                         ))}
                                     </div>
                                     <div className="mt-3 bg-red-100/60 rounded-lg p-2.5 text-[11px] text-red-700 leading-relaxed">
@@ -1439,16 +1438,15 @@ html_code = """
                                             { label: '急難救助（24hr）', number: '+81-80-6552-4764', note: '非上班時間、假日專線' },
                                             { label: '旅外國人急難救助全球專線', number: '+886-800-085-095', note: '24小時免費（海外撥打需付費）' }
                                         ].map((item, idx) => (
-                                            <a key={idx} href={`tel:${item.number}`} className="flex items-center justify-between bg-white rounded-xl p-3 border border-blue-100 no-underline active:scale-[0.98] transition-transform">
+                                            <div key={idx} className="flex items-center justify-between bg-white rounded-xl p-3 border border-blue-100">
                                                 <div className="flex-1 min-w-0 mr-2">
                                                     <div className="font-bold text-gray-800 text-sm">{item.label}</div>
                                                     <div className="text-gray-400 text-[11px]">{item.note}</div>
                                                 </div>
                                                 <div className="flex items-center gap-1.5 flex-shrink-0">
                                                     <span className="font-bold text-blue-600 text-[13px]">{item.number}</span>
-                                                    <span className="text-blue-400">📞</span>
                                                 </div>
-                                            </a>
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
