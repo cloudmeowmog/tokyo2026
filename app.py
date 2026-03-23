@@ -49,7 +49,7 @@ html_code = """
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f3f4f6; margin: 0; padding: 0; user-select: none; -webkit-user-select: none; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .safe-bottom { padding-bottom: env(safe-area-inset-bottom); padding-bottom: 20px; }
+        .safe-bottom { padding-bottom: max(env(safe-area-inset-bottom), 20px); }
         
         #loading { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #f3f4f6; z-index: 9999; transition: opacity 0.5s ease; flex-direction: column;}
         .spinner { border: 4px solid rgba(0, 0, 0, 0.1); width: 36px; height: 36px; border-radius: 50%; border-left-color: #4f46e5; animation: spin 1s linear infinite; margin-bottom: 10px; }
@@ -996,4 +996,4 @@ html_code = """
 """
 
 # 使用 components.html 渲染，設定高度為 800 (或更高) 以適應手機長滑動
-components.html(html_code, height=800, scrolling=True)
+components.html(html_code, height=900, scrolling=False)
