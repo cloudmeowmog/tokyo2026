@@ -1283,6 +1283,7 @@ html_code = """
 
         const AttractionView = () => {
             const [subTab, setSubTab] = useState('attractions');
+            const [showQR, setShowQR] = useState(false);
             
             return (
                 <div className="flex flex-col h-full bg-gray-50">
@@ -1520,10 +1521,24 @@ html_code = """
                                 <div className="bg-rose-50 border-2 border-rose-200 rounded-2xl p-4 mb-4">
                                     <h3 className="font-bold text-rose-700 text-base mb-3 flex items-center gap-2">🔑 入住代碼 (QR Code)</h3>
                                     <div className="bg-white rounded-xl p-4 border border-rose-100 flex flex-col items-center">
-                                        <img src="https://raw.githubusercontent.com/cloudmeowmog/tokyo2026/main/check-in.png" alt="入住 QR Code" className="w-64 h-64 mb-3" />
-                                        <p className="text-gray-500 text-xs text-center">入住時請出示此 QR Code</p>
+                                        <div onClick={() => setShowQR(true)} className="cursor-pointer active:scale-95 transition-transform">
+                                            <img src="https://raw.githubusercontent.com/cloudmeowmog/tokyo2026/main/check-in.png" alt="入住 QR Code" className="w-48 h-48" />
+                                        </div>
+                                        <p className="text-gray-400 text-xs text-center mt-2">👆 點擊可放大顯示</p>
                                     </div>
                                 </div>
+
+                                {showQR && (
+                                    <div onClick={() => setShowQR(false)} className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-6" style={{backdropFilter: 'blur(4px)'}}>
+                                        <div onClick={(e) => e.stopPropagation()} className="bg-white rounded-3xl p-6 max-w-sm w-full flex flex-col items-center shadow-2xl relative">
+                                            <button onClick={() => setShowQR(false)} className="absolute top-3 right-4 text-gray-400 text-2xl font-bold leading-none hover:text-gray-700">✕</button>
+                                            <h3 className="font-bold text-gray-800 text-lg mb-4">🔑 入住代碼</h3>
+                                            <img src="https://raw.githubusercontent.com/cloudmeowmog/tokyo2026/main/check-in.png" alt="入住 QR Code" className="w-72 h-72" />
+                                            <p className="text-gray-500 text-sm mt-4 text-center">入住時請出示此 QR Code</p>
+                                            <button onClick={() => setShowQR(false)} className="mt-4 w-full bg-rose-500 text-white font-bold py-2.5 rounded-xl active:scale-95 transition-transform">關閉</button>
+                                        </div>
+                                    </div>
+                                )}
 
                                 <div className="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 mb-4">
                                     <h3 className="font-bold text-amber-700 text-base mb-3 flex items-center gap-2">📍 飯店地址</h3>
