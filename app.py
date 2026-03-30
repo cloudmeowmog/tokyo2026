@@ -1293,6 +1293,7 @@ html_code = """
                         <button onClick={() => setSubTab('japanese')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'japanese' ? 'bg-orange-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🗣️ 實用日文</button>
                         <button onClick={() => setSubTab('emergency')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'emergency' ? 'bg-red-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🆘 緊急卡</button>
                         <button onClick={() => setSubTab('checklist')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'checklist' ? 'bg-emerald-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>✅ 行李</button>
+                        <button onClick={() => setSubTab('hotel')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'hotel' ? 'bg-rose-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🏨 入住</button>
                     </div>
 
                     <div className="flex-1 overflow-y-auto p-4 pb-24 space-y-4">
@@ -1510,6 +1511,144 @@ html_code = """
 
                         {/* 子分頁 5：行李清單 */}
                         {subTab === 'checklist' && <ChecklistPanel />}
+
+                        {/* 子分頁 6：入住資訊 */}
+                        {subTab === 'hotel' && (
+                            <>
+                                <div className="text-center mb-5"><h2 className="text-xl font-bold text-gray-800">入住指南</h2><p className="text-rose-500 text-sm">stayme THE HOTEL 上野駅前</p></div>
+
+                                <div className="bg-rose-50 border-2 border-rose-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-rose-700 text-base mb-3 flex items-center gap-2">🔑 入住代碼 (QR Code)</h3>
+                                    <div className="bg-white rounded-xl p-4 border border-rose-100 flex flex-col items-center">
+                                        <img src="data:image/jpeg;base64,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" alt="入住 QR Code" className="w-48 h-48 mb-3" style={{imageRendering: 'pixelated'}} />
+                                        <p className="text-gray-500 text-xs text-center">入住時請出示此 QR Code</p>
+                                    </div>
+                                </div>
+
+                                <div className="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-amber-700 text-base mb-3 flex items-center gap-2">📍 飯店地址</h3>
+                                    <div className="bg-white rounded-xl p-4 border border-amber-100 space-y-2">
+                                        <div className="text-center">
+                                            <div className="text-lg font-black text-gray-800">stayme THE HOTEL 上野駅前</div>
+                                            <div className="text-sm text-gray-500 mt-1">stayme THE HOTEL Ueno Ekimae</div>
+                                        </div>
+                                        <div className="bg-amber-50 rounded-lg p-3 mt-3 text-center">
+                                            <div className="font-bold text-gray-800 text-base">〒110-0005</div>
+                                            <div className="font-bold text-gray-800 text-base">東京都台東区上野７丁目１０−１３</div>
+                                            <div className="text-gray-500 text-xs mt-1">10-13, Ueno 7-chome, Taito-ku, Tokyo</div>
+                                        </div>
+                                        <div className="text-center mt-2 text-gray-400 text-[11px]">座標：35.71555, 139.77947</div>
+                                        <a href="https://www.google.com/maps/search/?api=1&query=35.71555417535006,139.77946536151248" target="_blank" className="block w-full bg-amber-500 text-white text-sm font-bold py-2.5 rounded-xl text-center no-underline mt-3 active:scale-95 transition-transform">📍 開啟 Google Map 導航</a>
+                                    </div>
+                                </div>
+
+                                <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-blue-700 text-base mb-3 flex items-center gap-2">📋 Check-in 流程</h3>
+                                    <div className="space-y-2">
+                                        {[
+                                            { step: '1', text: '抵達飯店 1F 入口（建築物旁邊的小巷內，有綠色植物牆的入口）' },
+                                            { step: '2', text: '進入大廳後，找到觸控螢幕自助入住機（Smart Check-in）' },
+                                            { step: '3', text: '依照螢幕指示操作，出示 QR Code 或輸入預約資訊' },
+                                            { step: '4', text: '操作完成後，螢幕會顯示房間的「暗證番號」(PIN 碼)，請務必記下或拍照' },
+                                            { step: '5', text: '前往房間，在門上的智慧鎖輸入 PIN 碼即可開門入住' }
+                                        ].map((item, idx) => (
+                                            <div key={idx} className="flex items-start gap-3 bg-white rounded-xl p-3 border border-blue-100">
+                                                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 text-white text-xs flex items-center justify-center font-bold">{item.step}</span>
+                                                <span className="text-sm text-gray-700 leading-relaxed">{item.text}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="mt-3 bg-blue-100/60 rounded-lg p-2.5 text-[11px] text-blue-700 leading-relaxed">
+                                        💡 此飯店為無人櫃檯，全程自助 Check-in。PIN 碼非常重要，請拍照存檔！
+                                    </div>
+                                </div>
+
+                                <div className="bg-purple-50 border-2 border-purple-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-purple-700 text-base mb-3 flex items-center gap-2">⏰ 入住 / 退房時間</h3>
+                                    <div className="space-y-2">
+                                        <div className="flex justify-between items-center bg-white rounded-lg p-3 border border-purple-100">
+                                            <span className="text-gray-700 text-sm font-bold">Check-in</span>
+                                            <span className="text-purple-700 font-black text-lg">15:00 ~ 22:00</span>
+                                        </div>
+                                        <div className="flex justify-between items-center bg-white rounded-lg p-3 border border-purple-100">
+                                            <span className="text-gray-700 text-sm font-bold">Check-out</span>
+                                            <span className="text-purple-700 font-black text-lg">10:00 前</span>
+                                        </div>
+                                    </div>
+                                    <div className="mt-3 bg-purple-100/60 rounded-lg p-2.5 text-[11px] text-purple-700 leading-relaxed">
+                                        ⚠️ 無法提前入住。退房時，請按門上智慧鎖左下角的 🔒 標記即完成。
+                                    </div>
+                                </div>
+
+                                <div className="bg-teal-50 border-2 border-teal-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-teal-700 text-base mb-3 flex items-center gap-2">📶 Wi-Fi 資訊</h3>
+                                    <div className="bg-white rounded-xl p-4 border border-teal-100">
+                                        <div className="flex justify-between items-center mb-3">
+                                            <span className="text-gray-500 text-sm">Wi-Fi 名稱</span>
+                                            <span className="font-black text-teal-700 text-base">matsurinet</span>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            <span className="text-gray-500 text-sm">密碼</span>
+                                            <span className="font-black text-teal-700 text-base">staymethehotelueno</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-orange-50 border-2 border-orange-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-orange-700 text-base mb-3 flex items-center gap-2">🗑️ 垃圾處理</h3>
+                                    <div className="bg-white rounded-xl p-3 border border-orange-100 space-y-2 text-sm text-gray-700 leading-relaxed">
+                                        <p>垃圾直接丟房間內的垃圾桶即可。</p>
+                                        <p>若需清理較多垃圾：</p>
+                                        <div className="bg-orange-50 rounded-lg p-2.5 text-[12px] space-y-1">
+                                            <div>• 垃圾場位於 1F 入口出來<strong>右手邊</strong>的門內</div>
+                                            <div>• 垃圾必須<strong>分類</strong>並裝入塑膠袋</div>
+                                            <div>• 24 小時皆可丟棄</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-gray-50 border-2 border-gray-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-gray-700 text-base mb-3 flex items-center gap-2">📌 注意事項</h3>
+                                    <div className="space-y-2 text-sm text-gray-700">
+                                        <div className="bg-white rounded-lg p-3 border border-gray-100 flex items-start gap-2">
+                                            <span className="text-lg">🚭</span>
+                                            <div>
+                                                <div className="font-bold">全館禁菸</div>
+                                                <div className="text-xs text-gray-400">房間及建築周邊禁止吸菸，需至上野站周邊指定吸菸區</div>
+                                            </div>
+                                        </div>
+                                        <div className="bg-white rounded-lg p-3 border border-gray-100 flex items-start gap-2">
+                                            <span className="text-lg">🤖</span>
+                                            <div>
+                                                <div className="font-bold">無人櫃檯</div>
+                                                <div className="text-xs text-gray-400">全面智慧自助入住，無前台人員</div>
+                                            </div>
+                                        </div>
+                                        <div className="bg-white rounded-lg p-3 border border-gray-100 flex items-start gap-2">
+                                            <span className="text-lg">📞</span>
+                                            <div>
+                                                <div className="font-bold">飯店緊急聯絡</div>
+                                                <div className="text-xs text-gray-400">如有問題請聯繫：03-6778-7087</div>
+                                            </div>
+                                        </div>
+                                        <div className="bg-white rounded-lg p-3 border border-gray-100 flex items-start gap-2">
+                                            <span className="text-lg">🔓</span>
+                                            <div>
+                                                <div className="font-bold">開鎖教學影片</div>
+                                                <a href="https://www.youtube.com/shorts/ogmItvpKhcc" target="_blank" className="text-xs text-blue-500 underline">YouTube 智慧鎖操作示範</a>
+                                            </div>
+                                        </div>
+                                        <div className="bg-white rounded-lg p-3 border border-gray-100 flex items-start gap-2">
+                                            <span className="text-lg">🚕</span>
+                                            <div>
+                                                <div className="font-bold">迷路時給司機看</div>
+                                                <div className="text-xs text-gray-800 font-bold mt-1 bg-yellow-50 rounded p-1.5 border border-yellow-200">東京都台東区上野７丁目１０−１３</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             );
