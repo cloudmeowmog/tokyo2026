@@ -601,19 +601,58 @@ html_code = """
                 { ch: "輕井澤", jp: "かるいざわ", romaji: "Karuizawa" },
                 { ch: "成田機場", jp: "なりたくうこう", romaji: "Narita Kūkō" }
             ],
+            airportCounters: [
+                { ch: "報到櫃檯", jp: "チェックインカウンター", en: "Check-in Counter" },
+                { ch: "行李託運", jp: "手荷物カウンター / お預け荷物", en: "Baggage Drop" },
+                { ch: "安檢", jp: "保安検査場", en: "Security Check" },
+                { ch: "出境審查", jp: "出国審査", en: "Immigration / Passport Control" },
+                { ch: "入境審查", jp: "入国審査", en: "Immigration" },
+                { ch: "海關", jp: "税関", en: "Customs" },
+                { ch: "行李轉盤", jp: "手荷物受取所", en: "Baggage Claim" },
+                { ch: "免稅店", jp: "免税店", en: "Duty Free Shop" },
+                { ch: "外幣兌換", jp: "外貨両替", en: "Currency Exchange" },
+                { ch: "詢問處", jp: "案内カウンター / インフォメーション", en: "Information" },
+                { ch: "登機門", jp: "搭乗口", en: "Boarding Gate" },
+                { ch: "轉機", jp: "乗り継ぎ", en: "Transfer / Transit" },
+                { ch: "置物櫃", jp: "コインロッカー", en: "Coin Locker" },
+                { ch: "廁所", jp: "お手洗い / トイレ", en: "Restroom / Toilet" },
+                { ch: "電車/鐵道", jp: "鉄道 / 電車", en: "Railway / Train" },
+                { ch: "巴士乘車處", jp: "バス乗り場", en: "Bus Stop" },
+                { ch: "吸菸室", jp: "喫煙所", en: "Smoking Area" },
+                { ch: "哺乳室", jp: "授乳室", en: "Nursing Room" }
+            ],
             scenarios: [
+                {
+                    title: "✈️ 機場報到 & 入境",
+                    icon: "✈️",
+                    phrases: [
+                        { ch: "你好，我要辦理報到", jp: "すみません、チェックインをお願いします。", romaji: "Sumimasen, chekkuin o onegai shimasu.", note: "在長榮櫃檯出示護照" },
+                        { ch: "兩個大人、兩個小孩", jp: "大人二人、子供二人です。", romaji: "Otona futari, kodomo futari desu.", note: "我們一家四口" },
+                        { ch: "我想要靠窗的座位", jp: "窓側の席をお願いします。", romaji: "Madogawa no seki o onegai shimasu.", note: "" },
+                        { ch: "請問登機門在哪裡？", jp: "搭乗口はどこですか？", romaji: "Tōjōguchi wa doko desu ka?", note: "搭乗口＝登機門" },
+                        { ch: "入境目的是觀光", jp: "観光です。", romaji: "Kankō desu.", note: "入境審查時回答" },
+                        { ch: "停留 5 天", jp: "5日間滞在します。", romaji: "Itsuka-kan taizai shimasu.", note: "" },
+                        { ch: "住在上野的飯店", jp: "上野のホテルに泊まります。", romaji: "Ueno no hoteru ni tomarimasu.", note: "" },
+                        { ch: "請問行李轉盤在哪裡？", jp: "手荷物受取所はどこですか？", romaji: "Tenimotsu uketori-jo wa doko desu ka?", note: "領行李" },
+                        { ch: "我要買兒童版西瓜卡", jp: "子供用のSuicaをお願いします。", romaji: "Kodomo-yō no Suica o onegai shimasu.", note: "在 B1 JR 櫃檯出示護照" }
+                    ]
+                },
                 {
                     title: "🍽️ 餐廳點餐",
                     icon: "🍽️",
                     phrases: [
                         { ch: "（進門時店員說）歡迎光臨！", jp: "いらっしゃいませ！", romaji: "Irasshaimase!", note: "店員招呼語，微笑點頭即可" },
-                        { ch: "不好意思，請問有幾位？", jp: "何名様ですか？", romaji: "Nan-mei-sama desu ka?", note: "店員會問你幾位" },
-                        { ch: "兩個大人、一個小孩", jp: "大人二人、子供一人です。", romaji: "Otona futari, kodomo hitori desu.", note: "" },
+                        { ch: "請問有幾位？", jp: "何名様ですか？", romaji: "Nan-mei-sama desu ka?", note: "店員會問你幾位" },
+                        { ch: "兩個大人、兩個小孩", jp: "大人二人、子供二人です。", romaji: "Otona futari, kodomo futari desu.", note: "一家四口" },
+                        { ch: "有兒童座椅嗎？", jp: "子供用の椅子はありますか？", romaji: "Kodomo-yō no isu wa arimasu ka?", note: "" },
+                        { ch: "有兒童餐嗎？", jp: "お子様メニューはありますか？", romaji: "Okosama menyū wa arimasu ka?", note: "" },
                         { ch: "不好意思，我要點餐", jp: "すみません、注文をお願いします。", romaji: "Sumimasen, chūmon o onegai shimasu.", note: "先說すみません引起注意" },
                         { ch: "請給我這個", jp: "これをお願いします。", romaji: "Kore o onegai shimasu.", note: "手指菜單即可" },
-                        { ch: "請給我兩份這個", jp: "これを二つお願いします。", romaji: "Kore o futatsu onegai shimasu.", note: "" },
-                        { ch: "有兒童餐嗎？", jp: "お子様メニューはありますか？", romaji: "Okosama menyū wa arimasu ka?", note: "" },
+                        { ch: "這個要四份", jp: "これを四つお願いします。", romaji: "Kore o yottsu onegai shimasu.", note: "" },
                         { ch: "不要辣 / 不加辣", jp: "辛くしないでください。", romaji: "Karaku shinaide kudasai.", note: "帶小孩很實用" },
+                        { ch: "可以少一點嗎？（份量）", jp: "少なめにできますか？", romaji: "Sukuname ni dekimasu ka?", note: "小孩吃不完時" },
+                        { ch: "請給我四雙筷子", jp: "お箸を四膳お願いします。", romaji: "Ohashi o yon-zen onegai shimasu.", note: "" },
+                        { ch: "請給我一個小碗", jp: "取り皿をお願いします。", romaji: "Torizara o onegai shimasu.", note: "分食給小孩用" },
                         { ch: "我要結帳", jp: "お会計をお願いします。", romaji: "Okaikei o onegai shimasu.", note: "" },
                         { ch: "可以刷卡嗎？", jp: "カードは使えますか？", romaji: "Kādo wa tsukaemasu ka?", note: "" },
                         { ch: "非常好吃！謝謝招待", jp: "とてもおいしかったです！ごちそうさまでした。", romaji: "Totemo oishikatta desu! Gochisōsama deshita.", note: "離開餐廳時說，很有禮貌" }
@@ -626,8 +665,10 @@ html_code = """
                         { ch: "請問○○站怎麼走？", jp: "すみません、○○駅はどう行けばいいですか？", romaji: "Sumimasen, ○○ eki wa dō ikeba ii desu ka?", note: "把○○換成站名" },
                         { ch: "到○○站要多久？", jp: "○○駅まで何分くらいですか？", romaji: "○○ eki made nan-pun kurai desu ka?", note: "" },
                         { ch: "這班電車到○○嗎？", jp: "この電車は○○に行きますか？", romaji: "Kono densha wa ○○ ni ikimasu ka?", note: "" },
-                        { ch: "我要買兒童票", jp: "子供の切符をお願いします。", romaji: "Kodomo no kippu o onegai shimasu.", note: "" },
-                        { ch: "下一班幾點？", jp: "次は何時ですか？", romaji: "Tsugi wa nanji desu ka?", note: "" }
+                        { ch: "我要買兩張大人票、兩張兒童票", jp: "大人二枚、子供二枚お願いします。", romaji: "Otona ni-mai, kodomo ni-mai onegai shimasu.", note: "" },
+                        { ch: "有電梯嗎？（推嬰兒車時）", jp: "エレベーターはありますか？", romaji: "Erebētā wa arimasu ka?", note: "帶小孩或行李箱很實用" },
+                        { ch: "下一班幾點？", jp: "次は何時ですか？", romaji: "Tsugi wa nanji desu ka?", note: "" },
+                        { ch: "請問這裡可以放嬰兒車嗎？", jp: "ここにベビーカーを置いてもいいですか？", romaji: "Koko ni bebīkā o oitemo ii desu ka?", note: "" }
                     ]
                 },
                 {
@@ -635,10 +676,11 @@ html_code = """
                     icon: "🛍️",
                     phrases: [
                         { ch: "這個多少錢？", jp: "これはいくらですか？", romaji: "Kore wa ikura desu ka?", note: "" },
+                        { ch: "有小孩的尺寸嗎？", jp: "子供のサイズはありますか？", romaji: "Kodomo no saizu wa arimasu ka?", note: "" },
                         { ch: "可以試穿嗎？", jp: "試着してもいいですか？", romaji: "Shichaku shitemo ii desu ka?", note: "" },
                         { ch: "有別的顏色嗎？", jp: "他の色はありますか？", romaji: "Hoka no iro wa arimasu ka?", note: "" },
                         { ch: "可以免稅嗎？", jp: "免税できますか？", romaji: "Menzei dekimasu ka?", note: "消費滿 5000 日圓可問" },
-                        { ch: "請幫我包起來（送禮用）", jp: "プレゼント用に包んでいただけますか？", romaji: "Purezento-yō ni tsutsunde itadakemasu ka?", note: "非常有禮貌的說法" },
+                        { ch: "請幫我包起來（送禮用）", jp: "プレゼント用に包んでいただけますか？", romaji: "Purezento-yō ni tsutsunde itadakemasu ka?", note: "" },
                         { ch: "請給我袋子", jp: "袋をお願いします。", romaji: "Fukuro o onegai shimasu.", note: "日本超商需自費購袋" }
                     ]
                 },
@@ -646,10 +688,11 @@ html_code = """
                     title: "🏨 飯店住宿",
                     icon: "🏨",
                     phrases: [
-                        { ch: "我要辦理入住", jp: "チェックインをお願いします。", romaji: "Chekkuin o onegai shimasu.", note: "" },
-                        { ch: "我姓○○，有預約", jp: "○○と申します。予約しています。", romaji: "○○ to mōshimasu. Yoyaku shiteimasu.", note: "把○○換成你的姓" },
+                        { ch: "我要辦理入住，四位（2大2小）", jp: "チェックインをお願いします。四名です。", romaji: "Chekkuin o onegai shimasu. Yon-mei desu.", note: "" },
+                        { ch: "我姓盧，有預約", jp: "ルーと申します。予約しています。", romaji: "Rū to mōshimasu. Yoyaku shiteimasu.", note: "" },
                         { ch: "可以寄放行李嗎？", jp: "荷物を預かっていただけますか？", romaji: "Nimotsu o azukatte itadakemasu ka?", note: "check-in 前或 check-out 後都適用" },
                         { ch: "請問 Wi-Fi 密碼是？", jp: "Wi-Fiのパスワードを教えていただけますか？", romaji: "Waifai no pasuwādo o oshiete itadakemasu ka?", note: "" },
+                        { ch: "可以多給兩條毛巾嗎？", jp: "タオルをあと二枚いただけますか？", romaji: "Taoru o ato ni-mai itadakemasu ka?", note: "小孩用" },
                         { ch: "我要退房", jp: "チェックアウトをお願いします。", romaji: "Chekkuauto o onegai shimasu.", note: "" }
                     ]
                 },
@@ -659,19 +702,23 @@ html_code = """
                     phrases: [
                         { ch: "請幫幫我", jp: "助けてください。", romaji: "Tasukete kudasai.", note: "" },
                         { ch: "小孩走丟了", jp: "子供が迷子になりました。", romaji: "Kodomo ga maigo ni narimashita.", note: "趕快找工作人員" },
+                        { ch: "小孩大約○歲，穿紅色衣服", jp: "○歳くらいで、赤い服を着ています。", romaji: "○-sai kurai de, akai fuku o kiteimasu.", note: "描述小孩特徵" },
+                        { ch: "小孩發燒了", jp: "子供が熱を出しました。", romaji: "Kodomo ga netsu o dashimashita.", note: "" },
+                        { ch: "附近有藥局嗎？", jp: "近くに薬局はありますか？", romaji: "Chikaku ni yakkyoku wa arimasu ka?", note: "" },
                         { ch: "請叫救護車", jp: "救急車を呼んでください。", romaji: "Kyūkyūsha o yonde kudasai.", note: "" },
                         { ch: "洗手間在哪裡？", jp: "トイレはどこですか？", romaji: "Toire wa doko desu ka?", note: "帶小孩最常用！" },
                         { ch: "我不會說日文", jp: "日本語が話せません。", romaji: "Nihongo ga hanasemasen.", note: "" },
-                        { ch: "有會說英文的人嗎？", jp: "英語を話せる方はいますか？", romaji: "Eigo o hanaseru kata wa imasu ka?", note: "" }
+                        { ch: "有會說英文的人嗎？", jp: "英語を話せる方はいますか？", romaji: "Eigo o hanaseru kata wa imasu ka?", note: "" },
+                        { ch: "請帶我去這個地址", jp: "この住所までお願いします。", romaji: "Kono jūsho made onegai shimasu.", note: "給計程車司機看地址" }
                     ]
                 },
                 {
                     title: "🔢 實用數字",
                     icon: "🔢",
                     phrases: [
-                        { ch: "1 / 2 / 3", jp: "いち / に / さん", romaji: "Ichi / Ni / San", note: "" },
-                        { ch: "4 / 5 / 6", jp: "よん / ご / ろく", romaji: "Yon / Go / Roku", note: "" },
-                        { ch: "7 / 8 / 9 / 10", jp: "なな / はち / きゅう / じゅう", romaji: "Nana / Hachi / Kyū / Jū", note: "" },
+                        { ch: "1 / 2 / 3 / 4", jp: "いち / に / さん / よん", romaji: "Ichi / Ni / San / Yon", note: "四位＝よんめい" },
+                        { ch: "5 / 6 / 7 / 8", jp: "ご / ろく / なな / はち", romaji: "Go / Roku / Nana / Hachi", note: "" },
+                        { ch: "9 / 10", jp: "きゅう / じゅう", romaji: "Kyū / Jū", note: "" },
                         { ch: "100 / 1000 / 10000", jp: "ひゃく / せん / いちまん", romaji: "Hyaku / Sen / Ichiman", note: "日圓常用單位" }
                     ]
                 }
@@ -1380,7 +1427,21 @@ html_code = """
                                     ))}
                                 </div>
 
-                                <h3 className="text-lg font-bold text-gray-700 mb-3 ml-1 flex items-center"><span className="w-1 h-5 bg-orange-400 mr-2 rounded-full"></span>情境對話</h3>
+                                <h3 className="text-lg font-bold text-gray-700 mb-3 ml-1 flex items-center"><span className="w-1 h-5 bg-blue-400 mr-2 rounded-full"></span>成田機場常見標示</h3>
+                                <div className="space-y-2 mb-6">
+                                    {japaneseData.airportCounters.map((item, idx) => (
+                                        <div key={idx} onClick={() => speakJapanese(item.jp.split(' / ')[0])} className="bg-white border border-gray-200 rounded-xl p-2.5 shadow-sm flex items-center gap-3 active:scale-[0.98] active:bg-blue-50 transition-all cursor-pointer">
+                                            <div className="flex-1 min-w-0">
+                                                <div className="font-bold text-gray-800 text-sm">{item.ch}</div>
+                                                <div className="text-blue-600 font-bold text-[13px]">{item.jp}</div>
+                                                <div className="text-gray-400 text-[11px]">{item.en}</div>
+                                            </div>
+                                            <span className="text-blue-400 text-sm flex-shrink-0">🔊</span>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <h3 className="text-lg font-bold text-gray-700 mb-3 ml-1 flex items-center"><span className="w-1 h-5 bg-orange-400 mr-2 rounded-full"></span>情境對話（2大2小版）</h3>
                                 {japaneseData.scenarios.map((scenario, sIdx) => (
                                     <div key={sIdx} className="mb-5">
                                         <div className="bg-orange-50 border border-orange-200 rounded-xl px-3 py-2 mb-3 font-bold text-orange-700 text-[15px]">{scenario.title}</div>
