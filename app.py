@@ -1119,7 +1119,7 @@ html_code = """
                         { name: '護照（確認效期 6 個月以上）', critical: true },
                         { name: '護照影本 / 手機翻拍備份', critical: true },
                         { name: '兒童護照', critical: true },
-                        { name: '機票電子確認信（長榮 BR196 / BR197）', critical: true },
+                        { name: '機票電子確認信（長榮 BR198 / BR197）', critical: true },
                         { name: '飯店預約確認信', critical: false },
                         { name: 'teamLab Planets 門票 QR Code', critical: false },
                         { name: 'SHIBUYA SKY 門票 QR Code', critical: false },
@@ -1295,6 +1295,7 @@ html_code = """
                         <button onClick={() => setSubTab('emergency')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'emergency' ? 'bg-red-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🆘 緊急卡</button>
                         <button onClick={() => setSubTab('checklist')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'checklist' ? 'bg-emerald-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>✅ 行李</button>
                         <button onClick={() => setSubTab('hotel')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'hotel' ? 'bg-rose-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🏨 入住</button>
+                        <button onClick={() => setSubTab('airport')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'airport' ? 'bg-cyan-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>✈️ 機場</button>
                     </div>
 
                     <div className="flex-1 overflow-y-auto p-4 pb-24 space-y-4">
@@ -1472,8 +1473,8 @@ html_code = """
                                     <h3 className="font-bold text-purple-700 text-base mb-3 flex items-center gap-2">📋 重要資訊速查</h3>
                                     <div className="space-y-2">
                                         {[
-                                            { label: '航班去程', value: '長榮 BR196 · 4/17 桃園→成田' },
-                                            { label: '航班回程', value: '長榮 BR197 · 4/22 成田→桃園' },
+                                            { label: '航班去程', value: '長榮 BR198 · 4/17 09:00 桃園→成田 13:25' },
+                                            { label: '航班回程', value: '長榮 BR197 · 4/22 14:25 成田→桃園 17:05' },
                                             { label: '日本國碼', value: '+81' },
                                             { label: '台灣國碼', value: '+886' },
                                             { label: '日本電壓', value: '100V / 60Hz（A型兩扁腳）' },
@@ -1660,6 +1661,157 @@ html_code = """
                                                 <div className="text-xs text-gray-800 font-bold mt-1 bg-yellow-50 rounded p-1.5 border border-yellow-200">東京都台東区上野７丁目１０−１３</div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </>
+                        )}
+
+                        {/* 子分頁 7：機場攻略 */}
+                        {subTab === 'airport' && (
+                            <>
+                                <div className="text-center mb-5"><h2 className="text-xl font-bold text-gray-800">機場攻略</h2><p className="text-cyan-600 text-sm">桃園出發 & 成田回程</p></div>
+
+                                <h3 className="text-lg font-bold text-gray-700 mb-3 ml-1 flex items-center"><span className="w-1 h-5 bg-cyan-500 mr-2 rounded-full"></span>去程：桃園機場 T2 出發</h3>
+
+                                <div className="bg-cyan-50 border-2 border-cyan-200 rounded-2xl p-4 mb-4">
+                                    <h4 className="font-bold text-cyan-700 text-sm mb-3">📋 報到流程（長榮 BR198）</h4>
+                                    <div className="space-y-2">
+                                        {[
+                                            { step: '1', title: '抵達第二航廈 (T2)', desc: '長榮航空在桃園機場第二航廈。建議起飛前 2.5 小時抵達（約 06:30 前）。', time: '起飛前 2.5hr' },
+                                            { step: '2', title: '辦理報到 (Check-in)', desc: '前往 3 樓出境大廳，找到長榮航空櫃檯。綠色「報到服務」櫃檯辦理劃位與託運行李。已網路報到者可走橘色「行李託運」專用櫃檯。', time: '' },
+                                            { step: '3', title: '託運行李', desc: '將大型行李箱交給櫃檯人員秤重、貼行李條。確認行李收據張數正確，目的地標示為 NRT（成田）。', time: '' },
+                                            { step: '4', title: '通過安檢', desc: '持登機證與護照進入安檢區。液體須裝入 100ml 以下容器，放入透明夾鏈袋。行動電源禁止託運，須隨身攜帶。', time: '' },
+                                            { step: '5', title: '出境證照查驗', desc: '持護照與登機證至自動通關或人工櫃檯查驗。兒童（未滿 14 歲）須走人工櫃檯。', time: '' },
+                                            { step: '6', title: '前往登機門', desc: '查看航班資訊螢幕確認登機門編號，起飛前 30 分鐘須抵達登機門。', time: '起飛前 30min' }
+                                        ].map((item, idx) => (
+                                            <div key={idx} className="flex items-start gap-3 bg-white rounded-xl p-3 border border-cyan-100">
+                                                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-500 text-white text-xs flex items-center justify-center font-bold mt-0.5">{item.step}</span>
+                                                <div className="flex-1">
+                                                    <div className="font-bold text-gray-800 text-sm">{item.title}</div>
+                                                    <div className="text-gray-500 text-xs leading-relaxed mt-0.5">{item.desc}</div>
+                                                    {item.time && <span className="inline-block mt-1 text-[10px] bg-cyan-100 text-cyan-700 px-2 py-0.5 rounded font-bold">{item.time}</span>}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="mt-3 bg-cyan-100/60 rounded-lg p-2.5 text-[11px] text-cyan-700 leading-relaxed">
+                                        💡 報到截止時間：起飛前 60 分鐘。逾時將無法辦理登機！
+                                    </div>
+                                </div>
+
+                                <div className="bg-white border border-gray-200 rounded-2xl p-4 mb-4 shadow-sm">
+                                    <h4 className="font-bold text-gray-700 text-sm mb-3">⏱️ 桃園機場時間軸（建議）</h4>
+                                    <div className="space-y-1.5">
+                                        {[
+                                            { time: '06:30', label: '抵達 T2', color: 'bg-cyan-500' },
+                                            { time: '06:40', label: '報到 + 託運行李', color: 'bg-cyan-500' },
+                                            { time: '07:15', label: '通過安檢 + 出境', color: 'bg-blue-500' },
+                                            { time: '07:30', label: '免稅店 / 候機', color: 'bg-purple-500' },
+                                            { time: '08:30', label: '抵達登機門', color: 'bg-orange-500' },
+                                            { time: '09:00', label: '✈️ 起飛 BR198', color: 'bg-red-500' }
+                                        ].map((item, idx) => (
+                                            <div key={idx} className="flex items-center gap-3">
+                                                <span className={`flex-shrink-0 w-2 h-2 rounded-full ${item.color}`}></span>
+                                                <span className="text-xs font-bold text-gray-800 w-12">{item.time}</span>
+                                                <span className="text-xs text-gray-600">{item.label}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="bg-gray-50 border border-gray-200 rounded-xl p-3 mb-6">
+                                    <div className="text-center text-gray-300 text-2xl mb-1">✈️ ✈️ ✈️</div>
+                                </div>
+
+                                <h3 className="text-lg font-bold text-gray-700 mb-3 ml-1 flex items-center"><span className="w-1 h-5 bg-orange-500 mr-2 rounded-full"></span>回程：成田機場 T1 出發</h3>
+
+                                <div className="bg-orange-50 border-2 border-orange-200 rounded-2xl p-4 mb-4">
+                                    <h4 className="font-bold text-orange-700 text-sm mb-3">📋 報到流程（長榮 BR197）</h4>
+                                    <div className="space-y-2">
+                                        {[
+                                            { step: '1', title: '抵達成田 T1 南翼', desc: '搭乘 Skyliner 從京成上野站直達成田機場 T1（約 41 分鐘）。長榮航空位於第一航廈南翼 (South Wing)。', time: '起飛前 2.5hr' },
+                                            { step: '2', title: '辦理報到 (Check-in)', desc: '前往出發樓層，找到長榮航空櫃檯辦理報到與行李託運。建議起飛前 2.5 小時開始（約 11:55）。亞洲線起飛前 2.5 小時開始劃位。', time: '' },
+                                            { step: '3', title: '託運行李', desc: '將行李交給櫃檯秤重。注意：液體伴手禮（果凍、飲料）須放託運！確認行李條目的地為 TPE（桃園）。', time: '' },
+                                            { step: '4', title: '通過安檢', desc: '持登機證與護照進入安檢。日本安檢要求脫外套、取出筆電與液體。', time: '' },
+                                            { step: '5', title: '出境審查', desc: '可使用外國人自動通關或排隊人工審查。兒童須走人工櫃檯。', time: '' },
+                                            { step: '6', title: '免稅購物 & 登機', desc: '出境後可在免稅店最後採買。確認登機門編號，起飛前 30 分鐘抵達。', time: '起飛前 30min' }
+                                        ].map((item, idx) => (
+                                            <div key={idx} className="flex items-start gap-3 bg-white rounded-xl p-3 border border-orange-100">
+                                                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-orange-500 text-white text-xs flex items-center justify-center font-bold mt-0.5">{item.step}</span>
+                                                <div className="flex-1">
+                                                    <div className="font-bold text-gray-800 text-sm">{item.title}</div>
+                                                    <div className="text-gray-500 text-xs leading-relaxed mt-0.5">{item.desc}</div>
+                                                    {item.time && <span className="inline-block mt-1 text-[10px] bg-orange-100 text-orange-700 px-2 py-0.5 rounded font-bold">{item.time}</span>}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="mt-3 bg-orange-100/60 rounded-lg p-2.5 text-[11px] text-orange-700 leading-relaxed">
+                                        💡 成田 T1 中央大樓 4F 有「中華蕎麥 富田」等美食，可安檢前先吃！入關後免稅區有「壽司 京辰」。
+                                    </div>
+                                </div>
+
+                                <div className="bg-white border border-gray-200 rounded-2xl p-4 mb-4 shadow-sm">
+                                    <h4 className="font-bold text-gray-700 text-sm mb-3">⏱️ 成田機場時間軸（建議）</h4>
+                                    <div className="space-y-1.5">
+                                        {[
+                                            { time: '11:20', label: '京成上野搭 Skyliner', color: 'bg-blue-500' },
+                                            { time: '12:01', label: '抵達成田 T1', color: 'bg-orange-500' },
+                                            { time: '12:10', label: '報到 + 託運行李', color: 'bg-orange-500' },
+                                            { time: '12:30', label: '機場午餐（中央大樓 4F）', color: 'bg-yellow-500' },
+                                            { time: '13:15', label: '通過安檢 + 出境', color: 'bg-purple-500' },
+                                            { time: '13:30', label: '免稅店最後採買', color: 'bg-pink-500' },
+                                            { time: '13:55', label: '抵達登機門', color: 'bg-red-500' },
+                                            { time: '14:25', label: '✈️ 起飛 BR197', color: 'bg-red-600' }
+                                        ].map((item, idx) => (
+                                            <div key={idx} className="flex items-center gap-3">
+                                                <span className={`flex-shrink-0 w-2 h-2 rounded-full ${item.color}`}></span>
+                                                <span className="text-xs font-bold text-gray-800 w-12">{item.time}</span>
+                                                <span className="text-xs text-gray-600">{item.label}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="bg-indigo-50 border-2 border-indigo-200 rounded-2xl p-4 mb-4">
+                                    <h4 className="font-bold text-indigo-700 text-sm mb-3">🧳 長榮行李規定（本次機票）</h4>
+                                    <div className="space-y-3">
+                                        <div className="bg-white rounded-xl p-3 border border-indigo-100">
+                                            <div className="font-bold text-gray-800 text-sm mb-2">📦 託運行李</div>
+                                            <div className="space-y-1 text-xs text-gray-600">
+                                                <div className="flex justify-between"><span>免費件數</span><span className="font-bold text-red-600">1 件（依本次機票）</span></div>
+                                                <div className="flex justify-between"><span>每件限重</span><span className="font-bold text-indigo-700">23 公斤</span></div>
+                                                <div className="flex justify-between"><span>單件尺寸</span><span className="font-bold text-gray-700">長+寬+高 ≤ 158cm</span></div>
+                                                <div className="flex justify-between"><span>單件最重</span><span className="font-bold text-gray-700">不超過 32 公斤</span></div>
+                                            </div>
+                                        </div>
+                                        <div className="bg-white rounded-xl p-3 border border-indigo-100">
+                                            <div className="font-bold text-gray-800 text-sm mb-2">🎒 手提行李</div>
+                                            <div className="space-y-1 text-xs text-gray-600">
+                                                <div className="flex justify-between"><span>件數</span><span className="font-bold text-indigo-700">1 件 + 1 個人物品</span></div>
+                                                <div className="flex justify-between"><span>登機箱限重</span><span className="font-bold text-indigo-700">7 公斤</span></div>
+                                                <div className="flex justify-between"><span>登機箱尺寸</span><span className="font-bold text-gray-700">23×36×56cm 以內</span></div>
+                                                <div className="flex justify-between"><span>個人物品尺寸</span><span className="font-bold text-gray-700">40×30×10cm 以內</span></div>
+                                            </div>
+                                        </div>
+                                        <div className="bg-white rounded-xl p-3 border border-indigo-100">
+                                            <div className="font-bold text-gray-800 text-sm mb-2">👶 兒童 / 嬰兒</div>
+                                            <div className="space-y-1 text-xs text-gray-600">
+                                                <div>• 兒童託運行李額度與成人相同</div>
+                                                <div>• 可額外免費託運：折疊式嬰兒車或兒童安全座椅（二擇一）</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-red-50 border-2 border-red-200 rounded-2xl p-4 mb-4">
+                                    <h4 className="font-bold text-red-700 text-sm mb-3">⚠️ 重要提醒</h4>
+                                    <div className="space-y-2 text-xs text-gray-700 leading-relaxed">
+                                        <div className="bg-white rounded-lg p-2.5 border border-red-100">🔋 <strong>行動電源</strong>：禁止託運，須隨身攜帶，不得超過 160Wh。長榮航空機上全程禁止使用及充電。</div>
+                                        <div className="bg-white rounded-lg p-2.5 border border-red-100">💧 <strong>液體</strong>：隨身攜帶限 100ml 以下容器，裝入 20×20cm 透明夾鏈袋。超過 100ml 須託運（單品 ≤ 500ml，總量 ≤ 2000ml）。</div>
+                                        <div className="bg-white rounded-lg p-2.5 border border-red-100">🍶 <strong>伴手禮液體</strong>：果凍、醬料、飲料等回程時務必放託運行李！過安檢後免稅店購買的可直接手提上機。</div>
+                                        <div className="bg-white rounded-lg p-2.5 border border-red-100">🔥 <strong>打火機</strong>：僅能隨身攜帶 1 個，不能託運。日本入境禁止攜帶一次性瓦斯打火機。</div>
+                                        <div className="bg-white rounded-lg p-2.5 border border-red-100">📱 <strong>網路報到</strong>：可提前 48 小時於長榮航空官網或 App 辦理網路報到，到機場只需走「行李託運」專用櫃檯，節省排隊時間。</div>
                                     </div>
                                 </div>
                             </>
