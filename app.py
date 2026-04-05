@@ -1340,6 +1340,7 @@ html_code = """
                         <button onClick={() => setSubTab('weather')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'weather' ? 'bg-sky-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🌤️ 天氣</button>
                         <button onClick={() => setSubTab('airport')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'airport' ? 'bg-cyan-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>✈️ 機場</button>
                         <button onClick={() => setSubTab('hotel')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'hotel' ? 'bg-rose-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🏨 入住</button>
+                        <button onClick={() => setSubTab('taxfree')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'taxfree' ? 'bg-lime-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>💰 退稅</button>
                         <button onClick={() => setSubTab('japanese')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'japanese' ? 'bg-orange-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🗣️ 實用日文</button>
                         <button onClick={() => setSubTab('emergency')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'emergency' ? 'bg-red-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>🆘 緊急卡</button>
                         <button onClick={() => setSubTab('checklist')} className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${subTab === 'checklist' ? 'bg-emerald-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>✅ 行李</button>
@@ -1409,6 +1410,141 @@ html_code = """
 
                         {/* 子分頁 2.5：天氣預報 */}
                         {subTab === 'weather' && <WeatherPanel />}
+
+                        {/* 子分頁：退稅指南 */}
+                        {subTab === 'taxfree' && (
+                            <>
+                                <div className="text-center mb-5"><h2 className="text-xl font-bold text-gray-800">退稅指南</h2><p className="text-lime-600 text-sm">2026 年 4 月適用現行制度</p></div>
+
+                                <div className="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-amber-700 text-base mb-2">⚠️ 重要提醒</h3>
+                                    <div className="text-sm text-gray-700 leading-relaxed">
+                                        <p>本次旅行（4/17~4/22）適用<strong>現行免稅制度</strong>，在店內購物時即可直接免稅或退稅。</p>
+                                        <p className="mt-2 text-amber-700 text-xs font-bold">📌 2026 年 11 月 1 日起日本將改為「先課稅、機場退稅」新制，本次旅行不受影響。</p>
+                                    </div>
+                                </div>
+
+                                <div className="bg-lime-50 border-2 border-lime-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-lime-700 text-base mb-3">📋 退稅基本條件</h3>
+                                    <div className="space-y-2">
+                                        {[
+                                            { label: '退稅對象', value: '非日本居住者（短期觀光簽證，入境未滿 6 個月）' },
+                                            { label: '消費稅率', value: '一般商品 10%、食品飲料外帶 8%' },
+                                            { label: '免稅門檻', value: '同一店家、同一天消費滿 ¥5,000（未稅）' },
+                                            { label: '免稅上限', value: '消耗品同一店家同日 ¥500,000（未稅）' },
+                                            { label: '必備文件', value: '護照正本（須有入境章）或 Visit Japan Web 免稅 QR Code' }
+                                        ].map((item, idx) => (
+                                            <div key={idx} className="flex justify-between items-start bg-white rounded-lg p-2.5 border border-lime-100 gap-2">
+                                                <span className="text-gray-500 text-xs font-bold flex-shrink-0">{item.label}</span>
+                                                <span className="text-gray-800 text-xs font-bold text-right">{item.value}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-blue-700 text-base mb-3">🏷️ 商品分類與規定</h3>
+                                    <div className="space-y-3">
+                                        <div className="bg-white rounded-xl p-3 border border-blue-100">
+                                            <div className="font-bold text-blue-700 text-sm mb-1.5">📦 一般物品</div>
+                                            <div className="text-xs text-gray-600 space-y-1">
+                                                <div>家電、服飾、包包、鞋子、玩具、鐘錶等</div>
+                                                <div>• 同店同日消費滿 ¥5,000 即可免稅</div>
+                                                <div>• 購入後<strong>可在日本境內使用</strong></div>
+                                                <div>• 須於入境日起 6 個月內攜帶出境</div>
+                                            </div>
+                                        </div>
+                                        <div className="bg-white rounded-xl p-3 border border-blue-100">
+                                            <div className="font-bold text-blue-700 text-sm mb-1.5">🧴 消耗品</div>
+                                            <div className="text-xs text-gray-600 space-y-1">
+                                                <div>藥妝、化妝品、食品、飲料、酒類、零食等</div>
+                                                <div>• 同店同日消費 ¥5,000～¥500,000</div>
+                                                <div>• <strong>不可在日本境內拆封使用</strong>（密封包裝）</div>
+                                                <div>• 須於入境日起 <strong>30 天內</strong>攜帶出境</div>
+                                            </div>
+                                        </div>
+                                        <div className="bg-white rounded-xl p-3 border border-blue-100">
+                                            <div className="font-bold text-blue-700 text-sm mb-1.5">📦+🧴 混合計算</div>
+                                            <div className="text-xs text-gray-600 space-y-1">
+                                                <div>一般物品 + 消耗品可合併計算達 ¥5,000 門檻</div>
+                                                <div>• 但合併後<strong>全部視為消耗品處理</strong></div>
+                                                <div>• 全部須密封包裝、30 天內出境</div>
+                                                <div>• 若一般物品想在日本使用，不要混合計算</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-purple-50 border-2 border-purple-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-purple-700 text-base mb-3">🛒 退稅流程（逐步指引）</h3>
+                                    <div className="space-y-2">
+                                        {[
+                                            { step: '1', title: '確認店家有免稅服務', desc: '尋找紅白色「Japan Tax-free Shop」標誌。唐吉訶德、松本清、Bic Camera、UNIQLO、百貨公司等通常都有。' },
+                                            { step: '2', title: '選購商品達 ¥5,000', desc: '同一店家、同一天的消費累計未稅金額達 ¥5,000 以上。' },
+                                            { step: '3', title: '前往免稅收銀台', desc: '告知店員「免税（めんぜい）お願いします」，出示護照正本或 Visit Japan Web 免稅 QR Code。' },
+                                            { step: '4', title: '店員確認身份', desc: '店員掃描護照或 QR Code，確認入境紀錄與資格。系統自動將購買紀錄傳送至海關。' },
+                                            { step: '5', title: '以免稅價格結帳', desc: '直接扣除消費稅結帳（或先付全額再現場退現金，視店家而定）。消耗品會由店員裝入密封袋。' },
+                                            { step: '6', title: '妥善保管收據', desc: '保留退稅單據，出境時海關可能抽查。' },
+                                            { step: '7', title: '出境時通過海關', desc: '護照上的免稅紀錄已電子化。正常出境即可，被抽查時須出示免稅商品。' }
+                                        ].map((item, idx) => (
+                                            <div key={idx} className="flex items-start gap-3 bg-white rounded-xl p-3 border border-purple-100">
+                                                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500 text-white text-xs flex items-center justify-center font-bold mt-0.5">{item.step}</span>
+                                                <div className="flex-1">
+                                                    <div className="font-bold text-gray-800 text-sm">{item.title}</div>
+                                                    <div className="text-gray-500 text-xs leading-relaxed mt-0.5">{item.desc}</div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="bg-orange-50 border-2 border-orange-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-orange-700 text-base mb-3">🏬 百貨公司退稅流程</h3>
+                                    <div className="text-xs text-gray-700 leading-relaxed space-y-2">
+                                        <p>百貨公司（如高島屋、小田急等）的退稅方式與一般商店不同：</p>
+                                        <div className="bg-white rounded-lg p-2.5 border border-orange-100 space-y-1">
+                                            <div>① 各櫃位以<strong>含稅價格</strong>正常結帳</div>
+                                            <div>② 收集當日所有收據</div>
+                                            <div>③ 前往百貨公司指定的<strong>退稅櫃檯</strong>（通常在特定樓層）</div>
+                                            <div>④ 出示護照 + 所有收據 + 購買商品</div>
+                                            <div>⑤ 櫃檯人員確認後，退還消費稅現金（部分百貨會扣 1～3% 手續費）</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-red-50 border-2 border-red-200 rounded-2xl p-4 mb-4">
+                                    <h3 className="font-bold text-red-700 text-base mb-3">⚠️ 注意事項</h3>
+                                    <div className="space-y-2 text-xs text-gray-700 leading-relaxed">
+                                        <div className="bg-white rounded-lg p-2.5 border border-red-100">🚫 消耗品的密封袋<strong>不可在日本境內拆開</strong>，否則出境時須補繳消費稅。</div>
+                                        <div className="bg-white rounded-lg p-2.5 border border-red-100">📦 2025/4 起已取消「另行運送」制度，免稅品必須<strong>本人隨身或託運攜帶出境</strong>，不能郵寄。</div>
+                                        <div className="bg-white rounded-lg p-2.5 border border-red-100">🧾 退稅必須在<strong>購物當天</strong>於同一店家完成，不能隔日辦理。</div>
+                                        <div className="bg-white rounded-lg p-2.5 border border-red-100">👤 必須由<strong>購買者本人</strong>辦理，不能請他人代辦。護照也必須是本人的。</div>
+                                        <div className="bg-white rounded-lg p-2.5 border border-red-100">💧 含液體的消耗品（飲料、化妝水等）密封袋可能無法手提上機，需放<strong>託運行李</strong>。</div>
+                                        <div className="bg-white rounded-lg p-2.5 border border-red-100">💡 善用 <strong>Visit Japan Web</strong> 免稅 QR Code，部分店家可免出示護照，加速退稅流程。</div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-teal-50 border-2 border-teal-200 rounded-2xl p-4">
+                                    <h3 className="font-bold text-teal-700 text-base mb-3">🗣️ 退稅實用日文</h3>
+                                    <div className="space-y-2">
+                                        {[
+                                            { ch: '我要辦免稅', jp: '免税でお願いします。' },
+                                            { ch: '免稅櫃檯在哪裡？', jp: '免税カウンターはどこですか？' },
+                                            { ch: '這些可以一起算免稅嗎？', jp: 'これらをまとめて免税にできますか？' },
+                                            { ch: '可以刷卡退稅嗎？', jp: 'カードで免税できますか？' }
+                                        ].map((item, idx) => (
+                                            <div key={idx} onClick={() => speakJapanese(item.jp)} className="flex items-center justify-between bg-white rounded-lg p-2.5 border border-teal-100 active:bg-teal-50 active:scale-[0.98] transition-all cursor-pointer">
+                                                <div>
+                                                    <div className="text-gray-500 text-[11px]">{item.ch}</div>
+                                                    <div className="font-bold text-teal-700 text-sm">{item.jp}</div>
+                                                </div>
+                                                <span className="text-teal-400 text-lg flex-shrink-0">🔊</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </>
+                        )}
 
                         {/* 子分頁 3：實用日文 */}
                         {subTab === 'japanese' && (
