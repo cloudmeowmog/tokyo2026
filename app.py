@@ -540,27 +540,56 @@ html_code = """
         ];
 
         const reservations = [
-            { 
-                cat: "交通", 
+            {
+                cat: "🚄 交通票券",
                 items: [
-                    { name: "京成 Skyliner", url: "https://www.keisei.co.jp/keisei/tetudou/skyliner/e-ticket/zht/", tips: "Day 1 & Day 6 機場來回，線上買便宜" }, 
-                    { name: "JR 新幹線 (e5489)", url: "https://www.eki-net.com/zh-CHT/jreast-train-reservation/Top/Index", tips: "Day 4 輕井澤來回，1個月前預訂" }
-                ] 
+                    {
+                        name: "京成 Skyliner（成田↔上野）",
+                        url: "https://www.keisei.co.jp/keisei/tetudou/skyliner/e-ticket/zht/",
+                        tips: "Day 1 去程 & Day 6 回程使用。線上購買 e-ticket 比現場便宜約 ¥300。",
+                        guide: "【購票】進入官網選擇「e-ticket」→ 選日期與班次 → 信用卡付款 → 取得 QR Code。\n【搭乘】成田 T1 B1 京成電鐵閘口 → 出示 QR Code 進站 → 全車對號座，找到座位即可。\n【兒童】6~11 歲兒童票半價，需同時購買。"
+                    },
+                    {
+                        name: "JR 新幹線 e5489（上野↔輕井澤）",
+                        url: "https://www.eki-net.com/zh-CHT/jreast-train-reservation/Top/Index",
+                        tips: "Day 4 輕井澤來回，1 個月前開放預訂。北陸新幹線約 60 分鐘直達。",
+                        guide: "【購票】進入 eki-net 官網 → 註冊帳號 → 選擇「上野→輕井澤」→ 選日期班次 → 信用卡付款 → 取得預約碼。\n【取票】上野站「中央改札」內的指定席券賣機 → 插入購票信用卡 → 輸入預約碼 → 印出車票。\n【兒童】6~11 歲兒童票半價，購票時選擇人數即可。\n【注意】上野是地下月台（B3/B4），非地面月台。"
+                    }
+                ]
             },
-            { 
-                cat: "景點", 
+            {
+                cat: "🎡 景點門票",
                 items: [
-                    { name: "teamLab Planets", url: "https://planets.teamlab.art/tokyo/zh-hant/", tips: "Day 2 (17:30)，建議提前1個月" },
-                    { name: "東京晴空塔", url: "https://www.tokyo-skytree.jp/cn_t/ticket/", tips: "Day 3 下午，30天前開放預約" }, 
-                    { name: "SHIBUYA SKY", url: "https://www.shibuya-scramble-square.com/sky/ticket/", tips: "Day 5 (15:00)，4週前必搶" }
-                ] 
+                    {
+                        name: "teamLab Planets（豐洲）",
+                        url: "https://planets.teamlab.art/tokyo/zh-hant/",
+                        tips: "Day 2 (17:30)，建議提前 1 個月購票。假日與傍晚時段容易售罄。",
+                        guide: "【購票】進入官網 → 選擇日期與入場時段 → 選擇人數（大人×2、兒童×2）→ 信用卡付款 → 取得電子票 QR Code。\n【入場】現場出示手機 QR Code 掃碼入場。\n【兒童】3 歲以下免費。4 歲以上需購票。\n【注意】全程赤腳踩水，建議帶毛巾。褲子會濕到小腿，穿短褲或可捲起的褲子。"
+                    },
+                    {
+                        name: "東京晴空塔",
+                        url: "https://www.tokyo-skytree.jp/cn_t/ticket/",
+                        tips: "Day 3 下午，30 天前開放預約。可選擇只去天望甲板(350m)或加購天望回廊(450m)。",
+                        guide: "【購票】進入官網 → 選擇「當日指定入場券」或事前預約 → 選日期時段 → 信用卡付款。也可在 Klook/KKday 購買。\n【入場】4F 售票處出示 QR Code 或紙本票券入場。\n【兒童】6~11 歲兒童票約為大人半價。5 歲以下免費。\n【注意】Solamachi 商場 4F 有寶可夢中心，可安排在同一時段逛。"
+                    },
+                    {
+                        name: "SHIBUYA SKY（澀谷展望台）",
+                        url: "https://www.shibuya-scramble-square.com/sky/ticket/",
+                        tips: "Day 5 (15:00)，提前 2 週搶票。日落時段最熱門，務必準時搶！",
+                        guide: "【大人票】在官網、Klook 或 KKday 線上購買 → 選日期與入場時段 → 取得 QR Code。15:00 後票價較高（¥3,400），但可看日落+夜景。\n【⚠️ 兒童票特殊規定】兒童票（6~11歲/小學生）無法線上購買！必須到現場 14F 售票櫃檯購買（¥1,200/人）。即使大人票售罄，兒童票仍可現場購買。5 歲以下免費。\n【入場流程】① 從大樓外面 1F 搭電梯到 14F → ② 大人出示 QR Code 驗票 → ③ 同時在 14F 櫃檯購買兒童票 → ④ 搭高速電梯到 45F → ⑤ 寄放包包（46F 置物櫃 ¥100 可退）→ ⑥ 上屋頂露天展望台。\n【禁帶物品】背包、帽子、自拍棒、腳架、耳機、食物飲料、嬰兒車。僅可攜帶手機與有背帶的相機。\n【注意】入場後不限時間，但離場後不可再入場。屋頂風大，注意小孩安全。"
+                    }
+                ]
             },
-            { 
-                cat: "實用/餐廳", 
+            {
+                cat: "🍣 餐廳預約",
                 items: [
-                    { name: "壽司郎 (Sushiro) 官方 App", url: "https://www.akindo-sushiro.co.jp/app/", tips: "Day 4 晚餐，先下載 App 抽號碼牌免排隊" },
-                    { name: "KIRBY CAFÉ (星之卡比)", url: "https://kirbycafe.jp/tokyo/", tips: "晴空塔 4F，每月 10 號開放搶下個月的位子" }
-                ] 
+                    {
+                        name: "壽司郎 (Sushiro) 官方 App",
+                        url: "https://www.akindo-sushiro.co.jp/app/",
+                        tips: "Day 4 晚餐，先下載 App 抽號碼牌免排隊。",
+                        guide: "【使用方式】下載壽司郎 App → 選擇門市（上野店）→ 點選「受付」抽取號碼牌 → App 會顯示預估等待時間 → 快輪到時前往門市。\n【小技巧】可在新幹線回程時先用 App 抽號碼牌，到上野時剛好輪到！\n【兒童】有兒童專用菜單，每盤吃完可玩扭蛋遊戲，小孩超愛。"
+                    }
+                ]
             }
         ];
 
@@ -2020,16 +2049,17 @@ html_code = """
 
         const BookingView = () => (
             <div className="h-full overflow-y-auto p-4 pb-24 space-y-6">
-                <div className="text-center mb-4"><h2 className="text-xl font-bold text-gray-800">預約管家</h2><p className="text-indigo-600 text-sm">必備連結</p></div>
+                <div className="text-center mb-4"><h2 className="text-xl font-bold text-gray-800">購票指南</h2><p className="text-indigo-600 text-sm">購票流程 · 入場方式 · 兒童票</p></div>
                 {reservations.map((cat, i) => (
                     <div key={i}>
                         <h3 className="text-lg font-bold text-gray-700 mb-3 ml-1 flex items-center"><span className="w-1 h-5 bg-indigo-500 mr-2 rounded-full"></span>{cat.cat}</h3>
                         <div className="space-y-4">
                             {cat.items.map((item, j) => (
                                 <div key={j} className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm relative overflow-hidden">
-                                    <div className="flex justify-between mb-2"><div><h4 className="font-bold text-gray-800">{item.name}</h4></div></div>
+                                    <h4 className="font-bold text-gray-800 mb-2">{item.name}</h4>
                                     <div className="bg-orange-50 border border-orange-100 rounded-lg p-2 mb-3"><p className="text-xs text-orange-700">💡 {item.tips}</p></div>
-                                    <a href={item.url} target="_blank" className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white text-center text-sm font-bold py-2.5 rounded-xl no-underline">前往預約</a>
+                                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 mb-3 text-xs text-gray-700 leading-relaxed whitespace-pre-line">{item.guide}</div>
+                                    <a href={item.url} target="_blank" className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white text-center text-sm font-bold py-2.5 rounded-xl no-underline">前往購票</a>
                                 </div>
                             ))}
                         </div>
@@ -2071,7 +2101,7 @@ html_code = """
                         <button onClick={() => setView('list')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[60px] transition-all ${view === 'list' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.list}<span className="text-[11px] font-bold">行程</span></button>
                         <button onClick={() => setView('map')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[60px] transition-all ${view === 'map' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.map}<span className="text-[11px] font-bold">地圖</span></button>
                         <button onClick={() => setView('attraction')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[60px] transition-all ${view === 'attraction' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.attraction}<span className="text-[11px] font-bold">百科</span></button>
-                        <button onClick={() => setView('booking')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[60px] transition-all ${view === 'booking' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.booking}<span className="text-[11px] font-bold">預約</span></button>
+                        <button onClick={() => setView('booking')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[60px] transition-all ${view === 'booking' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.booking}<span className="text-[11px] font-bold">購票</span></button>
                     </div>
                 </div>
             );
