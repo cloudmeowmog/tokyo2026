@@ -65,24 +65,9 @@ html_code = """
 
     <div id="root" class="flex-1 flex flex-col h-full"></div>
 
-    <script type="text/babel">
-        const { useState, useEffect, useRef } = React;
-
-        const URL_TRIP = "https://raw.githubusercontent.com/cloudmeowmog/tokyo2026/main/trip.jpg";
-        const URL_NOTE = "https://raw.githubusercontent.com/cloudmeowmog/tokyo2026/main/note.jpg";
-        const URL_MAP = "https://raw.githubusercontent.com/cloudmeowmog/tokyo2026/main/map.jpg";
-
-        const HOTEL_ADDRESS = "Stayme THE HOTEL Ueno, Higashiueno, Taito City, Tokyo";
-
-        // SVG Icons
-        const icons = {
-            list: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>,
-            map: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>,
-            attraction: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>,
-            booking: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-        };
-
-        const surroundingGuides = {
+    <script>
+        // === Static data (no JSX, no Babel needed) ===
+        var surroundingGuides = {
             ueno: {
                 name: '上野 / 秋葉原',
                 spots: [
@@ -204,7 +189,7 @@ html_code = """
             }
         };
 
-        const attractionInfos = [
+        var attractionInfos = [
             // --- Day 1 ---
             { id: "hijiri", name: "御茶之水 聖橋", icon: "🌉", tag: "聖地巡禮", desc: "電影《鈴芽之旅》經典場景。站在橋上可以同時看到紅、黃、橘三色電車交錯而過，是鐵道迷與影迷必拍聖地。", tips: "下午前往順光，拍攝效果最好。" },
             { id: "akiba", name: "秋葉原 Electric Town", icon: "⚡", tag: "動漫/電器", desc: "日本次文化中心。滿街的動漫周邊、模型店、女僕咖啡廳與大型電器行。Yodobashi Akiba 是必逛地標。", tips: "旁邊的 Yodobashi 是吃喝玩樂一站式滿足的好地方！" },
@@ -340,7 +325,7 @@ html_code = """
             }
         ];
 
-        const itinerary = [
+        var itinerary = [
              { day: 1, date: "4/17 (五)", title: "抵達與鈴芽的起點", events: [ 
                  { time: "13:25", title: "抵達成田機場", desc: "T1 (長榮)", icon: "✈️", location: "成田国際空港 第1ターミナル", hideRoute: true, tips: "抵達 T1 後，先前往 B1 辦理兒童版西瓜卡與領取 Skyliner 車票。",
                    stationGuide: {
@@ -539,7 +524,7 @@ html_code = """
              ] }
         ];
 
-        const reservations = [
+        var reservations = [
             {
                 cat: "🚄 交通票券",
                 items: [
@@ -593,7 +578,7 @@ html_code = """
             }
         ];
 
-        const travelInfos = [
+        var travelInfos = [
             { id: "narita", name: "成田機場 第1航廈", icon: "✈️", tag: "機場", desc: "本次搭乘長榮航空，起降皆位於 T1 南翼 (South Wing)。", tips: "【入境第一站】領完行李後前往 B1 鐵道樓層，可購買兒童版西瓜卡並搭乘 Skyliner 前往市區。" },
             { id: "keisei_ueno", name: "京成上野站", icon: "🚄", tag: "車站/行李", desc: "Skyliner 起訖站。距離住宿飯店步行約 10 分鐘，站內設有大量置物櫃。", tips: "【行李寄放】Day 6 退房後，強烈建議將大型行李寄放於此站剪票口外的置物櫃 (可用 Suica 扣款)。寄放後可直接步行去對面逛阿美橫丁，時間到再回來搭 Skyliner 直達機場。" },
             { id: "jr_ueno", name: "JR 上野站", icon: "🚉", tag: "車站/新幹線", desc: "Day 4 搭乘新幹線前往輕井澤的出發站。站體龐大，擁有多個出入口。", tips: "【新幹線搭乘】入口位於站內深處，請務必認明一樓最大的「中央改札」進站。直走通過第二道「新幹線專用改札」後，搭乘手扶梯下樓至 B3/B4 月台搭車。" },
@@ -601,7 +586,7 @@ html_code = """
         ];
 
         // Google TTS 發音功能
-        const speakJapanese = (text) => {
+        var speakJapanese = (text) => {
             const audio = new Audio(
                 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=ja&q=' + encodeURIComponent(text)
             );
@@ -617,7 +602,7 @@ html_code = """
             });
         };
 
-        const japaneseData = {
+        var japaneseData = {
             locations: [
                 { ch: "上野", jp: "うえの", romaji: "Ueno" },
                 { ch: "淺草", jp: "あさくさ", romaji: "Asakusa" },
@@ -753,6 +738,116 @@ html_code = """
                 }
             ]
         };
+
+
+        var CHECKLIST_DATA = [
+                {
+                    cat: '📄 證件文件',
+                    color: 'red',
+                    items: [
+                        { name: '護照（確認效期 6 個月以上）', critical: true },
+                        { name: '護照影本 / 手機翻拍備份', critical: true },
+                        { name: '兒童護照', critical: true },
+                        { name: '機票電子確認信（長榮 BR198 / BR197）', critical: true },
+                        { name: '飯店預約確認信', critical: false },
+                        { name: 'teamLab Planets 門票 QR Code', critical: false },
+                        { name: 'SHIBUYA SKY 門票 QR Code', critical: false },
+                        { name: 'Skyliner 車票 / 兌換憑證', critical: false },
+                        { name: '新幹線車票 (e5489)', critical: false },
+                        { name: '旅遊平安險保單號碼', critical: false }
+                    ]
+                },
+                {
+                    cat: '💰 金錢支付',
+                    color: 'amber',
+                    items: [
+                        { name: '日圓現金（建議 5~8 萬日圓）', critical: true },
+                        { name: '信用卡（Visa / Master 為主）', critical: true },
+                        { name: '西瓜卡 Suica（大人）', critical: false },
+                        { name: '兒童版西瓜卡（機場現場辦）', critical: false }
+                    ]
+                },
+                {
+                    cat: '📱 3C 電子',
+                    color: 'blue',
+                    items: [
+                        { name: '手機 + 充電線', critical: true },
+                        { name: '行動電源', critical: true },
+                        { name: '萬用轉接頭（日本為 A 型兩扁腳）', critical: false },
+                        { name: '相機 / GoPro + 記憶卡', critical: false },
+                        { name: '日本上網 eSIM / Wi-Fi 分享器', critical: true },
+                        { name: '耳機（飛機上用）', critical: false }
+                    ]
+                },
+                {
+                    cat: '👕 衣物穿著',
+                    color: 'purple',
+                    items: [
+                        { name: '換洗衣物（6 天份）', critical: false },
+                        { name: '薄外套 / 防風外套（4月早晚涼）', critical: true },
+                        { name: '好走的鞋（每天走超多路！）', critical: true },
+                        { name: '拖鞋（飛機上 / teamLab 後穿）', critical: false },
+                        { name: '帽子 / 墨鏡', critical: false },
+                        { name: '摺疊雨傘', critical: true },
+                        { name: '小孩替換衣物（多帶 1~2 套）', critical: false }
+                    ]
+                },
+                {
+                    cat: '🧴 盥洗藥品',
+                    color: 'teal',
+                    items: [
+                        { name: '牙刷牙膏 / 毛巾', critical: false },
+                        { name: '防曬乳', critical: false },
+                        { name: '面紙 / 濕紙巾', critical: true },
+                        { name: '常備藥品（感冒、腸胃、退燒）', critical: true },
+                        { name: '小孩藥品（退燒藥水、止瀉）', critical: true },
+                        { name: 'OK 繃 / 痠痛貼布', critical: false },
+                        { name: '保溫瓶 / 水壺', critical: false }
+                    ]
+                },
+                {
+                    cat: '🧸 小孩專區',
+                    color: 'orange',
+                    items: [
+                        { name: '兒童背包（裝自己的零食和玩具）', critical: false },
+                        { name: '小零食（飛機上、排隊時用）', critical: true },
+                        { name: '小玩具 / 畫筆著色本', critical: false },
+                        { name: '平板 / 兒童耳機（飛機救星）', critical: false },
+                        { name: '輕便推車（視需要）', critical: false }
+                    ]
+                },
+                {
+                    cat: '🧳 行李收納',
+                    color: 'gray',
+                    items: [
+                        { name: '行李箱（留空間裝戰利品！）', critical: false },
+                        { name: '摺疊購物袋（買太多時用）', critical: true },
+                        { name: '夾鏈袋（分裝零食/液體）', critical: false },
+                        { name: '行李秤（避免超重）', critical: false },
+                        { name: '頸枕（飛機 / 新幹線上用）', critical: false }
+                    ]
+                }
+            ];
+    </script>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        const URL_TRIP = "https://raw.githubusercontent.com/cloudmeowmog/tokyo2026/main/trip.jpg";
+        const URL_NOTE = "https://raw.githubusercontent.com/cloudmeowmog/tokyo2026/main/note.jpg";
+        const URL_MAP = "https://raw.githubusercontent.com/cloudmeowmog/tokyo2026/main/map.jpg";
+
+        const HOTEL_ADDRESS = "Stayme THE HOTEL Ueno, Higashiueno, Taito City, Tokyo";
+
+        // SVG Icons
+        const icons = {
+            list: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>,
+            map: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>,
+            attraction: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>,
+            booking: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+        };
+
+        // Data moved to plain script block above
 
         const ItineraryView = () => {
             const [activeDay, setActiveDay] = useState(0);
@@ -1187,111 +1282,24 @@ html_code = """
         };
 
         const ChecklistPanel = () => {
-            const CHECKLIST_DATA = [
-                {
-                    cat: '📄 證件文件',
-                    color: 'red',
-                    items: [
-                        { name: '護照（確認效期 6 個月以上）', critical: true },
-                        { name: '護照影本 / 手機翻拍備份', critical: true },
-                        { name: '兒童護照', critical: true },
-                        { name: '機票電子確認信（長榮 BR198 / BR197）', critical: true },
-                        { name: '飯店預約確認信', critical: false },
-                        { name: 'teamLab Planets 門票 QR Code', critical: false },
-                        { name: 'SHIBUYA SKY 門票 QR Code', critical: false },
-                        { name: 'Skyliner 車票 / 兌換憑證', critical: false },
-                        { name: '新幹線車票 (e5489)', critical: false },
-                        { name: '旅遊平安險保單號碼', critical: false }
-                    ]
-                },
-                {
-                    cat: '💰 金錢支付',
-                    color: 'amber',
-                    items: [
-                        { name: '日圓現金（建議 5~8 萬日圓）', critical: true },
-                        { name: '信用卡（Visa / Master 為主）', critical: true },
-                        { name: '西瓜卡 Suica（大人）', critical: false },
-                        { name: '兒童版西瓜卡（機場現場辦）', critical: false }
-                    ]
-                },
-                {
-                    cat: '📱 3C 電子',
-                    color: 'blue',
-                    items: [
-                        { name: '手機 + 充電線', critical: true },
-                        { name: '行動電源', critical: true },
-                        { name: '萬用轉接頭（日本為 A 型兩扁腳）', critical: false },
-                        { name: '相機 / GoPro + 記憶卡', critical: false },
-                        { name: '日本上網 eSIM / Wi-Fi 分享器', critical: true },
-                        { name: '耳機（飛機上用）', critical: false }
-                    ]
-                },
-                {
-                    cat: '👕 衣物穿著',
-                    color: 'purple',
-                    items: [
-                        { name: '換洗衣物（6 天份）', critical: false },
-                        { name: '薄外套 / 防風外套（4月早晚涼）', critical: true },
-                        { name: '好走的鞋（每天走超多路！）', critical: true },
-                        { name: '拖鞋（飛機上 / teamLab 後穿）', critical: false },
-                        { name: '帽子 / 墨鏡', critical: false },
-                        { name: '摺疊雨傘', critical: true },
-                        { name: '小孩替換衣物（多帶 1~2 套）', critical: false }
-                    ]
-                },
-                {
-                    cat: '🧴 盥洗藥品',
-                    color: 'teal',
-                    items: [
-                        { name: '牙刷牙膏 / 毛巾', critical: false },
-                        { name: '防曬乳', critical: false },
-                        { name: '面紙 / 濕紙巾', critical: true },
-                        { name: '常備藥品（感冒、腸胃、退燒）', critical: true },
-                        { name: '小孩藥品（退燒藥水、止瀉）', critical: true },
-                        { name: 'OK 繃 / 痠痛貼布', critical: false },
-                        { name: '保溫瓶 / 水壺', critical: false }
-                    ]
-                },
-                {
-                    cat: '🧸 小孩專區',
-                    color: 'orange',
-                    items: [
-                        { name: '兒童背包（裝自己的零食和玩具）', critical: false },
-                        { name: '小零食（飛機上、排隊時用）', critical: true },
-                        { name: '小玩具 / 畫筆著色本', critical: false },
-                        { name: '平板 / 兒童耳機（飛機救星）', critical: false },
-                        { name: '輕便推車（視需要）', critical: false }
-                    ]
-                },
-                {
-                    cat: '🧳 行李收納',
-                    color: 'gray',
-                    items: [
-                        { name: '行李箱（留空間裝戰利品！）', critical: false },
-                        { name: '摺疊購物袋（買太多時用）', critical: true },
-                        { name: '夾鏈袋（分裝零食/液體）', critical: false },
-                        { name: '行李秤（避免超重）', critical: false },
-                        { name: '頸枕（飛機 / 新幹線上用）', critical: false }
-                    ]
-                }
-            ];
+
 
             const [checked, setChecked] = useState(() => {
                 try {
                     const saved = localStorage.getItem('trip_checklist');
                     return saved ? JSON.parse(saved) : {};
-                } catch { return {}; }
+                } catch(e) { return {}; }
             });
 
             const toggle = (key) => {
                 const next = { ...checked, [key]: !checked[key] };
                 setChecked(next);
-                try { localStorage.setItem('trip_checklist', JSON.stringify(next)); } catch {}
+                try { localStorage.setItem('trip_checklist', JSON.stringify(next)); } catch(e) {}
             };
 
             const resetAll = () => {
                 setChecked({});
-                try { localStorage.removeItem('trip_checklist'); } catch {}
+                try { localStorage.removeItem('trip_checklist'); } catch(e) {}
             };
 
             const totalItems = CHECKLIST_DATA.reduce((sum, cat) => sum + cat.items.length, 0);
@@ -2115,7 +2123,7 @@ html_code = """
             if (loadingEl && loadingEl.style.display !== 'none') {
                 loadingEl.style.display = 'none';
             }
-        }, 3000);
+        }, 8000);
     </script>
 </body>
 </html>
