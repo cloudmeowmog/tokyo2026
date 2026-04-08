@@ -79,7 +79,7 @@ html_code = """
             list: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>,
             map: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>,
             attraction: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>,
-            booking: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path></svg>
+            booking: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
         };
 
         const surroundingGuides = {
@@ -146,7 +146,6 @@ html_code = """
                 spots: [
                     { name: '東京晴空塔', desc: '世界最高電波塔，上層有展望台。', tag: '地標', icon: '🗼', mapQuery: '東京スカイツリー' },
                     { name: '寶可夢中心 (4F)', desc: '烈空坐為主題的超大店面，旁邊有寶可夢機台。', tag: '寶可夢', icon: '🐾', mapQuery: 'ポケモンセンタースカイツリータウン' },
-                    { name: '星之卡比咖啡廳（KIRBY CAFÉ / カービィカフェ，Kirby Cafe）', desc: '4F。超可愛星之卡比主題餐點與專賣店。', tag: '主題餐廳', icon: '⭐', mapQuery: 'KIRBY CAFE TOKYO' },
                     { name: '六厘舍（六厘舎，Rokurinsha）', desc: '6F。超人氣「沾麵」名店，粗麵配濃郁魚介豚骨湯。', tag: '排隊沾麵', icon: '🍜', mapQuery: '六厘舎 TOKYO スカイツリータウン・ソラマチ店' },
                     { name: '燒肉 Pure（焼肉 ぴゅあ，Pure）', desc: '11F。農協開設，主打安心安全日本黑毛和牛。', tag: '農協燒肉', icon: '🥩', mapQuery: '焼肉 ぴゅあ 東京スカイツリータウン・ソラマチ店' },
                     { name: '迴轉壽司 根室花丸（回転寿司 根室花丸，Nemuro Hanamaru）', desc: '6F。北海道超人氣名店，食材極新鮮需提早抽號。', tag: '排隊壽司', icon: '🍣', mapQuery: '東京スカイツリータウン 回転寿司' },
@@ -253,7 +252,7 @@ html_code = """
             
             // --- Day 3 ---
             { id: "sensoji", name: "淺草寺 & 雷門", icon: "🏮", tag: "傳統文化", desc: "東京最古老的寺廟。巨大的紅燈籠「雷門」是東京象徵。仲見世通有許多人形燒、仙貝等傳統小吃。", tips: "遊客非常多，建議早上9點前抵達拍照。" },
-            { id: "skytree", name: "東京晴空塔", icon: "🗼", tag: "地標/寶可夢", desc: "世界最高電波塔。樓下 Solamachi 商場有寶可夢中心(烈空坐鎮店)與 Kirby Cafe。" },
+            { id: "skytree", name: "東京晴空塔", icon: "🗼", tag: "地標/寶可夢", desc: "世界最高電波塔。樓下 Solamachi 商場有寶可夢中心(烈空坐鎮店)。" },
             { id: "skytree_food", name: "晴空塔 午餐 (5選)", icon: "🍱", tag: "美食", desc: "Day 3 午餐推薦：", tips: "假日時晴空塔餐廳人潮多，建議提早抽號或選美食街。",
                 foodSpots: [
                     { icon: "🍜", name: "六厘舍（六厘舎，Rokurinsha）", desc: "晴空塔 6F 超人氣排隊沾麵", mapQuery: "六厘舎 TOKYO スカイツリータウン・ソラマチ店" },
@@ -297,7 +296,7 @@ html_code = """
                     { icon: "🍣", name: "壽司三味 本店（すしざんまい，Sushizanmai）", desc: "知名連鎖壽司本店，價格透明、座位寬敞", mapQuery: "すしざんまい 本店" }
                 ]
             },
-            { id: "shibuya", name: "SHIBUYA SKY", icon: "🏙️", tag: "高空夜景", desc: "目前最熱門的露天展望台，360度無死角美景。角落的玻璃扶手是網美必拍點。", tips: "日落時段最美，但需提早一個月搶票。" },
+            { id: "shibuya", name: "SHIBUYA SKY", icon: "🏙️", tag: "高空夜景", desc: "目前最熱門的露天展望台，360度無死角美景。角落的玻璃扶手是網美必拍點。", tips: "日落時段最美，但需提早四週搶票。" },
             { id: "shinjuku", name: "新宿 3D 貓", icon: "🐈", tag: "科技看板", desc: "新宿東口廣場對面大樓的 4K 彎曲螢幕。巨大的三花貓會探頭打招呼，非常逼真可愛。", tips: "每 15 分鐘會有一次特殊演出。" },
             { id: "shibuya_food", name: "澀谷 午餐 (5選)", icon: "🍣", tag: "美食", desc: "Day 5 午餐推薦：", tips: "吃飽直接搭電梯上 SHIBUYA SKY 最順路！",
                 foodSpots: [
@@ -406,7 +405,7 @@ html_code = """
                  }, 
                  { time: "11:50", title: "台場午餐", desc: "DiverCity 商場", icon: "🍔", location: "ダイバーシティ東京 プラザ", transport: { route: "台場站 → DiverCity", line: "步行", time: "5分" }, tips: "【台場 午餐5選】\\n1. 田中商店（博多長浜らーめん 田中商店，Tanaka Shoten）\\n2. 金子半之助（日本橋 天丼 金子半之助，Kaneko Hannosuke）\\n3. 傳說的斯塔丼屋（伝説のすた丼屋，Densetsu no Sutadon-ya）\\n4. 蘋果樹蛋包飯（ポムの樹，Pomme-no-ki）\\n5. 燒肉 平城苑（東京焼肉 平城苑，Heijoen）\\n💡 在 DiverCity 用餐，吃飽走到一樓廣場直接看 13:00 的鋼彈表演最順路！" }, 
                  { time: "13:00", title: "獨角獸鋼彈", desc: "變身秀", icon: "🤖", location: "実物大ユニコーンガンダム立像" }, 
-                 { time: "17:30", title: "teamLab", desc: "需預約", icon: "✨", location: "teamLab Planets TOKYO", transport: { route: "台場 → 新豐洲", line: "百合海鷗號 (ゆりかもめ)", time: "23分" }, hideMap: true,
+                 { time: "17:30", title: "teamLab", desc: "需購票", icon: "✨", location: "teamLab Planets TOKYO", transport: { route: "台場 → 新豐洲", line: "百合海鷗號 (ゆりかもめ)", time: "23分" }, hideMap: true,
                    stationGuide: {
                      name: "前往 teamLab", desc: "百合海鷗號直達",
                      tips: ["往豐洲方向"],
@@ -501,7 +500,7 @@ html_code = """
                    }
                  }, 
                  { time: "13:30", title: "澀谷午餐", desc: "魚米/美食街", icon: "🍽️", location: "渋谷スクランブルスクエア", transport: { route: "PARCO → 餐廳", line: "步行", time: "10分" }, tips: "【澀谷 飲食5選】\\n1. 魚米（魚べい，Uobei）\\n2. 鶴橋風月（鶴橋風月，Tsuruhashi Fugetsu）\\n3. 阿夫利（AFURI，Afuri）\\n4. 燒肉 牛角 渋谷店（牛角，Gyukaku）\\n5. 名代 豬排（名代 かつくら，Katsukura）\\n💡 吃飽直接搭電梯上 SHIBUYA SKY 最順路！" }, 
-                 { time: "15:00", title: "SHIBUYA SKY", desc: "需預約", icon: "🏙️", location: "SHIBUYA SKY", transport: { route: "餐廳 → 展望台", line: "步行", time: "5分" }, hideMap: true }, 
+                 { time: "15:00", title: "SHIBUYA SKY", desc: "需購票", icon: "🏙️", location: "SHIBUYA SKY", transport: { route: "餐廳 → 展望台", line: "步行", time: "5分" }, hideMap: true }, 
                  { time: "17:30", title: "新宿 3D貓", desc: "東口", icon: "🐈", location: "クロス新宿ビジョン", transport: { route: "渋谷 → 新宿", line: "JR 山手線", time: "7分" }, hideMap: true,
                    stationGuide: {
                      name: "前往新宿", desc: "JR 山手線動線",
@@ -540,155 +539,50 @@ html_code = """
         ];
 
         const ticketGuides = [
-            {
-                cat: "交通票券",
+            { 
+                cat: "🚄 交通票券", 
                 items: [
-                    {
-                        name: "京成 Skyliner",
-                        url: "https://www.keisei.co.jp/keisei/tetudou/skyliner/e-ticket/zht/",
-                        icon: "🚅",
-                        day: "Day 1 & Day 6",
-                        buySteps: [
-                            "前往京成電鐵官網 e-ticket 購票頁面（有繁體中文）",
-                            "選擇「去程」日期與班次（成田機場 → 京成上野），以及「回程」日期與班次",
-                            "選擇人數：大人 + 兒童（6~11歲為兒童票半價，未滿6歲免費不佔位）",
-                            "線上信用卡付款完成後，會收到確認 Email 附帶 QR Code",
-                            "全車對號座，線上買會比現場購票便宜"
-                        ],
-                        checkInSteps: [
-                            "抵達成田 T1 後前往 B1 鐵道樓層",
-                            "找到橘色的「京成電鐵 Skyliner」專用閘口",
-                            "手機出示 QR Code 掃描進站，前往對應月台搭車",
-                            "回程同理，於京成上野站掃碼進站即可"
-                        ]
-                    },
-                    {
-                        name: "JR 新幹線 (eki-net)",
-                        url: "https://www.eki-net.com/zh-CHT/jreast-train-reservation/Top/Index",
-                        icon: "🚄",
-                        day: "Day 4 輕井澤",
-                        buySteps: [
-                            "前往 JR 東日本 eki-net 購票網站（有繁體中文）",
-                            "註冊帳號後，選擇乘車日期、出發站（上野）、到達站（輕井澤）",
-                            "選擇車次與座位（建議選窗邊位讓小孩看風景）",
-                            "兒童票（6~11歲）系統會自動計算半價，未滿6歲免費不佔位",
-                            "線上信用卡付款，會收到預約確認信",
-                            "⚠️ 乘車日 1 個月前開放預訂，建議準時上線搶票"
-                        ],
-                        checkInSteps: [
-                            "出發當天前往 JR 上野站「中央改札」進站",
-                            "可使用護照在綠色自動取票機取出實體車票（或直接掃 QR Code 進站，依訂票方式而定）",
-                            "通過第二道「新幹線專用改札」，搭手扶梯下至 B3/B4 月台",
-                            "確認月台上的電子看板顯示你的車次，上車找到對應座位即可"
-                        ]
+                    { 
+                        name: "京成 Skyliner", 
+                        url: "https://www.keisei.co.jp/keisei/tetudou/skyliner/e-ticket/zht/", 
+                        tips: "Day 1 & Day 6 機場市區來回。建議出發前線上購買（官網或 Klook 等平台）較划算。",
+                        buyProcess: "線上購票完成後，信箱會收到專屬的 QR Code 兌換憑證。為保留行程彈性，不需事先在線上劃位，抵達機場或上野時再劃位即可。",
+                        checkinProcess: "準備搭車時，至成田機場 B1 或京成上野站，尋找有標示「Skyliner 售票機」的機器或直接前往人工櫃檯。掃描手機上的 QR Code 即可選擇班次劃位，並兌換出實體對號車票。進出車站閘門皆須將實體車票插入閘門機。"
+                    }, 
+                    { 
+                        name: "JR 北陸新幹線 (往輕井澤)", 
+                        url: "https://www.eki-net.com/zh-CHT/jreast-train-reservation/Top/Index", 
+                        tips: "Day 4 輕井澤一日遊。強烈建議乘車日「1個月前」開放時即上網預訂。",
+                        buyProcess: "於「JR-EAST Train Reservation (Eki-net)」官方網站註冊並預訂座位。線上刷卡付款後會取得預約編號與專屬 QR Code。",
+                        checkinProcess: "【實體票領取】當天發車前，前往 JR 上野站內，尋找有「護照讀取器」的新幹線指定席售票機。掃描 QR Code 或插入預約用信用卡，即可印出全家人的實體車票，持實體票通過新幹線專用閘門。\\n【e-ticket 免取票】若事先在預約網站上輸入並綁定大人的實體 Suica (西瓜卡) 卡號，當天可直接嗶卡進站（兒童票若無實體西瓜卡，建議全家人統一至售票機領取實體車票最單純）。"
                     }
-                ]
+                ] 
             },
-            {
-                cat: "景點門票",
+            { 
+                cat: "🎟️ 景點門票", 
                 items: [
-                    {
-                        name: "teamLab Planets",
-                        url: "https://planets.teamlab.art/tokyo/zh-hant/",
-                        icon: "✨",
-                        day: "Day 2 (17:30)",
-                        buySteps: [
-                            "前往 teamLab Planets 官網購票（有繁體中文），或透過 Klook / KKday 購買",
-                            "選擇入場日期與 30 分鐘入場時段（例如 17:00-17:30）",
-                            "選擇票種：成人（18歲↑）、國高中生、兒童（4~12歲）、3歲以下免費",
-                            "兒童票可線上購買，不需到現場",
-                            "信用卡付款後，會收到 Email 附 QR Code 電子票",
-                            "⚠️ 門票最早 2 個月前可購買，熱門時段常提前售罄，務必早買",
-                            "⚠️ 入場後不可再次入場，購票後不可退款"
-                        ],
-                        checkInSteps: [
-                            "搭乘百合海鷗號至「新豐洲站」，出站步行 1 分鐘即達",
-                            "在入口帳篷區確認目前開放入場的時段梯次",
-                            "手機出示 QR Code 掃碼入場",
-                            "入場後先脫鞋寄物（置物櫃免費），需赤腳體驗",
-                            "⚠️ 館內有水域，水深可達膝蓋，建議穿短褲或可捲起的褲子",
-                            "⚠️ 鏡面地板多，不建議穿裙子；可在現場免費借用短褲",
-                            "⚠️ 嬰兒車不可入場，需停在指定停放區"
-                        ]
+                    { 
+                        name: "SHIBUYA SKY 展望台", 
+                        url: "https://www.shibuya-scramble-square.com/sky/ticket/", 
+                        tips: "Day 5 行程。目前東京最熱門景點，務必於「4週前」一開放就搶票！",
+                        buyProcess: "【成人票/國高中生】必須事先於官網或售票平台購買指定日期與時間的線上門票。\\n【兒童票 (6-11歲小學生)】官方規定無法線上購買！請勿在網路上尋找兒童票。需於入場當日，由已持有線上門票的大人陪同，至 14 樓的實體售票櫃檯「現場購買」即可 (票價約 1,200 日圓，官方保障現場必定有票可買，不用擔心售完)。\\n【幼童票 (5歲以下學齡前)】免費入場，不需購票。",
+                        checkinProcess: "依預約時間抵達澀谷 SCRAMBLE SQUARE 14 樓。大人出示手機上的 QR Code 門票，並在櫃檯幫小學生結帳購買兒童票後，全家一同掃描閘門入場。入場前會經過專屬置物櫃區，需將包包、帽子、雨傘等物品放入置物櫃（需準備 100 日圓硬幣，使用後退還）。"
                     },
-                    {
-                        name: "東京晴空塔",
-                        url: "https://www.tokyo-skytree.jp/cn_t/ticket/",
-                        icon: "🗼",
-                        day: "Day 3 下午",
-                        buySteps: [
-                            "前往東京晴空塔官網購票頁面（有繁體中文）",
-                            "選擇入場日期與時段",
-                            "選擇票種與人數：成人、國高中生、小學生、幼兒（3~5歲）",
-                            "兒童票可線上購買",
-                            "信用卡付款後取得電子票券",
-                            "⚠️ 30 天前開放預約，假日很快售罄"
-                        ],
-                        checkInSteps: [
-                            "前往晴空塔 4F 入口處",
-                            "出示手機 QR Code 掃碼入場",
-                            "搭乘專用電梯至展望台"
-                        ]
+                    { 
+                        name: "teamLab Planets TOKYO", 
+                        url: "https://planets.teamlab.art/tokyo/zh-hant/", 
+                        tips: "Day 2 行程。採指定時段入場制，建議提前 1 個月於官網或售票平台購買。",
+                        buyProcess: "線上選擇日期與時段並刷卡付款。18歲以上為成人票，4-12 歲需購買兒童票，3 歲以下免費。購買完成後會收到專屬的 QR Code 電子票連結。",
+                        checkinProcess: "此展覽不需兌換實體票。於預約時段內抵達豐洲會場，將手機顯示的 QR Code 放在入口閘門感應器掃描即可直接入場。館內有多個涉水展區，需脫鞋赤腳體驗，入場後會先引導至置物櫃區，提供免費密碼置物櫃放置鞋子與隨身包包。"
                     },
-                    {
-                        name: "SHIBUYA SKY",
-                        url: "https://www.shibuya-scramble-square.com/sky/ticket/",
-                        icon: "🏙️",
-                        day: "Day 5 (15:00)",
-                        highlight: true,
-                        buySteps: [
-                            "前往 SHIBUYA SKY 官網、Klook 或 KKday 購票（皆有中文介面）",
-                            "選擇入場日期與時段（每 20 分鐘一個時段，如 15:00、15:20...）",
-                            "⚠️ 15:00 後入場票價較貴（可一次看日景+夕陽+夜景）",
-                            "⚠️ 網路僅販售成人票與國高中生票",
-                            "線上信用卡付款後取得 QR Code 電子票",
-                            "⚠️ 入場前 2 週的日本時間 00:00（台灣時間 23:00）開賣，務必準時搶票！"
-                        ],
-                        childTicketSteps: [
-                            "📌 兒童票（小學生及以下，含12歲小學生）無法線上購買，僅限現場窗口購票",
-                            "📌 票價：小學生（6~12歲）¥1,200 / 幼兒（3~5歲）¥700 / 未滿3歲免費",
-                            "📌 即使當日成人票已售罄，兒童票仍可在現場購買（不受完售影響）",
-                            "📌 購票地點：澀谷 Scramble Square 14 樓售票櫃檯",
-                            "📌 請在大人預約的入場時段，攜帶兒童本人前往 14 樓櫃檯購票",
-                            "📌 兒童須由持有有效門票的成人陪同入場"
-                        ],
-                        checkInSteps: [
-                            "搭地鐵至「澀谷站」，從 B6 出口出站",
-                            "在 1F 外面找到 SHIBUYA SKY 專用電梯（與 Scramble Square 購物中心分開）",
-                            "搭電梯至 14 樓入口",
-                            "👉 大人：直接出示手機 QR Code 掃碼入場",
-                            "👉 兒童：先到 14 樓售票櫃檯購買兒童票，再一起入場",
-                            "通過安檢後搭電梯直達 46 樓露天展望台",
-                            "⚠️ 隨身物品須寄放置物櫃（投 ¥100 硬幣，取物時退還）",
-                            "⚠️ 禁止攜帶：背包、帽子、圍巾、傘、自拍棒、腳架、食物飲料、嬰兒車",
-                            "⚠️ 禁止將兒童扛在肩上或抱著行走",
-                            "⚠️ 入場後無時間限制，但離場後不可再入場"
-                        ]
+                    { 
+                        name: "東京晴空塔 (Tokyo Skytree)", 
+                        url: "https://www.tokyo-skytree.jp/cn_t/ticket/", 
+                        tips: "Day 3 行程。提前線上購買「預售票」會比當日現場票便宜，也可節省排隊時間。",
+                        buyProcess: "最高可提前 30 天於官網或旅遊平台購買。分為「天望甲板(350m)」與「天望回廊(450m)」套票。5歲以下免費，6-11歲需購買兒童票。線上結帳完成後會獲得一組 QR Code 憑證。",
+                        checkinProcess: "抵達晴空塔後，搭乘商場電梯至 4 樓入口處，尋找藍色的「網路預約取票機 (Ticket Vending Machine)」。掃描手機上的 QR Code 後，機器會印出實體門票，持實體票感應閘門，搭乘專屬高速電梯上樓。"
                     }
-                ]
-            },
-            {
-                cat: "實用工具",
-                items: [
-                    {
-                        name: "壽司郎 App (Sushiro)",
-                        url: "https://www.akindo-sushiro.co.jp/app/",
-                        icon: "🍣",
-                        day: "Day 4 晚餐",
-                        buySteps: [
-                            "在手機 App Store 或 Google Play 搜尋「スシロー」下載官方 App",
-                            "開啟 App 後選擇要前往的店舖（例如「上野店」）",
-                            "點選「受付（報到）」抽取號碼牌",
-                            "App 會顯示目前等待組數與預估等待時間",
-                            "💡 可在新幹線回程車上先抽號碼牌，抵達時剛好輪到！"
-                        ],
-                        checkInSteps: [
-                            "到達店舖後，在入口觸控螢幕上確認到店",
-                            "或直接向店員出示 App 上的號碼牌",
-                            "等叫號後入座即可開始點餐"
-                        ]
-                    }
-                ]
+                ] 
             }
         ];
 
@@ -2146,92 +2040,58 @@ html_code = """
             );
         };
 
-        const BookingView = () => {
-            const [expandedItem, setExpandedItem] = useState(null);
-            const toggleItem = (key) => setExpandedItem(expandedItem === key ? null : key);
-
-            return (
-                <div className="h-full overflow-y-auto p-4 pb-24 space-y-6">
-                    <div className="text-center mb-4">
-                        <h2 className="text-xl font-bold text-gray-800">購票指南</h2>
-                        <p className="text-indigo-600 text-sm">購票流程 & 報到方式</p>
-                    </div>
-
-                    {ticketGuides.map((cat, i) => (
-                        <div key={i}>
-                            <h3 className="text-lg font-bold text-gray-700 mb-3 ml-1 flex items-center">
-                                <span className="w-1 h-5 bg-indigo-500 mr-2 rounded-full"></span>{cat.cat}
-                            </h3>
-                            <div className="space-y-4">
-                                {cat.items.map((item, j) => {
-                                    const key = `${i}-${j}`;
-                                    const isOpen = expandedItem === key;
-                                    return (
-                                        <div key={j} className={`bg-white border rounded-2xl shadow-sm overflow-hidden transition-all ${item.highlight ? 'border-amber-300 ring-2 ring-amber-100' : 'border-gray-100'}`}>
-                                            <button onClick={() => toggleItem(key)} className="w-full p-4 text-left flex items-center justify-between">
-                                                <div className="flex items-center gap-3 flex-1 min-w-0">
-                                                    <span className="text-2xl flex-shrink-0">{item.icon}</span>
-                                                    <div className="min-w-0">
-                                                        <h4 className="font-bold text-gray-800 text-sm">{item.name}</h4>
-                                                        <p className="text-xs text-indigo-600 mt-0.5">{item.day}</p>
-                                                    </div>
-                                                </div>
-                                                <svg className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-                                            </button>
-
-                                            {isOpen && (
-                                                <div className="px-4 pb-4 space-y-3">
-                                                    <div className="bg-indigo-50 rounded-xl p-3">
-                                                        <h5 className="font-bold text-indigo-800 text-xs mb-2 flex items-center gap-1">🛒 購票流程</h5>
-                                                        <div className="space-y-2">
-                                                            {item.buySteps.map((step, s) => (
-                                                                <div key={s} className="flex gap-2 text-xs text-gray-700 leading-relaxed">
-                                                                    <span className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 ${step.startsWith('⚠️') || step.startsWith('💡') ? 'bg-transparent' : 'bg-indigo-200 text-indigo-800'}`}>
-                                                                        {step.startsWith('⚠️') || step.startsWith('💡') ? '' : s + 1}
-                                                                    </span>
-                                                                    <span className="flex-1">{step}</span>
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-
-                                                    {item.childTicketSteps && (
-                                                        <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-3">
-                                                            <h5 className="font-bold text-amber-800 text-xs mb-2 flex items-center gap-1">👶 兒童票購買（重要！）</h5>
-                                                            <div className="space-y-2">
-                                                                {item.childTicketSteps.map((step, s) => (
-                                                                    <div key={s} className="text-xs text-gray-700 leading-relaxed">{step}</div>
-                                                                ))}
-                                                            </div>
-                                                        </div>
-                                                    )}
-
-                                                    <div className="bg-green-50 rounded-xl p-3">
-                                                        <h5 className="font-bold text-green-800 text-xs mb-2 flex items-center gap-1">✅ 報到 / 入場方式</h5>
-                                                        <div className="space-y-2">
-                                                            {item.checkInSteps.map((step, s) => (
-                                                                <div key={s} className="flex gap-2 text-xs text-gray-700 leading-relaxed">
-                                                                    <span className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 ${step.startsWith('⚠️') || step.startsWith('👉') ? 'bg-transparent' : 'bg-green-200 text-green-800'}`}>
-                                                                        {step.startsWith('⚠️') || step.startsWith('👉') ? '' : s + 1}
-                                                                    </span>
-                                                                    <span className="flex-1">{step}</span>
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-
-                                                    <a href={item.url} target="_blank" className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white text-center text-sm font-bold py-2.5 rounded-xl no-underline">前往購票</a>
-                                                </div>
-                                            )}
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                    ))}
+        const TicketGuideView = () => (
+            <div className="h-full overflow-y-auto p-4 pb-24 space-y-6">
+                <div className="text-center mb-4">
+                    <h2 className="text-xl font-bold text-gray-800">購票指南</h2>
+                    <p className="text-indigo-600 text-sm">詳細購票與報到流程</p>
                 </div>
-            );
-        };
+                {ticketGuides.map((cat, i) => (
+                    <div key={i}>
+                        <h3 className="text-lg font-bold text-gray-700 mb-3 ml-1 flex items-center">
+                            <span className="w-1 h-5 bg-indigo-500 mr-2 rounded-full"></span>{cat.cat}
+                        </h3>
+                        <div className="space-y-4">
+                            {cat.items.map((item, j) => (
+                                <div key={j} className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm relative overflow-hidden">
+                                    <div className="flex justify-between items-center mb-2">
+                                        <h4 className="font-bold text-gray-800 text-[17px]">{item.name}</h4>
+                                        <a href={item.url} target="_blank" className="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-bold py-1.5 px-3 rounded-lg no-underline transition-colors border border-indigo-100">
+                                            前往官網
+                                        </a>
+                                    </div>
+                                    <div className="bg-yellow-50 border border-yellow-100 rounded-lg p-2.5 mb-3">
+                                        <p className="text-sm font-bold text-yellow-800 m-0">💡 {item.tips}</p>
+                                    </div>
+                                    
+                                    <div className="space-y-3 mt-1">
+                                        <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-3">
+                                            <div className="flex items-center gap-1.5 mb-1.5">
+                                                <span className="text-blue-600">🛒</span>
+                                                <h5 className="font-bold text-blue-800 text-sm m-0">購票流程</h5>
+                                            </div>
+                                            <p className="text-[13px] text-gray-700 m-0 leading-relaxed whitespace-pre-line">
+                                                {item.buyProcess}
+                                            </p>
+                                        </div>
+                                        
+                                        <div className="bg-emerald-50/50 border border-emerald-100 rounded-xl p-3">
+                                            <div className="flex items-center gap-1.5 mb-1.5">
+                                                <span className="text-emerald-600">🎟️</span>
+                                                <h5 className="font-bold text-emerald-800 text-sm m-0">報到與入場流程</h5>
+                                            </div>
+                                            <p className="text-[13px] text-gray-700 m-0 leading-relaxed whitespace-pre-line">
+                                                {item.checkinProcess}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        );
 
         const App = () => {
             const [view, setView] = useState('list');
@@ -2259,14 +2119,14 @@ html_code = """
                         {view === 'list' && <ItineraryView />}
                         {view === 'map' && <MapView />}
                         {view === 'attraction' && <AttractionView />}
-                        {view === 'booking' && <BookingView />}
+                        {view === 'ticket' && <TicketGuideView />}
                     </div>
 
                     <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 pl-4 pr-20 pt-2 pb-8 safe-bottom flex justify-start gap-5 items-center z-30 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
                         <button onClick={() => setView('list')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[60px] transition-all ${view === 'list' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.list}<span className="text-[11px] font-bold">行程</span></button>
                         <button onClick={() => setView('map')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[60px] transition-all ${view === 'map' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.map}<span className="text-[11px] font-bold">地圖</span></button>
                         <button onClick={() => setView('attraction')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[60px] transition-all ${view === 'attraction' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.attraction}<span className="text-[11px] font-bold">百科</span></button>
-                        <button onClick={() => setView('booking')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[60px] transition-all ${view === 'booking' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.booking}<span className="text-[11px] font-bold">購票</span></button>
+                        <button onClick={() => setView('ticket')} className={`flex flex-col items-center gap-1 p-1 rounded-xl min-w-[60px] transition-all ${view === 'ticket' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-400'}`}>{icons.booking}<span className="text-[11px] font-bold">購票</span></button>
                     </div>
                 </div>
             );
