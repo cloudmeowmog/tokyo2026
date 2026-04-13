@@ -694,6 +694,30 @@ html_code = """
 
         const travelInfos = [
             { id: "narita", name: "成田機場 第1航廈", icon: "✈️", tag: "機場", desc: "本次搭乘長榮航空，起降皆位於 T1 南翼 (South Wing)。", tips: "【入境第一站】領完行李後前往 B1 鐵道樓層，可購買兒童版西瓜卡並搭乘 Skyliner 前往市區。" },
+            { id: "arrival", name: "入境流程（抵達日本）", icon: "🛬", tag: "Day 1 入關",
+              desc: "抵達成田 T1 後，依照以下步驟入境日本：",
+              steps: [
+                  { step: "1", title: "下飛機 → 跟隨「到着（Arrival）」指標", desc: "長榮航空停靠南翼 (South Wing)，下機後沿空橋走，跟隨黃色「到着」指標前進。" },
+                  { step: "2", title: "入境審查（Immigration）", desc: "排隊至「外國人（Foreign Passport）」通道。需出示護照，進行指紋掃描與臉部拍照。6歲以上兒童需獨立完成（可由家長陪同站旁邊）。", important: "事先在手機完成 Visit Japan Web 填寫（入境卡＋海關申報），可出示 QR Code 加速通關。" },
+                  { step: "3", title: "領取行李（Baggage Claim）", desc: "通過入境審查後，前往行李轉盤區。螢幕上尋找航班編號（BR196）對應的轉盤號碼，等待取行李。" },
+                  { step: "4", title: "海關檢查（Tax-free）", desc: "拿好行李後走向海關出口。出示護照讓海關人員掃描（Visit Japan Web 已填寫者，出示 QR Code 即可快速通過）。通常觀光客走綠色通道（無申報物品）。", important: "攜帶超過日幣 100 萬元現金、或攜帶菸酒超過免稅額度需走紅色通道申報。" },
+                  { step: "5", title: "抵達入境大廳（1F）", desc: "出海關後即進入 1F 入境大廳。此時你已正式入境日本！" },
+                  { step: "6", title: "前往 B1 鐵道樓層", desc: "跟隨「鉄道（Railway）」指標搭手扶梯下至 B1。先購買兒童版西瓜卡（出示小孩護照），再前往京成電鐵櫃檯搭 Skyliner。" }
+              ],
+              tips: "💡 Visit Japan Web 可在出發前 2 週於手機填寫，包含「入境審查」與「海關申報」兩項，填完後存好 QR Code 截圖以防現場沒網路。6歲以下幼兒免按指紋。"
+            },
+            { id: "departure", name: "出境流程（返回台灣）", icon: "🛫", tag: "Day 6 出關",
+              desc: "Day 6 搭乘 Skyliner 抵達成田 T1 後，依照以下步驟出境：",
+              steps: [
+                  { step: "1", title: "抵達成田 T1 → 前往南翼出發大廳（3F）", desc: "搭 Skyliner 抵達後，跟隨「出発（Departure）」指標搭手扶梯上至 3F 南翼出發大廳。" },
+                  { step: "2", title: "報到 & 行李託運（Check-in）", desc: "尋找長榮航空（EVA Air）報到櫃檯，出示護照辦理登機手續並託運行李。若已完成網路報到（48小時前可辦），可走「行李託運專用（Baggage Drop）」櫃檯節省時間。", important: "行動電源禁止託運，務必放隨身行李。超過 100ml 的液體（醬料、飲料等伴手禮）務必放託運！" },
+                  { step: "3", title: "安全檢查（Security Check）", desc: "將隨身行李放上 X 光機輸送帶。外套、皮帶須脫下，筆電與平板需取出單獨過檢。液體須裝在 20×20cm 透明夾鏈袋內（每瓶 100ml 以下）。嬰兒車需折疊過 X 光。", important: "兒童不需脫鞋，但背包和水壺需放上輸送帶。" },
+                  { step: "4", title: "出境審查（Immigration）", desc: "排隊至護照查驗通道，出示護照與登機證。日本現在大部分機場都有自動通關閘門，持台灣護照可使用。通過後護照不會蓋出境章（若需要可向旁邊的人工櫃檯請求補蓋）。" },
+                  { step: "5", title: "免稅購物區 & 登機門", desc: "通過出境審查後即進入免稅區（FaSoLa 免稅店等）。在此購買的液態商品（酒類、飲料等）可直接手提上機，不受 100ml 限制。逛完後前往登機門候機。", important: "請留意登機門編號（登機證上標示），南翼登機門較遠，建議預留 15 分鐘步行時間。" },
+                  { step: "6", title: "登機", desc: "聽到廣播叫號後，依座位區域排隊登機。攜帶幼兒的家庭通常可優先登機（Priority Boarding），可主動詢問地勤人員。" }
+              ],
+              tips: "💡 建議在 Skyliner 抵達機場後先去報到託運行李（輕裝上陣），再去 4F 美食街吃最後一頓，最後才過安檢出境。這樣逛免稅店的時間也比較充裕。"
+            },
             { id: "keisei_ueno", name: "京成上野站", icon: "🚄", tag: "車站/行李", desc: "Skyliner 起訖站。距離住宿飯店步行約 10 分鐘，站內設有大量置物櫃。", tips: "【行李寄放】Day 6 退房後，強烈建議將大型行李寄放於此站剪票口外的置物櫃 (可用 Suica 扣款)。寄放後可直接步行去對面逛阿美橫丁，時間到再回來搭 Skyliner 直達機場。" },
             { id: "jr_ueno", name: "JR 上野站", icon: "🚉", tag: "車站/新幹線", desc: "Day 4 搭乘新幹線前往輕井澤的出發站。站體龐大，擁有多個出入口。", tips: "【新幹線搭乘】入口位於站內深處，請務必認明一樓最大的「中央改札」進站。直走通過第二道「新幹線專用改札」後，搭乘手扶梯下樓至 B3/B4 月台搭車。" },
             { id: "shinjuku_sta", name: "JR 新宿站", icon: "🏢", tag: "車站/迷宮", desc: "號稱日本第一大迷宮，擁有眾多私鐵與出口，容易迷路。", tips: "【前往東口】Day 5 前往 3D 貓與歌舞伎町哥吉拉，下車後請務必尋找黃色招牌「東改札 (East Exit)」出站，到達地面廣場即可抵達，切勿亂走其他出口。" }
@@ -1530,6 +1554,20 @@ html_code = """
                                             </div>
                                         </div>
                                         {item.desc && <p className="text-sm text-gray-600 mt-2 whitespace-pre-line">{item.desc}</p>}
+                                        {item.steps && (
+                                            <div className="mt-2 space-y-3">
+                                                {item.steps.map((s, si) => (
+                                                    <div key={si} className="flex gap-3">
+                                                        <div className="flex-shrink-0 w-7 h-7 rounded-full bg-teal-600 text-white flex items-center justify-center text-xs font-bold mt-0.5">{s.step}</div>
+                                                        <div className="flex-1">
+                                                            <div className="font-bold text-gray-800 text-sm">{s.title}</div>
+                                                            <div className="text-xs text-gray-600 mt-1 leading-relaxed">{s.desc}</div>
+                                                            {s.important && <div className="text-xs text-red-700 bg-red-50 border border-red-100 rounded-lg p-2 mt-1.5 leading-relaxed">⚠️ {s.important}</div>}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
                                         {item.tips && <div className="bg-teal-50 text-teal-800 text-[13px] p-2.5 rounded-lg border border-teal-100 mt-2 leading-relaxed font-medium"><span className="font-bold">💡 實用提示：</span>{item.tips}</div>}
                                     </div>
                                 ))}
