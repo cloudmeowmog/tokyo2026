@@ -342,7 +342,7 @@ html_code = """
 
         const itinerary = [
              { day: 1, date: "4/17 (五)", title: "抵達與鈴芽的起點", events: [ 
-                 { time: "13:25", title: "抵達成田機場", desc: "T1 (長榮)", icon: "✈️", location: "成田国際空港 第1ターミナル", hideRoute: true, tips: "抵達 T1 後，先前往 B1 辦理兒童版西瓜卡，再到 Skyliner 售票機兌換車票劃位。",
+                 { time: "13:25", title: "抵達成田機場", desc: "T1 (長榮)", icon: "✈️", location: "成田国際空港 第1ターミナル", hideRoute: true, tips: "抵達 T1 後，先前往 B1 辦理兒童版西瓜卡與領取 Skyliner 車票。",
                    stationGuide: {
                      name: "兒童版交通卡購買", desc: "機場實體卡申辦攻略",
                      tips: ["限 6-12 歲兒童購買 (半價)", "無法綁定手機，需持實體卡", "必須出示小孩本人護照"],
@@ -351,9 +351,9 @@ html_code = """
                  }, 
                  { time: "14:00", title: "往 Skyliner 乘車處", desc: "成田機場 T1 B1", icon: "🚶", location: "成田空港駅（第1旅客ターミナル）", transport: { route: "入境大廳 → B1 京成電鐵", line: "步行", time: "10分" },
                    stationGuide: {
-                     name: "成田機場 T1 車站", desc: "Skyliner 兌換取票",
-                     tips: ["長榮位於南翼 (South Wing)", "Skyliner 全車對號座，須先兌換實體票"],
-                     routes: ["入境大廳位於 1F，領完行李後尋找「鐵道」指標", "搭乘手扶梯下樓至 B1", "找到「SKYLINER & KEISEI INFORMATION CENTER」服務中心或旁邊的自動售票機", "在售票機選「二維碼兌票」→ 掃描 Klook QR Code → 選班次與座位 → 取票", "拿到實體車票後投入橘色閘門進站，前往 4 或 5 號月台", "上車後行李放置於車廂前後的行李架"]
+                     name: "成田機場 T1 車站", desc: "Skyliner 乘車指引",
+                     tips: ["長榮位於南翼 (South Wing)", "Skyliner 全車對號座"],
+                     routes: ["入境大廳位於 1F，領完行李後尋找「鐵道」指標", "搭乘手扶梯下樓至 B1", "尋找藍色櫃台「KEISEI (京成電鐵)」購票", "通過橘色剪票口，前往 4 或 5 號月台", "上車後行李放置於車廂前後的行李架"]
                    }
                  }, 
                  { time: "14:30", title: "搭乘 Skyliner", desc: "往京成上野站", icon: "🚅", location: "京成上野駅", transport: { route: "成田機場 → 京成上野", line: "京成 Skyliner", time: "41分" }, hideMap: true }, 
@@ -530,8 +530,8 @@ html_code = """
                  { time: "11:20", title: "往機場", desc: "搭 Skyliner", icon: "🚅", location: "京成上野駅", transport: { route: "京成上野 → 成田T1", line: "京成 Skyliner", time: "41分" }, hideMap: true,
                    stationGuide: {
                      name: "前往成田機場", desc: "搭乘 Skyliner",
-                     tips: ["先去置物櫃取回行李！", "全車對號入座，須先兌換實體車票"],
-                     routes: ["取回行李後，到京成上野站的自動售票機或服務櫃檯", "在售票機選「二維碼兌票」→ 掃描 Klook 回程 QR Code → 選班次與座位 → 取票", "拿到實體車票後投入閘門進站", "搭乘手扶梯前往地下月台，確認車次與座位", "約 41 分鐘直達「成田機場 T1」站"]
+                     tips: ["先去置物櫃取回行李！", "全車對號入座"],
+                     routes: ["取回行李後，使用事先買好的車票或兌換券進入閘口", "搭乘手扶梯前往地下月台，確認車次與座位", "約 41 分鐘直達「成田機場 T1」站"]
                    }
                  }, 
                  { time: "12:25", title: "抵達機場", desc: "成田 T1 (南翼)", icon: "✈️", location: "成田国際空港 第1ターミナル", hideRoute: true, tips: "【成田 T1 必吃美食 5選】\\n1. 中華蕎麥 富田（中華蕎麦 とみ田，Tomita）\\n2. 八代目儀兵衛（八代目儀兵衛，Hachidaime Gihey）\\n3. 高湯茶泡飯 燕（だし茶漬け えん，En）\\n4. 杵屋麥丸（杵屋麦丸，Kineya Mugimaru）\\n5. 壽司 京辰（寿司 京辰，Kyotatsu）\\n\\n【必買伴手禮 5選】\\n1. 東京ばな奈 (推薦於 FaSoLa TAX FREE 購買)\\n2. PRESS BUTTER SAND (推薦於 FaSoLa 購買)\\n3. NY PERFECT CHEESE (推薦於 FaSoLa 購買)\\n4. ROYCE' 生巧克力 (機場免稅店皆有)\\n5. TRAVELER'S FACTORY (推薦於 第一航廈 4F 專賣店 購買)" }, 
@@ -544,24 +544,22 @@ html_code = """
                 cat: "交通票券",
                 items: [
                     {
-                        name: "京成 Skyliner（Klook 兌換）",
-                        url: "https://www.klook.com/zh-TW/blog/skyliner/",
+                        name: "京成 Skyliner",
+                        url: "https://www.keisei.co.jp/keisei/tetudou/skyliner/e-ticket/zht/",
                         icon: "🚅",
                         day: "Day 1 & Day 6",
                         buySteps: [
-                            "已在 Klook 購買完成，會收到兩組 QR Code 憑證（去程＋回程各一組）",
-                            "⚠️ Klook 的 QR Code 不能直接搭車！必須到現場兌換實體車票並劃位",
-                            "請事先將兩組 QR Code 截圖存在手機相簿，避免現場沒網路",
-                            "兌換期限為購買後 180 天內，不用擔心過期"
+                            "前往京成電鐵官網 e-ticket 購票頁面（有繁體中文）",
+                            "選擇「去程」日期與班次（成田機場 → 京成上野），以及「回程」日期與班次",
+                            "選擇人數：大人 + 兒童（6~11歲為兒童票半價，未滿6歲免費不佔位）",
+                            "線上信用卡付款完成後，會收到確認 Email 附帶 QR Code",
+                            "全車對號座，線上買會比現場購票便宜"
                         ],
                         checkInSteps: [
-                            "【去程｜成田機場 B1】下至 B1 鐵道樓層，找到藍色「SKYLINER & KEISEI INFORMATION CENTER」服務中心（全家便利商店旁）",
-                            "👉 方法 A（推薦）：到服務中心旁的「自動售票機」→ 右上角切換「中文」→ 點選「二維碼兌票」→ 掃描 Klook 去程 QR Code → 選擇班次時間 → 選擇座位 → 出票",
-                            "👉 方法 B：排隊至服務中心人工櫃檯，出示 QR Code 給服務人員掃描，告知想搭的班次即可",
-                            "⚠️ 拿到實體車票後，將車票投入橘色閘門進站，前往 4 或 5 號月台搭車",
-                            "⚠️ 服務中心營業時間 07:00~21:00，航班 13:25 抵達時間沒問題",
-                            "【回程｜京成上野站】Day 6 搭車前，到京成上野站的自動售票機或服務櫃檯，用回程 QR Code 同樣方式兌換並劃位",
-                            "💡 建議 4 人座位選同一車廂相鄰座位，自動售票機可自行選位，人工櫃檯也可要求坐一起"
+                            "抵達成田 T1 後前往 B1 鐵道樓層",
+                            "找到橘色的「京成電鐵 Skyliner」專用閘口",
+                            "手機出示 QR Code 掃描進站，前往對應月台搭車",
+                            "回程同理，於京成上野站掃碼進站即可"
                         ]
                     },
                     {
@@ -695,7 +693,7 @@ html_code = """
         ];
 
         const travelInfos = [
-            { id: "narita", name: "成田機場 第1航廈", icon: "✈️", tag: "機場", desc: "本次搭乘長榮航空，起降皆位於 T1 南翼 (South Wing)。", tips: "【入境第一站】領完行李後前往 B1 鐵道樓層，先購買兒童版西瓜卡，再到 Skyliner 售票機用 Klook QR Code 兌換實體車票並劃位。" },
+            { id: "narita", name: "成田機場 第1航廈", icon: "✈️", tag: "機場", desc: "本次搭乘長榮航空，起降皆位於 T1 南翼 (South Wing)。", tips: "【入境第一站】領完行李後前往 B1 鐵道樓層，可購買兒童版西瓜卡並搭乘 Skyliner 前往市區。" },
             { id: "arrival", name: "入境流程（抵達日本）", icon: "🛬", tag: "Day 1 入關",
               desc: "抵達成田 T1 後，依照以下步驟入境日本：",
               steps: [
