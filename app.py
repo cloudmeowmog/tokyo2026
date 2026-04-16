@@ -936,21 +936,24 @@ html_code = """
             return (
                 <div className="flex flex-col h-full bg-gray-50">
                     <div className="sticky top-0 z-10 bg-white/95 backdrop-blur shadow-sm p-2 flex gap-2 flex-shrink-0 overflow-x-auto hide-scrollbar">
-                        {itinerary.map((d, i) => (
-                            <button key={i} onClick={() => setActiveDay(i)} 
-                                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${
-                                    activeDay === i
-                                        ? d.isRainDay ? 'bg-sky-500 text-white shadow scale-105' : 'bg-indigo-600 text-white shadow scale-105'
-                                        : d.isRainDay ? 'bg-sky-50 text-sky-500 border border-sky-200' : 'bg-gray-100 text-gray-500'
-                                }`}>
-                                {d.isRainDay ? `4 ☔` : `Day ${d.day}`}
-                            </button>
-                        ))}
+                        {itinerary.map((d, i) => {
+                            const isActive = activeDay === i;
+                            const btnClass = isActive
+                                ? (d.isRainDay ? 'bg-sky-500 text-white shadow scale-105' : 'bg-indigo-600 text-white shadow scale-105')
+                                : (d.isRainDay ? 'bg-sky-50 text-sky-500 border border-sky-200' : 'bg-gray-100 text-gray-500');
+                            const btnLabel = d.isRainDay ? '4 ☔' : ('Day ' + d.day);
+                            return (
+                                <button key={i} onClick={() => setActiveDay(i)}
+                                    className={'flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ' + btnClass}>
+                                    {btnLabel}
+                                </button>
+                            );
+                        })}
                     </div>
                     <div className="flex-1 overflow-y-auto p-4 pb-24">
                         <div className="text-center mb-4">
                             <h2 className="text-xl font-bold text-gray-800">{itinerary[activeDay].date}</h2>
-                            <p className={`font-medium ${itinerary[activeDay].isRainDay ? 'text-sky-500' : 'text-indigo-600'}`}>{itinerary[activeDay].title}</p>
+                            <p className={itinerary[activeDay].isRainDay ? 'font-medium text-sky-500' : 'font-medium text-indigo-600'}>{itinerary[activeDay].title}</p>
                             {itinerary[activeDay].isRainDay && (
                                 <div className="mt-2 inline-block bg-sky-50 border border-sky-200 text-sky-700 text-xs font-bold px-3 py-1 rounded-full">
                                     ☔ 第四天雨天備案 — 全程室內，不怕下雨！
