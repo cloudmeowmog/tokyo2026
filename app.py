@@ -1144,7 +1144,7 @@ html_code = """
                 { date: '2026-04-17', day: 'Day 1', title: '抵達東京', area: '上野' },
                 { date: '2026-04-18', day: 'Day 2', title: '台場&豐洲', area: '台場' },
                 { date: '2026-04-19', day: 'Day 3', title: '淺草&晴空塔', area: '淺草' },
-                { date: '2026-04-20', day: 'Day 4', title: '輕井澤', area: '輕井澤' },
+                { date: '2026-04-20', day: 'Day 4', title: '上野・日本橋・銀座', area: '東京' },
                 { date: '2026-04-21', day: 'Day 5', title: '築地&澀谷&新宿', area: '澀谷' },
                 { date: '2026-04-22', day: 'Day 6', title: '返台', area: '成田' }
             ];
@@ -1155,14 +1155,12 @@ html_code = """
                 const fetchWeather = async () => {
                     try {
                         setLoading(true);
-                        // 東京 (35.6762, 139.6503) 和輕井澤 (36.3486, 138.5970)
-                        const [tokyoRes, karuizawaRes] = await Promise.all([
-                            fetch('https://api.open-meteo.com/v1/forecast?latitude=35.6762&longitude=139.6503&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,windspeed_10m_max&timezone=Asia/Tokyo&forecast_days=16'),
-                            fetch('https://api.open-meteo.com/v1/forecast?latitude=36.3486&longitude=138.5970&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,windspeed_10m_max&timezone=Asia/Tokyo&forecast_days=16')
+                        // 東京 (35.6762, 139.6503) — 上野/日本橋/銀座皆在東京市區
+                        const [tokyoRes] = await Promise.all([
+                            fetch('https://api.open-meteo.com/v1/forecast?latitude=35.6762&longitude=139.6503&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,windspeed_10m_max&timezone=Asia/Tokyo&forecast_days=16')
                         ]);
                         const tokyo = await tokyoRes.json();
-                        const karuizawa = await karuizawaRes.json();
-                        setWeather({ tokyo, karuizawa });
+                        setWeather({ tokyo });
                     } catch (err) {
                         setError('無法取得天氣資料，請確認網路連線');
                     } finally {
@@ -1222,7 +1220,7 @@ html_code = """
                 <>
                     <div className="text-center mb-5">
                         <h2 className="text-xl font-bold text-gray-800">旅程天氣</h2>
-                        <p className="text-sky-600 text-sm">4/17 ~ 4/22 東京 & 輕井澤</p>
+                        <p className="text-sky-600 text-sm">4/17 ~ 4/22 東京全程</p>
                     </div>
 
                     {!hasTripData && (
@@ -1235,9 +1233,7 @@ html_code = """
                     {hasTripData ? (
                         <div className="space-y-3">
                             {TRIP_DAYS.map((td, idx) => {
-                                const isKaruizawa = td.date === '2026-04-20';
-                                const src = isKaruizawa ? weather.karuizawa : weather.tokyo;
-                                const w = getDayWeather(src, td.date);
+                                const w = getDayWeather(weather.tokyo, td.date);
                                 if (!w) return (
                                     <div key={idx} className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm opacity-60">
                                         <div className="flex items-center gap-3">
@@ -1259,7 +1255,7 @@ html_code = """
                                                 <span className="bg-sky-100 text-sky-700 text-xs font-bold px-2 py-1 rounded">{td.day}</span>
                                                 <span className="text-gray-700 text-sm font-bold">{td.date.slice(5)} ({weekday})</span>
                                             </div>
-                                            <span className="text-gray-400 text-xs">{isKaruizawa ? '📍 輕井澤' : '📍 東京'}</span>
+                                            <span className="text-gray-400 text-xs">📍 東京</span>
                                         </div>
                                         <div className="flex items-center gap-4 mb-3">
                                             <div className="text-5xl leading-none">{wmo.icon}</div>
