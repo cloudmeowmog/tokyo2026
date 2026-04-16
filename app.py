@@ -484,6 +484,60 @@ html_code = """
                    }
                  } 
              ] },
+             { day: 4, date: "4/20 (一) ☔ 雨天備案", title: "上野 → 日本橋 → 銀座", isRainDay: true, events: [
+                 { time: "09:00", title: "上野 恩賜公園 or 科博館", desc: "二選一・雨天晴天皆宜", icon: "🌿", location: "上野恩賜公園", hideMap: true,
+                   tips: "【上野 早上二選一】\n\n🌸 選項 A｜上野恩賜公園（免費・輕鬆散步）\n📍 飯店步行 5 分鐘即達，不用搭車\n• 廣大的公園草地，適合讓小孩先放電\n• 公園內有不忍池，可以餵鴿子看鴨子\n• 雨天建議沿有頂廊道逛「上野動物園正門前商店街」\n• 💡 若天氣尚可，可考慮順道繞上野動物園外拍照（不需入場）\n\n🔬 選項 B｜國立科學博物館（建議預購票・室內全天候）\n📍 上野公園內步行 10 分鐘\n• 恐龍骨架、宇宙太空、地球科學，展品豐富孩子超愛\n• 建議預先上官網購票，避免現場排隊\n• 門票：大人 ¥630 / 高中生以下免費\n• 💡 雨天首推！室內空間大，逛 2 小時不無聊"
+                 },
+                 { time: "11:00", title: "往日本橋", desc: "搭銀座線出發", icon: "🚇", location: "上野駅", transport: { route: "上野 → 日本橋", line: "東京地鐵銀座線 直達", time: "8分" }, hideMap: true,
+                   stationGuide: {
+                     name: "前往日本橋", desc: "銀座線直達，免轉乘",
+                     tips: ["從上野站搭乘銀座線，約 8 分鐘直達日本橋", "日本橋站 B2 出口直結高島屋，不用淋雨"],
+                     routes: ["從飯店步行約 10 分鐘至「上野站」（或直接從公園 / 科博館步行至上野站）", "依循指標前往地下鐵「銀座線(黃色)」", "搭乘往澀谷方向列車，約 8 分鐘直達「日本橋站」下車", "跟隨「高島屋(Takashimaya)」指標前往 B2 直結出口，不出站不淋雨"]
+                   }
+                 },
+                 { time: "11:30", title: "日本橋午餐", desc: "親子推薦餐廳", icon: "🍱", location: "日本橋高島屋 S.C.", tips: "【日本橋 親子飲食 4選】\n1. 100本のスプーン（100支湯匙）− 高島屋 B1：大人菜色皆有兒童半份，點餐有趣、環境輕鬆\n2. つばめグリル 日本橋店（燕子西餐）− 高島屋 B1：漢堡排與奶油燉菜，兒童餐豐富\n3. 神田まつや（神田松屋）− 步行 5 分：百年老店蕎麥麵，口味清淡適合小孩\n4. 磯丸水産 日本橋店 − 步行 3 分：自助烤海鮮，小孩體驗感十足\n💡 下雨天室內餐廳容易滿，建議 11:30 準時入座搶先！" },
+                 { time: "13:00", title: "寶可夢中心 Tokyo DX", desc: "逛街・扭蛋・Pokémon Gym", icon: "🐾", location: "ポケモンセンタートウキョーDX",
+                   mapLinks: [
+                     { label: "📍 Google 地圖", url: "https://www.google.com/maps/search/?api=1&query=Pokemon+Center+Tokyo+DX+Nihonbashi" }
+                   ],
+                   tips: "【寶可夢中心 Tokyo DX 攻略】\n📍 日本橋高島屋 S.C. 東館 5F（午餐後直接搭電梯上去！）\n🐾 東京規模最大的寶可夢中心，限定商品最齊全\n🎮 旁邊設有「Pokémon Gym」−−備有大型街機台，小孩玩瘋\n🎰 扭蛋機種類最多，建議準備充足日幣零錢（¥100、¥200 硬幣）\n🛍️ 記得找「東京限定」系列商品，其他分店買不到\n💡 午後人潮比早上多，但週一人流相對較少，仍建議預留 1.5 小時以上",
+                   stationGuide: {
+                     name: "寶可夢中心 Tokyo DX", desc: "日本橋高島屋東館 5F",
+                     tips: ["午餐後直接在高島屋內搭電梯至 5F，無需出戶外", "Pokémon Gym 在寶可夢中心正旁邊，可一起逛"],
+                     routes: ["在高島屋 B1 或 1F 用餐後，直接搭乘館內電梯至 5F", "出電梯左轉，即可看見寶可夢中心 Tokyo DX 的大型入口招牌", "Pokémon Gym 入口在寶可夢中心旁邊，需另行進入"]
+                   }
+                 },
+                 { time: "15:00", title: "前往銀座", desc: "步行 or 地鐵一站", icon: "🏙️", location: "銀座", transport: { route: "日本橋 → 銀座", line: "步行 or 銀座線一站", time: "5～10分" }, hideMap: true,
+                   stationGuide: {
+                     name: "前往銀座", desc: "步行或地鐵皆可",
+                     tips: ["步行沿中央通往南約 10 分鐘即到", "雨天可搭銀座線一站至「銀座站」（A3 出口就是中央通）"],
+                     routes: ["【步行】從高島屋正門出發，沿「中央通」往南直走約 10 分鐘抵達銀座四丁目交叉口", "【地鐵】從日本橋站搭乘「銀座線(黃色)」往澀谷方向，一站即達「銀座站」，A3 出口出站即是中央通"]
+                   }
+                 },
+                 { time: "15:30", title: "GINZA SIX", desc: "逛街・美食・伴手禮", icon: "🏬", location: "GINZA SIX",
+                   mapLinks: [
+                     { label: "📍 Google 地圖", url: "https://www.google.com/maps/search/?api=1&query=GINZA+SIX+Tokyo" }
+                   ],
+                   tips: "【GINZA SIX 攻略】\n📍 銀座 6 丁目，中央通步行 3 分鐘\n🛍️ 地下 2 層～地上 13 層，品牌齊全、空間寬敞不悶熱\n🍰 B2 美食街：伴手禮與甜點一次買齊，DEAN & DELUCA 咖啡、資生堂 Parlour 外帶甜點都在這\n📚 蔦屋書店（Tsutaya Books）在 6F，藝術設計書籍與文創選品，小孩可在裡面自由翻閱繪本\n🌿 6F 屋頂庭園：晴時可帶小孩上去走走，下雨就略過\n💡 若要購買高單價伴手禮或精品，GINZA SIX 的選擇是整個銀座最齊全的" },
+                 { time: "16:30", title: "伊東屋 Itoya", desc: "文具旗艦店體驗", icon: "✏️", location: "銀座 伊東屋",
+                   mapLinks: [
+                     { label: "📍 Google 地圖", url: "https://www.google.com/maps/search/?api=1&query=Itoya+Ginza+Tokyo" }
+                   ],
+                   tips: "【伊東屋 Itoya 攻略】\n📍 銀座 2 丁目，中央通上的紅色迴紋針是地標\n✏️ 共 12 層樓的文具旗艦店，每層主題不同\n🎨 B1 層：可自製原子筆（LAMY、Sailor 等筆芯自由搭配），小孩超愛的親子體驗，約 ¥1,000 起\n📐 2F：紙品與便條紙，東京限定設計款\n🖍️ 4F：藝術文具與兒童繪畫用品，可讓小孩自由選色\n🌿 9F：農場與蔬菜，難得一見的文具店內農場！\n💡 自製原子筆體驗人氣很高，建議一進去就先去 B1 預約或排隊" },
+                 { time: "17:30", title: "博品館 Toy Park", desc: "玩具百貨・寶可夢・樂高", icon: "🧸", location: "博品館TOY PARK銀座本店",
+                   mapLinks: [
+                     { label: "📍 Google 地圖", url: "https://www.google.com/maps/search/?api=1&query=Hakuhinkan+Toy+Park+Ginza" }
+                   ],
+                   tips: "【博品館 Toy Park 攻略】\n📍 銀座 8 丁目，三越對面（中央通上）\n🧸 共 4 層樓的玩具百貨，是銀座最強親子室內遊樂場\n🐾 B1：寶可夢、妖怪手錶、扭蛋機密集區，小孩直接衝\n🧱 1F：樂高、熱輪小汽車、TOMICA，買不完的玩具\n🪀 2F：益智玩具、科學教具、桌遊\n🎮 3F：電玩試玩區，任天堂周邊\n💡 雨天備案必訪！可輕鬆消磨 1～1.5 小時，建議安排在晚餐前最後一站" },
+                 { time: "19:00", title: "銀座晚餐", desc: "親子推薦 5 選", icon: "🍽️", location: "銀座", tips: "【銀座 親子晚餐 5選】\n\n1. 資生堂 Parlour 銀座本店（資生堂パーラー）\n   📍 銀座 8 丁目・博品館步行 2 分 ｜ 🗺️ maps.app.goo.gl/shiseido-parlour\n   百年老牌西餐廳，炸蝦、蛋包飯、布丁，菜色溫和兒童最愛，環境優雅\n\n2. 煉瓦亭（れんがてい，Rengatei）\n   📍 銀座 3 丁目 ｜ 創業 1895 年的洋食老舖，炸豬排與蛋包飯的發源地！\n\n3. 天國 天婦羅（天國，Tenkuni）\n   📍 銀座 6 丁目・GINZA SIX 旁步行 3 分 ｜ 百年天婦羅老店，清爽炸物小孩好入口\n\n4. 銀座 桃花林（銀座 桃花林，Tokalin）\n   📍 銀座 8 丁目・資生堂 Parlour 同區 ｜ 正宗廣東料理，有點心與炒飯，小孩接受度高\n\n5. 鮨 銀座 おのでら（鮨 おのでら，Onodera）\n   📍 銀座 6 丁目 ｜ 若預算充裕可犒賞全家，頂級江戶前壽司，無菜單與單點皆可\n\n💡 資生堂 Parlour 是銀座最適合帶幼兒的高質感選擇，建議出發前先電話預約！" },
+                 { time: "21:00", title: "返回飯店", desc: "回程", icon: "🏨", location: HOTEL_ADDRESS, transport: { route: "銀座 → 上野 → 飯店", line: "東京地鐵銀座線 直達", time: "25分" }, hideMap: true,
+                   stationGuide: {
+                     name: "返回飯店 (銀座出發)", desc: "銀座線直達上野",
+                     tips: ["銀座站搭乘至上野站，免轉乘", "認明『淺草口』出站步行回飯店"],
+                     routes: ["從銀座站搭乘「銀座線(黃色)」往淺草方向", "約 12 分鐘直達「上野站」下車", "跟隨黃色指標尋找「淺草口」出閘門", "出站後沿『淺草通』往東直走約 10 分鐘抵達飯店"]
+                   }
+                 }
+             ] },
              { day: 5, date: "4/21 (二)", title: "築地・渋谷・新宿", events: [ 
                  { time: "08:40", title: "往上野站", desc: "出發", icon: "🚶", location: "上野駅", transport: { route: "飯店 → 上野站", line: "步行", time: "10分" }, hideMap: true }, 
                  { time: "09:00", title: "築地場外市場", desc: "早餐", icon: "🐟", location: "築地場外市場", transport: { route: "上野 → 築地", line: "東京地鐵日比谷線 直達", time: "12分" }, hideMap: true, tips: "【築地市場 飲食5選】\\n1. 狐狸屋（きつねや，Kitsuneya）\\n2. 築地 山長（築地山長，Yamacho）\\n3. 築地 可樂餅（築地コロッケ，Tsukiji Croquette）\\n4. 黑銀 鮪魚店（築地黒銀 まぐろや，Kurogin）\\n5. 壽司三味 本店（すしざんまい，Sushizanmai）\\n💡 狐狸屋極受歡迎，建議一早就去排隊！",
@@ -884,15 +938,24 @@ html_code = """
                     <div className="sticky top-0 z-10 bg-white/95 backdrop-blur shadow-sm p-2 flex gap-2 flex-shrink-0 overflow-x-auto hide-scrollbar">
                         {itinerary.map((d, i) => (
                             <button key={i} onClick={() => setActiveDay(i)} 
-                                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${activeDay === i ? 'bg-indigo-600 text-white shadow scale-105' : 'bg-gray-100 text-gray-500'}`}>
-                                Day {d.day}
+                                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all ${
+                                    activeDay === i
+                                        ? d.isRainDay ? 'bg-sky-500 text-white shadow scale-105' : 'bg-indigo-600 text-white shadow scale-105'
+                                        : d.isRainDay ? 'bg-sky-50 text-sky-500 border border-sky-200' : 'bg-gray-100 text-gray-500'
+                                }`}>
+                                {d.isRainDay ? `4 ☔` : `Day ${d.day}`}
                             </button>
                         ))}
                     </div>
                     <div className="flex-1 overflow-y-auto p-4 pb-24">
                         <div className="text-center mb-4">
                             <h2 className="text-xl font-bold text-gray-800">{itinerary[activeDay].date}</h2>
-                            <p className="text-indigo-600 font-medium">{itinerary[activeDay].title}</p>
+                            <p className={`font-medium ${itinerary[activeDay].isRainDay ? 'text-sky-500' : 'text-indigo-600'}`}>{itinerary[activeDay].title}</p>
+                            {itinerary[activeDay].isRainDay && (
+                                <div className="mt-2 inline-block bg-sky-50 border border-sky-200 text-sky-700 text-xs font-bold px-3 py-1 rounded-full">
+                                    ☔ 第四天雨天備案 — 全程室內，不怕下雨！
+                                </div>
+                            )}
                         </div>
                         <div className="relative pl-4 space-y-8 border-l-2 border-gray-200 ml-3">
                             {itinerary[activeDay].events.map((evt, i) => {
@@ -965,6 +1028,14 @@ html_code = """
                                                             ))}
                                                         </ul>
                                                     </div>
+                                                </div>
+                                            )}
+                                            
+                                            {evt.mapLinks && evt.mapLinks.length > 0 && (
+                                                <div className="flex flex-wrap gap-2 mb-2">
+                                                    {evt.mapLinks.map((link, li) => (
+                                                        <a key={li} href={link.url} target="_blank" className="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 text-xs font-bold py-1.5 px-3 rounded-lg no-underline">{link.label}</a>
+                                                    ))}
                                                 </div>
                                             )}
                                             
